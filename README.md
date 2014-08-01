@@ -1,17 +1,5 @@
 ## oppija-raamit
 
-### TODO
-
-Työ on kesken!
-
-- suorituskyky
-- css on ripattu koulutusinformaatiosta
-- kielen vaihto javascriptillä
-- kielikeksin käyttö
-- oikeat lokalisoinnit
-- navigation.js on ruma klöntti, joka ripattu koulutusinformaatiosta, johon se on puolestaan ripattu internetistä. Toisaalta, se toimii.
-- Koodissa TODOja myös (ainakin urlikonffit)
-
 ### Käyttö
 
 Oppija-raamit otetaan käyttöön yhdellä script-tägillä:
@@ -26,3 +14,8 @@ Käynnistä esimerkkiapplikaatio näin:
 
     open http://localhost:8099/oppija-raamit/
 
+### TODO
+
+- suorituskyky (wordpressin hitauden taklaus cachella, mahdollisesti oppija-raamit-materiaalin konkatenointi yhdeksi javascript-tiedostoksi)
+- css on ripattu koulutusinformaatiosta
+- navigation.js on ruma klöntti, joka ripattu koulutusinformaatiosta, johon se on puolestaan ripattu internetistä. Toisaalta, se toimii.
