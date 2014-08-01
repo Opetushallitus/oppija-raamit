@@ -44,7 +44,7 @@
   }
 
   function buildNavi(naviData) {
-    var $root = $('<ul class="menubar" id="main-navbar">')
+    var $root = $("#main-navbar")
     naviData.forEach(function(naviItem) {
       var $naviItem = $("<li>").addClass("menu-parent").attr("aria-haspopup", "true").attr("title", naviItem.title)
       var $naviLink = $("<a>").text(naviItem.title).attr("href", naviItem.link)
@@ -61,7 +61,6 @@
       }
       $root.append($naviItem)
     })
-    $(".navbar-default").append($root)
     window.navigationMenubar("#main-navbar")
   }
 
