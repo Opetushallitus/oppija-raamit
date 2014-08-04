@@ -108,7 +108,7 @@
               title: "Erityisoppilaitosten koulutukset tekstiversiona",
               link: "/m/index.html"
             },
-            checklist:{
+            shortlist:{
               title: "Muistilista"
             },
             registerDescription: {
@@ -149,7 +149,7 @@
               title: "Specialläroanstalternas utbildningar som textversion",
               link: "/m/index_sv.html"
             },
-            checklist:{
+            shortlist:{
               title: "Minneslista"
             },
             registerDescription: {
@@ -186,7 +186,7 @@
               title: "Go to frontpage",
               image: "opintopolku_large-en.png"
             },
-            checklist:{
+            shortlist:{
               title: "My shortlist"
             },
             registerDescription: {
