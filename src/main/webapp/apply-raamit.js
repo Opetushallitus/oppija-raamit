@@ -216,13 +216,15 @@
         }
       }
       i18n.init({ resStore: dictionary });
+      var lang = jQuery.cookie("i18next") || "fi";
       $.i18n.init({
-        lng: jQuery.cookie("i18next") || "fi",
+        lng: lang,
         resStore: dictionary
       })
       window.changeLanguage = function(language) {
         jQuery.cookie("i18next", language); document.location.reload()
       }
+      $("body").addClass("lang-" + lang)
       callback()
     })
   }
