@@ -224,7 +224,7 @@
         resStore: dictionary
       })
       window.changeLanguage = function(language) {
-        jQuery.cookie("i18next", language); document.location.reload()
+        jQuery.cookie("i18next", language, { expires: 1800, path: '/' }); document.location.reload()
       }
       $("body").addClass("lang-" + lang)
       callback()
