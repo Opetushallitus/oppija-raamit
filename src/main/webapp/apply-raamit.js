@@ -65,9 +65,7 @@
   }
 
   function getScriptDirectory() {
-    var scriptEls = document.getElementsByTagName( 'script' );
-    var thisScriptEl = scriptEls[scriptEls.length - 1];
-    var scriptPath = thisScriptEl.src;
+    var scriptPath = document.getElementById( 'apply-raamit').src;
     return scriptPath.substr(0, scriptPath.lastIndexOf( '/' )+1 );
   }
 

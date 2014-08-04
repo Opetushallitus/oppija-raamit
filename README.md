@@ -4,7 +4,7 @@
 
 Oppija-raamit otetaan käyttöön yhdellä script-tägillä:
 
-    <script type="text/javascript" src="https://opintopolku.fi/oppija-raamit/apply-raamit.js"></script>
+    <script id="apply-raamit" type="text/javascript" src="https://opintopolku.fi/oppija-raamit/apply-raamit.js"></script>
 
 Tiedostossa `src/main/webapp/index.html` on esimerkkiapplikaatio, joka käyttää oppija-raameja.
 
