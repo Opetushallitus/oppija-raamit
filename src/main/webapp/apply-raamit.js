@@ -14,6 +14,7 @@
             applyRaamit(template)
             naviAjax.done(function(navidata) {
               buildNavi(navidata.nav)
+              $("body").trigger("oppija-raamit-loaded")
             })
           })
         })

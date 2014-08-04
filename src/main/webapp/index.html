@@ -2,11 +2,10 @@
 <html dir="ltr" lang="fi-FI">
 <head>
   <meta charset="UTF-8"/>
-  <script id="apply-raamit" type="text/javascript" src="apply-raamit.js"></script>
   <meta name="description" content="Opintopolku.fi"/>
   <meta name="author" content="Opetushallitus"/>
 </head>
-<body>
+<body style="display: none">
 <!-- oppija-raamit header will be put here -->
 <div id="app-container">
   <h1 class="welcome align-center">
@@ -15,4 +14,11 @@
 </div>
 <!-- oppija-raamit footer will be put here -->
 </body>
+<script src="js/lib/jquery-1.9.1.min.js"></script>
+<script id="apply-raamit" type="text/javascript" src="apply-raamit.js"></script>
+<script>
+  $("body").on("oppija-raamit-loaded", function() {
+    $("body").show()
+  })
+</script>
 </html>
