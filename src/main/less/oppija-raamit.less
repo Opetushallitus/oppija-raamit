@@ -1,0 +1,130 @@
+@header-background: #149ecb;
+@navbar-z-index: 1001;
+
+.body-font(@color) {
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  color: @color;
+  font-size: 13px;
+}
+
+#siteheader {
+  background: @header-background;
+  .body-font(white);
+
+  a, a:visited {
+    color: white;
+    text-decoration: none;
+  }
+
+  .header-content {
+    width: 1160px;
+    margin: 0px auto;
+    padding: 20px 0px;
+
+    font-weight: bold;
+    overflow: auto;
+
+    .header-banner {
+      float: left;
+      width: 75%;
+    }
+
+    .header-shortlist {
+      float: left;
+      width: 12.5%;
+    }
+  }
+
+  .header-language {
+    float: left;
+    width: 12.5%;
+
+    ul {
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+    }
+  }
+
+  nav {
+    clear: both;
+    background: #06526b;
+    border: 1px solid #043a4c;
+    position: relative;
+    min-height: 40px;
+    font-size: 16px;
+    line-height: 20px;
+    z-index: @navbar-z-index;
+
+    ul {
+      padding: 0px;
+      margin: 0px;
+      list-style: none;
+      position: relative;
+
+      li {
+        float: left;
+
+        a, a:visited {
+          display: block;
+          padding: 10px;
+        }
+      }
+    }
+  }
+}
+
+#sitefooter {
+  .bordered-footer-element() {
+    border: 1px solid #dddddd;
+  }
+
+  width: 1160px;
+  margin: 0px auto;
+  .body-font(#999999);
+
+  a {
+    color: #06526b;
+    text-decoration: underline;
+  }
+
+  .footer-opintopolku-info {
+    .bordered-footer-element();
+    padding: 20px;
+    overflow: auto;
+
+    .footer-homelink {
+      float: left;
+      margin-right: 40px;
+    }
+
+    ul {
+      float: left;
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+      line-height: 20px;
+    }
+  }
+
+  .footer-note {
+    margin-top: 20px;
+    text-align: center;
+    margin-bottom: 10px;
+  }
+
+  .footer-links {
+    .bordered-footer-element();
+    overflow: auto;
+    padding: 9px 0px;
+
+    a {
+      display: inline-block;
+      width: 50%;
+      text-align: center;
+      float: left;
+    }
+  }
+
+
+}

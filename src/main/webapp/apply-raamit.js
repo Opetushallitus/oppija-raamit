@@ -44,7 +44,8 @@
   }
 
   function buildNavi(naviData) {
-    var $root = $("#main-navbar")
+    var naviSelector = "#siteheader nav ul"
+    var $root = $(naviSelector)
     naviData.forEach(function(naviItem) {
       var $naviItem = $("<li>").addClass("menu-parent").attr("aria-haspopup", "true").attr("title", naviItem.title)
       var $naviLink = $("<a>").text(naviItem.title).attr("href", naviItem.link)
@@ -61,7 +62,7 @@
       }
       $root.append($naviItem)
     })
-    window.navigationMenubar("#main-navbar")
+    window.navigationMenubar(naviSelector)
   }
 
   function getScriptDirectory() {

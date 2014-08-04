@@ -1,0 +1,9 @@
+{
+  "devDependencies": {
+    "gulp": "^3.8.0",
+    "gulp-less": "^1.2.3",
+    "gulp-concat": "^2.2.0"
+  },
+  "name": "oppija-raamit",
+  "version": "0.0.1"
+}
