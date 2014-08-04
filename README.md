@@ -14,6 +14,23 @@ Käynnistä esimerkkiapplikaatio näin:
 
     open http://localhost:8099/oppija-raamit/
 
+
+### Kehitysohjeet
+
+CSS-tiedosto generoidaan less-fileistä käyttäen gulpia. Asenna lokaalit NPM-paketit:
+
+    npm install
+
+Käännä LESS-tiedostot CSS:ksi:
+
+    node_modules/gulp/bin/gulp.js compile
+
+Tai laita watch käyntiin:
+
+    node_modules/gulp/bin/gulp.js
+
+CSS-tiedosto menee myös versionhallintaan, ainakin toistaiseksi.
+
 ### TODO
 
 - suorituskyky (wordpressin hitauden taklaus cachella, mahdollisesti oppija-raamit-materiaalin konkatenointi yhdeksi javascript-tiedostoksi)
