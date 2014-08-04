@@ -57,6 +57,11 @@
   display: block;
   padding: 10px;
 }
+#siteheader nav .mobile-version {
+  float: right;
+  font-size: 13px;
+  text-decoration: underline;
+}
 #sitefooter {
   width: 1160px;
   margin: 0px auto;

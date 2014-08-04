@@ -102,6 +102,10 @@
               title: "Siirry etusivulle",
               image: "opintopolku_large-fi.png"
             },
+            mobileVersion: {
+              title: "Erityisoppilaitosten koulutukset tekstiversiona",
+              link: "/m/index.html"
+            },
             checklist:{
               title: "Muistilista"
             },
@@ -138,6 +142,10 @@
             homeLink: {
               title: "Gå till framsida",
               image: "opintopolku_large-sv.png"
+            },
+            mobileVersion: {
+              title: "Specialläroanstalternas utbildningar som textversion",
+              link: "/m/index_sv.html"
             },
             checklist:{
               title: "Minneslista"
