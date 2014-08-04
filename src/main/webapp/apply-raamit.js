@@ -36,7 +36,7 @@
     $body.prepend($header)
     $body.append($footer)
 
-    var cssFiles = ["bootstrap.css", "oppija-raamit.css"];
+    var cssFiles = ["oppija-raamit.css"];
     for (var i in cssFiles) {
       var css = cssFiles[i]
       $head.append($('<link rel="stylesheet" type="text/css"/>').attr("href", raamitDirectory + "/css/" + css))
