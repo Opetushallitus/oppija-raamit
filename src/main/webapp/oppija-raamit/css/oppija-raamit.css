@@ -62,6 +62,9 @@
   font-size: 13px;
   text-decoration: underline;
 }
+.lang-en #siteheader nav .mobile-version {
+  display: none;
+}
 #sitefooter {
   width: 1160px;
   margin: 0px auto;
