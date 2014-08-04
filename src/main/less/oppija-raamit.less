@@ -16,9 +16,12 @@
     text-decoration: none;
   }
 
-  .header-content {
+  .header-column {
     width: 1160px;
     margin: 0px auto;
+  }
+
+  .header-content {
     padding: 20px 0px;
 
     font-weight: bold;
@@ -50,24 +53,65 @@
     clear: both;
     background: #06526b;
     border: 1px solid #043a4c;
-    position: relative;
     min-height: 40px;
     font-size: 16px;
     line-height: 20px;
     z-index: @navbar-z-index;
+    position: relative;
 
     ul {
-      padding: 0px;
-      margin: 0px;
+      padding: 0;
+      margin: 0;
       list-style: none;
       position: relative;
+      -webkit-box-shadow: 0px 1px 1px 0 rgba(0, 0, 0, 0.5);
+      box-shadow: 0px 1px 1px 0 rgba(0, 0, 0, 0.5);
+    }
 
-      li {
-        float: left;
+    ul.level-1-menu > li {
+      float: left;
+      overflow: auto;
 
-        a, a:visited {
+      a {
+        display: inline-block;
+        padding: 10px;
+        text-decoration: none;
+      }
+
+      a.action-link {
+        font-size: 13px;
+        text-decoration: underline;
+      }
+
+      &.menu-hover, &.menu-focus {
+        background: #ffffff;
+        a {
+          color: #333;
+        }
+
+        & > ul {
           display: block;
-          padding: 10px;
+        }
+      }
+    }
+
+    ul.level-2-menu {
+      background: #ffffff;
+      position: absolute;
+      display: none;
+      min-width: 200px;
+      li {
+        display: block;
+        position: relative;
+        a {
+          color: #333;
+          font-size: 13px;
+          width: 100%;
+          box-sizing: border-box;
+
+          &:hover, &:focus {
+            background: #feedbd;
+          }
         }
       }
     }

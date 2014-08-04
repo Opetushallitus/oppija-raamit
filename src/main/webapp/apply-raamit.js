@@ -62,6 +62,7 @@
       }
       $root.append($naviItem)
     })
+
     window.navigationMenubar(naviSelector)
   }
 

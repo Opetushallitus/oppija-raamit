@@ -9,9 +9,11 @@
   color: white;
   text-decoration: none;
 }
-#siteheader .header-content {
+#siteheader .header-column {
   width: 1160px;
   margin: 0px auto;
+}
+#siteheader .header-content {
   padding: 20px 0px;
   font-weight: bold;
   overflow: auto;
@@ -37,25 +39,64 @@
   clear: both;
   background: #06526b;
   border: 1px solid #043a4c;
-  position: relative;
   min-height: 40px;
   font-size: 16px;
   line-height: 20px;
   z-index: 1001;
-}
-#siteheader nav ul {
-  padding: 0px;
-  margin: 0px;
-  list-style: none;
   position: relative;
 }
-#siteheader nav ul li {
-  float: left;
+#siteheader nav ul {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  position: relative;
+  -webkit-box-shadow: 0px 1px 1px 0 rgba(0, 0, 0, 0.5);
+  box-shadow: 0px 1px 1px 0 rgba(0, 0, 0, 0.5);
 }
-#siteheader nav ul li a,
-#siteheader nav ul li a:visited {
-  display: block;
+#siteheader nav ul.level-1-menu > li {
+  float: left;
+  overflow: auto;
+}
+#siteheader nav ul.level-1-menu > li a {
+  display: inline-block;
   padding: 10px;
+  text-decoration: none;
+}
+#siteheader nav ul.level-1-menu > li a.action-link {
+  font-size: 13px;
+  text-decoration: underline;
+}
+#siteheader nav ul.level-1-menu > li.menu-hover,
+#siteheader nav ul.level-1-menu > li.menu-focus {
+  background: #ffffff;
+}
+#siteheader nav ul.level-1-menu > li.menu-hover a,
+#siteheader nav ul.level-1-menu > li.menu-focus a {
+  color: #333;
+}
+#siteheader nav ul.level-1-menu > li.menu-hover > ul,
+#siteheader nav ul.level-1-menu > li.menu-focus > ul {
+  display: block;
+}
+#siteheader nav ul.level-2-menu {
+  background: #ffffff;
+  position: absolute;
+  display: none;
+  min-width: 200px;
+}
+#siteheader nav ul.level-2-menu li {
+  display: block;
+  position: relative;
+}
+#siteheader nav ul.level-2-menu li a {
+  color: #333;
+  font-size: 13px;
+  width: 100%;
+  box-sizing: border-box;
+}
+#siteheader nav ul.level-2-menu li a:hover,
+#siteheader nav ul.level-2-menu li a:focus {
+  background: #feedbd;
 }
 #siteheader nav .mobile-version {
   float: right;
