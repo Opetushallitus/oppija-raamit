@@ -11,13 +11,20 @@
   background: @header-background;
   .body-font(white);
 
+  &:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+
   a, a:visited {
     color: white;
     text-decoration: none;
   }
 
   .header-column {
-    width: 1160px;
+    min-width: 500px;
+    max-width: 1160px;
     margin: 0px auto;
   }
 
@@ -29,21 +36,22 @@
     .header-banner {
       display: inline-block;
       float: left;
-      width: 75%;
     }
 
     .header-shortlist {
-      float: left;
+      float: right;
       width: 12.5%;
+      min-width: 125px;
     }
-  }
 
-  ul.header-language {
-    float: left;
-    width: 12.5%;
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
+    ul.header-language {
+      float: right;
+      max-width: 12.5%;
+      min-width: 125px;
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+    }
   }
 
   nav {
@@ -51,6 +59,8 @@
     background: #06526b;
     border: 1px solid #043a4c;
     min-height: 40px;
+    float: left;
+    width: 100%;
     font-size: 16px;
     line-height: 20px;
     z-index: @navbar-z-index;
@@ -131,7 +141,7 @@
     border: 1px solid #dddddd;
   }
 
-  width: 1160px;
+  max-width: 1160px;
   margin: 0px auto;
   .body-font(#999999);
 
