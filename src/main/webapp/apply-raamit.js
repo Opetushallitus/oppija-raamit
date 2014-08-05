@@ -15,7 +15,7 @@
         initI18n(function() {
           var naviUrl = wordPressHost + i18n.t("wordpressRoot") + "/api/nav/json_nav/"
           var naviAjax = $.ajax(naviUrl)
-          loadScript(window.navigationMenubar, rootDirectory + "/js/navigation.js", function() {
+          loadScript(window.navigationMenubar, rootDirectory + "js/navigation.js", function() {
             $.ajax(raamitDirectory + "/oppija-raamit.html").done(function(template) {
               applyRaamit(template)
               naviAjax.done(function(navidata) {
