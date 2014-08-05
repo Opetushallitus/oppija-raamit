@@ -19,6 +19,7 @@
   overflow: auto;
 }
 #siteheader .header-content .header-banner {
+  display: inline-block;
   float: left;
   width: 75%;
 }
@@ -26,11 +27,9 @@
   float: left;
   width: 12.5%;
 }
-#siteheader .header-language {
+#siteheader ul.header-language {
   float: left;
   width: 12.5%;
-}
-#siteheader .header-language ul {
   list-style-type: none;
   margin: 0;
   padding: 0;
