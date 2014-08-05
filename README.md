@@ -34,5 +34,4 @@ CSS-tiedosto menee myös versionhallintaan, ainakin toistaiseksi.
 ### TODO
 
 - suorituskyky (wordpressin hitauden taklaus cachella, mahdollisesti oppija-raamit-materiaalin konkatenointi yhdeksi javascript-tiedostoksi)
-- css on ripattu koulutusinformaatiosta
 - navigation.js on ruma klöntti, joka ripattu koulutusinformaatiosta, johon se on puolestaan ripattu internetistä. Toisaalta, se toimii.
