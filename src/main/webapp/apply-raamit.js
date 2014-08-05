@@ -20,6 +20,7 @@
               applyRaamit(template)
               naviAjax.done(function(navidata) {
                 buildNavi(navidata.nav)
+                updateBasket()
                 $("html").trigger("oppija-raamit-loaded")
               })
             })
@@ -233,6 +234,42 @@
       })
       callback()
     })
+  }
+
+  function updateBasket() {
+    var $count = $(".count")
+    updateBasketSize($count)
+    setInterval(function() {
+      if(basketSizeChanged($count)) {
+        updateBasketSize($count)
+      }
+    }, 500)
+  }
+
+  function updateBasketSize($elem) {
+    $elem.text(basketSize())
+  }
+
+  function basketSizeChanged($elem) {
+    return $elem.text() != basketSize()
+  }
+
+  function basketSize() {
+    var basket = basketContent()
+    if (basket) {
+      return "(" + basket.length + ")"
+    } else {
+      return "(0)"
+    }
+  }
+
+  function basketContent() {
+    var basket = jQuery.cookie("basket")
+    if (basket) {
+      return JSON.parse(decodeURIComponent(basket))
+    } else {
+      return undefined
+    }
   }
 
 })())
