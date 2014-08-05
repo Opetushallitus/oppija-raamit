@@ -1,1 +1,1 @@
-web:    mvn $JAVA_OPTS tomcat6:run
+web:   java $JAVA_OPTS -cp target/classes:target/dependency/* JettyRunner
