@@ -10,7 +10,7 @@ Tiedostossa `src/main/webapp/index.html` on esimerkkiapplikaatio, joka k채ytt채�
 
 K채ynnist채 esimerkkiapplikaatio n채in:
 
-    mvn tomcat6:run
+    ./run.sh
 
     open http://localhost:8099/oppija-raamit/
 
