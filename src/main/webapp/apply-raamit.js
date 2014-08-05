@@ -57,7 +57,7 @@
     var naviSelector = "#siteheader nav ul"
     var $root = $(naviSelector)
     naviData.forEach(function(naviItem) {
-      var $naviItem = $("<li>").addClass("menu-parent").attr("aria-haspopup", "true").attr("title", naviItem.title)
+      var $naviItem = $("<li>").addClass("menu-parent").attr("aria-haspopup", "true")
       var $naviLink = $("<a>").text(naviItem.title).attr("href", naviItem.link)
       $naviItem.append($naviLink)
       if (naviItem.subnav) {
