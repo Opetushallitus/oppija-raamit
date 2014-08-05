@@ -1,26 +1,33 @@
 ;((function() {
+  var raamit = window.OppijaRaamit = {
+    changeLanguage: function(language) {
+      jQuery.cookie("i18next", language, { expires: 1800, path: '/' }); document.location.reload()
+    }
+  }
 
   var rootDirectory = getScriptDirectory();
   var raamitDirectory = rootDirectory + "oppija-raamit"
   var wordPressHost = (rootDirectory.indexOf("localhost") > 0) ? "https://testi.opintopolku.fi" : ""
 
-  initJQuery(function() {
-    initJQueryCookie(function() {
-      initI18n(function() {
-        var naviUrl = wordPressHost + i18n.t("wordpressRoot") + "/api/nav/json_nav/"
-        var naviAjax = $.ajax(naviUrl)
-        loadScript(window.navigationMenubar, rootDirectory + "/js/navigation.js", function() {
-          $.ajax(raamitDirectory + "/oppija-raamit.html").done(function(template) {
-            applyRaamit(template)
-            naviAjax.done(function(navidata) {
-              buildNavi(navidata.nav)
-              $("body").trigger("oppija-raamit-loaded")
+  setTimeout(function() {
+    initJQuery(function() {
+      initJQueryCookie(function() {
+        initI18n(function() {
+          var naviUrl = wordPressHost + i18n.t("wordpressRoot") + "/api/nav/json_nav/"
+          var naviAjax = $.ajax(naviUrl)
+          loadScript(window.navigationMenubar, rootDirectory + "/js/navigation.js", function() {
+            $.ajax(raamitDirectory + "/oppija-raamit.html").done(function(template) {
+              applyRaamit(template)
+              naviAjax.done(function(navidata) {
+                buildNavi(navidata.nav)
+                $("html").trigger("oppija-raamit-loaded")
+              })
             })
           })
         })
       })
     })
-  });
+  }, 0)
 
   function applyRaamit(template) {
     var $template = $(template).i18n()
@@ -28,7 +35,8 @@
       $(this).attr("src", raamitDirectory + "/img/" + $(this).attr("src"))
     })
     var $body = $("body")
-    var $header = $template.find("header")
+    var $header = $template.find("header").addClass("lang-" + raamit.lang)
+
 
     var $footer = $template.find("footer")
     var $head = $("head")
@@ -218,15 +226,11 @@
         }
       }
       i18n.init({ resStore: dictionary });
-      var lang = jQuery.cookie("i18next") || "fi";
+      raamit.lang = jQuery.cookie("i18next") || "fi";
       $.i18n.init({
-        lng: lang,
+        lng: raamit.lang,
         resStore: dictionary
       })
-      window.changeLanguage = function(language) {
-        jQuery.cookie("i18next", language, { expires: 1800, path: '/' }); document.location.reload()
-      }
-      $("body").addClass("lang-" + lang)
       callback()
     })
   }

@@ -103,7 +103,7 @@
   text-decoration: underline;
   line-height: 40px;
 }
-.lang-en #siteheader nav .mobile-version {
+#siteheader.lang-en .mobile-version {
   display: none;
 }
 #sitefooter {
