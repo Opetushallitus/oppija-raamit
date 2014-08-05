@@ -7,7 +7,7 @@
 
   var rootDirectory = getScriptDirectory();
   var raamitDirectory = rootDirectory + "oppija-raamit"
-  var wordPressHost = (rootDirectory.indexOf("localhost") > 0) ? "https://testi.opintopolku.fi" : ""
+  var wordPressHost = (rootDirectory.indexOf("opintopolku") > 0 || rootDirectory.indexOf("ware.fi") > 0) ? "" : "https://testi.opintopolku.fi"
 
   setTimeout(function() {
     initJQuery(function() {
