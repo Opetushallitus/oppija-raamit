@@ -226,12 +226,10 @@
           }
         }
       }
-      i18n.init({ resStore: dictionary });
-      raamit.lang = jQuery.cookie("i18next") || "fi";
-      $.i18n.init({
-        lng: raamit.lang,
-        resStore: dictionary
-      })
+      i18n.init({
+        resStore: dictionary,
+        fallbackLng: "fi"
+      });
       callback()
     })
   }
