@@ -5,6 +5,7 @@
     }
   }
 
+  var preDefinedI18n = !(typeof window.i18n == "undefined")
   var rootDirectory = getScriptDirectory();
   var raamitDirectory = rootDirectory + "oppija-raamit"
   var parser = document.createElement('a')
@@ -15,7 +16,7 @@
     initJQuery(function() {
       initJQueryCookie(function() {
         initI18n(function() {
-          var naviUrl = wordPressHost + i18n.t("wordpressRoot") + "/api/nav/json_nav/"
+          var naviUrl = wordPressHost + i18n.t("raamit:wordpressRoot") + "/api/nav/json_nav/"
           var naviAjax = $.ajax(naviUrl)
           loadScript(window.navigationMenubar, rootDirectory + "js/navigation.js", function() {
             $.ajax(raamitDirectory + "/oppija-raamit.html").done(function(template) {
@@ -109,7 +110,7 @@
     loadScript(window.i18n, rootDirectory + "js/lib/i18next-1.7.3.js", function() {
       var dictionary = {
         fi: {
-          translation: {
+          raamit: {
             wordpressRoot: "/wp/fi",
             homeLink: {
               title: "Siirry etusivulle",
@@ -150,7 +151,7 @@
           }
         },
         sv: {
-          translation: {
+          raamit: {
             wordpressRoot: "/wp/sv",
             homeLink: {
               title: "Gå till framsida",
@@ -191,7 +192,7 @@
           }
         },
         en: {
-          translation: {
+          raamit: {
             wordpressRoot: "/wp2/en",
             homeLink: {
               title: "Go to frontpage",
@@ -228,10 +229,16 @@
           }
         }
       }
-      i18n.init({
-        resStore: dictionary,
-        fallbackLng: "fi"
-      });
+      if(!preDefinedI18n) {
+          i18n.init({
+              resStore: dictionary,
+              fallbackLng: "fi"
+          });
+      } else {
+          i18n.addResourceBundle("fi", "raamit", dictionary.fi.raamit)
+          i18n.addResourceBundle("sv", "raamit", dictionary.sv.raamit)
+          i18n.addResourceBundle("en", "raamit", dictionary.en.raamit)
+      }
       callback()
     })
   }
