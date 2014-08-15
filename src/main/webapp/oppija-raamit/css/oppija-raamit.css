@@ -3,6 +3,7 @@
   font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
   color: #ffffff;
   font-size: 13px;
+  line-height: 16px;
 }
 #siteheader:after {
   content: "";
@@ -23,23 +24,46 @@
   padding: 20px 0px;
   font-weight: bold;
   overflow: auto;
+  position: relative;
 }
 #siteheader .header-content .header-banner {
   display: inline-block;
   float: left;
 }
+#siteheader .header-content .header-login-link {
+  line-height: 25px;
+  position: absolute;
+  bottom: 15px;
+  right: 285px;
+  border-right: 1px solid rgba(255, 255, 255, 0.4);
+  padding-right: 20px;
+}
+#siteheader .header-content .header-login-link:before {
+  content: "";
+  background: url(../img/login-icon.png) no-repeat center center;
+  background-size: 100% 100%;
+  width: 18px;
+  height: 23px;
+  display: inline-block;
+  position: relative;
+  left: -7px;
+  top: 2px;
+}
 #siteheader .header-content .header-shortlist {
-  float: right;
-  width: 12.5%;
-  min-width: 125px;
+  position: absolute;
+  line-height: 25px;
+  right: 145px;
+  bottom: 15px;
+  width: 120px;
 }
 #siteheader .header-content ul.header-language {
-  float: right;
-  max-width: 12.5%;
-  min-width: 125px;
+  position: absolute;
+  right: 0px;
+  bottom: 20px;
+  width: 125px;
   list-style-type: none;
-  margin: 0;
   padding: 0;
+  margin: 0;
 }
 #siteheader nav {
   clear: both;

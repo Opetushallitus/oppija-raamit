@@ -111,6 +111,7 @@
       var dictionary = {
         fi: {
           raamit: {
+            loginLink: "Kirjaudu sisään",
             wordpressRoot: "/wp/fi",
             homeLink: {
               title: "Siirry etusivulle",
@@ -152,6 +153,7 @@
         },
         sv: {
           raamit: {
+            loginLink: "Logga in",
             wordpressRoot: "/wp/sv",
             homeLink: {
               title: "Gå till framsida",
@@ -193,6 +195,7 @@
         },
         en: {
           raamit: {
+            loginLink: "Login",
             wordpressRoot: "/wp2/en",
             homeLink: {
               title: "Go to frontpage",

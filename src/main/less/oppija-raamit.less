@@ -10,6 +10,7 @@
 #siteheader {
   background: @header-background;
   .body-font(white);
+  line-height: 16px;
 
   &:after {
     content: "";
@@ -32,25 +33,55 @@
     padding: 20px 0px;
     font-weight: bold;
     overflow: auto;
+    position: relative;
 
     .header-banner {
       display: inline-block;
       float: left;
     }
 
+    @padding: 20px;
+    @shortlist-width: 120px;
+    @language-width: 125px;
+
+    .header-login-link {
+      line-height: 25px;
+
+      position: absolute;
+      bottom: 15px;
+      right: (@language-width + @shortlist-width + @padding*2);
+      border-right: 1px solid rgba(255,255,255, 0.4);
+      padding-right: @padding;
+      &:before {
+        content: "";
+        background: url(../img/login-icon.png) no-repeat center center;
+        background-size: 100% 100%;
+        width: 18px;
+        height: 23px;
+        display: inline-block;
+        position: relative;
+        left: -7px;
+        top: 2px;
+
+      }
+    }
+
     .header-shortlist {
-      float: right;
-      width: 12.5%;
-      min-width: 125px;
+      position: absolute;
+      line-height: 25px;
+      right: (@language-width + @padding);
+      bottom: 15px;
+      width: @shortlist-width;
     }
 
     ul.header-language {
-      float: right;
-      max-width: 12.5%;
-      min-width: 125px;
+      position: absolute;
+      right: 0px;
+      bottom: 20px;
+      width: @language-width;
       list-style-type: none;
-      margin: 0;
       padding: 0;
+      margin: 0;
     }
   }
 
@@ -187,6 +218,4 @@
       float: left;
     }
   }
-
-
 }
