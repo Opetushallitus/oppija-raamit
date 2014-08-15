@@ -44,14 +44,14 @@
     @shortlist-width: 120px;
     @language-width: 125px;
 
-    .header-login-link {
+    .header-login-section {
       line-height: 25px;
-
       position: absolute;
       bottom: 15px;
       right: (@language-width + @shortlist-width + @padding*2);
       border-right: 1px solid rgba(255,255,255, 0.4);
       padding-right: @padding;
+
       &:before {
         content: "";
         background: url(../img/login-icon.png) no-repeat center center;
@@ -64,6 +64,15 @@
         top: 2px;
 
       }
+    }
+
+    .header-logout-link {
+      background: rgba(255,255,255,0.1);
+      font-weight: normal;
+      outline: 4px solid rgba(255,255,255,0.1);
+      margin-left: 10px;
+      padding: 0px 2px;
+      opacity: 0.8;
     }
 
     .header-shortlist {

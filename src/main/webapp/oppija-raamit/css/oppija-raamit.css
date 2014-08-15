@@ -30,7 +30,7 @@
   display: inline-block;
   float: left;
 }
-#siteheader .header-content .header-login-link {
+#siteheader .header-content .header-login-section {
   line-height: 25px;
   position: absolute;
   bottom: 15px;
@@ -38,7 +38,7 @@
   border-right: 1px solid rgba(255, 255, 255, 0.4);
   padding-right: 20px;
 }
-#siteheader .header-content .header-login-link:before {
+#siteheader .header-content .header-login-section:before {
   content: "";
   background: url(../img/login-icon.png) no-repeat center center;
   background-size: 100% 100%;
@@ -48,6 +48,14 @@
   position: relative;
   left: -7px;
   top: 2px;
+}
+#siteheader .header-content .header-logout-link {
+  background: rgba(255, 255, 255, 0.1);
+  font-weight: normal;
+  outline: 4px solid rgba(255, 255, 255, 0.1);
+  margin-left: 10px;
+  padding: 0px 2px;
+  opacity: 0.8;
 }
 #siteheader .header-content .header-shortlist {
   position: absolute;

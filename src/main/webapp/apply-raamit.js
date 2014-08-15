@@ -24,6 +24,7 @@
               naviAjax.done(function(navidata) {
                 buildNavi(navidata.nav)
                 updateBasket()
+                updateLoginSection()
                 $("html").trigger("oppija-raamit-loaded")
               })
             })
@@ -112,6 +113,8 @@
         fi: {
           raamit: {
             loginLink: "Kirjaudu sisään",
+            logoutLink: "Kirjaudu ulos",
+            omatsivutLink: "Oma Opintopolku",
             wordpressRoot: "/wp/fi",
             homeLink: {
               title: "Siirry etusivulle",
@@ -154,6 +157,8 @@
         sv: {
           raamit: {
             loginLink: "Logga in",
+            logoutLink: "Logga ut",
+            omatsivutLink: "Min Studieinfo",
             wordpressRoot: "/wp/sv",
             homeLink: {
               title: "Gå till framsida",
@@ -195,7 +200,9 @@
         },
         en: {
           raamit: {
-            loginLink: "Login",
+            loginLink: "Log in",
+            logoutLink: "Log out",
+            omatsivutLink: "My Studyinfo",
             wordpressRoot: "/wp2/en",
             homeLink: {
               title: "Go to frontpage",
@@ -254,6 +261,12 @@
         updateBasketSize($count)
       }
     }, 500)
+  }
+
+  function updateLoginSection() {
+    var loggedIn = jQuery.cookie("auth") != null
+    $(".header-logged-in").toggle(loggedIn)
+    $(".header-logged-out").toggle(!loggedIn)
   }
 
   function updateBasketSize($elem) {
