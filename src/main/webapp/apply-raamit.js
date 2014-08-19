@@ -253,8 +253,10 @@
           }
         }
       }
+
       if(!preDefinedI18n) {
           i18n.init({
+              lng: getInitLang(),
               resStore: dictionary,
               fallbackLng: "fi"
           });
@@ -265,6 +267,17 @@
       }
       callback()
     })
+  }
+
+  function getInitLang() {
+      if(document.location.href.indexOf("wp") > 0){
+          var regexp = /\/wp.?\/(fi|sv|en)/
+          var match = document.location.href.match(regexp)
+          if(match.length > 0) {
+              return match[1]
+          }
+      }
+      return "fi"
   }
 
   function updateBasket() {
