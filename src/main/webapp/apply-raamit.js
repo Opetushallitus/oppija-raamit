@@ -8,17 +8,12 @@
   var preDefinedI18n = !(typeof window.i18n == "undefined")
   var rootDirectory = getScriptDirectory();
   var raamitDirectory = rootDirectory + "oppija-raamit"
-  var parser = document.createElement('a')
-  parser.href = rootDirectory
-  var wpMode = document.getElementById('apply-raamit').getAttribute('data-wp-mode')
-  var wordPressHost = (rootDirectory.indexOf("opintopolku") > 0 || rootDirectory.indexOf("ware.fi") > 0 || wpMode == "local") ? parser.protocol + "//" + parser.hostname : "https://testi.opintopolku.fi"
 
   setTimeout(function() {
     initJQuery(function() {
       initJQueryCookie(function() {
         initI18n(function() {
-          var naviUrl = wordPressHost + i18n.t("raamit:wordpressRoot") + "/api/nav/json_nav/"
-          var naviAjax = $.ajax(naviUrl)
+          var naviAjax = $.ajax(getNaviPath(rootDirectory))
           loadScript(window.navigationMenubar, rootDirectory + "js/navigation.js", function() {
             $.ajax(raamitDirectory + "/oppija-raamit.html").done(function(template) {
               applyRaamit(template)
@@ -34,6 +29,16 @@
       })
     })
   }, 0)
+
+  function getNaviPath(rootDirectory) {
+    var wpHost = document.getElementById('apply-raamit').getAttribute('data-wp-navi-path')
+    if(!wpHost) {
+      var parser = document.createElement('a')
+      parser.href = rootDirectory
+      wpHost = (rootDirectory.indexOf("opintopolku") > 0 || rootDirectory.indexOf("ware.fi") > 0) ? parser.protocol + "//" + parser.hostname : "https://testi.opintopolku.fi"
+    }
+    return wpHost + i18n.t("raamit:wordpressRoot") + "/api/nav/json_nav/"
+  }
 
   function applyRaamit(template) {
     var $template = $(template).i18n()
