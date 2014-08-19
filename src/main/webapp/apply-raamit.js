@@ -277,7 +277,12 @@
               return match[1]
           }
       }
-      return "fi"
+      return readLanguageCookie()
+  }
+
+  function readLanguageCookie() {
+      var lang = jQuery.cookie("i18next")
+      return lang != null ? lang : "fi"
   }
 
   function updateBasket() {
