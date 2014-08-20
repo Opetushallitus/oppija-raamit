@@ -25,10 +25,10 @@
           loadScript(window.navigationMenubar, rootDirectory + "js/navigation.js", function() {
             $.ajax(raamitDirectory + "/oppija-raamit.html").done(function(template) {
               applyRaamit(template)
+              updateBasket()
+              updateLoginSection()
               naviAjax.done(function(navidata) {
                 buildNavi(navidata.nav)
-                updateBasket()
-                updateLoginSection()
                 $("html").trigger("oppija-raamit-loaded")
               })
             })
