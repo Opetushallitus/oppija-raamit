@@ -33,6 +33,7 @@
                 buildNavi(navidata.nav)
                 $("html").trigger("oppija-raamit-loaded")
               })
+              buildFooterLinks(i18n.t("raamit:footerlinks", { returnObjectTrees: true }))
             })
           })
         })
@@ -96,6 +97,15 @@
     window.navigationMenubar(naviSelector)
   }
 
+  function buildFooterLinks(footerlinks) {
+    var $footerlinkselement = $("#footer-links")
+    for (var item in footerlinks) {
+      var $item = $("<li>")
+      var $link = $("<a>").text(footerlinks[item].title).attr({ href: footerlinks[item].link })
+      $footerlinkselement.append($item.append($link))
+    }
+  }
+
   function getScriptDirectory() {
     var scriptPath = document.getElementById( 'apply-raamit').src;
     return scriptPath.substr(0, scriptPath.lastIndexOf( '/' )+1 );
@@ -143,14 +153,6 @@
             shortlist:{
               title: "Muistilista"
             },
-            registerDescription: {
-              title: "Rekisteriseloste",
-              link: "/wp/fi/rekisteriseloste/"
-            },
-            siteMap: {
-              title: "Hakemisto",
-              link: "/fi/hakemisto/oppilaitokset/A"
-            },
             opetushallitus: {
               title: "Opetushallitus",
               image: "OPH_logo-fi.png",
@@ -167,6 +169,24 @@
               fi: "Suomeksi",
               sv: "På svenska",
               en: "In English"
+            },
+            footerlinks: {
+              description: {
+                title: "Mikä on Opintopolku?",
+                link: "/wp/fi/opintopolku/tietoa-palvelusta/"
+              },
+              feedback: {
+                title: "Anna palautetta – kysy neuvoa",
+                link: "/wp/fi/opintopolku/anna-palautetta-kysy-neuvoa/"
+              },
+              registerDescription: {
+                title: "Rekisteriseloste",
+                link: "/wp/fi/rekisteriseloste/"
+              },
+              index: {
+                title: "Oppilaitoshakemisto",
+                link: "/fi/hakemisto/oppilaitokset/A"
+              }
             }
           }
         },
@@ -187,14 +207,6 @@
             shortlist:{
               title: "Minneslista"
             },
-            registerDescription: {
-              title: "Registerbeskrivning",
-              link: "/wp/sv/registerbeskrivning/"
-            },
-            siteMap: {
-              title: "Index",
-              link: "/sv/hakemisto/oppilaitokset/A"
-            },
             opetushallitus: {
               title: "Utbildningsstyrelsen",
               image: "OPH_logo-sv.png",
@@ -211,6 +223,24 @@
               fi: "Suomeksi",
               sv: "På svenska",
               en: "In English"
+            },
+            footerlinks: {
+              description: {
+                title: "Vad är Studieinfo?",
+                link: "/wp/sv/studieinfo-2/vad-ar-studieinfo/"
+              },
+              feedback: {
+                title: "Ge feedback – fråga råd",
+                link: "/wp/sv/studieinfo-2/tes5/"
+              },
+              registerDescription: {
+                title: "Registerbeskrivning",
+                link: "/wp/sv/registerbeskrivning/"
+              },
+              index: {
+                title: "Läroanstaltsregister",
+                link: "/sv/hakemisto/oppilaitokset/A"
+              }
             }
           }
         },
@@ -226,14 +256,6 @@
             },
             shortlist:{
               title: "My shortlist"
-            },
-            registerDescription: {
-              title: "Register description",
-              link: "/wp2/en/register"
-            },
-            siteMap: {
-              title: "Educational institution index",
-              link: "/en/hakemisto/oppilaitokset/"
             },
             opetushallitus: {
               title: "Finnish National Board of Education",
@@ -251,6 +273,16 @@
               fi: "Suomeksi",
               sv: "På svenska",
               en: "In English"
+            },
+            footerlinks: {
+              registerDescription: {
+                title: "Register description",
+                link: "/wp2/en/register"
+              },
+              index: {
+                title: "Educational institution index",
+                link: "/en/hakemisto/oppilaitokset/"
+              }
             }
           }
         }

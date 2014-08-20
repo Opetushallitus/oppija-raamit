@@ -155,13 +155,22 @@
   font-size: 13px;
 }
 #sitefooter a {
-  color: #06526b;
+  color: #333;
+  text-decoration: none;
+}
+#sitefooter a:hover {
   text-decoration: underline;
 }
-#sitefooter .footer-opintopolku-info {
+#sitefooter .footer-info-container {
   border: 1px solid #dddddd;
+  border-radius: 3px;
+}
+
+#sitefooter .footer-opintopolku-info {
   padding: 20px;
   overflow: auto;
+  background: #dcdcdc;
+  margin: 4px;
 }
 #sitefooter .footer-opintopolku-info .footer-homelink {
   float: left;
@@ -179,12 +188,12 @@
   text-align: center;
   margin-bottom: 10px;
 }
-#sitefooter .footer-links {
+#sitefooter .footer-logos {
   border: 1px solid #dddddd;
   overflow: auto;
   padding: 9px 0px;
 }
-#sitefooter .footer-links a {
+#sitefooter .footer-logos a {
   display: inline-block;
   width: 50%;
   text-align: center;
