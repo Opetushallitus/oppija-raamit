@@ -2,7 +2,7 @@
 
   var raamit = window.OppijaRaamit = {
     changeLanguage: function(language) {
-      jQuery.cookie("i18next", language, { expires: 1800, path: '/' })
+      jQuery.cookie(i18n.options.cookieName, language, { expires: 1800, path: '/' })
       if(document.location.href.indexOf("wp") > 0){
         i18n.setLng(language, function(){
             var wpRoot = i18n.t("raamit:wordpressRoot")
