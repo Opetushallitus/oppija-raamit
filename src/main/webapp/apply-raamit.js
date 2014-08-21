@@ -329,7 +329,7 @@
   }
 
   function readLanguageCookie() {
-      var lang = jQuery.cookie("i18next")
+      var lang = jQuery.cookie(i18n.options.cookieName)
       return lang != null ? lang : "fi"
   }
 
