@@ -1,12 +1,21 @@
 ;((function() {
-
   var raamit = window.OppijaRaamit = {
     changeLanguage: function(language) {
       jQuery.cookie(i18n.options.cookieName, language, { expires: 1800, path: '/' })
       if(document.location.href.indexOf("wp") > 0){
-        i18n.setLng(language, function(){
-            var wpRoot = i18n.t("raamit:wordpressRoot")
-            window.location.pathname = wpRoot
+        var wpPathMatcher = document.location.href.match(/\/wp.?\/(fi|sv|en)\/(.*)/)
+        i18n.setLng(language, function() {
+          getTranslation(wpPathMatcher[2])
+          .done(function(translation) {
+              if(translation.status.toLowerCase() == "ok") {
+                window.location.pathname = translation.translation.url
+              } else {
+                goToLanguageRoot()
+              }
+          })
+          .fail(function() {
+              goToLanguageRoot()
+            })
         })
       } else {
           document.location.reload()
@@ -41,14 +50,18 @@
     })
   }, 0)
 
-  function getNaviPath(rootDirectory) {
+  function getWpHost(rootDirectory) {
     var wpHost = document.getElementById('apply-raamit').getAttribute('data-wp-navi-path')
-    if(!wpHost) {
+    if (!wpHost) {
       var parser = document.createElement('a')
       parser.href = rootDirectory
       wpHost = (rootDirectory.indexOf("opintopolku") > 0 || rootDirectory.indexOf("ware.fi") > 0) ? parser.protocol + "//" + parser.hostname : "https://testi.opintopolku.fi"
     }
-    return wpHost + i18n.t("raamit:wordpressRoot") + "/api/nav/json_nav/"
+    return wpHost + i18n.t("raamit:wordpressRoot")
+  }
+
+  function getNaviPath(rootDirectory) {
+    return getWpHost(rootDirectory) + "/api/nav/json_nav/"
   }
 
   function applyRaamit(template) {
@@ -375,4 +388,13 @@
     }
   }
 
+  function getTranslation(path) {
+    var translationUrl = getWpHost(getScriptDirectory()) + "/?json=translate.translate_page&path=" + path
+    return $.ajax(translationUrl)
+  }
+
+  function goToLanguageRoot() {
+    var wpRoot = i18n.t("raamit:wordpressRoot")
+    window.location.pathname = wpRoot
+  }
 })())
