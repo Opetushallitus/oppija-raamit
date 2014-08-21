@@ -97,6 +97,12 @@
   float: left;
   overflow: auto;
 }
+#siteheader nav ul.level-1-menu > li.active {
+  background: #ffffff;
+}
+#siteheader nav ul.level-1-menu > li.active a {
+  color: #333;
+}
 #siteheader nav ul.level-1-menu > li a {
   display: inline-block;
   padding: 10px;

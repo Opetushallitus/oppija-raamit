@@ -77,9 +77,13 @@
   function buildNavi(naviData) {
     var naviSelector = "#siteheader nav ul"
     var $root = $(naviSelector)
+    var $activeItem = null
     naviData.forEach(function(naviItem) {
       var $naviItem = $("<li>").addClass("menu-parent").attr("aria-haspopup", "true")
       var $naviLink = $("<a>").text(naviItem.title).attr("href", naviItem.link)
+      if(document.location.href.indexOf(naviItem.link) > 0) {
+          $activeItem = $naviItem
+      }
       $naviItem.append($naviLink)
       if (naviItem.subnav) {
         var $subMenu = $("<ul>").addClass("level-2-menu")
@@ -93,7 +97,9 @@
       }
       $root.append($naviItem)
     })
-
+    if($activeItem != null) {
+        $activeItem.addClass("active")
+    }
     window.navigationMenubar(naviSelector)
   }
 
