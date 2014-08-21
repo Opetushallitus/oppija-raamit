@@ -81,7 +81,7 @@
     naviData.forEach(function(naviItem) {
       var $naviItem = $("<li>").addClass("menu-parent").attr("aria-haspopup", "true")
       var $naviLink = $("<a>").text(naviItem.title).attr("href", naviItem.link)
-      if(document.location.href.indexOf(naviItem.link) > 0) {
+      if(document.location.href.indexOf(naviItem.link) > -1) {
           $activeItem = $naviItem
       }
       $naviItem.append($naviLink)
