@@ -55,7 +55,7 @@
     if (!wpHost) {
       var parser = document.createElement('a')
       parser.href = rootDirectory
-      wpHost = (rootDirectory.indexOf("opintopolku") > 0 || rootDirectory.indexOf("ware.fi") > 0) ? parser.protocol + "//" + parser.hostname : "https://testi.opintopolku.fi"
+      wpHost = (rootDirectory.indexOf("opintopolku") > 0 || rootDirectory.indexOf("/test-oppija") > 0) ? parser.protocol + "//" + parser.hostname : "https://testi.opintopolku.fi"
     }
     return wpHost + i18n.t("raamit:wordpressRoot")
   }
