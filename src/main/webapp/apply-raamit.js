@@ -40,9 +40,9 @@
               updateLoginSection()
               naviAjax.done(function(navidata) {
                 buildNavi(navidata.nav)
-                $("html").trigger("oppija-raamit-loaded")
               })
               buildFooterLinks(i18n.t("raamit:footerlinks", { returnObjectTrees: true }))
+              $("html").trigger("oppija-raamit-loaded")
             })
           })
         })
