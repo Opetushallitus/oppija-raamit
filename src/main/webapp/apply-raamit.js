@@ -357,7 +357,12 @@
   }
 
   function updateLoginSection() {
-    var loggedIn = jQuery.cookie("auth") != null
+    var loggedIn = (function hasAuthCookie(cookies) {
+      for (var id in cookies)
+        if (id.indexOf("_shibsession_")===0)
+          return true
+      return false
+    })(jQuery.cookie())
     $(".header-logged-in").toggle(loggedIn)
     $(".header-logged-out").toggle(!loggedIn)
   }
