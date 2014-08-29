@@ -8,7 +8,7 @@
   window.navigationMenubar = function(id){
     this.$id = $(id);
 
-    this.$rootItems = this.$id.children('li'); // jQuerry array of all root-level menu items
+    this.$rootItems = this.$id.children('li'); // jQuerry array of all root menu items
 
     this.$items = this.$id.find('.menu-item');//.not('.separator'); // jQuery array of menu items
 
@@ -110,7 +110,7 @@
     $item.addClass('menu-hover');
     //sulkee sen menun jossa on focus
     this.$allItems.removeClass('menu-focus');
-    this.$allItems.find('ul').not('.root-level').hide().attr('aria-hidden','true');
+    this.$allItems.find('ul').not('.level-1-menu').hide().attr('aria-hidden','true');
     // expand the first level submenu
     if ($item.attr('aria-haspopup') == 'true') {
       $item.children('ul').show().attr('aria-hidden', 'false');
@@ -171,7 +171,7 @@
 
     var $parentUL = $item.parent();
 
-    if ($parentUL.is('.root-level')) {
+    if ($parentUL.is('.level-1-menu')) {
       // open the child menu if it is closed
       $item.children('ul').first().show().attr('aria-hidden', 'false');
       this.bChildOpen = true;
@@ -181,7 +181,7 @@
       this.$allItems.removeClass('menu-hover menu-focus');
 
       // close the menu
-      this.$id.find('ul').not('.root-level').hide().attr('aria-hidden','true');
+      this.$id.find('ul').not('.level-1-menu').hide().attr('aria-hidden','true');
     }
 
     // if menu item triggers some behavior other than going to a link,
@@ -235,9 +235,9 @@
 
         var $itemUL = $item.parent();
 
-        // if the itemUL is a root-level menu and item is a parent item,
+        // if the itemUL is a level-1-menu menu and item is a parent item,
         // show the child menu.
-        if ($itemUL.is('.root-level') && ($item.attr('aria-haspopup') == 'true')) {
+        if ($itemUL.is('.level-1-menu') && ($item.attr('aria-haspopup') == 'true')) {
           $item.children('ul').show().attr('aria-hidden', 'false');
         }
       }
@@ -293,7 +293,7 @@
 
         var $itemUL = $item.parent();
 
-        if ($itemUL.is('.root-level')) {
+        if ($itemUL.is('.level-1-menu')) {
           // hide the child menu and update the aria attributes
           $item.children('ul').first().hide().attr('aria-hidden', 'true');
         }
@@ -325,8 +325,8 @@
 
       case this.keys.left: {
 
-        if (this.vmenu == true && $itemUL.is('.root-level')) {
-          // If this is a vertical menu and the root-level is active, move
+        if (this.vmenu == true && $itemUL.is('.level-1-menu')) {
+          // If this is a vertical menu and the level-1-menu is active, move
           // to the previous item in the menu
           this.$activeItem = moveUp($item);
         }
@@ -341,8 +341,8 @@
       }
       case this.keys.right: {
 
-        if (this.vmenu == true && $itemUL.is('.root-level')) {
-          // If this is a vertical menu and the root-level is active, move
+        if (this.vmenu == true && $itemUL.is('.level-1-menu')) {
+          // If this is a vertical menu and the level-1-menu is active, move
           // to the next item in the menu
           this.$activeItem = moveDown($item);
         }
@@ -357,9 +357,9 @@
       }
       case this.keys.up: {
 
-        if (this.vmenu == true && $itemUL.is('.root-level')) {
-          // If this is a vertical menu and the root-level is active, move
-          // to the previous root-level menu
+        if (this.vmenu == true && $itemUL.is('.level-1-menu')) {
+          // If this is a vertical menu and the level-1-menu is active, move
+          // to the previous level-1-menu menu
           this.$activeItem = moveToPrevious($item);
         }
         else {
@@ -373,9 +373,9 @@
       }
       case this.keys.down: {
 
-        if (this.vmenu == true && $itemUL.is('.root-level')) {
-          // If this is a vertical menu and the root-level is active, move
-          // to the next root-level menu
+        if (this.vmenu == true && $itemUL.is('.level-1-menu')) {
+          // If this is a vertical menu and the level-1-menu is active, move
+          // to the next level-1-menu menu
           this.$activeItem = moveToNext($item);
         }
         else {
@@ -410,7 +410,7 @@
     var $newItem = null;
     var $newItemUL = null;
 
-    if ($itemUL.is('.root-level')) {
+    if ($itemUL.is('.level-1-menu')) {
       // this is the root level move to next sibling. This will require closing
       // the current child menu and opening the new one.
 
@@ -453,7 +453,7 @@
     }
     else {
       // this is not the root level. If there is a child menu to be moved into, do that;
-      // otherwise, move to the next root-level menu if there is one
+      // otherwise, move to the next level-1-menu menu if there is one
       if ($item.attr('aria-haspopup') == 'true') {
 
         var $childMenu = $item.children('ul').first();
@@ -465,7 +465,7 @@
         this.bChildOpen = true;
       }
       else {
-        // at deepest level, move to the next root-level menu
+        // at deepest level, move to the next level-1-menu menu
 
         if (this.vmenu == true) {
           // do nothing
@@ -476,7 +476,7 @@
         var $rootItem = null;
 
         // get list of all parent menus for item, up to the root level
-        $parentMenus = $item.parentsUntil('div').filter('ul').not('.root-level');
+        $parentMenus = $item.parentsUntil('div').filter('ul').not('.level-1-menu');
 
         // hide the current menu and update its aria attributes accordingly
         $parentMenus.hide().attr('aria-hidden', 'true');
@@ -532,7 +532,7 @@
     var $newItem = null;
     var $newItemUL = null;
 
-    if ($itemUL.is('.root-level')) {
+    if ($itemUL.is('.level-1-menu')) {
       // this is the root level move to previous sibling. This will require closing
       // the current child menu and opening the new one.
 
@@ -581,8 +581,8 @@
       var $parentUL = $parentLI.parent();
 
       // if this is a vertical menu or is not the first child menu
-      // of the root-level menu, move up one level.
-      if (this.vmenu == true || !$parentUL.is('.root-level')) {
+      // of the level-1-menu menu, move up one level.
+      if (this.vmenu == true || !$parentUL.is('.level-1-menu')) {
 
         $newItem = $itemUL.parent();
 
@@ -597,7 +597,7 @@
           this.bChildOpen = false;
         }
       }
-      else { // move to previous root-level menu
+      else { // move to previous level-1-menu menu
 
         // hide the current menu and update the aria attributes accordingly
         $itemUL.hide().attr('aria-hidden', 'true');
@@ -609,10 +609,10 @@
         menuIndex = this.$rootItems.index($parentLI);
 
         if (menuIndex > 0) {
-          // move to the previous root-level menu
+          // move to the previous level-1-menu menu
           $newItem = $parentLI.prev();
         }
-        else { // loop to last root-level menu
+        else { // loop to last level-1-menu menu
           $newItem = this.$rootItems.last();
         }
 
@@ -654,7 +654,7 @@
     var $newItem = null;
     var $newItemUL = null;
 
-    if ($itemUL.is('.root-level')) { // this is the root level menu
+    if ($itemUL.is('.level-1-menu')) { // this is the root level menu
 
       if ($item.attr('aria-haspopup') != 'true') {
         // No child menu to move to
@@ -750,7 +750,7 @@
     var $newItem = null;
     var $newItemUL = null;
 
-    if ($itemUL.is('.root-level')) { // this is the root level menu
+    if ($itemUL.is('.level-1-menu')) { // this is the root level menu
 
       if ($item.attr('aria-haspopup') != 'true') {
         // No child menu to move to
@@ -841,7 +841,7 @@
   function handleDocumentClick(e) {
 
     // get a list of all child menus
-    var $childMenus = this.$id.find('ul').not('.root-level');
+    var $childMenus = this.$id.find('ul').not('.level-1-menu');
 
     // hide the child menus
     $childMenus.hide().attr('aria-hidden', 'true');
