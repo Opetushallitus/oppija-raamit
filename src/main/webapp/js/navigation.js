@@ -276,6 +276,8 @@
       return true;
     }
 
+    var $itemUL = $item.parent();
+
     switch(e.keyCode) {
       case this.keys.tab: {
         // hide all menu items and update their aria attributes
@@ -290,8 +292,6 @@
         break;
       }
       case this.keys.esc: {
-
-        var $itemUL = $item.parent();
 
         if ($itemUL.is('.level-1-menu')) {
           // hide the child menu and update the aria attributes
