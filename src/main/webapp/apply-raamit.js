@@ -8,7 +8,7 @@
           getTranslation(wpPathMatcher[2])
           .done(function(translation) {
               if(translation.status.toLowerCase() == "ok") {
-                window.location.pathname = translation.translation.url
+                window.location = translation.translation.url
               } else {
                 goToLanguageRoot()
               }
