@@ -17,8 +17,6 @@
     this.$allItems = this.$parents.add(this.$items); // jQuery array of all menu items
 
     this.$activeItem = null; // jQuery object of the menu item with focus
-    //vertikalinen navigointi on asetettu pois päältä
-    this.vmenu = false;
     this.bChildOpen = false; // true if child menu is open
 
     this.keys = {
@@ -26,10 +24,6 @@
       enter:  13,
       esc:    27,
       space:  32,
-      left:   37,
-      up:     38,
-      right:  39,
-      down:   40
     };
 
     // bind event handlers
@@ -74,11 +68,6 @@
     // bind a keydown handler
     this.$allItems.keydown(function(e) {
       return handleKeyDown($(this), e);
-    });
-
-    // bind a keypress handler
-    this.$allItems.keypress(function(e) {
-      return handleKeyPress($(this), e);
     });
 
     // bind a focus handler
@@ -229,23 +218,6 @@
     // add styling to all parent items.
     $parentItems.addClass('menu-focus');
 
-    if (this.vmenu == true) {
-      // if the bChildOpen is true, open the active item's child menu (if applicable)
-      if (this.bChildOpen == true) {
-
-        var $itemUL = $item.parent();
-
-        // if the itemUL is a level-1-menu menu and item is a parent item,
-        // show the child menu.
-        if ($itemUL.is('.level-1-menu') && ($item.attr('aria-haspopup') == 'true')) {
-          $item.children('ul').show().attr('aria-hidden', 'false');
-        }
-      }
-      else {
-        this.vmenu = false;
-      }
-    }
-
     return true;
 
   } // end handleFocus()
@@ -280,15 +252,7 @@
 
     switch(e.keyCode) {
       case this.keys.tab: {
-        // hide all menu items and update their aria attributes
-        this.$id.find('ul').hide().attr('aria-hidden', 'true');
-
-        // remove focus styling from all menu items
-        this.$allItems.removeClass('menu-focus');
-
-        this.$activeItem = null;
-        this.bChildOpen == false;
-
+        this.$activeItem = moveToNext($item);
         break;
       }
       case this.keys.esc: {
@@ -319,70 +283,6 @@
       case this.keys.space: {
 
         window.location = $item.find('a').attr('href');
-        e.stopPropagation();
-        return false;
-      }
-
-      case this.keys.left: {
-
-        if (this.vmenu == true && $itemUL.is('.level-1-menu')) {
-          // If this is a vertical menu and the level-1-menu is active, move
-          // to the previous item in the menu
-          this.$activeItem = moveUp($item);
-        }
-        else {
-          this.$activeItem = moveToPrevious($item);
-        }
-
-        this.$activeItem.focus();
-
-        e.stopPropagation();
-        return false;
-      }
-      case this.keys.right: {
-
-        if (this.vmenu == true && $itemUL.is('.level-1-menu')) {
-          // If this is a vertical menu and the level-1-menu is active, move
-          // to the next item in the menu
-          this.$activeItem = moveDown($item);
-        }
-        else {
-          this.$activeItem = moveToNext($item);
-        }
-
-        this.$activeItem.focus();
-
-        e.stopPropagation();
-        return false;
-      }
-      case this.keys.up: {
-
-        if (this.vmenu == true && $itemUL.is('.level-1-menu')) {
-          // If this is a vertical menu and the level-1-menu is active, move
-          // to the previous level-1-menu menu
-          this.$activeItem = moveToPrevious($item);
-        }
-        else {
-          this.$activeItem = moveUp($item);
-        }
-
-        this.$activeItem.focus();
-
-        e.stopPropagation();
-        return false;
-      }
-      case this.keys.down: {
-
-        if (this.vmenu == true && $itemUL.is('.level-1-menu')) {
-          // If this is a vertical menu and the level-1-menu is active, move
-          // to the next level-1-menu menu
-          this.$activeItem = moveToNext($item);
-        }
-        else {
-          this.$activeItem = moveDown($item);
-        }
-        this.$activeItem.focus();
-
         e.stopPropagation();
         return false;
       }
@@ -444,10 +344,8 @@
         // open the child and update aria attributes accordingly
         $childMenu.show().attr('aria-hidden', 'false');
 
-        if (!this.vmenu) {
-          // select the first item in the child menu
-          $newItem = $childMenu.children('li').first();
-        }
+        // select the first item in the child menu
+        $newItem = $childMenu.children('li').first();
 
       }
     }
@@ -466,11 +364,6 @@
       }
       else {
         // at deepest level, move to the next level-1-menu menu
-
-        if (this.vmenu == true) {
-          // do nothing
-          return $item;
-        }
 
         var $parentMenus = null;
         var $rootItem = null;
@@ -511,326 +404,6 @@
 
     return $newItem;
   }
-
-  /*
-   * moveToPrevious() liikutaan menussa edelliseen kohtaan
-   * tämä voi voi olla edellinen juuri tason menu tai vanhemman lapsi menu.
-   * Jos ollaan juuri tasolla ja aktiivinen valinta on ensimmäisenä menussa
-   * tämä funktion looppaa valikon viimeiseen itemiin.
-   *
-   * Jos valikko on horisontaalinen, juuri valittu lapsi elementti on valittu
-   *
-   * @param($item object) on valittu menu
-   * @return(object) palautta itemin mihin liikkutaan tai liikkuminen ei ole mahdollista
-   * */
-  function moveToPrevious($item) {
-
-    var $itemUL = $item.parent(); // $item's containing menu
-    var $menuItems = $itemUL.children('li'); // the items in the currently active menu
-    var menuNum = $menuItems.length; // the number of items in the active menu
-    var menuIndex = $menuItems.index($item); // the items index in its menu
-    var $newItem = null;
-    var $newItemUL = null;
-
-    if ($itemUL.is('.level-1-menu')) {
-      // this is the root level move to previous sibling. This will require closing
-      // the current child menu and opening the new one.
-
-      if (menuIndex > 0) { // not the first root menu
-        $newItem = $item.prev();
-      }
-      else { // wrap to last item
-        $newItem = $menuItems.last();
-      }
-
-      // close the current child menu (if applicable)
-      if ($item.attr('aria-haspopup') == 'true') {
-
-        var $childMenu = $item.children('ul').first();
-
-        if ($childMenu.attr('aria-hidden') == 'false') {
-          // hide the child and update aria attributes accordingly
-          $childMenu.hide().attr('aria-hidden', 'true');
-          this.bChildOpen = true;
-        }
-      }
-
-      // remove the focus styling from the current menu
-      $item.removeClass('menu-focus');
-
-      // open the new child menu (if applicable)
-      if (($newItem.attr('aria-haspopup') == 'true') && this.bChildOpen == true) {
-
-        var $childMenu = $newItem.children('ul').first();
-
-        // open the child and update aria attributes accordingly
-        $childMenu.show().attr('aria-hidden', 'false');
-
-        if (!this.vmenu) {
-          // select the first item in the child menu
-          $newItem = $childMenu.children('li').first();
-        }
-      }
-    }
-    else {
-      // this is not the root level. If there is a parent menu that is not the
-      // root menu, move up one level; otherwise, move to first item of the previous
-      // root menu.
-
-      var $parentLI = $itemUL.parent();
-      var $parentUL = $parentLI.parent();
-
-      // if this is a vertical menu or is not the first child menu
-      // of the level-1-menu menu, move up one level.
-      if (this.vmenu == true || !$parentUL.is('.level-1-menu')) {
-
-        $newItem = $itemUL.parent();
-
-        // hide the active menu and update aria-hidden
-        $itemUL.hide().attr('aria-hidden', 'true');
-
-        // remove the focus highlight from the $item
-        $item.removeClass('menu-focus');
-
-        if (this.vmenu == true) {
-          // set a flag so the focus handler does't reopen the menu
-          this.bChildOpen = false;
-        }
-      }
-      else { // move to previous level-1-menu menu
-
-        // hide the current menu and update the aria attributes accordingly
-        $itemUL.hide().attr('aria-hidden', 'true');
-
-        // remove the focus styling from the active menu
-        $item.removeClass('menu-focus');
-        $parentLI.removeClass('menu-focus');
-
-        menuIndex = this.$rootItems.index($parentLI);
-
-        if (menuIndex > 0) {
-          // move to the previous level-1-menu menu
-          $newItem = $parentLI.prev();
-        }
-        else { // loop to last level-1-menu menu
-          $newItem = this.$rootItems.last();
-        }
-
-        // add the focus styling to the new menu
-        $newItem.addClass('menu-focus');
-
-        if ($newItem.attr('aria-haspopup') == 'true') {
-          var $childMenu = $newItem.children('ul').first();
-
-          // show the child menu and update it's aria attributes
-          $childMenu.show().attr('aria-hidden', 'false');
-          this.bChildOpen = true;
-
-          $newItem = $childMenu.children('li').first();
-        }
-      }
-    }
-    return $newItem;
-  }
-
-  /*
-   * moveDown() valitaan seuraava valinta valikosta
-   * jos aktiivien valinta on viimeisenä valikossa tämä funktion looppaa
-   * valikon ensimmäiseen valintaan
-   *
-   * $param($item object) aktiivinen valinta
-   *
-   * $param(startChr char) [valinnainen] startChar in kirjasin jolle yritetään
-   * löytää vastaava pari valikon valinta otsikoista. Jos vastaavuus löytyy kohditus siirtyy
-   * kyseiseen valintaan valikon alusta
-   *
-   * $return(object) palauttaa seuraavan valinnan mihin liikutaan tai liikkuminen ei ole mahdollista
-   * */
-  function moveDown($item, startChr) {
-    var $itemUL = $item.parent(); // $item's containing menu
-    var $menuItems = $itemUL.children('li').not('.separator'); // the items in the currently active menu
-    var menuNum = $menuItems.length; // the number of items in the active menu
-    var menuIndex = $menuItems.index($item); // the items index in its menu
-    var $newItem = null;
-    var $newItemUL = null;
-
-    if ($itemUL.is('.level-1-menu')) { // this is the root level menu
-
-      if ($item.attr('aria-haspopup') != 'true') {
-        // No child menu to move to
-        return $item;
-      }
-
-      // Move to the first item in the child menu
-      $newItemUL = $item.children('ul').first();
-      $newItem = $newItemUL.children('li').first();
-
-      // make sure the child menu is visible
-      $newItemUL.show().attr('aria-hidden', 'false');
-      this.bChildOpen = true;
-
-      return $newItem;
-    }
-
-    // if $item is not the last item in its menu, move to the next item. If startChr is specified, move
-    // to the next item with a title that begins with that character.
-    //
-    if (startChr) {
-
-      var bMatch = false;
-      var curNdx = menuIndex+1;
-
-      // check if the active item was the last one on the list
-      if (curNdx == menuNum) {
-        curNdx = 0;
-      }
-
-      // Iterate through the menu items (starting from the current item and wrapping) until a match is found
-      // or the loop returns to the current menu item
-      while (curNdx != menuIndex)  {
-
-        // Use the first of the two following lines if menu does not contain anchor tags.
-        // Otherwise use the second
-        // var titleChr = $menuItems.eq(curNdx).html().charAt(0);
-        var titleChr = $menuItems.eq(curNdx).find('a').html().charAt(0);
-
-        if (titleChr.toLowerCase() == startChr) {
-          bMatch = true;
-          break;
-        }
-
-        curNdx = curNdx+1;
-
-        if (curNdx == menuNum) {
-          // reached the end of the list, start again at the beginning
-          curNdx = 0;
-        }
-      }
-
-      if (bMatch == true) {
-        $newItem = $menuItems.eq(curNdx);
-
-        // remove the focus styling from the current item
-        $item.removeClass('menu-focus');
-
-        return $newItem
-      }
-      else {
-        return $item;
-      }
-    }
-    else {
-      if (menuIndex < menuNum-1) {
-        $newItem = $menuItems.eq(menuIndex+1);
-      }
-      else {
-        $newItem = $menuItems.first();
-      }
-    }
-
-    // remove the focus styling from the current item
-    $item.removeClass('menu-focus');
-
-    return $newItem;
-  }
-
-  /*
-   * moveUp() valitsee seuraavan menu kohdan menusta.
-   * jos aktiivinen kohta on ensimmäisenä menussa, tämä funktion
-   * siirtää aktiivisuuden menun viimeiseen kohtaan
-   * @param($item object) on aktiivinen menun kohta
-   * @return(object) palauttaa seuraavan menun kohdan, johon siirrytään
-   * */
-  function moveUp($item) {
-
-    var $itemUL = $item.parent(); // $item's containing menu
-    var $menuItems = $itemUL.children('li').not('.separator'); // the items in the currently active menu
-    var menuNum = $menuItems.length; // the number of items in the active menu
-    var menuIndex = $menuItems.index($item); // the items index in its menu
-    var $newItem = null;
-    var $newItemUL = null;
-
-    if ($itemUL.is('.level-1-menu')) { // this is the root level menu
-
-      if ($item.attr('aria-haspopup') != 'true') {
-        // No child menu to move to
-        return $item;
-      }
-
-      // Move to the first item in the child menu
-      $newItemUL = $item.children('ul').last();
-      $newItem = $newItemUL.children('li').last();
-
-      // make sure the child menu is visible
-      $newItemUL.show().attr('aria-hidden', 'false');
-      this.bChildOpen = true;
-
-      return $newItem;
-    }
-
-    // if $item is not the first item in its menu, move to the previous item
-    if (menuIndex > 0) {
-
-      $newItem = $menuItems.eq(menuIndex-1);
-    }
-    else {
-      // loop to top of menu
-      $newItem = $menuItems.last();
-    }
-
-    // remove the focus styling from the current item
-    $item.removeClass('menu-focus');
-
-    return $newItem;
-  }
-
-
-  /*
-   * handleKeyPress() prosessoin keydown tapahtumaa menulle
-   *
-   * Opera selain suorittaa joitain ikkuna komentoja keypress tapahtumina
-   * eikä keydown tapahtumina kuten Firefox, Safari ja IE.
-   * Tämä tapahtuman käsittelija käyttää keypresses tapahtumia liikuttaessa
-   * menussa näppäimistöllä
-   *
-   * @param($item object) on jQuery objekti joka laukaisee tapahtuman
-   * @param(e object) tapahtuman objekti
-   * @return(boolean) palautaa boolean arvon true/false
-   * */
-  function handleKeyPress($item, e) {
-    if (e.altKey || e.ctrlKey || e.shiftKey) {
-      // Modifier key pressed: Do not process
-      return true;
-    }
-
-    switch(e.keyCode) {
-      case this.keys.tab: {
-        return true;
-      }
-      case this.keys.esc:
-      case this.keys.enter:
-      case this.keys.space:
-      case this.keys.up:
-      case this.keys.down:
-      case this.keys.left:
-      case this.keys.right: {
-
-        e.stopPropagation();
-        return false;
-      }
-      default : {
-        var chr = String.fromCharCode(e.which);
-
-        this.$activeItem = moveDown($item, chr);
-        this.$activeItem.focus();
-
-        e.stopPropagation();
-        return false;
-      }
-    } // end switch
-    return true;
-
-  } // end handleKeyPress()
 
   /*
    * handleDocumentClick() prosessoi documentin click eventtiä
