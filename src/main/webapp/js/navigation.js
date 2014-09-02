@@ -47,7 +47,7 @@
     });
 
     // bind a focus handler
-    this.$allItems.focus(function(e) {
+    this.$allItems.focusin(function(e) {
       return handleFocus($(this), e);
     });
 
@@ -115,12 +115,16 @@
    * @return(boolean) palauttaa boolen true/false
    * */
   function handleFocus($item, e) {
-    this.$allItems.removeClass('menu-focus');
 
     // get the set of jquery objects for all the parent items of the active item
-    var $parentItems = $item.parentsUntil('div').filter('li');
+    var $parentItems = $item.parentsUntil('.level-1-menu').add($item).filter('li');
 
-    // add styling to all parent items.
+    if($parentItems.filter('.menu-focus').length == 0) {
+      closeMenus();
+    }
+    this.$allItems.removeClass('menu-focus');
+
+    //   add styling to all parent items.
     $parentItems.addClass('menu-focus');
 
     return true;
@@ -152,7 +156,7 @@
 
     switch(e.keyCode) {
 
-    case this.keys.esc: {
+      case this.keys.esc: {
         closeMenus();
         if (!$item.is('.menu-parent')) {
           $item.parents('.menu-parent').children('a').first().focus();
@@ -161,7 +165,7 @@
         return false;
       }
 
-    case this.keys.enter:
+      case this.keys.enter:
       case this.keys.space: {
         // expand the first level submenu
         if ($parentUL.is('.level-1-menu')) {
