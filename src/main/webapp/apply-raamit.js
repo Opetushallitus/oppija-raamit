@@ -91,18 +91,21 @@
     var naviSelector = "#siteheader nav ul"
     var $root = $(naviSelector)
     var $activeItem = null
+    var level1MenuIndex = 0
     naviData.forEach(function(naviItem) {
-      var $naviItem = $("<li>").addClass("menu-parent").attr("aria-haspopup", "true")
-      var $naviLink = $("<a>").text(naviItem.title).attr("href", naviItem.link)
+      level1MenuIndex = level1MenuIndex + 1;
+      var subMenuId = "level-1-menu-id-" + level1MenuIndex;
+      var $naviItem = $("<li>").addClass("menu-parent").attr("role", "presentation");
+      var $naviLink = $("<a>").text(naviItem.title).attr("href", naviItem.link).attr("role", "menuitem").attr("id", subMenuId).attr("aria-haspopup", "true");
       if(document.location.href.indexOf(naviItem.link) > -1) {
           $activeItem = $naviItem
       }
       $naviItem.append($naviLink)
       if (naviItem.subnav) {
-        var $subMenu = $("<ul>").addClass("level-2-menu")
+        var $subMenu = $("<ul>").addClass("level-2-menu").attr("role", "menu").attr("aria-labelledby", subMenuId).attr("aria-expanded", "false");
         naviItem.subnav.forEach(function(subItem) {
-          var $subItem = $("<li>").addClass("menu-item")
-          var $subItemLink = $("<a>").text(subItem.title).attr("href", subItem.link)
+          var $subItem = $("<li>").addClass("menu-item").attr("role", "presentation")
+          var $subItemLink = $("<a>").text(subItem.title).attr("href", subItem.link).attr("role", "menuitem")
           $subItem.append($subItemLink)
           $subMenu.append($subItem)
         })
