@@ -40,11 +40,6 @@
       return handleMouseLeave($(this), e);
     });
 
-    // bind a click handler
-    this.$allItems.click(function(e) {
-      return handleClick($(this), e);
-    });
-
     //////////// bind key event handlers //////////////////
     // bind a keydown handler
     this.$allItems.keydown(function(e) {
@@ -111,28 +106,6 @@
     return true;
 
   } // end handleMouseLeave()
-
-  /*
-   * handleClick() prosessoi click tapahtumia päämenussa
-   *
-   * @param($item object) jQuery objekti joka laukaisee tapahtuman
-   * @parem(e object) tapahtuma objekti
-   * @return(boolea) palautta boolean true/false
-   * */
-  function handleClick($item, e) {
-
-    var $parentUL = $item.parent();
-
-    if ($parentUL.is('.level-1-menu')) {
-      openMenu($item)
-    }
-    else {
-      closeMenus()
-    }
-
-    return true;
-
-  } // end handleClick()
 
   /*
    * handleFocus() processoin focus tapahtumia menulle
