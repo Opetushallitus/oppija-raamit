@@ -112,15 +112,12 @@
   font-size: 13px;
   text-decoration: underline;
 }
-#siteheader nav ul.level-1-menu > li.menu-hover,
 #siteheader nav ul.level-1-menu > li.menu-focus {
   background: #ffffff;
 }
-#siteheader nav ul.level-1-menu > li.menu-hover a,
 #siteheader nav ul.level-1-menu > li.menu-focus a {
   color: #333;
 }
-#siteheader nav ul.level-1-menu > li.menu-hover > ul,
 #siteheader nav ul.level-1-menu > li.menu-focus > ul {
   display: block;
 }

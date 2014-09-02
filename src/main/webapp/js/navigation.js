@@ -30,19 +30,6 @@
    * */
   function bindHandlers() {
 
-    ///////// bind mouse event handlers //////////
-    // bind a handler for the menu items
-    this.$items.mouseenter(function(e) {
-      $(this).addClass('menu-hover');
-      return true;
-    });
-
-    // bind a mouseout handler for the menu items
-    this.$items.mouseout(function(e) {
-      $(this).removeClass('menu-hover');
-      return true;
-    });
-
     // bind a mouseenter handler for the menu parents
     this.$parents.mouseenter(function(e) {
       return handleMouseEnter($(this), e);
@@ -83,14 +70,13 @@
 
   function closeMenus() {
     this.$allItems.removeClass('menu-focus');
-    // Remove hover style
-    this.$allItems.removeClass('menu-hover');
     this.$allItems.find('ul').not('.level-1-menu').hide().attr('aria-hidden','true');
     this.$allItems.find("[aria-expanded='true']").attr('aria-expanded','false');
   }
 
   function openMenu($item) {
     $item.children('ul').show().attr('aria-hidden', 'false').attr('aria-expanded','true');
+    $item.addClass('menu-focus');
   }
 
   /*
@@ -101,8 +87,6 @@
    * */
   function handleMouseEnter($item, e) {
     closeMenus();
-    // add hover style
-    $item.addClass('menu-hover');
     var $parentUL = $item.parent();
     // expand the first level submenu§
     if ($parentUL.is('.level-1-menu')) {
