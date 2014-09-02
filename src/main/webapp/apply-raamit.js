@@ -160,6 +160,7 @@
       var dictionary = {
         fi: {
           raamit: {
+            headerAriaLabel: "Navigaatio",
             loginLink: "Kirjaudu sisään",
             logoutLink: "Kirjaudu ulos",
             omatsivutLink: "Oma Opintopolku",
@@ -185,9 +186,11 @@
               image: "OKM_logo-fi.png",
               link: "http://www.minedu.fi/OPM/"
             },
+            footerAriaLabel: "Tietoa palvelusta",
             footerNote: "Koulutuksen järjestäjät ja korkeakoulut ylläpitävät tietoja koulutuksistaan Opintopolussa. Tietojen oikeellisuuden voit tarkistaa kyseisestä oppilaitoksesta tai korkeakoulusta.",
             copyright: "Copyright © 2014 Opetushallitus",
             languages: {
+              ariaLabel: "Valitse kieli",
               fi: "Suomeksi",
               sv: "På svenska",
               en: "In English"
@@ -214,6 +217,7 @@
         },
         sv: {
           raamit: {
+            headerAriaLabel: "Navigation",
             loginLink: "Logga in",
             logoutLink: "Logga ut",
             omatsivutLink: "Min Studieinfo",
@@ -239,9 +243,11 @@
               image: "OKM_logo-sv.png",
               link: "http://www.minedu.fi/OPM/?lang=sv"
             },
+            footerAriaLabel: "Serviceinformation",
             footerNote: "Utbildningsanordnarna och högskolorna uppdaterar själva uppgifterna om sina utbildningar i Studieinfo. Du kan kontrollera att uppgifterna är riktiga av läroanstalten eller högskolan.",
             copyright: "Copyright © 2014 Utbildningsstyrelsen",
             languages: {
+              ariaLabel: "Välja språk",
               fi: "Suomeksi",
               sv: "På svenska",
               en: "In English"
@@ -268,6 +274,7 @@
         },
         en: {
           raamit: {
+            headerAriaLabel: "Navigation",
             loginLink: "Log in",
             logoutLink: "Log out",
             omatsivutLink: "My Studyinfo",
@@ -289,9 +296,11 @@
               image: "OKM_logo-en.png",
               link: "http://www.minedu.fi/OPM/?lang=en"
             },
+            footerAriaLabel: "Service information",
             footerNote: "The education providers and higher education institutions maintain their study programme information on Studyinfo. You can check the validity of the information directly from the educational institution or the higher education institution.",
             copyright: "Copyright @ 2014 Finnish National Board of Education",
             languages: {
+              ariaLabel: "Choose language",
               fi: "Suomeksi",
               sv: "På svenska",
               en: "In English"
