@@ -193,14 +193,24 @@
   .body-font(#999999);
 
   a {
-    color: #06526b;
+    color: #333;
+    text-decoration: none;
+  }
+
+  a:hover {
     text-decoration: underline;
   }
 
-  .footer-opintopolku-info {
+  .footer-info-container {
     .bordered-footer-element();
+    border-radius: 3px;
+  }
+
+  .footer-opintopolku-info {
     padding: 20px;
     overflow: auto;
+    background: #dcdcdc;
+    margin: 4px;
 
     .footer-homelink {
       float: left;
@@ -222,7 +232,7 @@
     margin-bottom: 10px;
   }
 
-  .footer-links {
+  .footer-logos {
     .bordered-footer-element();
     overflow: auto;
     padding: 9px 0px;
