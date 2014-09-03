@@ -196,6 +196,10 @@
               en: "In English"
             },
             footerlinks: {
+              mystudyinfo: {
+                title: "Oma Opintopolku-palvelu",
+                link: "/wp/fi/oma-opintopolku-palvelu/"
+              },
               description: {
                 title: "Mikä on Opintopolku?",
                 link: "/wp/fi/opintopolku/tietoa-palvelusta/"
@@ -253,6 +257,10 @@
               en: "In English"
             },
             footerlinks: {
+              mystudyinfo: {
+                title: "Min Studieinfo-tjänsten",
+                link: "/wp/sv/min-studieinfo-tjansten/"
+              },
               description: {
                 title: "Vad är Studieinfo?",
                 link: "/wp/sv/studieinfo-2/vad-ar-studieinfo/"

@@ -184,6 +184,11 @@
   margin: 0;
   padding: 0;
   line-height: 20px;
+  width: 500px;
+}
+#sitefooter .footer-opintopolku-info li {
+  width: 220px;
+  float: left;
 }
 #sitefooter .footer-note {
   margin-top: 20px;
