@@ -5,17 +5,22 @@
       if(document.location.href.indexOf("wp") > 0){
         var wpPathMatcher = document.location.href.match(/\/wp.?\/(fi|sv|en)\/(.*)/)
         i18n.setLng(language, function() {
-          getTranslation(wpPathMatcher[2])
-          .done(function(translation) {
-              if(translation.status.toLowerCase() == "ok") {
-                window.location.href = translation.translation.url
-              } else {
-                goToLanguageRoot()
-              }
-          })
-          .fail(function() {
-              goToLanguageRoot()
+          if(wpPathMatcher == null) {
+            goToLanguageRoot()
+          }
+          else {
+            getTranslation(wpPathMatcher[2])
+            .done(function(translation) {
+                if(translation.status.toLowerCase() == "ok") {
+                  window.location.href = translation.translation.url
+                } else {
+                  goToLanguageRoot()
+                }
             })
+            .fail(function() {
+                goToLanguageRoot()
+              })
+          }
         })
       } else {
           document.location.reload()
@@ -354,7 +359,7 @@
       if(document.location.href.indexOf("wp") > 0){
           var regexp = /\/wp.?\/(fi|sv|en)/
           var match = document.location.href.match(regexp)
-          if(match.length > 0) {
+          if(match != null && match.length > 0) {
               return match[1]
           }
       }
