@@ -296,6 +296,9 @@
               title: "Go to frontpage",
               image: "opintopolku_large-en.png"
             },
+            mobileVersion: {
+              style: "display:none;"
+            },
             shortlist:{
               title: "My shortlist"
             },
