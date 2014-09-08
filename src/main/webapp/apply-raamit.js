@@ -317,6 +317,10 @@
               en: "In English"
             },
             footerlinks: {
+              mystudyinfo: {
+                title: "My Studyinfo -service",
+                link: "/wp2/en/my-studyinfo-service/"
+              },
               registerDescription: {
                 title: "Register description",
                 link: "/wp2/en/register"
