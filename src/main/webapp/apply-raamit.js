@@ -167,7 +167,7 @@
             wordpressRoot: "/wp/fi",
             homeLink: {
               title: "Siirry etusivulle",
-              image: "/oppija-raamit/oppija-raamit/img/opintopolku_large-fi.png"
+              image: raamitDirectory + "/img/opintopolku_large-fi.png"
             },
             mobileVersion: {
               title: "Erityisoppilaitosten koulutukset tekstiversiona",
@@ -178,12 +178,12 @@
             },
             opetushallitus: {
               title: "Opetushallitus",
-              image: "/oppija-raamit/oppija-raamit/img/OPH_logo-fi.png",
+              image: raamitDirectory + "/img/OPH_logo-fi.png",
               link: "http://www.oph.fi/etusivu"
             },
             opetusministerio: {
               title: "Opetusministeriö",
-              image: "/oppija-raamit/oppija-raamit/img/OKM_logo-fi.png",
+              image: raamitDirectory + "/img/OKM_logo-fi.png",
               link: "http://www.minedu.fi/OPM/"
             },
             footerAriaLabel: "Tietoa palvelusta",
@@ -228,7 +228,7 @@
             wordpressRoot: "/wp/sv",
             homeLink: {
               title: "Gå till framsida",
-              image: "/oppija-raamit/oppija-raamit/img/opintopolku_large-sv.png"
+              image: raamitDirectory + "/img/opintopolku_large-sv.png"
             },
             mobileVersion: {
               title: "Specialläroanstalternas utbildningar som textversion",
@@ -239,12 +239,12 @@
             },
             opetushallitus: {
               title: "Utbildningsstyrelsen",
-              image: "/oppija-raamit/oppija-raamit/img/OPH_logo-sv.png",
+              image: raamitDirectory + "/img/OPH_logo-sv.png",
               link: "http://www.oph.fi/startsidan"
             },
             opetusministerio: {
               title: "Undervisnings- och kulturministeriet",
-              image: "/oppija-raamit/oppija-raamit/img/OKM_logo-sv.png",
+              image: raamitDirectory + "/img/OKM_logo-sv.png",
               link: "http://www.minedu.fi/OPM/?lang=sv"
             },
             footerAriaLabel: "Serviceinformation",
@@ -289,7 +289,7 @@
             wordpressRoot: "/wp2/en",
             homeLink: {
               title: "Go to frontpage",
-              image: "/oppija-raamit/oppija-raamit/img/opintopolku_large-en.png"
+              image: raamitDirectory + "/img/opintopolku_large-en.png"
             },
             mobileVersion: {
               style: "display:none;"
@@ -299,12 +299,12 @@
             },
             opetushallitus: {
               title: "Finnish National Board of Education",
-              image: "/oppija-raamit/oppija-raamit/img/OPH_logo-en.png",
+              image: raamitDirectory + "/img/OPH_logo-en.png",
               link: "http://www.oph.fi/english"
             },
             opetusministerio: {
               title: "Ministry of Education and Culture",
-              image: "/oppija-raamit/oppija-raamit/img/OKM_logo-en.png",
+              image: raamitDirectory + "/img/OKM_logo-en.png",
               link: "http://www.minedu.fi/OPM/?lang=en"
             },
             footerAriaLabel: "Service information",
