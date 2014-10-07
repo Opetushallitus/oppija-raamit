@@ -43,6 +43,7 @@
               hideActiveLanguage(getInitLang())
               updateBasket()
               updateLoginSection()
+              $(".header-system-name").text(getTestSystemName(rootDirectory))
               naviAjax.done(function(navidata) {
                 buildNavi(navidata.nav)
               })
@@ -63,6 +64,20 @@
       wpHost = (rootDirectory.indexOf("opintopolku") > 0 || rootDirectory.indexOf("/test-oppija") > 0) ? parser.protocol + "//" + parser.hostname : "https://testi.opintopolku.fi"
     }
     return wpHost + i18n.t("raamit:wordpressRoot")
+  }
+
+  function getTestSystemName(rootDirectory) {
+    if (rootDirectory.indexOf("opintopolku.fi") > 0) {
+      return ""
+    } else if (rootDirectory.indexOf("testi.opintopolku.fi") > 0) {
+      return "QA"
+    } else if (rootDirectory.indexOf("test-oppija.oph.ware.fi") > 0) {
+      return "Reppu"
+    } else if (rootDirectory.indexOf("itest-oppija.oph.ware.fi") > 0) {
+      return "Luokka"
+    } else if (rootDirectory.indexOf("localhost") > 0) {
+      return "Localhost"
+    }
   }
 
   function getNaviPath(rootDirectory) {
