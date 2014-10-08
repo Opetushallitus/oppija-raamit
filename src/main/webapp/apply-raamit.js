@@ -43,7 +43,7 @@
               hideActiveLanguage(getInitLang())
               updateBasket()
               updateLoginSection()
-              $(".header-system-name").text(getTestSystemName(rootDirectory))
+              $(".header-system-name").text(getTestSystemName())
               naviAjax.done(function(navidata) {
                 buildNavi(navidata.nav)
               })
@@ -66,16 +66,17 @@
     return wpHost + i18n.t("raamit:wordpressRoot")
   }
 
-  function getTestSystemName(rootDirectory) {
-    if (rootDirectory.indexOf("opintopolku.fi") > 0) {
+  function getTestSystemName() {
+    var location = window.location.href
+    if (location.indexOf("/opintopolku.fi") > 0) {
       return ""
-    } else if (rootDirectory.indexOf("testi.opintopolku.fi") > 0) {
+    } else if (location.indexOf("/testi.opintopolku.fi") > 0) {
       return "QA"
-    } else if (rootDirectory.indexOf("test-oppija.oph.ware.fi") > 0) {
+    } else if (location.indexOf("/test-oppija.oph.ware.fi") > 0) {
       return "Reppu"
-    } else if (rootDirectory.indexOf("itest-oppija.oph.ware.fi") > 0) {
+    } else if (location.indexOf("/itest-oppija.oph.ware.fi") > 0) {
       return "Luokka"
-    } else if (rootDirectory.indexOf("localhost") > 0) {
+    } else if (location.indexOf("/localhost") > 0) {
       return "Localhost"
     }
   }
