@@ -56,12 +56,16 @@
     })
   }, 0)
 
+  function envHasWp(url) {
+    return url.match(/(\/test-oppija|((\.|\/)(opintopolku|studieinfo|studyinfo)))/) != null
+  }
+
   function getWpHost(rootDirectory) {
     var wpHost = document.getElementById('apply-raamit').getAttribute('data-wp-navi-path')
     if (!wpHost) {
       var parser = document.createElement('a')
       parser.href = rootDirectory
-      wpHost = (rootDirectory.indexOf("opintopolku") > 0 || rootDirectory.indexOf("/test-oppija") > 0) ? parser.protocol + "//" + parser.hostname : "https://testi.opintopolku.fi"
+      wpHost = envHasWp(rootDirectory) ? parser.protocol + "//" + parser.hostname : "https://testi.opintopolku.fi"
     }
     return wpHost + i18n.t("raamit:wordpressRoot")
   }
@@ -373,6 +377,17 @@
     })
   }
 
+  function getLanguageFromHost(host) {
+    var x = host.split('.')
+    if (x.length < 2) return null
+    switch (x[x.length - 2]) {
+      case 'opintopolku': return 'fi'
+      case 'studieinfo': return 'sv'
+      case 'studyinfo': return 'en'
+    }
+    return null
+  }
+
   function getInitLang() {
       if(document.location.href.indexOf("wp") > 0){
           var regexp = /\/wp.?\/(fi|sv|en)/
@@ -380,6 +395,9 @@
           if(match != null && match.length > 0) {
               return match[1]
           }
+      } else {
+        var lang = getLanguageFromHost(document.location.host)
+        if (lang != null) return lang
       }
       return readLanguageCookie()
   }
