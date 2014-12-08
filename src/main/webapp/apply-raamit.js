@@ -32,6 +32,18 @@
   var rootDirectory = getScriptDirectory();
   var raamitDirectory = rootDirectory + "oppija-raamit"
 
+  function loadFooterLinks() {
+    $.ajax(getFooterLinksPath(rootDirectory)).done(function(footerLinks) {
+      buildFooterLinks(footerLinks.nav)
+    })
+    .error(function(err) {
+      buildFooterLinks(i18n.t("raamit:footerlinks", { returnObjectTrees: true }))
+    })
+    .always(function() {
+      $("html").trigger("oppija-raamit-loaded")
+    })
+  }
+
   setTimeout(function() {
     initJQuery(function() {
       initJQueryCookie(function() {
@@ -47,8 +59,7 @@
               naviAjax.done(function(navidata) {
                 buildNavi(navidata.nav)
               })
-              buildFooterLinks(i18n.t("raamit:footerlinks", { returnObjectTrees: true }))
-              $("html").trigger("oppija-raamit-loaded")
+              loadFooterLinks()
             })
           })
         })
@@ -87,6 +98,10 @@
 
   function getNaviPath(rootDirectory) {
     return getWpHost(rootDirectory) + "/api/nav/json_nav/"
+  }
+
+  function getFooterLinksPath(rootDirectory) {
+    return getWpHost(rootDirectory) + "/api/menus/footer_links/"
   }
 
   function applyRaamit(template) {
@@ -143,7 +158,7 @@
     var $footerlinkselement = $("#footer-links")
     for (var item in footerlinks) {
       var $item = $("<li>")
-      var $link = $("<a>").text(footerlinks[item].title).attr({ href: footerlinks[item].link })
+      var $link = $("<a>").text(footerlinks[item].title).attr({ href: footerlinks[item].url })
       $footerlinkselement.append($item.append($link))
     }
   }
@@ -218,25 +233,26 @@
             footerlinks: {
               mystudyinfo: {
                 title: "Oma Opintopolku-palvelu",
-                link: "/wp/fi/oma-opintopolku-palvelu/"
+                url: "/wp/fi/oma-opintopolku-palvelu/"
               },
               description: {
                 title: "Mikä on Opintopolku?",
-                link: "/wp/fi/opintopolku/tietoa-palvelusta/"
+                url: "/wp/fi/opintopolku/tietoa-palvelusta/"
               },
               feedback: {
                 title: "Anna palautetta – kysy neuvoa",
-                link: "/wp/fi/opintopolku/anna-palautetta-kysy-neuvoa/"
+                url: "/wp/fi/opintopolku/anna-palautetta-kysy-neuvoa/"
               },
               registerDescription: {
                 title: "Rekisteriseloste",
-                link: "/wp/fi/rekisteriseloste/"
+                url: "/wp/fi/rekisteriseloste/"
               },
               index: {
                 title: "Oppilaitoshakemisto",
-                link: "/fi/hakemisto/oppilaitokset/A"
+                url: "/fi/hakemisto/oppilaitokset/A"
               }
             }
+
           }
         },
         sv: {
@@ -279,23 +295,23 @@
             footerlinks: {
               mystudyinfo: {
                 title: "Min Studieinfo-tjänsten",
-                link: "/wp/sv/min-studieinfo-tjansten/"
+                url: "/wp/sv/min-studieinfo-tjansten/"
               },
               description: {
                 title: "Vad är Studieinfo?",
-                link: "/wp/sv/studieinfo-2/vad-ar-studieinfo/"
+                url: "/wp/sv/studieinfo-2/vad-ar-studieinfo/"
               },
               feedback: {
                 title: "Ge feedback – fråga råd",
-                link: "/wp/sv/studieinfo-2/tes5/"
+                url: "/wp/sv/studieinfo-2/tes5/"
               },
               registerDescription: {
                 title: "Registerbeskrivning",
-                link: "/wp/sv/registerbeskrivning/"
+                url: "/wp/sv/registerbeskrivning/"
               },
               index: {
                 title: "Läroanstaltsregister",
-                link: "/sv/hakemisto/oppilaitokset/A"
+                url: "/sv/hakemisto/oppilaitokset/A"
               }
             }
           }
@@ -339,15 +355,15 @@
             footerlinks: {
               mystudyinfo: {
                 title: "My Studyinfo -service",
-                link: "/wp2/en/my-studyinfo-service/"
+                url: "/wp2/en/my-studyinfo-service/"
               },
               registerDescription: {
                 title: "Register description",
-                link: "/wp2/en/register"
+                url: "/wp2/en/register"
               },
               index: {
                 title: "Educational institution index",
-                link: "/en/hakemisto/oppilaitokset/"
+                url: "/en/hakemisto/oppilaitokset/"
               }
             }
           }
