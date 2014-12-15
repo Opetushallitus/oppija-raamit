@@ -433,8 +433,18 @@
     }, 500)
   }
 
+  function userLoggedIn() {
+    var cookies = jQuery.cookie()
+    for (var key in cookies) {
+      if (key.indexOf('_shibsession_') > -1) {
+        return true
+      }
+    }
+    return false
+  }
+
   function updateLoginSection() {
-    var loggedIn = jQuery.cookie("shibboleth_loggedIn") === "true"
+    var loggedIn = userLoggedIn()
     $(".header-logged-in").toggle(loggedIn)
     $(".header-logged-out").toggle(!loggedIn)
   }
