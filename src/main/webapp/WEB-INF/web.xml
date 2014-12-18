@@ -24,6 +24,15 @@
 
     <filter-mapping>
         <filter-name>shibbolethCheck</filter-name>
-        <url-pattern>/*</url-pattern>
+        <url-pattern>/shibbolethcheck</url-pattern>
     </filter-mapping>
+
+    <servlet>
+        <servlet-name>shibbolethCheckServlet</servlet-name>
+        <servlet-class>oph.ShibbolethCheckServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>shibbolethCheckServlet</servlet-name>
+        <url-pattern>/shibbolethcheck</url-pattern>
+    </servlet-mapping>
 </web-app>
