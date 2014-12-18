@@ -4,23 +4,27 @@
       jQuery.cookie(i18n.options.cookieName, language, { expires: 1800, path: '/' })
       if(document.location.href.indexOf("wp") > 0){
         var wpPathMatcher = document.location.href.match(/\/wp.?\/(fi|sv|en)\/(.*)/)
+        var wpPath = '';
+        if (wpPathMatcher != null) {
+          wpPath = wpPathMatcher[2]
+        } else {
+          wpPathMatcher = document.location.href.match(/\/wp.?\/(.*)/)
+          if (wpPathMatcher != null) {
+            wpPath = wpPathMatcher[1]
+          }
+        }
         i18n.setLng(language, function() {
-          if(wpPathMatcher == null) {
-            goToLanguageRoot()
-          }
-          else {
-            getTranslation(wpPathMatcher[2])
-            .done(function(translation) {
-                if(translation.status.toLowerCase() == "ok") {
-                  window.location.href = translation.translation.url
-                } else {
-                  goToLanguageRoot()
-                }
-            })
-            .fail(function() {
+          getTranslation(wpPath)
+          .done(function(translation) {
+              if(translation.status.toLowerCase() == "ok") {
+                window.location.href = translation.translation.url
+              } else {
                 goToLanguageRoot()
-              })
-          }
+              }
+          })
+          .fail(function() {
+            goToLanguageRoot()
+          })
         })
       } else {
           document.location.reload()
@@ -468,7 +472,7 @@
   }
 
   function getTranslation(path) {
-    var translationUrl = getWpHost(getScriptDirectory()) + "/?json=translate.translate_page&path=" + path
+    var translationUrl = getWpHost(getScriptDirectory()) + "/wp/api/translate/translate_page/?" + path
     return $.ajax(translationUrl)
   }
 
