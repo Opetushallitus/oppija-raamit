@@ -9,7 +9,7 @@
           wpPath = wpPathMatcher[2]
         } else {
           wpPathMatcher = document.location.href.match(/\/wp.?\/(.*)/)
-          if (wpPathMatcher != null) {
+          if (wpPathMatcher != null && ['fi', 'en', 'sv'].indexOf(wpPathMatcher[1]) < 0) {
             wpPath = wpPathMatcher[1]
           }
         }
