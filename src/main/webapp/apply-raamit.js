@@ -472,7 +472,7 @@
   }
 
   function getTranslation(path) {
-    var translationUrl = getWpHost(getScriptDirectory()) + "/wp/api/translate/translate_page/?" + path
+    var translationUrl = getWpHost(getScriptDirectory()) + "/api/translate/translate_page/?" + path
     return $.ajax(translationUrl)
   }
 
