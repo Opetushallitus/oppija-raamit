@@ -82,7 +82,7 @@
       parser.href = rootDirectory
       wpHost = envHasWp(rootDirectory) ? parser.protocol + "//" + parser.hostname : "https://testi.opintopolku.fi"
     }
-    return wpHost + i18n.t("raamit:wordpressRoot")
+    return wpHost + (getLanguageFromHost(document.location.host) ? i18n.t("raamit:wordpressRoot") : i18n.t("raamit:testEnvWordpressRoot"))
   }
 
   function getTestSystemName() {
@@ -203,7 +203,8 @@
             loginLink: "Kirjaudu sisään",
             logoutLink: "Kirjaudu ulos",
             omatsivutLink: "Oma Opintopolku",
-            wordpressRoot: "/wp/fi",
+            wordpressRoot: "/wp/",
+            testEnvWordpressRoot: "/wp/fi/",
             homeLink: {
               title: "Siirry etusivulle",
               image: raamitDirectory + "/img/opintopolku_large-fi.png"
@@ -265,7 +266,8 @@
             loginLink: "Logga in",
             logoutLink: "Logga ut",
             omatsivutLink: "Min Studieinfo",
-            wordpressRoot: "/wp/sv",
+            wordpressRoot: "/wp/",
+            testEnvWordpressRoot: "/wp/sv/",
             homeLink: {
               title: "Gå till framsida",
               image: raamitDirectory + "/img/opintopolku_large-sv.png"
@@ -326,7 +328,8 @@
             loginLink: "Log in",
             logoutLink: "Log out",
             omatsivutLink: "My Studyinfo",
-            wordpressRoot: "/wp2/en",
+            wordpressRoot: "/wp2/",
+            testEnvWordpressRoot: "/wp2/en/",
             homeLink: {
               title: "Go to frontpage",
               image: raamitDirectory + "/img/opintopolku_large-en.png"
