@@ -209,10 +209,6 @@
               title: "Siirry etusivulle",
               image: raamitDirectory + "/img/opintopolku_large-fi.png"
             },
-            mobileVersion: {
-              title: "Erityisoppilaitosten koulutukset tekstiversiona",
-              link: "/m/index.html"
-            },
             shortlist:{
               title: "Muistilista"
             },
@@ -272,10 +268,6 @@
               title: "Gå till framsida",
               image: raamitDirectory + "/img/opintopolku_large-sv.png"
             },
-            mobileVersion: {
-              title: "Specialläroanstalternas utbildningar som textversion",
-              link: "/m/index_sv.html"
-            },
             shortlist:{
               title: "Minneslista"
             },
@@ -333,9 +325,6 @@
             homeLink: {
               title: "Go to frontpage",
               image: raamitDirectory + "/img/opintopolku_large-en.png"
-            },
-            mobileVersion: {
-              style: "display:none;"
             },
             shortlist:{
               title: "My shortlist"
