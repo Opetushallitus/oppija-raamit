@@ -27,7 +27,7 @@
           })
         })
       } else {
-          document.location.reload()
+          document.location.href = getHostForLang(document.location.href, readLanguageCookie())
       }
     }
   }
@@ -79,8 +79,12 @@
     var wpHost = document.getElementById('apply-raamit').getAttribute('data-wp-navi-path')
     if (!wpHost) {
       var parser = document.createElement('a')
-      parser.href = rootDirectory
-      wpHost = envHasWp(rootDirectory) ? parser.protocol + "//" + parser.hostname : "https://testi.opintopolku.fi"
+      if (envHasWp(rootDirectory)) {
+        parser.href = rootDirectory
+      } else {
+        parser.href = getHostForLang("https://testi.opintopolku.fi", readLanguageCookie())
+      }
+      wpHost = parser.protocol + "//" + parser.hostname
     }
     return wpHost + (envHasWp(wpHost) ? i18n.t("raamit:wordpressRoot") : i18n.t("raamit:testEnvWordpressRoot"))
   }
@@ -400,7 +404,7 @@
     return null
   }
 
-  function translateHostForLang(url, lang) {
+  function getHostForLang(url, lang) {
       var langs = {
           'fi': 'opintopolku',
           'sv': 'studieinfo',
@@ -478,11 +482,7 @@
   }
 
   function getTranslation(path) {
-    var translationUrl = getWpHost(getScriptDirectory()) + "api/translate/translate_page/"
-    var langFromHost = getLanguageFromHost(document.location.host)
-    if (langFromHost && langFromHost !== readLanguageCookie()) {
-        translationUrl = translateHostForLang(translationUrl, readLanguageCookie())
-    }
+    var translationUrl = getWpHost(getHostForLang(getScriptDirectory(), readLanguageCookie())) + "api/translate/translate_page/"
     if (path != null && path.length > 0) {
       translationUrl += '?' + path
     }
@@ -490,7 +490,11 @@
   }
 
   function goToLanguageRoot() {
-    var wpRoot = i18n.t("raamit:wordpressRoot")
-    window.location.pathname = wpRoot
+    if (getLanguageFromHost(window.location.host)) {
+      window.location.href = getWpHost(getHostForLang(getScriptDirectory(), readLanguageCookie()))
+    } else {
+      var wpRoot = i18n.t("raamit:testEnvWordpressRoot")
+      window.location.pathname = wpRoot
+    }
   }
 })())
