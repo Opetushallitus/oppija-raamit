@@ -82,7 +82,7 @@
       parser.href = rootDirectory
       wpHost = envHasWp(rootDirectory) ? parser.protocol + "//" + parser.hostname : "https://testi.opintopolku.fi"
     }
-    return wpHost + (getLanguageFromHost(document.location.host) ? i18n.t("raamit:wordpressRoot") : i18n.t("raamit:testEnvWordpressRoot"))
+    return wpHost + (envHasWp(wpHost) ? i18n.t("raamit:wordpressRoot") : i18n.t("raamit:testEnvWordpressRoot"))
   }
 
   function getTestSystemName() {
@@ -101,11 +101,11 @@
   }
 
   function getNaviPath(rootDirectory) {
-    return getWpHost(rootDirectory) + "/api/nav/json_nav/"
+    return getWpHost(rootDirectory) + "api/nav/json_nav/"
   }
 
   function getFooterLinksPath(rootDirectory) {
-    return getWpHost(rootDirectory) + "/api/menus/footer_links/"
+    return getWpHost(rootDirectory) + "api/menus/footer_links/"
   }
 
   function applyRaamit(template) {
@@ -400,6 +400,20 @@
     return null
   }
 
+  function translateHostForLang(url, lang) {
+      var langs = {
+          'fi': 'opintopolku',
+          'sv': 'studieinfo',
+          'en': 'studyinfo'
+      }
+      var parser = document.createElement('a')
+      parser.href = url
+      var x = parser.host.split('.')
+      x[x.length-2] = langs[lang] || langs['fi']
+      parser.host = x.join('.')
+      return parser.href
+  }
+
   function getInitLang() {
       if(document.location.href.indexOf("wp") > 0){
           var regexp = /\/wp.?\/(fi|sv|en)/
@@ -464,7 +478,14 @@
   }
 
   function getTranslation(path) {
-    var translationUrl = getWpHost(getScriptDirectory()) + "/api/translate/translate_page/?" + path
+    var translationUrl = getWpHost(getScriptDirectory()) + "api/translate/translate_page/"
+    var langFromHost = getLanguageFromHost(document.location.host)
+    if (langFromHost && langFromHost !== readLanguageCookie()) {
+        translationUrl = translateHostForLang(translationUrl, readLanguageCookie())
+    }
+    if (path != null && path.length > 0) {
+      translationUrl += '?' + path
+    }
     return $.ajax(translationUrl)
   }
 
