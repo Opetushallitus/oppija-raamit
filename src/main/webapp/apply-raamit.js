@@ -27,7 +27,11 @@
           })
         })
       } else {
+        if (getLanguageFromHost(document.location.host)) {
           document.location.href = getHostForLang(document.location.href, readLanguageCookie())
+        } else {
+          document.location.reload()
+        }
       }
     }
   }
