@@ -79,6 +79,10 @@
     return url.match(/(\/test-oppija|((\.|\/)(opintopolku|studieinfo|studyinfo)))/) != null
   }
 
+  function isReppu(url) {
+    return url.match(/\/test-oppija/) != null
+  }
+
   function getWpHost(rootDirectory) {
     var wpHost = document.getElementById('apply-raamit').getAttribute('data-wp-navi-path')
     if (!wpHost) {
@@ -90,7 +94,7 @@
       }
       wpHost = parser.protocol + "//" + parser.hostname
     }
-    return wpHost + (envHasWp(wpHost) ? i18n.t("raamit:wordpressRoot") : i18n.t("raamit:testEnvWordpressRoot"))
+    return wpHost + (!isReppu(wpHost)  ? i18n.t("raamit:wordpressRoot") : i18n.t("raamit:testEnvWordpressRoot"))
   }
 
   function getTestSystemName() {
