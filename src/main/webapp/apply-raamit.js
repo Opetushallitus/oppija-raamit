@@ -88,7 +88,7 @@
     if (!wpHost) {
       var parser = document.createElement('a')
       if (envHasWp(rootDirectory)) {
-        if (isReppu()) {
+        if (isReppu(rootDirectory)) {
           parser.href = rootDirectory
         } else {
           parser.href = getHostForLang(rootDirectory, readLanguageCookie())
