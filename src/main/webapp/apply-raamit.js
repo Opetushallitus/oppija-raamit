@@ -88,7 +88,11 @@
     if (!wpHost) {
       var parser = document.createElement('a')
       if (envHasWp(rootDirectory)) {
-        parser.href = getHostForLang(rootDirectory, readLanguageCookie())
+        if (isReppu()) {
+          parser.href = rootDirectory
+        } else {
+          parser.href = getHostForLang(rootDirectory, readLanguageCookie())
+        }
       } else {
         parser.href = getHostForLang("https://testi.opintopolku.fi", readLanguageCookie())
       }
