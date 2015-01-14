@@ -88,7 +88,7 @@
     if (!wpHost) {
       var parser = document.createElement('a')
       if (envHasWp(rootDirectory)) {
-        parser.href = rootDirectory
+        parser.href = getHostForLang(rootDirectory, readLanguageCookie())
       } else {
         parser.href = getHostForLang("https://testi.opintopolku.fi", readLanguageCookie())
       }
@@ -490,7 +490,7 @@
   }
 
   function getTranslation(path) {
-    var translationUrl = getWpHost(getHostForLang(getScriptDirectory(), readLanguageCookie())) + "api/translate/translate_page/"
+    var translationUrl = getWpHost(getScriptDirectory()) + "api/translate/translate_page/"
     if (path != null && path.length > 0) {
       translationUrl += '?' + path
     }
