@@ -332,7 +332,7 @@
             loginLink: "Log in",
             logoutLink: "Log out",
             omatsivutLink: "My Studyinfo",
-            wordpressRoot: "/wp2/",
+            wordpressRoot: "/wp2/en/",
             testEnvWordpressRoot: "/wp2/en/",
             homeLink: {
               title: "Go to frontpage",
