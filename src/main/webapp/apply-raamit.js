@@ -496,7 +496,7 @@
   function getTranslation(path) {
     var translationUrl = getWpHost(getScriptDirectory()) + "api/translate/translate_page/"
     if (path != null && path.length > 0) {
-      translationUrl += '?' + path
+      translationUrl += '?path=' + path
     }
     return $.ajax(translationUrl)
   }
