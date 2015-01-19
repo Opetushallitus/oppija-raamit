@@ -23,9 +23,23 @@
       </ul>
     </div>
 
-    <nav >
+    <div role="presentation" class="mobile-header-content header-column">
+      <a class="header-banner" data-i18n="[href]raamit:wordpressRoot">
+        <img data-i18n="[alt]raamit:homeLink.title;[src]raamit:homeLink.image"/>
+      </a>
+      <div class="mobile-menu-button">
+          <i class="icon-menu"></i>
+      </div>
+    </div>
+
+    <nav id="full-nav">
       <div class="header-column" role="presentation">
         <ul class="level-1-menu" role="menubar"></ul>
+      </div>
+    </nav>
+    <nav id="mobile-nav">
+      <div class="header-column" role="presentation">
+        <ul class="mobile-menu" role="menubar"></ul>
       </div>
     </nav>
   </header>

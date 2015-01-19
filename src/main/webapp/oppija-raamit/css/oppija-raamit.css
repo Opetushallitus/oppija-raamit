@@ -213,3 +213,106 @@
   text-align: center;
   float: left;
 }
+nav#mobile-nav {
+  display: none;
+}
+.mobile-header-content {
+  display: none;
+}
+@media screen and (max-width: 768px) {
+  #siteheader .mobile-header-content {
+    padding: 0;
+    font-weight: bold;
+    overflow: auto;
+    position: relative;
+    display: block;
+  }
+  #siteheader .mobile-header-content .header-banner {
+    padding: 8px;
+    padding-bottom: 0;
+    display: inline-block;
+    float: left;
+  }
+  #siteheader .header-content {
+    display: none;
+  }
+  #siteheader .header-column {
+    min-width: 0px;
+    width: 100%;
+    margin: 0px auto;
+  }
+  #siteheader .mobile-menu-button {
+    display: inline-block;
+    float: right;
+    font-size: 350%;
+    padding: 0;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    margin: 0;
+    border: 0;
+    height: 100%;
+  }
+  #siteheader .mobile-menu-button-menu-open {
+    background: #06526b;
+  }
+  #siteheader nav#full-nav {
+    display: none;
+  }
+  #siteheader nav#mobile-nav {
+    display: block;
+    border: 0;
+    min-height: 5px;
+  }
+  #siteheader ul.mobile-menu > li {
+    float: right;
+    overflow: auto;
+    clear: both;
+    width: 94%;
+    margin-left: 3%;
+    margin-right: 3%;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    text-align: right;
+    font-weight: bold;
+  }
+  #siteheader ul.mobile-menu > li.active {
+    background: #ffffff;
+  }
+  #siteheader ul.mobile-menu > li.active a {
+    color: #333;
+  }
+  #siteheader ul.mobile-menu > li a {
+    display: inline-block;
+    padding: 10px;
+    text-decoration: none;
+    font-size: 18px;
+  }
+  #siteheader ul.mobile-menu > li a.action-link {
+    font-size: 18px;
+    text-decoration: underline;
+  }
+  #siteheader ul.mobile-menu > li.menu-focus {
+    background: #ffffff;
+  }
+  #siteheader ul.mobile-menu > li.menu-focus a {
+    color: #333;
+  }
+  #siteheader ul.mobile-menu > li.menu-focus > ul {
+    display: block;
+  }
+  #sitefooter {
+    width: 100%;
+  }
+  #sitefooter #footer-links {
+    width: 100%;
+  }
+  #sitefooter .footer-opintopolku-info {
+    padding: 5px;
+  }
+  #sitefooter li {
+    width: 220px;
+    clear: both;
+    font-size: 18px;
+    padding: 5px;
+  }
+}

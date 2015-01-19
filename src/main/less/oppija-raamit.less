@@ -259,3 +259,130 @@
     }
   }
 }
+
+nav#mobile-nav {
+    display: none
+}
+
+.mobile-header-content {
+    display: none
+}
+
+@media screen and (max-width: 768px) {
+    #siteheader {
+        .mobile-header-content {
+            padding: 0;
+            font-weight: bold;
+            overflow: auto;
+            position: relative;
+            display: block;
+
+            .header-banner {
+                padding: 8px;
+                padding-bottom: 0;
+                display: inline-block;
+                float: left;
+            }
+        }
+
+        .header-content {
+            display: none
+        }
+
+        .header-column {
+            min-width: 0px;
+            width: 100%;
+            margin: 0px auto;
+        }
+
+
+        .mobile-menu-button {
+            display: inline-block;
+            float: right;
+            font-size: 350%;
+            padding: 0;
+            padding-top: 10px;
+            padding-bottom: 10px;
+            margin: 0;
+            border: 0;
+            height: 100%;
+        }
+
+        .mobile-menu-button-menu-open {
+            background: #06526b;
+        }
+
+        nav#full-nav {
+            display:none
+        }
+
+        nav#mobile-nav {
+            display: block;
+            border: 0;
+            min-height: 5px;
+        }
+
+        ul.mobile-menu > li {
+            float: right;
+            overflow: auto;
+            clear: both;
+            width: 94%;
+            margin-left: 3%;
+            margin-right: 3%;
+            margin-top: 5px;
+            margin-bottom: 5px;
+            text-align: right;
+            font-weight: bold;
+
+            &.active {
+                background: #ffffff;
+                a {
+                    color: #333;
+                }
+            }
+
+            a {
+                display: inline-block;
+                padding: 10px;
+                text-decoration: none;
+                font-size: 18px;
+            }
+
+            a.action-link {
+                font-size: 18px;
+                text-decoration: underline;
+            }
+
+            &.menu-focus {
+                background: #ffffff;
+                a {
+                    color: #333;
+                }
+
+                & > ul {
+                    display: block;
+                }
+            }
+        }
+    }
+
+    #sitefooter {
+        width: 100%;
+
+        #footer-links {
+            width: 100%;
+        }
+
+        .footer-opintopolku-info {
+            padding: 5px;
+        }
+
+        li {
+            width: 220px;
+            clear: both;
+            font-size: 18px;
+            padding: 5px;
+            //float: left;
+        }
+    }
+}

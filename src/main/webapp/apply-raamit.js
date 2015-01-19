@@ -142,10 +142,26 @@
     }
   }
 
+  function hideMobileNavi() {
+    $(".mobile-menu").hide();
+    $(".mobile-menu-button").click(function() {
+        $(".mobile-menu").slideToggle(250);
+        var mb = $(".mobile-menu-button-menu-open")
+        if (mb.length) {
+            mb.removeClass("mobile-menu-button-menu-open")
+        } else {
+            $(".mobile-menu-button").addClass("mobile-menu-button-menu-open")
+        }
+    });
+  }
+
   function buildNavi(naviData) {
-    var naviSelector = "#siteheader nav ul"
+    var naviSelector = "#siteheader nav#full-nav ul"
+    var mobileNaviSelector = "#siteheader nav#mobile-nav ul"
     var $root = $(naviSelector)
+    var $mobileRoot = $(mobileNaviSelector)
     var $activeItem = null
+    var $mobileActiveItem = null
     var level1MenuIndex = 0
     naviData.forEach(function(naviItem) {
       level1MenuIndex = level1MenuIndex + 1;
@@ -167,11 +183,22 @@
         $naviItem.append($subMenu)
       }
       $root.append($naviItem)
+      var $mobileNaviItem = $("<li>").addClass("menu-parent").attr("role", "presentation");
+      var $mobileNaviLink = $("<a>").text(naviItem.title).attr("href", naviItem.link).attr("role", "menuitem").attr("id", subMenuId).attr("aria-haspopup", "true");
+      if(document.location.href.indexOf(naviItem.link) > -1) {
+          $mobileActiveItem = $mobileNaviItem
+      }
+      $mobileNaviItem.append($mobileNaviLink)
+      $mobileRoot.append($mobileNaviItem)
     })
     if($activeItem != null) {
         $activeItem.addClass("active")
     }
+    if($mobileActiveItem != null) {
+        $mobileActiveItem.addClass("active")
+    }
     window.navigationMenubar(naviSelector)
+    hideMobileNavi()
   }
 
   function buildFooterLinks(footerlinks) {
