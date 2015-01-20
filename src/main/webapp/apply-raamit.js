@@ -466,10 +466,9 @@
           if(match != null && match.length > 0) {
               return match[1]
           }
-      } else {
-        var lang = getLanguageFromHost(document.location.host)
-        if (lang != null) return lang
       }
+      var lang = getLanguageFromHost(document.location.host)
+      if (lang != null) return lang
       return readLanguageCookie()
   }
 
