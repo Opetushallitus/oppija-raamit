@@ -1,5 +1,7 @@
 @header-background: #149ecb;
 @navbar-z-index: 1001;
+@menu-font: 'PT Sans Narrow';
+@sub-menu-font: 'Arial';
 
 .body-font(@color) {
   font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
@@ -126,6 +128,8 @@
     ul.level-1-menu > li {
       float: left;
       overflow: auto;
+      font-family: @menu-font;
+      font-size: 1.2em;
 
       &.active {
         background: #ffffff;
@@ -165,6 +169,7 @@
       li {
         display: block;
         position: relative;
+        font-family: @sub-menu-font;
         a {
           color: #333;
           font-size: 13px;
@@ -328,6 +333,21 @@ nav#mobile-nav {
             background: @header-background;
         }
 
+        .header-login-section {
+            &:before {
+                content: "";
+                background: url(../img/login-icon.png) no-repeat center center;
+                background-size: 100% 100%;
+                width: 18px;
+                height: 23px;
+                display: inline-block;
+                position: relative;
+                left: -7px;
+                top: 2px;
+
+            }
+        }
+
         ul.mobile-menu > li {
             float: right;
             overflow: auto;
@@ -339,6 +359,7 @@ nav#mobile-nav {
             border: 0;
             text-align: right;
             font-weight: bold;
+            font-family: @menu-font;
 
             &.active {
                 background: #ffffff;
@@ -351,6 +372,7 @@ nav#mobile-nav {
                 display: inline-block;
                 padding: 10px;
                 padding-right: 20px;
+                padding-left: 0px;
                 text-decoration: none;
                 font-size: 18px;
             }

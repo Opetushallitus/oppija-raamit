@@ -103,6 +103,8 @@
 #siteheader nav ul.level-1-menu > li {
   float: left;
   overflow: auto;
+  font-family: 'PT Sans Narrow';
+  font-size: 1.2em;
 }
 #siteheader nav ul.level-1-menu > li.active {
   background: #ffffff;
@@ -137,6 +139,7 @@
 #siteheader nav ul.level-2-menu li {
   display: block;
   position: relative;
+  font-family: 'Arial';
 }
 #siteheader nav ul.level-2-menu li a {
   color: #333;
@@ -268,6 +271,17 @@ nav#mobile-nav {
   #siteheader .mobile-menu-header-links {
     background: #149ecb;
   }
+  #siteheader .header-login-section:before {
+    content: "";
+    background: url(../img/login-icon.png) no-repeat center center;
+    background-size: 100% 100%;
+    width: 18px;
+    height: 23px;
+    display: inline-block;
+    position: relative;
+    left: -7px;
+    top: 2px;
+  }
   #siteheader ul.mobile-menu > li {
     float: right;
     overflow: auto;
@@ -279,6 +293,7 @@ nav#mobile-nav {
     border: 0;
     text-align: right;
     font-weight: bold;
+    font-family: 'PT Sans Narrow';
   }
   #siteheader ul.mobile-menu > li.active {
     background: #ffffff;
@@ -290,6 +305,7 @@ nav#mobile-nav {
     display: inline-block;
     padding: 10px;
     padding-right: 20px;
+    padding-left: 0px;
     text-decoration: none;
     font-size: 18px;
   }
