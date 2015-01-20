@@ -39,8 +39,25 @@
     </nav>
     <nav id="mobile-nav">
       <div class="header-column" role="presentation">
-        <ul class="mobile-menu" role="menubar"></ul>
-      </div>
+          <ul class="mobile-menu header-language" role="menubar">
+            <li class="header-logged-out header-login-section mobile-menu-header-links" style="display: none">
+              <a class="header-login-link" href="/omatsivut/login" data-i18n="raamit:loginLink">Kirjaudu sisään</a>
+            </li>
+            <li class="header-logged-in header-login-section mobile-menu-header-links" style="display: none">
+              <a class="header-omatsivut-link" href="/omatsivut/" data-i18n="raamit:omatsivutLink">Oma opintopolku</a>
+              <a class="header-logout-link" href="/omatsivut/logout" data-i18n="raamit:logoutLink">Kirjaudu ulos</a>
+            </li>
+            <li class="mobile-menu-header-links">
+              <a id="appbasket-link" href="/app/#!/muistilista" class="header-shortlist">
+                <i class="icon-check"></i>
+                <span data-i18n="raamit:shortlist.title"></span> <span class="count"></span>
+              </a>
+            </li>
+            <li class="mobile-menu-header-links" id="lang-fi"><a data-i18n="[title]raamit:languages.fi;raamit:languages.fi" href="javascript:OppijaRaamit.changeLanguage('fi')"></a></li>
+            <li class="mobile-menu-header-links" id="lang-sv"><a data-i18n="[title]raamit:languages.sv;raamit:languages.sv" href="javascript:OppijaRaamit.changeLanguage('sv')"></a></li>
+            <li class="mobile-menu-header-links" id="lang-en"><a data-i18n="[title]raamit:languages.en;raamit:languages.en" href="javascript:OppijaRaamit.changeLanguage('en')"></a></li>
+          </ul>
+        </div>
     </nav>
   </header>
 

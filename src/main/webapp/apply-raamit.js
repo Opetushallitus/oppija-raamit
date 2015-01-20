@@ -157,12 +157,13 @@
 
   function buildNavi(naviData) {
     var naviSelector = "#siteheader nav#full-nav ul"
-    var mobileNaviSelector = "#siteheader nav#mobile-nav ul"
+    var mobileNaviSelector = "#siteheader nav#mobile-nav ul.mobile-menu"
     var $root = $(naviSelector)
     var $mobileRoot = $(mobileNaviSelector)
     var $activeItem = null
     var $mobileActiveItem = null
     var level1MenuIndex = 0
+    var mobNaviElems = []
     naviData.forEach(function(naviItem) {
       level1MenuIndex = level1MenuIndex + 1;
       var subMenuId = "level-1-menu-id-" + level1MenuIndex;
@@ -189,7 +190,7 @@
           $mobileActiveItem = $mobileNaviItem
       }
       $mobileNaviItem.append($mobileNaviLink)
-      $mobileRoot.append($mobileNaviItem)
+      mobNaviElems.push($mobileNaviItem)
     })
     if($activeItem != null) {
         $activeItem.addClass("active")
@@ -197,6 +198,7 @@
     if($mobileActiveItem != null) {
         $mobileActiveItem.addClass("active")
     }
+    $mobileRoot.prepend(mobNaviElems)
     window.navigationMenubar(naviSelector)
     hideMobileNavi()
   }
