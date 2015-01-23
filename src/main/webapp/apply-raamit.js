@@ -27,11 +27,13 @@
           })
         })
       } else {
-        if (getLanguageFromHost(document.location.host)) {
-          document.location.href = getHostForLang(document.location.href, readLanguageCookie())
-        } else {
-          document.location.reload()
-        }
+        i18n.setLng(language, function() {
+          if (getLanguageFromHost(document.location.host)) {
+            document.location.href = getHostForLang(document.location.href, language)
+          } else {
+            document.location.reload()
+          }
+        })
       }
     }
   }
