@@ -462,6 +462,10 @@
   }
 
   function getInitLang() {
+      var lang = jQuery.cookie(i18n.options.cookieName)
+      if (lang != null) {
+          return lang
+      }
       if(document.location.href.indexOf("wp") > 0){
           var regexp = /\/wp.?\/(fi|sv|en)/
           var match = document.location.href.match(regexp)
@@ -471,7 +475,7 @@
       }
       var lang = getLanguageFromHost(document.location.host)
       if (lang != null) return lang
-      return readLanguageCookie()
+      return "fi"
   }
 
   function readLanguageCookie() {
