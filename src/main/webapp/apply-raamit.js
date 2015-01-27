@@ -58,11 +58,13 @@
     initJQuery(function() {
       initJQueryCookie(function() {
         initI18n(function() {
-          var naviAjax = $.ajax(getNaviPath(rootDirectory))
           loadScript(window.navigationMenubar, rootDirectory + "js/navigation.js", function() {
             $.ajax(raamitDirectory + "/oppija-raamit.html").done(function(template) {
+              var language = getInitLang()
+              jQuery.cookie(i18n.options.cookieName, language, { expires: 1800, path: '/' })
+              var naviAjax = $.ajax(getNaviPath(rootDirectory))
               applyRaamit(template)
-              hideActiveLanguage(getInitLang())
+              hideActiveLanguage(language)
               updateBasket()
               updateLoginSection()
               $(".header-system-name").text(getTestSystemName())
