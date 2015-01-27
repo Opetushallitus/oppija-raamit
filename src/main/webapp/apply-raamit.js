@@ -1,7 +1,6 @@
 ;((function() {
   var raamit = window.OppijaRaamit = {
     changeLanguage: function(language) {
-      jQuery.cookie(i18n.options.cookieName, language, { expires: 1800, path: '/' })
       if(document.location.href.indexOf("wp") > 0){
         var wpPathMatcher = document.location.href.match(/\/wp.?\/(fi|sv|en)\/(.*)/)
         var wpPath = '';
@@ -19,11 +18,11 @@
               if(translation.status.toLowerCase() == "ok") {
                 window.location.href = translation.translation.url
               } else {
-                goToLanguageRoot()
+                goToLanguageRoot(language)
               }
           })
           .fail(function() {
-            goToLanguageRoot()
+            goToLanguageRoot(language)
           })
         })
       } else {
@@ -31,6 +30,7 @@
           if (getLanguageFromHost(document.location.host)) {
             document.location.href = getHostForLang(document.location.href, language)
           } else {
+            jQuery.cookie(i18n.options.cookieName, language, { expires: 1800, path: '/' })
             document.location.reload()
           }
         })
@@ -533,9 +533,9 @@
     return $.ajax(translationUrl)
   }
 
-  function goToLanguageRoot() {
+  function goToLanguageRoot(lang) {
     if (getLanguageFromHost(window.location.host)) {
-      window.location.href = getWpHost(getHostForLang(getScriptDirectory(), readLanguageCookie()))
+      window.location.href = getWpHost(getHostForLang(getScriptDirectory(), lang || readLanguageCookie()))
     } else {
       var wpRoot = i18n.t("raamit:testEnvWordpressRoot")
       window.location.pathname = wpRoot
