@@ -1,6 +1,7 @@
 ;((function() {
   var raamit = window.OppijaRaamit = {
     changeLanguage: function(language) {
+      setLangCookie(language)
       if(document.location.href.indexOf("wp") > 0){
         var wpPathMatcher = document.location.href.match(/\/wp.?\/(fi|sv|en)\/(.*)/)
         var wpPath = '';
@@ -30,7 +31,6 @@
           if (getLanguageFromHost(document.location.host)) {
             document.location.href = getHostForLang(document.location.href, language)
           } else {
-            jQuery.cookie(i18n.options.cookieName, language, { expires: 1800, path: '/' })
             document.location.reload()
           }
         })
@@ -41,6 +41,14 @@
   var preDefinedI18n = !(typeof window.i18n == "undefined")
   var rootDirectory = getScriptDirectory();
   var raamitDirectory = rootDirectory + "oppija-raamit"
+
+  function setLangCookie(language) {
+    if (getLanguageFromHost(window.location.host)) {
+      jQuery.cookie(i18n.options.cookieName, language, { expires: 1800, path: '/', domain: getHostForLang(window.location.host, language) })
+    } else {
+      jQuery.cookie(i18n.options.cookieName, language, { expires: 1800, path: '/' })
+    }
+  }
 
   function loadFooterLinks() {
     $.ajax(getFooterLinksPath(rootDirectory)).done(function(footerLinks) {
@@ -59,12 +67,10 @@
       initJQueryCookie(function() {
         initI18n(function() {
           loadScript(window.navigationMenubar, rootDirectory + "js/navigation.js", function() {
+            var naviAjax = $.ajax(getNaviPath(rootDirectory))
             $.ajax(raamitDirectory + "/oppija-raamit.html").done(function(template) {
-              var language = getInitLang()
-              jQuery.cookie(i18n.options.cookieName, language, { expires: 1800, path: '/' })
-              var naviAjax = $.ajax(getNaviPath(rootDirectory))
               applyRaamit(template)
-              hideActiveLanguage(language)
+              hideActiveLanguage(getInitLang())
               updateBasket()
               updateLoginSection()
               $(".header-system-name").text(getTestSystemName())
