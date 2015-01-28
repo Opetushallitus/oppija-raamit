@@ -29,7 +29,7 @@
       } else {
         i18n.setLng(language, function() {
           if (getLanguageFromHost(document.location.host)) {
-            document.location.href = getUrlForLang(document.location.href, language)
+            document.location.href = getHostForLang(document.location.href, language)
           } else {
             document.location.reload()
           }
@@ -41,17 +41,6 @@
   var preDefinedI18n = !(typeof window.i18n == "undefined")
   var rootDirectory = getScriptDirectory();
   var raamitDirectory = rootDirectory + "oppija-raamit"
-
-  function getHostForLang(host, lang) {
-      var langs = {
-        'fi': 'opintopolku',
-        'sv': 'studieinfo',
-        'en': 'studyinfo'
-      }
-      var x = host.split('.')
-      x[x.length-2] = langs[lang] || langs['fi']
-      return x.join('.')
-  }
 
   function setLangCookie(language) {
     if (getLanguageFromHost(window.location.host)) {
@@ -112,10 +101,10 @@
         if (isReppu(rootDirectory)) {
           parser.href = rootDirectory
         } else {
-          parser.href = getUrlForLang(rootDirectory, readLanguageCookie())
+          parser.href = getHostForLang(rootDirectory, readLanguageCookie())
         }
       } else {
-        parser.href = getUrlForLang("https://testi.opintopolku.fi", readLanguageCookie())
+        parser.href = getHostForLang("https://testi.opintopolku.fi", readLanguageCookie())
       }
       wpHost = parser.protocol + "//" + parser.hostname
     }
@@ -466,7 +455,7 @@
     return null
   }
 
-  function getUrlForLang(url, lang) {
+  function getHostForLang(url, lang) {
       var langs = {
           'fi': 'opintopolku',
           'sv': 'studieinfo',
@@ -474,7 +463,9 @@
       }
       var parser = document.createElement('a')
       parser.href = url
-      parser.host = getHostForLang(parser.host, lang)
+      var x = parser.host.split('.')
+      x[x.length-2] = langs[lang] || langs['fi']
+      parser.host = x.join('.')
       return parser.href
   }
 
@@ -550,7 +541,7 @@
 
   function goToLanguageRoot(lang) {
     if (getLanguageFromHost(window.location.host)) {
-      window.location.href = getWpHost(getUrlForLang(getScriptDirectory(), lang || readLanguageCookie()))
+      window.location.href = getWpHost(getHostForLang(getScriptDirectory(), lang || readLanguageCookie()))
     } else {
       var wpRoot = i18n.t("raamit:testEnvWordpressRoot")
       window.location.pathname = wpRoot
