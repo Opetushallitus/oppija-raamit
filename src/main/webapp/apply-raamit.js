@@ -492,7 +492,7 @@
   }
 
   function updateLoginSection() {
-    $.ajax(getScriptDirectory() + 'shibbolethcheck').done(function() {
+    $.ajax(getHostForLang(getScriptDirectory() + 'shibbolethcheck', readLanguageCookie())).done(function() {
       var loggedIn = jQuery.cookie("shibboleth_loggedIn") === "true"
       $(".header-logged-in").toggle(loggedIn)
       $(".header-logged-out").toggle(!loggedIn)
