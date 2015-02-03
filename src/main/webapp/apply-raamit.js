@@ -1,41 +1,57 @@
 ;((function() {
   var raamit = window.OppijaRaamit = {
     changeLanguage: function(language) {
-      if(document.location.href.indexOf("wp") > 0){
-        var wpPathMatcher = document.location.href.match(/\/wp.?\/(fi|sv|en)\/(.*)/)
-        var wpPath = '';
-        if (wpPathMatcher != null) {
-          wpPath = wpPathMatcher[2]
-        } else {
-          wpPathMatcher = document.location.href.match(/\/wp.?\/(.*)/)
-          if (wpPathMatcher != null && ['fi', 'en', 'sv'].indexOf(wpPathMatcher[1]) < 0) {
-            wpPath = wpPathMatcher[1]
+      setLangCookie(language, function() {
+        if(document.location.href.indexOf("wp") > 0){
+          var wpPathMatcher = document.location.href.match(/\/wp.?\/(fi|sv|en)\/(.*)/)
+          var wpPath = '';
+          if (wpPathMatcher != null) {
+            wpPath = wpPathMatcher[2]
+          } else {
+            wpPathMatcher = document.location.href.match(/\/wp.?\/(.*)/)
+            if (wpPathMatcher != null && ['fi', 'en', 'sv'].indexOf(wpPathMatcher[1]) < 0) {
+              wpPath = wpPathMatcher[1]
+            }
           }
-        }
-        i18n.setLng(language, function() {
-          getTranslation(wpPath)
-          .done(function(translation) {
+          i18n.setLng(language, function() {
+            getTranslation(wpPath)
+            .done(function(translation) {
               if(translation.status.toLowerCase() == "ok") {
                 window.location.href = translation.translation.url
               } else {
                 goToLanguageRoot(language)
               }
+            })
+            .fail(function() {
+              goToLanguageRoot(language)
+            })
           })
-          .fail(function() {
-            goToLanguageRoot(language)
+        } else {
+          i18n.setLng(language, function() {
+            if (getLanguageFromHost(document.location.host)) {
+              document.location.href = getHostForLang(document.location.href, language)
+            } else {
+              jQuery.cookie(i18n.options.cookieName, language, { expires: 1800, path: '/' })
+              document.location.reload()
+            }
           })
-        })
-      } else {
-        i18n.setLng(language, function() {
-          if (getLanguageFromHost(document.location.host)) {
-            document.location.href = getHostForLang(document.location.href, language)
-          } else {
-            jQuery.cookie(i18n.options.cookieName, language, { expires: 1800, path: '/' })
-            document.location.reload()
-          }
-        })
-      }
+        }
+      })
     }
+  }
+
+  function getChangeLangUrl(lang) {
+    if (getLanguageFromHost(window.location.host)) {
+      return getHostForLang(rootDirectory, lang) + 'changelanguage?lang=' + lang
+    } else {
+      return rootDirectory + 'changelanguage?lang=' + lang
+    }
+  }
+
+  function setLangCookie(lang, cb) {
+    $.ajax(getChangeLangUrl(lang)).done(cb).fail(function() {
+      goToLanguageRoot(lang)
+    })
   }
 
   var preDefinedI18n = !(typeof window.i18n == "undefined")
