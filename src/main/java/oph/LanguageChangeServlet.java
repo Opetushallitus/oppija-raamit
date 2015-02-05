@@ -26,9 +26,6 @@ public class LanguageChangeServlet extends HttpServlet {
         response.setContentType("text/plain;charset=UTF-8");
         PrintWriter out = response.getWriter();
         response.addCookie(makeLangCookie("i18next", request.getParameter("lang")));
-        if (!isProd(request.getServerName())) {
-            response.addCookie(makeLangCookie("testi18next", request.getParameter("lang")));
-        }
         try {
             out.println("ok");
         } finally {
