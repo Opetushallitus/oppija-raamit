@@ -36,6 +36,7 @@
     font-weight: bold;
     overflow: auto;
     position: relative;
+    clear: both;
 
     .header-banner {
       display: inline-block;
@@ -271,6 +272,33 @@ nav#mobile-nav {
 
 .mobile-header-content {
     display: none
+}
+
+.top-links-bar {
+    background-color: #06526b;
+    width: 100%;
+}
+
+.top-links {
+    background-color: #06526b;
+    font-family: @menu-font;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 20px;
+    width: 100%;
+    position: relative;
+    overflow: auto;
+}
+
+.top-link {
+    float: left;
+    padding: 5px;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+.top-link-active {
+    background-color: @header-background;
 }
 
 @media screen and (max-width: 768px) {

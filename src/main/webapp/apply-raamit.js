@@ -70,6 +70,14 @@
     })
   }
 
+  function updateActiveTopLink() {
+    if (window.location.host.indexOf('eperusteet') !== -1 && window.location.host.indexOf('egrunder') !== -1) {
+      $('#top-link-eperusteet').addClass('top-link-active');
+    } else {
+      $('#top-link-opintopolku').addClass('top-link-active');
+    }
+  }
+
   setTimeout(function() {
     initJQuery(function() {
       initJQueryCookie(function() {
@@ -81,6 +89,11 @@
               var naviAjax = $.ajax(getNaviPath(rootDirectory))
               applyRaamit(template)
               hideActiveLanguage(language)
+              if (['fi', 'sv'].indexOf(language) > -1) {
+                updateActiveTopLink()
+              } else {
+                hideTopLinks()
+              }
               updateBasket()
               updateLoginSection()
               $(".header-system-name").text(getTestSystemName())
@@ -175,6 +188,10 @@
     });
   }
 
+  function hideTopLinks() {
+    $('.top-links-bar').hide()
+  }
+
   function buildNavi(naviData) {
     var naviSelector = "#siteheader nav#full-nav ul"
     var mobileNaviSelector = "#siteheader nav#mobile-nav ul.mobile-menu"
@@ -267,6 +284,9 @@
             headerAriaLabel: "Navigaatio",
             loginLink: "Kirjaudu sisään",
             logoutLink: "Kirjaudu ulos",
+            opintopolkuLink: "Opintopolku",
+            eperusteetLink: "ePerusteet",
+            eperusteetUrl: "https://eperusteet.opintopolku.fi/",
             omatsivutLink: "Oma Opintopolku",
             wordpressRoot: "/wp/",
             testEnvWordpressRoot: "/wp/fi/",
@@ -327,6 +347,9 @@
             loginLink: "Logga in",
             logoutLink: "Logga ut",
             omatsivutLink: "Min Studieinfo",
+            opintopolkuLink: "Studieinfo",
+            eperusteetLink: "eGrunder",
+            eperusteetUrl: "https://egrunder.studieinfo.fi/",
             wordpressRoot: "/wp/",
             testEnvWordpressRoot: "/wp/sv/",
             homeLink: {
