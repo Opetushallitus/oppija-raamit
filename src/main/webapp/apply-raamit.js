@@ -116,7 +116,7 @@
     return url.match(/\/test-oppija/) != null
   }
 
-  function getWpHost(rootDirectory) {
+  function getWpHost(rootDirectory, lang) {
     var wpHost = document.getElementById('apply-raamit').getAttribute('data-wp-navi-path')
     if (!wpHost) {
       var parser = document.createElement('a')
@@ -124,10 +124,10 @@
         if (isReppu(rootDirectory)) {
           parser.href = rootDirectory
         } else {
-          parser.href = getHostForLang(rootDirectory, readLanguageCookie())
+          parser.href = getHostForLang(rootDirectory, lang || readLanguageCookie())
         }
       } else {
-        parser.href = getHostForLang("https://testi.opintopolku.fi", readLanguageCookie())
+        parser.href = getHostForLang("https://testi.opintopolku.fi", lang || readLanguageCookie())
       }
       wpHost = parser.protocol + "//" + parser.hostname
     }
@@ -578,7 +578,7 @@
 
   function goToLanguageRoot(lang) {
     if (getLanguageFromHost(window.location.host)) {
-      window.location.href = getWpHost(getHostForLang(getScriptDirectory(), lang || readLanguageCookie()))
+      window.location.href = getWpHost(getHostForLang(getScriptDirectory(), lang || readLanguageCookie()), lang)
     } else {
       var wpRoot = i18n.t("raamit:testEnvWordpressRoot")
       window.location.pathname = wpRoot
