@@ -137,7 +137,7 @@
   //Check due to ajax fail in IE9
   function checkForLanguageMatchingWp(wp, lang) {
       if (lang == "en" && wp == "/wp/") {
-          return '/wp2/';
+          return "/wp2/";
       } else if (lang != "en" && wp == "/wp2/") {
           return "/wp/";
       }
