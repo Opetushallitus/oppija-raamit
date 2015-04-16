@@ -138,7 +138,7 @@
   function checkForLanguageMatchingWp(wp, lang) {
       if (lang == "en" && wp == "/wp/") {
           return "/wp2/";
-      } else if (lang != "en" && wp == "/wp2/") {
+      } else if (lang != "en" && wp == "/wp2/en/") {
           return "/wp/";
       }
       return wp;
