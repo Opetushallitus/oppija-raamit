@@ -131,7 +131,14 @@
       }
       wpHost = parser.protocol + "//" + parser.hostname
     }
-    return wpHost + (!isReppu(wpHost)  ? i18n.t("raamit:wordpressRoot") : i18n.t("raamit:testEnvWordpressRoot"))
+    return wpHost + (!isReppu(wpHost)  ? checkForLanguageMatchingWp(i18n.t("raamit:wordpressRoot"), lang) : i18n.t("raamit:testEnvWordpressRoot"))
+  }
+  
+  //Check due to ajax fail in IE9
+  function checkForLanguageMatchingWp(wp, lang) {
+      if (lang == 'en' && wp == '/wp/')
+          return '/wp2/'
+      return wp
   }
 
   function getTestSystemName() {
