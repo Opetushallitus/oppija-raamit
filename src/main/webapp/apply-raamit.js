@@ -124,10 +124,10 @@
         if (isReppu(rootDirectory)) {
           parser.href = rootDirectory
         } else {
-          parser.href = getHostForLang(rootDirectory, lang || readLanguageCookie())
+          parser.href = getHostForLang(rootDirectory, lang || getLanguageFromHost(rootDirectory))
         }
       } else {
-        parser.href = getHostForLang("https://testi.opintopolku.fi", lang || readLanguageCookie())
+        parser.href = getHostForLang("https://testi.opintopolku.fi", lang || getLanguageFromHost(rootDirectory))
       }
       wpHost = parser.protocol + "//" + parser.hostname
     }
