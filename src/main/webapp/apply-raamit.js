@@ -146,8 +146,10 @@
     var location = window.location.href
     if (location.indexOf("/opintopolku.fi") > 0) {
       return ""
+    } else if (location.indexOf("/demo.opintopolku.fi") > 0) {
+        return "DEMO"
     } else if (location.indexOf("/testi.opintopolku.fi") > 0) {
-      return "QA"
+        return "QA"
     } else if (location.indexOf("/test-oppija.oph.ware.fi") > 0) {
       return "Reppu"
     } else if (location.indexOf("/itest-oppija.oph.ware.fi") > 0) {
@@ -181,8 +183,20 @@
       var css = cssFiles[i]
       $head.append($('<link rel="stylesheet" type="text/css"/>').attr("href", raamitDirectory + "/css/" + css))
     }
+    if (window.location.href.indexOf("/demo.opintopolku.fi") > 0){
+        addDemoWarning();
+    }
   }
 
+  function addDemoWarning() {
+      demoDirectory = rootDirectory + 'demo';
+      $('head').append('<link rel="stylesheet" type="text/css" href="'+demoDirectory+'/warning.css">');
+
+      $.ajax(demoDirectory+'/warning.html').done(function(data) {
+          $("body").append(data);
+      });
+  }
+  
   function hideMobileNavi() {
     $(".mobile-menu").hide();
     $(".mobile-menu-button").click(function() {
