@@ -312,6 +312,7 @@
             omatsivutLink: "Oma Opintopolku",
             wordpressRoot: "/wp/",
             testEnvWordpressRoot: "/wp/fi/",
+            demoEnvWordpressRoot: "/app/demo.html/",
             homeLink: {
               title: "Siirry etusivulle",
               image: raamitDirectory + "/img/opintopolku_large-fi.png"
@@ -374,6 +375,7 @@
             eperusteetUrl: "https://egrunder.studieinfo.fi/",
             wordpressRoot: "/wp/",
             testEnvWordpressRoot: "/wp/sv/",
+            demoEnvWordpressRoot: "/app/demo.html/",
             homeLink: {
               title: "Gå till framsida",
               image: raamitDirectory + "/img/opintopolku_large-sv.png"
@@ -432,6 +434,7 @@
             omatsivutLink: "My Studyinfo",
             wordpressRoot: "/wp2/en/",
             testEnvWordpressRoot: "/wp2/en/",
+            demoEnvWordpressRoot: "/app/demo.html/",
             homeLink: {
               title: "Go to frontpage",
               image: raamitDirectory + "/img/opintopolku_large-en.png"
@@ -476,6 +479,13 @@
         }
       }
 
+      // Override wp root url for demo environment
+      if(document.location.href.indexOf("/demo.") > 0){
+          dictionary.fi.raamit.wordpressRoot = dictionary.fi.raamit.demoEnvWordpressRoot
+          dictionary.sv.raamit.wordpressRoot = dictionary.sv.raamit.demoEnvWordpressRoot
+          dictionary.en.raamit.wordpressRoot = dictionary.en.raamit.demoEnvWordpressRoot
+      }
+      
       if(!preDefinedI18n) {
           i18n.init({
               lng: getInitLang(),
