@@ -312,7 +312,7 @@
             omatsivutLink: "Oma Opintopolku",
             wordpressRoot: "/wp/",
             testEnvWordpressRoot: "/wp/fi/",
-            demoEnvWordpressRoot: "/app/demo.html/",
+            demoEnvWordpressRoot: "/",
             homeLink: {
               title: "Siirry etusivulle",
               image: raamitDirectory + "/img/opintopolku_large-fi.png"
@@ -375,7 +375,7 @@
             eperusteetUrl: "https://egrunder.studieinfo.fi/",
             wordpressRoot: "/wp/",
             testEnvWordpressRoot: "/wp/sv/",
-            demoEnvWordpressRoot: "/app/demo.html/",
+            demoEnvWordpressRoot: "/",
             homeLink: {
               title: "Gå till framsida",
               image: raamitDirectory + "/img/opintopolku_large-sv.png"
@@ -434,7 +434,7 @@
             omatsivutLink: "My Studyinfo",
             wordpressRoot: "/wp2/en/",
             testEnvWordpressRoot: "/wp2/en/",
-            demoEnvWordpressRoot: "/app/demo.html/",
+            demoEnvWordpressRoot: "/",
             homeLink: {
               title: "Go to frontpage",
               image: raamitDirectory + "/img/opintopolku_large-en.png"
