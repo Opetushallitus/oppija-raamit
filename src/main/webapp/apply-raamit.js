@@ -51,6 +51,12 @@
     }
   }
 
+  function isDemoEnv() {
+    return (window.location.href.indexOf("/demo.opintopolku.fi") > 0
+        || window.location.href.indexOf("/demo.studieinfo.fi") > 0
+        || window.location.href.indexOf("/demo.studyinfo.fi") > 0);
+  }
+
   function setLangCookie(lang, cb) {
     $.ajax(getChangeLangUrl(lang)).done(cb).fail(function() {
       goToLanguageRoot(lang)
@@ -62,15 +68,19 @@
   var raamitDirectory = rootDirectory + "oppija-raamit"
 
   function loadFooterLinks() {
-    $.ajax(getFooterLinksPath(rootDirectory)).done(function(footerLinks) {
-      buildFooterLinks(footerLinks.nav)
-    })
-    .error(function(err) {
-      buildFooterLinks(i18n.t("raamit:footerlinks", { returnObjectTrees: true }))
-    })
-    .always(function() {
+    if (!isDemoEnv()) {
+      $.ajax(getFooterLinksPath(rootDirectory)).done(function(footerLinks) {
+        buildFooterLinks(footerLinks.nav)
+      }).error(function(err) {
+        buildFooterLinks(i18n.t("raamit:footerlinks", {
+          returnObjectTrees : true
+        }))
+      }).always(function() {
+        $("html").trigger("oppija-raamit-loaded")
+      })
+    } else {
       $("html").trigger("oppija-raamit-loaded")
-    })
+    }
   }
 
   function updateActiveTopLink() {
@@ -89,7 +99,10 @@
             $.ajax(raamitDirectory + "/oppija-raamit.html").done(function(template) {
               var language = getInitLang()
               jQuery.cookie(i18n.options.cookieName, language, { expires: 1800, path: '/' })
-              var naviAjax = $.ajax(getNaviPath(rootDirectory))
+              var naviAjax;
+              if(!isDemoEnv()) {
+                naviAjax = $.ajax(getNaviPath(rootDirectory))
+              }
               applyRaamit(template)
               hideActiveLanguage(language)
               if (['fi', 'sv'].indexOf(language) > -1) {
@@ -100,9 +113,16 @@
               updateBasket()
               updateLoginSection()
               $(".header-system-name").text(getTestSystemName())
-              naviAjax.done(function(navidata) {
-                buildNavi(navidata.nav)
-              })
+
+              if(isDemoEnv()) {
+                $('#top-link-eperusteet').hide();
+              }
+
+              if(!isDemoEnv()) {
+                naviAjax.done(function(navidata) {
+                  buildNavi(navidata.nav)
+                })
+              }
               loadFooterLinks()
             })
           })
@@ -146,7 +166,7 @@
     var location = window.location.href
     if (location.indexOf("/opintopolku.fi") > 0) {
       return ""
-    } else if (location.indexOf("/demo.opintopolku.fi") > 0) {
+    } else if (isDemoEnv()) {
         return "DEMO"
     } else if (location.indexOf("/testi.opintopolku.fi") > 0) {
         return "QA"
@@ -183,7 +203,7 @@
       var css = cssFiles[i]
       $head.append($('<link rel="stylesheet" type="text/css"/>').attr("href", raamitDirectory + "/css/" + css))
     }
-    if (window.location.href.indexOf("/demo.opintopolku.fi") > 0){
+    if (isDemoEnv()){
         addDemoWarning();
     }
   }
@@ -480,7 +500,7 @@
       }
 
       // Override wp root url for demo environment
-      if(document.location.href.indexOf("/demo.") > 0){
+      if(isDemoEnv()){
           dictionary.fi.raamit.wordpressRoot = dictionary.fi.raamit.demoEnvWordpressRoot
           dictionary.sv.raamit.wordpressRoot = dictionary.sv.raamit.demoEnvWordpressRoot
           dictionary.en.raamit.wordpressRoot = dictionary.en.raamit.demoEnvWordpressRoot
@@ -571,6 +591,11 @@
       var loggedIn = jQuery.cookie("shibboleth_loggedIn") === "true"
       $(".header-logged-in").toggle(loggedIn)
       $(".header-logged-out").toggle(!loggedIn)
+
+      if(isDemoEnv()) {
+        $('.header-login-section').hide();
+      }
+
     })
   }
 
