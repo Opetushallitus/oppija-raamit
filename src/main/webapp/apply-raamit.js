@@ -170,6 +170,8 @@
         return "DEMO"
     } else if (location.indexOf("/testi.opintopolku.fi") > 0) {
         return "QA"
+    } else if (location.indexOf("/koulutus.opintopolku.fi") > 0) {
+      return "KOULUTUS"
     } else if (location.indexOf("/test-oppija.oph.ware.fi") > 0) {
       return "Reppu"
     } else if (location.indexOf("/itest-oppija.oph.ware.fi") > 0) {
