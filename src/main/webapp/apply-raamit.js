@@ -14,8 +14,8 @@
             }
           }
           i18n.setLng(language, function() {
-            if(language == 'en'){
-              goToLanguageRoot(language);
+            if(language == 'en' || getLanguageFromHost() == 'en'){
+              goToLanguageRoot(language); // Switching between fi/sv and en WPs
             } else {
               getTranslation(wpPath)
               .done(function(translation) {
@@ -32,7 +32,7 @@
           })
         } else {
           i18n.setLng(language, function() {
-            if (getLanguageFromHost(document.location.host)) {
+            if (getLanguageFromHost()) {
               document.location.href = getHostForLang(document.location.href, language)
             } else {
               jQuery.cookie(i18n.options.cookieName, language, { expires: 1800, path: '/' })
@@ -45,7 +45,7 @@
   }
 
   function getChangeLangUrl(lang) {
-    if (getLanguageFromHost(window.location.host)) {
+    if (getLanguageFromHost()) {
       return getHostForLang(rootDirectory, lang) + 'changelanguage?lang=' + lang
     } else {
       return rootDirectory + 'changelanguage?lang=' + lang
@@ -530,6 +530,8 @@
   }
 
   function getLanguageFromHost(host) {
+    if(!host)
+        host = document.location.host;
     var x = host.split('.')
     if (x.length < 2) return null
     switch (x[x.length - 2]) {
@@ -562,7 +564,7 @@
               return match[1]
           }
       }
-      var lang = getLanguageFromHost(document.location.host)
+      var lang = getLanguageFromHost()
       if (lang != null) return lang
       return readLanguageCookie()
   }
@@ -584,7 +586,7 @@
 
   function updateLoginSection() {
     var shibbolethcheckUrl = getScriptDirectory() + 'shibbolethcheck'
-    if (getLanguageFromHost(window.location.host)) {
+    if (getLanguageFromHost()) {
         shibbolethcheckUrl = getHostForLang(shibbolethcheckUrl, readLanguageCookie())
     }
     $.ajax(shibbolethcheckUrl).done(function() {
@@ -626,7 +628,7 @@
   }
 
   function getTranslation(path) {
-    var translationUrl = getWpHost(getScriptDirectory()) + "api/translate/translate_page/"
+    var translationUrl = "/wp/api/translate/translate_page/"
     if (path != null && path.length > 0) {
       translationUrl += '?path=' + path
     }
@@ -634,7 +636,7 @@
   }
 
   function goToLanguageRoot(lang) {
-    if (getLanguageFromHost(window.location.host)) {
+    if (getLanguageFromHost()) {
       window.location.href = getWpHost(getHostForLang(getScriptDirectory(), lang || readLanguageCookie()), lang)
     } else {
       var wpRoot = i18n.t("raamit:testEnvWordpressRoot")
