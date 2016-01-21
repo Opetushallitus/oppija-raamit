@@ -100,9 +100,11 @@
             $.ajax(raamitDirectory + "/oppija-raamit.html").done(function(template) {
               var language = getInitLang()
               jQuery.cookie(i18n.options.cookieName, language, { expires: 1800, path: '/' })
-              var naviAjax;
               if(!isDemoEnv()) {
-                naviAjax = $.ajax(getNaviPath(rootDirectory))
+                $.ajax(getNaviPath(rootDirectory))
+                .done(function(navidata) {
+                  buildNavi(navidata.nav)
+                })
               }
               applyRaamit(template)
               hideActiveLanguage(language)
@@ -119,11 +121,6 @@
                 $('#top-link-eperusteet').hide();
               }
 
-              if(!isDemoEnv()) {
-                naviAjax.done(function(navidata) {
-                  buildNavi(navidata.nav)
-                })
-              }
               loadFooterLinks()
             })
           })
