@@ -16,18 +16,19 @@
           i18n.setLng(language, function() {
             if(language == 'en'){
               goToLanguageRoot(language);
-            }
-            getTranslation(wpPath)
-            .done(function(translation) {
-              if(translation.status.toLowerCase() == "ok") {
-                window.location.href = translation.translation.url
-              } else {
+            } else {
+              getTranslation(wpPath)
+              .done(function(translation) {
+                if(translation.status.toLowerCase() == "ok") {
+                  window.location.href = translation.translation.url
+                } else {
+                  goToLanguageRoot(language)
+                }
+              })
+              .fail(function() {
                 goToLanguageRoot(language)
-              }
-            })
-            .fail(function() {
-              goToLanguageRoot(language)
-            })
+              })
+            }
           })
         } else {
           i18n.setLng(language, function() {
