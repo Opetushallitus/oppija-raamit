@@ -14,8 +14,8 @@
             }
           }
           i18n.setLng(language, function() {
-            if(language == 'en'){
-              goToLanguageRoot(language);
+            if(language == 'en' || getLanguageFromHost() == 'en'){
+              goToLanguageRoot(language); // Switching between fi/sv and en WPs
             } else {
               getTranslation(wpPath)
               .done(function(translation) {
@@ -626,7 +626,7 @@
   }
 
   function getTranslation(path) {
-    var translationUrl = getWpHost(getScriptDirectory()) + "api/translate/translate_page/"
+    var translationUrl = "/wp/api/translate/translate_page/"
     if (path != null && path.length > 0) {
       translationUrl += '?path=' + path
     }
