@@ -138,9 +138,9 @@
     if (!wpHost) {
       var parser = document.createElement('a')
       if (envHasWp(rootDirectory)) {
-        parser.href = getHostForLang(rootDirectory, lang || getLanguageFromHost(rootDirectory))
+        parser.href = getHostForLang(rootDirectory, lang || getLanguageFromHost())
       } else {
-        parser.href = getHostForLang("https://testi.opintopolku.fi", lang || getLanguageFromHost(rootDirectory))
+        parser.href = getHostForLang("https://testi.opintopolku.fi", lang || getLanguageFromHost())
       }
       wpHost = parser.protocol + "//" + parser.hostname
     }
