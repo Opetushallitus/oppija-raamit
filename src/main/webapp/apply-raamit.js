@@ -53,9 +53,11 @@
   }
 
   function isDemoEnv() {
-    return (window.location.href.indexOf("/demo.opintopolku.fi") > 0
-        || window.location.href.indexOf("/demo.studieinfo.fi") > 0
-        || window.location.href.indexOf("/demo.studyinfo.fi") > 0);
+    return ["demo.opintopolku.fi", "demo.studieinfo.fi","demo.studyinfo.fi"].indexOf(window.location.hostname) !== -1;
+  }
+
+  function isProductionEnv() {
+    return ["opintopolku.fi", "studieinfo.fi","studyinfo.fi"].indexOf(window.location.hostname) !== -1;
   }
 
   function setLangCookie(lang, cb) {
@@ -161,21 +163,12 @@
   }
 
   function getTestSystemName() {
-    var location = window.location.href
-    if (location.indexOf("/opintopolku.fi") > 0) {
+    if (isProductionEnv()) {
       return ""
     } else if (isDemoEnv()) {
         return "DEMO"
-    } else if (location.indexOf("/testi.opintopolku.fi") > 0) {
-        return "QA"
-    } else if (location.indexOf("/koulutus.opintopolku.fi") > 0) {
-      return "KOULUTUS"
-    } else if (location.indexOf("/test-oppija.oph.ware.fi") > 0) {
-      return "Reppu"
-    } else if (location.indexOf("/itest-oppija.oph.ware.fi") > 0) {
-      return "Luokka"
-    } else if (location.indexOf("/localhost") > 0) {
-      return "Localhost"
+    } else {
+        return window.location.hostname
     }
   }
 
