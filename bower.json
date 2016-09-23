@@ -1,0 +1,19 @@
+{
+  "name": "oppija-raamit",
+  "description": "",
+  "authors": [],
+  "license": "EUPL, Version 1.1",
+  "homepage": "https://github.com/Opetushallitus/oppija-raamit",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "src/main/webapp/js/",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "oph_urls": "https://raw.githubusercontent.com/Opetushallitus/java-utils/master/java-properties/javascript/oph_urls.js"
+  }
+}
