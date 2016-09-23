@@ -44,11 +44,26 @@
     }
   }
 
+  function chooseUrl(predicate, args, onTrue, onFalse) {
+    if (predicate.apply(this, args)) {
+      return onTrue;
+    }
+    return onFalse;
+  }
+
+  function envHasWp(hostname) {
+    if (hostname === "localhost" ||
+        hostname === "itest-oppija.oph.ware.fi") {
+      return false;
+    }
+    return true;
+  }
+
   function getChangeLangUrl(lang) {
     if (getLanguageFromHost()) {
-      return getHostForLang(rootDirectory, lang) + 'changelanguage?lang=' + lang
+      return getHostForLang(rootDirectory, lang) + window.url("lang.change", lang)
     } else {
-      return rootDirectory + 'changelanguage?lang=' + lang
+      return window.url("oppija-raamit.lang.change", lang)
     }
   }
 
@@ -68,11 +83,10 @@
 
   var preDefinedI18n = !(typeof window.i18n == "undefined")
   var rootDirectory = getScriptDirectory();
-  var raamitDirectory = rootDirectory + "oppija-raamit"
 
-  function loadFooterLinks() {
+  function loadFooterLinks(lang) {
     if (!isDemoEnv()) {
-      $.ajax(getFooterLinksPath(rootDirectory)).done(function(footerLinks) {
+      $.ajax(getFooterLinksPath(lang)).done(function(footerLinks) {
         buildFooterLinks(footerLinks.nav)
       }).error(function(err) {
         buildFooterLinks(i18n.t("raamit:footerlinks", {
@@ -94,36 +108,38 @@
     }
   }
 
-  setTimeout(function() {
-    initJQuery(function() {
-      initJQueryCookie(function() {
-        initI18n(function() {
-          loadScript(window.navigationMenubar, rootDirectory + "js/navigation.js", function() {
-            $.ajax(raamitDirectory + "/oppija-raamit.html").done(function(template) {
-              var language = getInitLang()
-              jQuery.cookie(i18n.options.cookieName, language, { expires: 1800, path: '/' })
-              if(!isDemoEnv()) {
-                $.ajax(getNaviPath(rootDirectory))
-                .done(function(navidata) {
-                  buildNavi(navidata.nav)
-                })
-              }
-              applyRaamit(template)
-              hideActiveLanguage(language)
-              if (['fi', 'sv'].indexOf(language) > -1) {
-                updateActiveTopLink()
-              } else {
-                hideTopLinks()
-              }
-              updateBasket()
-              updateLoginSection()
-              $(".header-system-name").text(getTestSystemName())
+  setTimeout(function () {
+    initOphUrls(function () {
+      initJQuery(function () {
+        initJQueryCookie(function () {
+          initI18n(function () {
+            loadScript(window.navigationMenubar, window.url("oppija-raamit.navigation"), function () {
+              $.ajax(window.url("oppija-raamit.raamit")).done(function (template) {
+                var language = getInitLang()
+                jQuery.cookie(i18n.options.cookieName, language, {expires: 1800, path: '/'})
+                if (!isDemoEnv()) {
+                  $.ajax(getNaviPath(language))
+                      .done(function (navidata) {
+                        buildNavi(navidata.nav)
+                      })
+                }
+                applyRaamit(template)
+                hideActiveLanguage(language)
+                if (['fi', 'sv'].indexOf(language) > -1) {
+                  updateActiveTopLink()
+                } else {
+                  hideTopLinks()
+                }
+                updateBasket()
+                updateLoginSection()
+                $(".header-system-name").text(getTestSystemName())
 
-              if(isDemoEnv()) {
-                $('#top-link-eperusteet').hide();
-              }
+                if (isDemoEnv()) {
+                  $('#top-link-eperusteet').hide();
+                }
 
-              loadFooterLinks()
+                loadFooterLinks(language)
+              })
             })
           })
         })
@@ -131,15 +147,11 @@
     })
   }, 0)
 
-  function envHasWp(url) {
-    return url.match(/(\/test-oppija|((\.|\/)(opintopolku|studieinfo|studyinfo)))/) != null
-  }
-
   function getWpHost(rootDirectory, lang) {
     var wpHost = document.getElementById('apply-raamit').getAttribute('data-wp-navi-path')
     if (!wpHost) {
       var parser = document.createElement('a')
-      if (envHasWp(rootDirectory)) {
+      if (envHasWp(window.location.hostname)) {
         parser.href = getHostForLang(rootDirectory, lang || getLanguageFromHost())
       } else {
         parser.href = getHostForLang("https://testi.opintopolku.fi", lang || getLanguageFromHost())
@@ -148,7 +160,7 @@
     }
     return wpHost + checkForLanguageMatchingWp(i18n.t("raamit:wordpressRoot"), lang);
   }
-  
+
   //Check due to ajax fail in IE9
   function checkForLanguageMatchingWp(wp, lang) {
       if(!lang){
@@ -172,12 +184,26 @@
     }
   }
 
-  function getNaviPath(rootDirectory) {
-    return getWpHost(rootDirectory) + "api/nav/json_nav/"
+  function isEnglish(lang) {
+    return lang === "en";
   }
 
-  function getFooterLinksPath(rootDirectory) {
-    return getWpHost(rootDirectory) + "api/menus/footer_links/"
+  function getNaviPath(lang) {
+    return getWpApiPath("nav", lang);
+  }
+
+  function getFooterLinksPath(lang) {
+    return getWpApiPath("footerLinks", lang);
+  }
+
+  function getWpApiPath(entity, lang) {
+    return chooseUrl(isEnglish, [lang],
+        chooseUrl(envHasWp, [window.location.hostname],
+            window.url("wordpress.api.en." + entity),
+            window.url("wordpress.test.api.en." + entity)),
+        chooseUrl(envHasWp, [window.location.hostname],
+            window.url("wordpress.api." + entity),
+            window.url("wordpress.test.api." + entity)));
   }
 
   function applyRaamit(template) {
@@ -194,7 +220,8 @@
     var cssFiles = ["oppija-raamit.css", "fontello.css"];
     for (var i in cssFiles) {
       var css = cssFiles[i]
-      $head.append($('<link rel="stylesheet" type="text/css"/>').attr("href", raamitDirectory + "/css/" + css))
+      $head.append($('<link rel="stylesheet" type="text/css"/>')
+          .attr("href", window.url("oppija-raamit.raamit.css") + "/" + css))
     }
     if (isDemoEnv()){
         addDemoWarning();
@@ -202,14 +229,14 @@
   }
 
   function addDemoWarning() {
-      demoDirectory = rootDirectory + 'demo';
-      $('head').append('<link rel="stylesheet" type="text/css" href="'+demoDirectory+'/warning.css">');
+      var warningCssUrl = window.url("oppija-raamit.demo.warning.css")
+      $('head').append('<link rel="stylesheet" type="text/css" href="' + warningCssUrl + '">');
 
-      $.ajax(demoDirectory+'/warning.html').done(function(data) {
+      $.ajax(window.url("oppija-raamit.demo.warning")).done(function(data) {
           $("body").append(data);
       });
   }
-  
+
   function hideMobileNavi() {
     $(".mobile-menu").hide();
     $(".mobile-menu-button").click(function() {
@@ -304,15 +331,21 @@
 
 
   function initJQuery(callback) {
-    loadScript(window.jQuery, rootDirectory + "js/lib/jquery-1.9.1.min.js", callback)
+    loadScript(window.jQuery, window.url("oppija-raamit.js.jquery"), callback)
   }
 
   function initJQueryCookie(callback) {
-    loadScript(window.jQuery.cookie, rootDirectory + "js/lib/jquery.cookie.js", callback)
+    loadScript(window.jQuery.cookie, window.url("oppija-raamit.js.jquery.cookie"), callback)
+  }
+
+  function initOphUrls(callback) {
+    loadScript(window.url, "/oppija-raamit/js/oph_urls/index.js", function() {
+      loadScript(undefined, "/oppija-raamit/frontProperties", callback)
+    })
   }
 
   function initI18n(callback) {
-    loadScript(window.i18n, rootDirectory + "js/lib/i18next-1.7.3.js", function() {
+    loadScript(window.i18n, window.url("oppija-raamit.js.i18next"), function() {
       var dictionary = {
         fi: {
           raamit: {
@@ -323,24 +356,24 @@
             eperusteetLink: "ePerusteet",
             eperusteetUrl: "https://eperusteet.opintopolku.fi/",
             omatsivutLink: "Oma Opintopolku",
-            wordpressRoot: "/wp/",
-            testEnvWordpressRoot: "/wp/fi/",
-            demoEnvWordpressRoot: "/",
+            wordpressRoot: window.url("wordpress.base"),
+            testEnvWordpressRoot: window.url("wordpress.test.base.fi"),
+            demoEnvWordpressRoot: window.url("oppija-raamit.demo.wordpress.base"),
             homeLink: {
               title: "Siirry etusivulle",
-              image: raamitDirectory + "/img/opintopolku_large-fi.png"
+              image: window.url("oppija-raamit.raamit.img.opintopolku.large.fi")
             },
             shortlist:{
               title: "Muistilista"
             },
             opetushallitus: {
               title: "Opetushallitus",
-              image: raamitDirectory + "/img/OPH_logo-fi.png",
+              image: window.url("oppija-raamit.raamit.img.ophLogo.fi"),
               link: "http://www.oph.fi/etusivu"
             },
             opetusministerio: {
               title: "Opetusministeriö",
-              image: raamitDirectory + "/img/OKM_logo-fi.png",
+              image: window.url("oppija-raamit.raamit.img.okmLogo.fi"),
               link: "http://www.minedu.fi/OPM/"
             },
             footerAriaLabel: "Tietoa palvelusta",
@@ -355,23 +388,23 @@
             footerlinks: {
               mystudyinfo: {
                 title: "Oma Opintopolku-palvelu",
-                url: "/wp/fi/oma-opintopolku-palvelu/"
+                url: window.url("wordpress.mystudyinfo.fi")
               },
               description: {
                 title: "Mikä on Opintopolku?",
-                url: "/wp/fi/opintopolku/tietoa-palvelusta/"
+                url: window.url("wordpress.description.fi")
               },
               feedback: {
                 title: "Anna palautetta – kysy neuvoa",
-                url: "/wp/fi/opintopolku/anna-palautetta-kysy-neuvoa/"
+                url: window.url("wordpress.feedback.fi")
               },
               registerDescription: {
                 title: "Rekisteriseloste",
-                url: "/wp/fi/rekisteriseloste/"
+                url: window.url("wordpress.registerDescription.fi")
               },
               index: {
                 title: "Oppilaitoshakemisto",
-                url: "/fi/hakemisto/oppilaitokset/A"
+                url: window.url("oppija-raamit.index.fi")
               }
             }
 
@@ -386,24 +419,24 @@
             opintopolkuLink: "Studieinfo",
             eperusteetLink: "eGrunder",
             eperusteetUrl: "https://egrunder.studieinfo.fi/",
-            wordpressRoot: "/wp/",
-            testEnvWordpressRoot: "/wp/sv/",
-            demoEnvWordpressRoot: "/",
+            wordpressRoot: window.url("wordpress.base"),
+            testEnvWordpressRoot: window.url("wordpress.test.base.sv"),
+            demoEnvWordpressRoot: window.url("oppija-raamit.demo.wordpress.base"),
             homeLink: {
               title: "Gå till framsida",
-              image: raamitDirectory + "/img/opintopolku_large-sv.png"
+              image: window.url("oppija-raamit.raamit.img.opintopolku.large.sv")
             },
             shortlist:{
               title: "Minneslista"
             },
             opetushallitus: {
               title: "Utbildningsstyrelsen",
-              image: raamitDirectory + "/img/OPH_logo-sv.png",
+              image: window.url("oppija-raamit.raamit.img.ophLogo.sv"),
               link: "http://www.oph.fi/startsidan"
             },
             opetusministerio: {
               title: "Undervisnings- och kulturministeriet",
-              image: raamitDirectory + "/img/OKM_logo-sv.png",
+              image: window.url("oppija-raamit.raamit.img.okmLogo.sv"),
               link: "http://www.minedu.fi/OPM/?lang=sv"
             },
             footerAriaLabel: "Serviceinformation",
@@ -418,23 +451,23 @@
             footerlinks: {
               mystudyinfo: {
                 title: "Min Studieinfo-tjänsten",
-                url: "/wp/sv/min-studieinfo-tjansten/"
+                url: window.url("wordpress.mystudyinfo.sv")
               },
               description: {
                 title: "Vad är Studieinfo?",
-                url: "/wp/sv/studieinfo-2/vad-ar-studieinfo/"
+                url: window.url("wordpress.description.sv")
               },
               feedback: {
                 title: "Ge feedback – fråga råd",
-                url: "/wp/sv/studieinfo-2/tes5/"
+                url: window.url("wordpress.feedback.sv")
               },
               registerDescription: {
                 title: "Registerbeskrivning",
-                url: "/wp/sv/registerbeskrivning/"
+                url: window.url("wordpress.registerDescription.sv")
               },
               index: {
                 title: "Läroanstaltsregister",
-                url: "/sv/hakemisto/oppilaitokset/A"
+                url: window.url("oppija-raamit.index.sv")
               }
             }
           }
@@ -445,24 +478,24 @@
             loginLink: "Log in",
             logoutLink: "Log out",
             omatsivutLink: "My Studyinfo",
-            wordpressRoot: "/wp2/en/",
-            testEnvWordpressRoot: "/wp2/en/",
-            demoEnvWordpressRoot: "/",
+            wordpressRoot: window.url("wordpress.en"),
+            testEnvWordpressRoot: window.url("wordpress.en"),
+            demoEnvWordpressRoot: window.url("oppija-raamit.demo.wordpress.base"),
             homeLink: {
               title: "Go to frontpage",
-              image: raamitDirectory + "/img/opintopolku_large-en.png"
+              image: window.url("oppija-raamit.raamit.img.opintopolku.large.en")
             },
             shortlist:{
               title: "My shortlist"
             },
             opetushallitus: {
               title: "Finnish National Board of Education",
-              image: raamitDirectory + "/img/OPH_logo-en.png",
+              image: window.url("oppija-raamit.raamit.img.ophLogo.en"),
               link: "http://www.oph.fi/english"
             },
             opetusministerio: {
               title: "Ministry of Education and Culture",
-              image: raamitDirectory + "/img/OKM_logo-en.png",
+              image: window.url("oppija-raamit.raamit.img.okmLogo.en"),
               link: "http://www.minedu.fi/OPM/?lang=en"
             },
             footerAriaLabel: "Service information",
@@ -477,15 +510,15 @@
             footerlinks: {
               mystudyinfo: {
                 title: "My Studyinfo -service",
-                url: "/wp2/en/my-studyinfo-service/"
+                url: window.url("wordpress.mystudyinfo.en")
               },
               registerDescription: {
                 title: "Register description",
-                url: "/wp2/en/register"
+                url: window.url("wordpress.registerDescription.en")
               },
               index: {
                 title: "Educational institution index",
-                url: "/en/hakemisto/oppilaitokset/"
+                url: window.url("oppija-raamit.index.en")
               }
             }
           }
@@ -498,7 +531,7 @@
           dictionary.sv.raamit.wordpressRoot = dictionary.sv.raamit.demoEnvWordpressRoot
           dictionary.en.raamit.wordpressRoot = dictionary.en.raamit.demoEnvWordpressRoot
       }
-      
+
       if(!preDefinedI18n) {
           i18n.init({
               lng: getInitLang(),
@@ -578,7 +611,7 @@
   }
 
   function updateLoginSection() {
-    var shibbolethcheckUrl = getScriptDirectory() + 'shibbolethcheck'
+    var shibbolethcheckUrl = window.url("oppija-raamit.shibboleth.check")
     if (getLanguageFromHost()) {
         shibbolethcheckUrl = getHostForLang(shibbolethcheckUrl, readLanguageCookie())
     }
@@ -621,9 +654,13 @@
   }
 
   function getTranslation(path) {
-    var translationUrl = "/wp/api/translate/translate_page/"
+    var translationUrl;
+
     if (path != null && path.length > 0) {
-      translationUrl += '?path=' + path
+      translationUrl = window.url("wordpress.api.translate.path", path)
+    }
+    else {
+      translationUrl = window.url("wordpress.api.translate")
     }
     return $.ajax(translationUrl)
   }
