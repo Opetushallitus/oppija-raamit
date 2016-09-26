@@ -209,7 +209,7 @@
     for (var i in cssFiles) {
       var css = cssFiles[i]
       $head.append($('<link rel="stylesheet" type="text/css"/>')
-          .attr("href", window.url("oppija-raamit.raamit.css.base") + css))
+          .attr("href", window.url("oppija-raamit.raamit.css") + "/" + css))
     }
     if (isDemoEnv()){
         addDemoWarning();
@@ -460,8 +460,8 @@
             loginLink: "Log in",
             logoutLink: "Log out",
             omatsivutLink: "My Studyinfo",
-            wordpressRoot: window.url("wordpress.base.en"),
-            testEnvWordpressRoot: window.url("wordpress.base.en"),
+            wordpressRoot: window.url("wordpress.en"),
+            testEnvWordpressRoot: window.url("wordpress.en"),
             demoEnvWordpressRoot: window.url("oppija-raamit.demo.wordpress.base"),
             homeLink: {
               title: "Go to frontpage",
