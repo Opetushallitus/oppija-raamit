@@ -61,7 +61,7 @@
 
   function getChangeLangUrl(lang) {
     if (getLanguageFromHost()) {
-      return getHostForLang(rootDirectory, lang) + window.url("oppija-raamit.lang.change", lang)
+      return getHostForLang(rootDirectory, lang) + window.url("lang.change", lang)
     } else {
       return window.url("oppija-raamit.lang.change", lang)
     }
@@ -108,36 +108,38 @@
     }
   }
 
-  setTimeout(function() {
-    initJQuery(function() {
-      initJQueryCookie(function() {
-        initI18n(function() {
-          loadScript(window.navigationMenubar, window.url("oppija-raamit.navigation"), function() {
-            $.ajax(window.url("oppija-raamit.raamit")).done(function(template) {
-              var language = getInitLang()
-              jQuery.cookie(i18n.options.cookieName, language, { expires: 1800, path: '/' })
-              if(!isDemoEnv()) {
-                $.ajax(getNaviPath())
-                .done(function(navidata) {
-                  buildNavi(navidata.nav)
-                })
-              }
-              applyRaamit(template)
-              hideActiveLanguage(language)
-              if (['fi', 'sv'].indexOf(language) > -1) {
-                updateActiveTopLink()
-              } else {
-                hideTopLinks()
-              }
-              updateBasket()
-              updateLoginSection()
-              $(".header-system-name").text(getTestSystemName())
+  setTimeout(function () {
+    initOphUrls(function () {
+      initJQuery(function () {
+        initJQueryCookie(function () {
+          initI18n(function () {
+            loadScript(window.navigationMenubar, window.url("oppija-raamit.navigation"), function () {
+              $.ajax(window.url("oppija-raamit.raamit")).done(function (template) {
+                var language = getInitLang()
+                jQuery.cookie(i18n.options.cookieName, language, {expires: 1800, path: '/'})
+                if (!isDemoEnv()) {
+                  $.ajax(getNaviPath())
+                      .done(function (navidata) {
+                        buildNavi(navidata.nav)
+                      })
+                }
+                applyRaamit(template)
+                hideActiveLanguage(language)
+                if (['fi', 'sv'].indexOf(language) > -1) {
+                  updateActiveTopLink()
+                } else {
+                  hideTopLinks()
+                }
+                updateBasket()
+                updateLoginSection()
+                $(".header-system-name").text(getTestSystemName())
 
-              if(isDemoEnv()) {
-                $('#top-link-eperusteet').hide();
-              }
+                if (isDemoEnv()) {
+                  $('#top-link-eperusteet').hide();
+                }
 
-              loadFooterLinks()
+                loadFooterLinks()
+              })
             })
           })
         })
@@ -158,7 +160,7 @@
     }
     return wpHost + checkForLanguageMatchingWp(i18n.t("raamit:wordpressRoot"), lang);
   }
-  
+
   //Check due to ajax fail in IE9
   function checkForLanguageMatchingWp(wp, lang) {
       if(!lang){
@@ -209,7 +211,7 @@
     for (var i in cssFiles) {
       var css = cssFiles[i]
       $head.append($('<link rel="stylesheet" type="text/css"/>')
-          .attr("href", window.url("oppija-raamit.raamit.css.base") + css))
+          .attr("href", window.url("oppija-raamit.raamit.css") + "/" + css))
     }
     if (isDemoEnv()){
         addDemoWarning();
@@ -224,7 +226,7 @@
           $("body").append(data);
       });
   }
-  
+
   function hideMobileNavi() {
     $(".mobile-menu").hide();
     $(".mobile-menu-button").click(function() {
@@ -324,6 +326,12 @@
 
   function initJQueryCookie(callback) {
     loadScript(window.jQuery.cookie, window.url("oppija-raamit.js.jquery.cookie"), callback)
+  }
+
+  function initOphUrls(callback) {
+    loadScript(window.url, "/oppija-raamit/js/oph_urls/index.js", function() {
+      loadScript(undefined, "/oppija-raamit/frontProperties", callback)
+    })
   }
 
   function initI18n(callback) {
@@ -460,8 +468,8 @@
             loginLink: "Log in",
             logoutLink: "Log out",
             omatsivutLink: "My Studyinfo",
-            wordpressRoot: window.url("wordpress.base.en"),
-            testEnvWordpressRoot: window.url("wordpress.base.en"),
+            wordpressRoot: window.url("wordpress.en"),
+            testEnvWordpressRoot: window.url("wordpress.en"),
             demoEnvWordpressRoot: window.url("oppija-raamit.demo.wordpress.base"),
             homeLink: {
               title: "Go to frontpage",
@@ -513,7 +521,7 @@
           dictionary.sv.raamit.wordpressRoot = dictionary.sv.raamit.demoEnvWordpressRoot
           dictionary.en.raamit.wordpressRoot = dictionary.en.raamit.demoEnvWordpressRoot
       }
-      
+
       if(!preDefinedI18n) {
           i18n.init({
               lng: getInitLang(),
@@ -593,7 +601,7 @@
   }
 
   function updateLoginSection() {
-    var shibbolethcheckUrl = getScriptDirectory() + 'shibbolethcheck'
+    var shibbolethcheckUrl = window.url("oppija-raamit.shibboleth.check")
     if (getLanguageFromHost()) {
         shibbolethcheckUrl = getHostForLang(shibbolethcheckUrl, readLanguageCookie())
     }
