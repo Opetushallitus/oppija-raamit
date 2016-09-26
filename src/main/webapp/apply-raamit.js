@@ -44,11 +44,11 @@
     }
   }
 
-  function chooseUrl(predicate, args, returnOnTrue, returnOnFalse) {
+  function chooseUrl(predicate, args, onTrue, onFalse) {
     if (predicate.apply(this, args)) {
-      returnOnTrue;
+      return onTrue;
     }
-    returnOnFalse;
+    return onFalse;
   }
 
   function envHasWp(hostname) {
@@ -186,7 +186,7 @@
     return chooseUrl(envHasWp, [window.location.hostname],
         window.url("wordpress.api.nav"),
         window.url("wordpress.test.api.nav"));
-  }
+    }
 
   function getFooterLinksPath() {
     return chooseUrl(envHasWp, [window.location.hostname],
@@ -319,15 +319,15 @@
 
 
   function initJQuery(callback) {
-    loadScript(window.jQuery, rootDirectory + window.url("oppija-raamit.js.jquery"), callback)
+    loadScript(window.jQuery, window.url("oppija-raamit.js.jquery"), callback)
   }
 
   function initJQueryCookie(callback) {
-    loadScript(window.jQuery.cookie, rootDirectory + window.url("oppija-raamit.js.jquery.cookie"), callback)
+    loadScript(window.jQuery.cookie, window.url("oppija-raamit.js.jquery.cookie"), callback)
   }
 
   function initI18n(callback) {
-    loadScript(window.i18n, rootDirectory + window.url("oppija-raamit.js.i18next"), function() {
+    loadScript(window.i18n, window.url("oppija-raamit.js.i18next"), function() {
       var dictionary = {
         fi: {
           raamit: {
