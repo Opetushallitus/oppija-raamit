@@ -108,36 +108,38 @@
     }
   }
 
-  setTimeout(function() {
-    initJQuery(function() {
-      initJQueryCookie(function() {
-        initI18n(function() {
-          loadScript(window.navigationMenubar, window.url("oppija-raamit.navigation"), function() {
-            $.ajax(window.url("oppija-raamit.raamit")).done(function(template) {
-              var language = getInitLang()
-              jQuery.cookie(i18n.options.cookieName, language, { expires: 1800, path: '/' })
-              if(!isDemoEnv()) {
-                $.ajax(getNaviPath())
-                .done(function(navidata) {
-                  buildNavi(navidata.nav)
-                })
-              }
-              applyRaamit(template)
-              hideActiveLanguage(language)
-              if (['fi', 'sv'].indexOf(language) > -1) {
-                updateActiveTopLink()
-              } else {
-                hideTopLinks()
-              }
-              updateBasket()
-              updateLoginSection()
-              $(".header-system-name").text(getTestSystemName())
+  setTimeout(function () {
+    initOphUrls(function () {
+      initJQuery(function () {
+        initJQueryCookie(function () {
+          initI18n(function () {
+            loadScript(window.navigationMenubar, window.url("oppija-raamit.navigation"), function () {
+              $.ajax(window.url("oppija-raamit.raamit")).done(function (template) {
+                var language = getInitLang()
+                jQuery.cookie(i18n.options.cookieName, language, {expires: 1800, path: '/'})
+                if (!isDemoEnv()) {
+                  $.ajax(getNaviPath())
+                      .done(function (navidata) {
+                        buildNavi(navidata.nav)
+                      })
+                }
+                applyRaamit(template)
+                hideActiveLanguage(language)
+                if (['fi', 'sv'].indexOf(language) > -1) {
+                  updateActiveTopLink()
+                } else {
+                  hideTopLinks()
+                }
+                updateBasket()
+                updateLoginSection()
+                $(".header-system-name").text(getTestSystemName())
 
-              if(isDemoEnv()) {
-                $('#top-link-eperusteet').hide();
-              }
+                if (isDemoEnv()) {
+                  $('#top-link-eperusteet').hide();
+                }
 
-              loadFooterLinks()
+                loadFooterLinks()
+              })
             })
           })
         })
@@ -324,6 +326,12 @@
 
   function initJQueryCookie(callback) {
     loadScript(window.jQuery.cookie, window.url("oppija-raamit.js.jquery.cookie"), callback)
+  }
+
+  function initOphUrls(callback) {
+    loadScript(window.url, "/oppija-raamit/js/oph_urls/index.js", function() {
+      loadScript(undefined, "/oppija-raamit/frontProperties", callback)
+    })
   }
 
   function initI18n(callback) {
