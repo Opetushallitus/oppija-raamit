@@ -61,7 +61,7 @@
 
   function getChangeLangUrl(lang) {
     if (getLanguageFromHost()) {
-      return getHostForLang(rootDirectory, lang) + window.url("oppija-raamit.lang.change", lang)
+      return getHostForLang(rootDirectory, lang) + window.url("lang.change", lang)
     } else {
       return window.url("oppija-raamit.lang.change", lang)
     }
@@ -160,7 +160,7 @@
     }
     return wpHost + checkForLanguageMatchingWp(i18n.t("raamit:wordpressRoot"), lang);
   }
-  
+
   //Check due to ajax fail in IE9
   function checkForLanguageMatchingWp(wp, lang) {
       if(!lang){
@@ -226,7 +226,7 @@
           $("body").append(data);
       });
   }
-  
+
   function hideMobileNavi() {
     $(".mobile-menu").hide();
     $(".mobile-menu-button").click(function() {
@@ -521,7 +521,7 @@
           dictionary.sv.raamit.wordpressRoot = dictionary.sv.raamit.demoEnvWordpressRoot
           dictionary.en.raamit.wordpressRoot = dictionary.en.raamit.demoEnvWordpressRoot
       }
-      
+
       if(!preDefinedI18n) {
           i18n.init({
               lng: getInitLang(),
