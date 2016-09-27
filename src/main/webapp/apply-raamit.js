@@ -601,7 +601,7 @@
   }
 
   function updateLoginSection() {
-    var shibbolethcheckUrl = getScriptDirectory() + 'shibbolethcheck'
+    var shibbolethcheckUrl = window.url("oppija-raamit.shibboleth.check")
     if (getLanguageFromHost()) {
         shibbolethcheckUrl = getHostForLang(shibbolethcheckUrl, readLanguageCookie())
     }
