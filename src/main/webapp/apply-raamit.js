@@ -189,14 +189,14 @@
   }
 
   function getNaviPath(lang) {
-    return getApiPath("nav", lang);
+    return getWpApiPath("nav", lang);
   }
 
   function getFooterLinksPath(lang) {
-    return getApiPath("footerLinks", lang);
+    return getWpApiPath("footerLinks", lang);
   }
 
-  function getApiPath(entity, lang) {
+  function getWpApiPath(entity, lang) {
     return chooseUrl(isEnglish, [lang],
         chooseUrl(envHasWp, [window.location.hostname],
             window.url("wordpress.api.en." + entity),
