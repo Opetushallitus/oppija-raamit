@@ -84,9 +84,9 @@
   var preDefinedI18n = !(typeof window.i18n == "undefined")
   var rootDirectory = getScriptDirectory();
 
-  function loadFooterLinks() {
+  function loadFooterLinks(lang) {
     if (!isDemoEnv()) {
-      $.ajax(getFooterLinksPath()).done(function(footerLinks) {
+      $.ajax(getFooterLinksPath(lang)).done(function(footerLinks) {
         buildFooterLinks(footerLinks.nav)
       }).error(function(err) {
         buildFooterLinks(i18n.t("raamit:footerlinks", {
@@ -118,7 +118,7 @@
                 var language = getInitLang()
                 jQuery.cookie(i18n.options.cookieName, language, {expires: 1800, path: '/'})
                 if (!isDemoEnv()) {
-                  $.ajax(getNaviPath())
+                  $.ajax(getNaviPath(language))
                       .done(function (navidata) {
                         buildNavi(navidata.nav)
                       })
@@ -138,7 +138,7 @@
                   $('#top-link-eperusteet').hide();
                 }
 
-                loadFooterLinks()
+                loadFooterLinks(language)
               })
             })
           })
@@ -184,16 +184,26 @@
     }
   }
 
-  function getNaviPath() {
-    return chooseUrl(envHasWp, [window.location.hostname],
-        window.url("wordpress.api.nav"),
-        window.url("wordpress.test.api.nav"));
-    }
+  function isEnglish(lang) {
+    return lang === "en";
+  }
 
-  function getFooterLinksPath() {
-    return chooseUrl(envHasWp, [window.location.hostname],
-        window.url("wordpress.api.footerLinks"),
-        window.url("wordpress.test.api.footerLinks"));
+  function getNaviPath(lang) {
+    return getApiPath("nav", lang);
+  }
+
+  function getFooterLinksPath(lang) {
+    return getApiPath("footerLinks", lang);
+  }
+
+  function getApiPath(entity, lang) {
+    return chooseUrl(isEnglish, [lang],
+        chooseUrl(envHasWp, [window.location.hostname],
+            window.url("wordpress.api.en." + entity),
+            window.url("wordpress.test.api.en." + entity)),
+        chooseUrl(envHasWp, [window.location.hostname],
+            window.url("wordpress.api." + entity),
+            window.url("wordpress.test.api." + entity)));
   }
 
   function applyRaamit(template) {
