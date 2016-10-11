@@ -61,9 +61,9 @@
 
     function getChangeLangUrl(lang) {
         if (getLanguageFromHost()) {
-            return getHostForLang(rootDirectory, lang) + window.url("lang.change", lang)
+            return getHostForLang(rootDirectory, lang) + window.url("oppija-raamit.lang.change.suffix", lang)
         } else {
-            return window.url("oppija-raamit.lang.change", lang)
+            return window.url("oppija-raamit.lang.change.full", lang)
         }
     }
 
@@ -113,8 +113,8 @@
             initJQuery(function () {
                 initJQueryCookie(function () {
                     initI18n(function () {
-                        loadScript(window.navigationMenubar, window.url("oppija-raamit.navigation"), function () {
-                            $.ajax(window.url("oppija-raamit.raamit")).done(function (template) {
+                        loadScript(window.navigationMenubar, window.url("oppija-raamit-web.navigation"), function () {
+                            $.ajax(window.url("oppija-raamit-web.raamit")).done(function (template) {
                                 var language = getInitLang()
                                 jQuery.cookie(i18n.options.cookieName, language, {expires: 1800, path: '/'});
                                 if (!isDemoEnv()) {
@@ -221,7 +221,7 @@
         for (var i in cssFiles) {
             var css = cssFiles[i];
             $head.append($('<link rel="stylesheet" type="text/css"/>')
-                .attr("href", window.url("oppija-raamit.raamit.css") + "/" + css))
+                .attr("href", window.url("oppija-raamit-web.raamit.css") + "/" + css))
         }
         if (isDemoEnv()) {
             addDemoWarning();
@@ -229,10 +229,10 @@
     }
 
     function addDemoWarning() {
-        var warningCssUrl = window.url("oppija-raamit.demo.warning.css");
+        var warningCssUrl = window.url("oppija-raamit-web.demo.warning.css");
         $('head').append('<link rel="stylesheet" type="text/css" href="' + warningCssUrl + '">');
 
-        $.ajax(window.url("oppija-raamit.demo.warning")).done(function (data) {
+        $.ajax(window.url("oppija-raamit-web.demo.warning")).done(function (data) {
             $("body").append(data);
         });
     }
@@ -331,21 +331,21 @@
 
 
     function initJQuery(callback) {
-        loadScript(window.jQuery, window.url("oppija-raamit.js.jquery"), callback)
+        loadScript(window.jQuery, window.url("oppija-raamit-web.js.jquery"), callback)
     }
 
     function initJQueryCookie(callback) {
-        loadScript(window.jQuery.cookie, window.url("oppija-raamit.js.jquery.cookie"), callback)
+        loadScript(window.jQuery.cookie, window.url("oppija-raamit-web.js.jquery.cookie"), callback)
     }
 
     function initOphUrls(callback) {
         loadScript(window.url, "/oppija-raamit/js/oph_urls/index.js", function () {
-            loadScript(undefined, "/oppija-raamit/frontProperties", callback)
+            loadScript(undefined, "/oppija-raamit/js/oppija-raamit-web-oph_properties.js", callback)
         })
     }
 
     function initI18n(callback) {
-        loadScript(window.i18n, window.url("oppija-raamit.js.i18next"), function () {
+        loadScript(window.i18n, window.url("oppija-raamit-web.js.i18next"), function () {
             var dictionary = {
                 fi: {
                     raamit: {
@@ -358,22 +358,22 @@
                         omatsivutLink: "Oma Opintopolku",
                         wordpressRoot: window.url("wordpress.base"),
                         testEnvWordpressRoot: window.url("wordpress.test.base.fi"),
-                        demoEnvWordpressRoot: window.url("oppija-raamit.demo.wordpress.base"),
+                        demoEnvWordpressRoot: window.url("oppija-raamit-web.demo.wordpress.base"),
                         homeLink: {
                             title: "Siirry etusivulle",
-                            image: window.url("oppija-raamit.raamit.img.opintopolku.large.fi")
+                            image: window.url("oppija-raamit-web.raamit.img.opintopolku.large.fi")
                         },
                         shortlist: {
                             title: "Muistilista"
                         },
                         opetushallitus: {
                             title: "Opetushallitus",
-                            image: window.url("oppija-raamit.raamit.img.ophLogo.fi"),
+                            image: window.url("oppija-raamit-web.raamit.img.ophLogo.fi"),
                             link: "http://www.oph.fi/etusivu"
                         },
                         opetusministerio: {
                             title: "Opetusministeriö",
-                            image: window.url("oppija-raamit.raamit.img.okmLogo.fi"),
+                            image: window.url("oppija-raamit-web.raamit.img.okmLogo.fi"),
                             link: "http://www.minedu.fi/OPM/"
                         },
                         footerAriaLabel: "Tietoa palvelusta",
@@ -404,7 +404,7 @@
                             },
                             index: {
                                 title: "Oppilaitoshakemisto",
-                                url: window.url("oppija-raamit.index.fi")
+                                url: window.url("oppija-raamit-web.index.fi")
                             }
                         }
 
@@ -421,22 +421,22 @@
                         eperusteetUrl: "https://egrunder.studieinfo.fi/",
                         wordpressRoot: window.url("wordpress.base"),
                         testEnvWordpressRoot: window.url("wordpress.test.base.sv"),
-                        demoEnvWordpressRoot: window.url("oppija-raamit.demo.wordpress.base"),
+                        demoEnvWordpressRoot: window.url("oppija-raamit-web.demo.wordpress.base"),
                         homeLink: {
                             title: "Gå till framsida",
-                            image: window.url("oppija-raamit.raamit.img.opintopolku.large.sv")
+                            image: window.url("oppija-raamit-web.raamit.img.opintopolku.large.sv")
                         },
                         shortlist: {
                             title: "Minneslista"
                         },
                         opetushallitus: {
                             title: "Utbildningsstyrelsen",
-                            image: window.url("oppija-raamit.raamit.img.ophLogo.sv"),
+                            image: window.url("oppija-raamit-web.raamit.img.ophLogo.sv"),
                             link: "http://www.oph.fi/startsidan"
                         },
                         opetusministerio: {
                             title: "Undervisnings- och kulturministeriet",
-                            image: window.url("oppija-raamit.raamit.img.okmLogo.sv"),
+                            image: window.url("oppija-raamit-web.raamit.img.okmLogo.sv"),
                             link: "http://www.minedu.fi/OPM/?lang=sv"
                         },
                         footerAriaLabel: "Serviceinformation",
@@ -467,7 +467,7 @@
                             },
                             index: {
                                 title: "Läroanstaltsregister",
-                                url: window.url("oppija-raamit.index.sv")
+                                url: window.url("oppija-raamit-web.index.sv")
                             }
                         }
                     }
@@ -480,22 +480,22 @@
                         omatsivutLink: "My Studyinfo",
                         wordpressRoot: window.url("wordpress.en"),
                         testEnvWordpressRoot: window.url("wordpress.en"),
-                        demoEnvWordpressRoot: window.url("oppija-raamit.demo.wordpress.base"),
+                        demoEnvWordpressRoot: window.url("oppija-raamit-web.demo.wordpress.base"),
                         homeLink: {
                             title: "Go to frontpage",
-                            image: window.url("oppija-raamit.raamit.img.opintopolku.large.en")
+                            image: window.url("oppija-raamit-web.raamit.img.opintopolku.large.en")
                         },
                         shortlist: {
                             title: "My shortlist"
                         },
                         opetushallitus: {
                             title: "Finnish National Board of Education",
-                            image: window.url("oppija-raamit.raamit.img.ophLogo.en"),
+                            image: window.url("oppija-raamit-web.raamit.img.ophLogo.en"),
                             link: "http://www.oph.fi/english"
                         },
                         opetusministerio: {
                             title: "Ministry of Education and Culture",
-                            image: window.url("oppija-raamit.raamit.img.okmLogo.en"),
+                            image: window.url("oppija-raamit-web.raamit.img.okmLogo.en"),
                             link: "http://www.minedu.fi/OPM/?lang=en"
                         },
                         footerAriaLabel: "Service information",
@@ -518,7 +518,7 @@
                             },
                             index: {
                                 title: "Educational institution index",
-                                url: window.url("oppija-raamit.index.en")
+                                url: window.url("oppija-raamit-web.index.en")
                             }
                         }
                     }
