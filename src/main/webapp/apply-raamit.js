@@ -615,9 +615,6 @@
 
     function updateLoginSection() {
         var shibbolethcheckUrl = window.url("oppija-raamit.shibboleth.check");
-        if (getLanguageFromHost()) {
-            shibbolethcheckUrl = getHostForLang(shibbolethcheckUrl, readLanguageCookie())
-        }
         $.ajax(shibbolethcheckUrl).done(function () {
             var loggedIn = jQuery.cookie("shibboleth_loggedIn") === "true";
             $(".header-logged-in").toggle(loggedIn);
