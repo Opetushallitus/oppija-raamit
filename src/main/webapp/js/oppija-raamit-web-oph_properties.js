@@ -1,4 +1,4 @@
-var properties = {
+window.urls.addProperties({
     "oppija-raamit-web.demo.warning": "/oppija-raamit/demo/warning.html",
     "oppija-raamit-web.demo.warning.css": "/oppija-raamit/demo/warning.css",
     "oppija-raamit-web.demo.wordpress.base": "/",
@@ -47,5 +47,4 @@ var properties = {
     "wordpress.registerDescription.en": "/wp2/en/register",
     "wordpress.test.base.fi": "/wp/fi",
     "wordpress.test.base.sv": "/wp/sv"
-};
-for (var attrname in properties) { window.urls.properties[attrname] = properties[attrname]; }
+})

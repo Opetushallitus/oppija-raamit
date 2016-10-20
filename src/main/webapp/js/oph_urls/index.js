@@ -93,27 +93,27 @@
                     throw new Error("first parameter 'key' not defined!");
                 }
                 var url = resolveConfig(key)
+                // reverse iteration because $10 needs to be handled first
                 for (var i = args.length; i > 0; i--) {
                     var arg = args[i - 1];
                     if (typeof arg === "object") {
                         Object.keys(arg).forEach(function (k) {
-                            var value = enc(arg[k])
-                            tmpUrl = url.replace("$" + k, value)
-                            if (tmpUrl == url) {
-                                if(includeToQuerystring(arg[k])) {
-                                    if (queryString.length > 0) {
-                                        queryString = queryString + "&"
-                                    } else {
-                                        queryString = "?"
-                                    }
-                                    queryString = queryString + enc(k) + "=" + value
+                            var originalValue = arg[k];
+                            if(!isArray(originalValue)) {
+                                tmpUrl = url.replace("$" + k, enc(originalValue))
+                            }
+                            if (tmpUrl == url && includeToQuerystring(originalValue)) {
+                                var values = isArray(originalValue) ? originalValue : [originalValue];
+                                for(var j = 0; j < values.length; j++) {
+                                    var separator = (queryString.length > 0) ? "&" : "?";
+                                    var encodedKeyValue = enc(k) + "=" + enc(values[j]);
+                                    queryString = queryString + separator + encodedKeyValue
                                 }
                             }
                             url = tmpUrl
                         })
                     } else {
-                        var value = enc(arg)
-                        url = url.replace("$" + i, value)
+                        url = url.replace("$" + i, enc(arg))
                     }
                 }
                 var baseUrl = resolveConfig(parseService(key) + ".baseUrl", function () {
@@ -137,6 +137,26 @@
     exportDest.urls.debugLog = function() {
         exportDest.urls.debug = true;
         return this;
+    }
+    exportDest.urls.addProperties = function (props) {
+        mergePropertiesWithWarning(props, exportDest.urls.properties)
+    }
+    exportDest.urls.addDefaults = function (props) {
+        mergePropertiesWithWarning(props, exportDest.urls.defaults)
+    }
+    exportDest.urls.addOverride = function (props) {
+        mergePropertiesWithWarning(props, exportDest.urls.override)
+    }
+    function mergePropertiesWithWarning(props, destProps) {
+        var existsAlready = Object.keys(props).filter(function (k) {
+            return k in destProps
+        })
+        if(existsAlready.length == 0) {
+            merge(destProps, props)
+        } else {
+            console.log("Url properties already contains following keys:", existsAlready, "existing properties:", destProps, "new properties:", props)
+            alert("Url properties conflict. Check console log")
+        }
     }
 
     function debug() {
@@ -244,6 +264,14 @@
             }
         })
         return url
+    }
+
+    function isArray(arr) {
+        if(Array.isArray) {
+            return Array.isArray(arr);
+        } else {
+            return arr && arr.constructor === Array;
+        }
     }
 })(typeof window === 'undefined' ? module.exports : window);
 
