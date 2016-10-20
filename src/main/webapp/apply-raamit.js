@@ -199,11 +199,11 @@
     function getWpApiPath(entity, lang) {
         return chooseUrl(isEnglish, [lang],
             chooseUrl(envHasWp, [window.location.hostname],
-                window.url("wordpress.api.en." + entity),
-                window.url("wordpress.test.api.en." + entity)),
+                window.url("wp.api.en." + entity),
+                window.url("wp.test.api.en." + entity)),
             chooseUrl(envHasWp, [window.location.hostname],
-                window.url("wordpress.api." + entity),
-                window.url("wordpress.test.api." + entity)));
+                window.url("wp.api." + entity),
+                window.url("wp.test.api." + entity)));
     }
 
     function applyRaamit(template) {
@@ -356,8 +356,8 @@
                         eperusteetLink: "ePerusteet",
                         eperusteetUrl: "https://eperusteet.opintopolku.fi/",
                         omatsivutLink: "Oma Opintopolku",
-                        wordpressRoot: window.url("wordpress.base"),
-                        testEnvWordpressRoot: window.url("wordpress.test.base.fi"),
+                        wordpressRoot: window.url("wp.base"),
+                        testEnvWordpressRoot: window.url("wp.test.base.fi"),
                         demoEnvWordpressRoot: window.url("oppija-raamit-web.demo.wordpress.base"),
                         homeLink: {
                             title: "Siirry etusivulle",
@@ -388,19 +388,19 @@
                         footerlinks: {
                             mystudyinfo: {
                                 title: "Oma Opintopolku-palvelu",
-                                url: window.url("wordpress.mystudyinfo.fi")
+                                url: window.url("wp.mystudyinfo.fi")
                             },
                             description: {
                                 title: "Mikä on Opintopolku?",
-                                url: window.url("wordpress.description.fi")
+                                url: window.url("wp.description.fi")
                             },
                             feedback: {
                                 title: "Anna palautetta – kysy neuvoa",
-                                url: window.url("wordpress.feedback.fi")
+                                url: window.url("wp.feedback.fi")
                             },
                             registerDescription: {
                                 title: "Rekisteriseloste",
-                                url: window.url("wordpress.registerDescription.fi")
+                                url: window.url("wp.registerDescription.fi")
                             },
                             index: {
                                 title: "Oppilaitoshakemisto",
@@ -419,8 +419,8 @@
                         opintopolkuLink: "Studieinfo",
                         eperusteetLink: "eGrunder",
                         eperusteetUrl: "https://egrunder.studieinfo.fi/",
-                        wordpressRoot: window.url("wordpress.base"),
-                        testEnvWordpressRoot: window.url("wordpress.test.base.sv"),
+                        wordpressRoot: window.url("wp.base"),
+                        testEnvWordpressRoot: window.url("wp.test.base.sv"),
                         demoEnvWordpressRoot: window.url("oppija-raamit-web.demo.wordpress.base"),
                         homeLink: {
                             title: "Gå till framsida",
@@ -451,19 +451,19 @@
                         footerlinks: {
                             mystudyinfo: {
                                 title: "Min Studieinfo-tjänsten",
-                                url: window.url("wordpress.mystudyinfo.sv")
+                                url: window.url("wp.mystudyinfo.sv")
                             },
                             description: {
                                 title: "Vad är Studieinfo?",
-                                url: window.url("wordpress.description.sv")
+                                url: window.url("wp.description.sv")
                             },
                             feedback: {
                                 title: "Ge feedback – fråga råd",
-                                url: window.url("wordpress.feedback.sv")
+                                url: window.url("wp.feedback.sv")
                             },
                             registerDescription: {
                                 title: "Registerbeskrivning",
-                                url: window.url("wordpress.registerDescription.sv")
+                                url: window.url("wp.registerDescription.sv")
                             },
                             index: {
                                 title: "Läroanstaltsregister",
@@ -478,8 +478,8 @@
                         loginLink: "Log in",
                         logoutLink: "Log out",
                         omatsivutLink: "My Studyinfo",
-                        wordpressRoot: window.url("wordpress.en"),
-                        testEnvWordpressRoot: window.url("wordpress.en"),
+                        wordpressRoot: window.url("wp.en"),
+                        testEnvWordpressRoot: window.url("wp.en"),
                         demoEnvWordpressRoot: window.url("oppija-raamit-web.demo.wordpress.base"),
                         homeLink: {
                             title: "Go to frontpage",
@@ -510,11 +510,11 @@
                         footerlinks: {
                             mystudyinfo: {
                                 title: "My Studyinfo -service",
-                                url: window.url("wordpress.mystudyinfo.en")
+                                url: window.url("wp.mystudyinfo.en")
                             },
                             registerDescription: {
                                 title: "Register description",
-                                url: window.url("wordpress.registerDescription.en")
+                                url: window.url("wp.registerDescription.en")
                             },
                             index: {
                                 title: "Educational institution index",
@@ -657,10 +657,10 @@
         var translationUrl;
 
         if (path != null && path.length > 0) {
-            translationUrl = window.url("wordpress.api.translate.path", path)
+            translationUrl = window.url("wp.api.translate.path", path)
         }
         else {
-            translationUrl = window.url("wordpress.api.translate")
+            translationUrl = window.url("wp.api.translate")
         }
         return $.ajax(translationUrl)
     }
