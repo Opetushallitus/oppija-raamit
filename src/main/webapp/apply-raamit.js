@@ -339,7 +339,7 @@
     }
 
     function initOphUrls(callback) {
-        loadScript(window.url, "/oppija-raamit/js/oph_urls/index.js", function () {
+        loadScript(window.url, "/oppija-raamit/js/oph_urls.js/index.js", function () {
             loadScript(undefined, "/oppija-raamit/js/oppija-raamit-web-oph_properties.js", callback)
         })
     }
