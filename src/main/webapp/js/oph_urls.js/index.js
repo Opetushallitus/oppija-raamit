@@ -1,58 +1,99 @@
 "use strict";
 
 /**
- * window.urls.debugLog().loadFromUrls("suoritusrekisteri-web-frontend-url_properties.json", "rest/v1/properties").success(function(){appInit();})
+ * window.urls.load("sure-url_properties.json.json", {overrides: "rest/v1/properties", properties: .., defaults: ...}).then(appInit, appError)
+ * window.urls.addProperties({"service.info": "/service/info/$1/$2"})
  *
- * window.url("service.info", param1, param2, {key3: value})
+ * window.urls.debug = true
+ * window.urls.debugLog()
  *
- * window.urls(baseUrl).url(key, param)
- * window.urls(baseUrl).noEncode().url(key, param)
- * window.urls({baseUrl: baseUrl}).omitEmptyValuesFromQuerystring().url(key, param)
+ * window.url("service.info", param1, param2, {key3: value}) // extra named values are added to querystring
+ *
+ * window.urls("myscope").url(key, param)
+ * window.urls("myscope").noEncode().url(key, param)
+ * window.urls("myscope").omitEmptyValuesFromQuerystring().url(key, param)
  * window.urls().omitEmptyValuesFromQuerystring().url(key, param)
  *
- * Config lookup order: urls_config, window.urls.override, window.urls.properties, window.urls.defaults
+ * Default scope: window.url, window.urls.* and window.urls() use a scope named "default"
+ *
+ * Config lookup order: window.urls("myscope").override, window.urls("myscope").properties, window.urls("myscope").defaults
  * Lookup key order:
  * * for main url window.url's first parameter: "service.info" from all configs
  * * baseUrl: "service.baseUrl" from all configs and "baseUrl" from all configs
  *
- * window.url_properties = {
- *   "service.status": "/rest/status",
- *   "service.payment": "/rest/payment/$1",
- *   "service.order": "/rest/payment/$orderId"
- *   }
- *
- * window.urls.debug = true
- *
  */
 
-(function(exportDest) {
-    var version="1.0"
+(function() {
+    var version="2.1"
 
-    if(exportDest.urls) {
-        if(exportDest.urls.version !== version)   {
-            console.log("'Mismatching oph_urls.js. First loaded (and in use):", exportDest.urls.version, " second loaded (not in use): ", version)
+    var exportDests = []
+
+    function addExportDest(exportDest, urlsFN) {
+        if(exportDest.urls) {
+            if(exportDest.urls.version !== version)   {
+                logError("'Mismatching oph_urls.js. First loaded (and in use):", exportDest.urls.version, " second loaded (not in use): ", version, ". Export destination is ", exportDest)
+            }
+            return
         }
-        return
+        exportDests.push(exportDest)
+        exportDest.urls = urlsFN
     }
 
-    exportDest.urls = function() {
-        var urls_config = {}
-        var omitEmptyValuesFromQuerystring = false
-        var encode = true
-
-        for (var i = 0; i < arguments.length;  i++) {
-            var arg = arguments[i]
-            if(typeof arg === "string" || arg == null) {
-                urls_config.baseUrl = arg
-            } else {
-                Object.keys(arg).forEach(function(key){
-                    urls_config[key] = arg[key]
+    var urlsFN = function(scopeName) {
+        if(!scopeName) {
+            scopeName="default"
+        }
+        if(!urlsFN.scopes[scopeName]) {
+            var scope = createScope(scopeName);
+            urlsFN.scopes[scopeName] = scope
+            if(scopeName == "default") {
+                // link default scope's functions directly under urlsFN and export url() function to all scopes
+                exportDests.forEach(function (exportDest) {
+                    exportDest.url = scope.url
                 })
+                urlsFN.url = scope.url
+                urlsFN.omitEmptyValuesFromQuerystring = scope.omitEmptyValuesFromQuerystring
+                urlsFN.noEncode = scope.noEncode
+                urlsFN.addOverrides = scope.addOverrides
+                urlsFN.addProperties = scope.addProperties
+                urlsFN.addDefaults = scope.addDefaults
+                urlsFN.load = scope.load
             }
+        }
+        return urlsFN.scopes[scopeName]
+    }
+    urlsFN.scopes = {}
+    urlsFN.version = version
+    urlsFN.debug = false
+    urlsFN.debugLog = function() {
+        urlsFN.debug = true;
+        return urlsFN;
+    }
+
+    // bind to window.urls and module.export.urls
+    if(typeof window !== 'undefined') {
+        addExportDest(window, urlsFN)
+    }
+    if(typeof module !== 'undefined' && module.exports) {
+        addExportDest(module.exports, urlsFN)
+    }
+
+    // initialize default scope and its functions
+    urlsFN()
+
+    // scope has isolated properties and configs
+    function createScope(name) {
+        var scopeConfig = {
+            overrides: {},
+            properties: {},
+            defaults: {},
+            omitEmptyValuesFromQuerystring: false,
+            encode: true,
+            name: name
         }
 
         var resolveConfig = function(key, defaultValue) {
-            var configs = [urls_config, exportDest.urls.override, exportDest.urls.properties, exportDest.urls.defaults]
+            var configs = [scopeConfig.overrides, scopeConfig.properties, scopeConfig.defaults]
             for (var i = 0; i < configs.length; i++) {
                 var c = configs[i]
                 if(c.hasOwnProperty(key)) {
@@ -68,114 +109,187 @@
             return defaultValue
         }
 
-        var enc = function(arg) {
+        var encodeParameter = function(arg) {
             arg = [undefined, null].indexOf(arg) > -1 ? "" : arg
-            if(encode) {
+            if(scopeConfig.encode) {
                 arg = encodeURIComponent(arg)
             }
             return arg
         }
 
         var includeToQuerystring = function(v) {
-            if(omitEmptyValuesFromQuerystring) {
+            if(scopeConfig.omitEmptyValuesFromQuerystring) {
                 return [undefined, null, ""].indexOf(v) === -1
             } else {
-                return [undefined].indexOf(v) === -1
+                return [undefined, null].indexOf(v) === -1
             }
         }
 
-        var ret = {
-            omitEmptyValuesFromQuerystring: function () {
-                omitEmptyValuesFromQuerystring = true
-                return ret
-            },
-            noEncode: function() {
-                encode = false
-                return ret
-            },
-            url: function () {
-                var key = Array.prototype.shift.apply(arguments)
-                var args = Array.prototype.slice.call(arguments)
-                var queryString = "";
-                var tmpUrl;
-                if (!key) {
-                    throw new Error("first parameter 'key' not defined!");
-                }
-                var url = resolveConfig(key)
-                // reverse iteration because $10 needs to be handled first
-                for (var i = args.length; i > 0; i--) {
-                    var arg = args[i - 1];
-                    if (typeof arg === "object") {
-                        Object.keys(arg).forEach(function (k) {
-                            var originalValue = arg[k];
-                            if(!isArray(originalValue)) {
-                                tmpUrl = url.replace("$" + k, enc(originalValue))
-                            }
-                            if (tmpUrl == url && includeToQuerystring(originalValue)) {
-                                var values = isArray(originalValue) ? originalValue : [originalValue];
-                                for(var j = 0; j < values.length; j++) {
-                                    var separator = (queryString.length > 0) ? "&" : "?";
-                                    var encodedKeyValue = enc(k) + "=" + enc(values[j]);
-                                    queryString = queryString + separator + encodedKeyValue
-                                }
-                            }
-                            url = tmpUrl
-                        })
-                    } else {
-                        url = url.replace("$" + i, enc(arg))
-                    }
-                }
-                var baseUrl = resolveConfig(parseService(key) + ".baseUrl", function () {
-                    return resolveConfig("baseUrl", null)
-                })
-                if (baseUrl) {
-                    url = joinUrl(baseUrl, url)
-                }
-                url = url + queryString
-                debug("url:", key, "->", url)
-                return url
+        var ret = {}
+        ret.url = function () {
+            var key = Array.prototype.shift.apply(arguments)
+            var args = Array.prototype.slice.call(arguments)
+            var queryString = "";
+            if (!key) {
+                throw new Error("first parameter 'key' not defined!");
             }
+            var url = resolveConfig(key)
+            // reverse iteration because $10 needs to be handled first
+            for (var i = args.length; i > 0; i--) {
+                var arg = args[i - 1];
+                if (typeof arg === "object") {
+                    Object.keys(arg).forEach(function (k) {
+                        var originalValue = arg[k];
+                        var tmpUrl = url;
+                        if(!isArray(originalValue)) {
+                            tmpUrl = url.replace("$" + k, encodeParameter(originalValue))
+                        }
+                        if (tmpUrl == url && includeToQuerystring(originalValue)) {
+                            var values = isArray(originalValue) ? originalValue : [originalValue];
+                            for(var j = 0; j < values.length; j++) {
+                                var separator = (queryString.length > 0) ? "&" : "?";
+                                var encodedKeyValue = encodeParameter(k) + "=" + encodeParameter(values[j]);
+                                queryString = queryString + separator + encodedKeyValue
+                            }
+                        }
+                        url = tmpUrl
+                    })
+                } else {
+                    url = url.replace("$" + i, encodeParameter(arg))
+                }
+            }
+            var baseUrl = resolveConfig(parseService(key) + ".baseUrl", function () {
+                return resolveConfig("baseUrl", null)
+            })
+            if (baseUrl) {
+                url = joinUrl(baseUrl, url)
+            }
+            url = url + queryString
+            debug("url:", key, "->", url, "scope:", scopeConfig.name)
+            return url
         }
+
+        // scope's exposed variables and functions
+        ret.scopeConfig = scopeConfig
+
+        ret.omitEmptyValuesFromQuerystring = function () {
+            var newScope = copyScope();
+            newScope.scopeConfig.omitEmptyValuesFromQuerystring = true
+            return newScope
+        }
+        ret.noEncode = function() {
+            var newScope = copyScope();
+            newScope.scopeConfig.encode = false
+            return newScope
+        }
+        ret.addOverrides = function (props) {
+            merge(props, scopeConfig.overrides)
+            return ret
+        }
+        ret.addProperties = function (props) {
+            mergePropertiesWithWarning(props, scopeConfig.properties)
+            return ret
+        }
+        ret.addDefaults = function (props) {
+            mergePropertiesWithWarning(props, scopeConfig.defaults)
+            return ret
+        }
+        ret.load = function () {
+            // parse arguments from strings and maps: "url", {overrides: ["", ""], properties: "", defaults}
+            var overridesUrls = [], propertiesUrls=[], defaultsUrls=[]
+            for (var i = 0; i < arguments.length;  i++) {
+                var arg = arguments[i]
+                if(typeof arg === "string") {
+                    propertiesUrls.push(arg)
+                } else {
+                    overridesUrls.push(arg.overrides || [])
+                    propertiesUrls.push(arg.properties || [])
+                    defaultsUrls.push(arg.defaults || [])
+                }
+            }
+            var p = promise()
+            overridesUrls = flatten(overridesUrls)
+            propertiesUrls = flatten(propertiesUrls)
+            defaultsUrls = flatten(defaultsUrls)
+
+            var maxCount = overridesUrls.length + propertiesUrls.length + defaultsUrls.length;
+            debug("loading " + maxCount + " json files. scope:", scopeConfig.name)
+            // wait until all GETs complete and process jsons or reject
+            var counterP = counterPromise(maxCount, function(){
+                overridesUrls.forEach(function(urlJson){
+                    merge(urlJson.json, scopeConfig.overrides)
+                })
+                propertiesUrls.forEach(function(urlJson){
+                    mergePropertiesWithWarning(urlJson.json, scopeConfig.properties)
+                })
+                defaultsUrls.forEach(function(urlJson){
+                    mergePropertiesWithWarning(urlJson.json, scopeConfig.defaults)
+                })
+                debug("loaded " + maxCount + " files successfully. scope:", scopeConfig.name)
+                p.fulfill()
+            }, function(err) {
+                logError("failed to load json files. scope:", scopeConfig.name, err)
+                p.reject(err)
+            })
+            overridesUrls = loadUrls(overridesUrls, counterP)
+            propertiesUrls = loadUrls(propertiesUrls, counterP)
+            defaultsUrls = loadUrls(defaultsUrls, counterP)
+
+            return p
+        }
+        function copyScope() {
+            var newScope = createScope("copy of " + scopeConfig.name)
+            var conf = newScope.scopeConfig
+            merge(scopeConfig.overrides, conf.overrides)
+            merge(scopeConfig.properties, conf.properties)
+            merge(scopeConfig.defaults, conf.defaults)
+            conf.omitEmptyValuesFromQuerystring = scopeConfig.omitEmptyValuesFromQuerystring
+            conf.encode = scopeConfig.encode
+            return newScope;
+        }
+
+        debug("created scope:", scopeConfig.name)
         return ret
     }
 
-    exportDest.urls.version = version
-    exportDest.urls.properties = {}
-    exportDest.urls.defaults = {}
-    exportDest.urls.override = {}
-    exportDest.urls.debug = false
-    exportDest.urls.debugLog = function() {
-        exportDest.urls.debug = true;
-        return this;
-    }
-    exportDest.urls.addProperties = function (props) {
-        mergePropertiesWithWarning(props, exportDest.urls.properties)
-    }
-    exportDest.urls.addDefaults = function (props) {
-        mergePropertiesWithWarning(props, exportDest.urls.defaults)
-    }
-    exportDest.urls.addOverride = function (props) {
-        mergePropertiesWithWarning(props, exportDest.urls.override)
-    }
     function mergePropertiesWithWarning(props, destProps) {
         var existsAlready = Object.keys(props).filter(function (k) {
-            return k in destProps
+            return k in destProps && destProps[k] !== props[k]
         })
         if(existsAlready.length == 0) {
-            merge(destProps, props)
+            merge(props, destProps)
         } else {
-            console.log("Url properties already contains following keys:", existsAlready, "existing properties:", destProps, "new properties:", props)
+            logError("Properties already contains following keys:", existsAlready, "existing properties:", destProps, "new properties:", props)
             alert("Url properties conflict. Check console log")
         }
     }
 
-    function debug() {
-        var args = Array.prototype.slice.call(arguments)
+    function log(logType, args) {
+        var args = Array.prototype.slice.call(args)
         args.unshift("OphProperties")
-        if(exportDest.urls.debug && exportDest.console && exportDest.console.log) {
-            exportDest.console.log.apply(exportDest.console, args)
+        if(console) {
+            var logFn = console[logType] || console.log
+            if(logFn) {
+                logFn.apply(console, args)
+            }
         }
     }
+
+    function debug() {
+        if(urlsFN.debug) {
+            log("log", arguments)
+        }
+    }
+
+    function logError() {
+        log("error", arguments)
+    }
+
+    function parseService (key) {
+        return key.substring(0, key.indexOf("."))
+    }
+
+    // ajax loading
 
     function ajaxJson(method, url, onload, onerror) {
         var oReq = new XMLHttpRequest();
@@ -196,60 +310,98 @@
         oReq.send(null);
     }
 
-    // minimalist angular Promise implementation, returns object with .success(cb)
-    var successCBs = []
-    var fulfilled = false, fulfillFailed = false
-    var fulfillCount = 0, fulfillCountDest = 0
-    function checkfulfill() {
-        fulfillCount += 1
-        if(fulfillCount == fulfillCountDest) {
-            fulfilled = true
-            if(!fulfillFailed) {
-                successCBs.forEach(function(cb){cb()})
-            }
-        }
-    }
-    exportDest.urls.success = function(cb) {
-        if(fulfilled) {
-            if(!fulfillFailed) {
-                cb()
-            }
-        } else {
-            successCBs.push(cb)
-        }
-    }
+    // minimalist A+/angular Promise implementation, returns Promise object with .then(fulfill, reject) and .success(cb) support
+    function promise() {
+        var thens = []
+        var failReason = undefined
+        var completed = false
+        var failed = false
 
-    exportDest.urls.loadFromUrls = function() {
-        var args = Array.prototype.slice.call(arguments)
-        var jsonProperties = []
-        successCBs.push(function(){
-            jsonProperties.forEach(function(json){merge(exportDest.urls.properties, json)})
-        })
-        fulfillCountDest += args.length
-        args.forEach(function(url, index){
-            ajaxJson("GET", url, function(data) {
-                jsonProperties.splice(index, 0, data)
-                checkfulfill()
-            }, function() {
-                fulfillFailed = true
-                checkfulfill()
-            })
-        })
+        function complete() {
+            if(!completed) {
+                completed = true
+                thens.forEach(function (then) {
+                    if(failed) {
+                        if(then.onReject) {
+                            then.onReject(failReason)
+                        }
+                    } else {
+                        if(then.onFulfill) {
+                            then.onFulfill()
+                        }
+                    }
+                })
+            }
+        }
+
         return {
-            success: exportDest.urls.success
-        };
+            fulfill: function() {
+                complete()
+            },
+            reject: function(fail) {
+                failReason = fail
+                failed = true
+                complete()
+            },
+            then: function(onFulfill, onReject) {
+                if(completed) {
+                    if(failed) {
+                        onReject(failReason)
+                    } else {
+                        onFulfill()
+                    }
+                } else {
+                    thens.push({onFulfill: onFulfill, onReject: onReject})
+                }
+            }
+        }
     }
 
-    function merge(dest, from) {
+    // minimalist counter promise, call fulfill and reject only after fulfill or reject is called maxCount times
+    function counterPromise(maxCount, onFulfill, onReject) {
+        var count=0;
+        var fails = [];
+
+        function complete() {
+            if(count < maxCount) {
+                count = count + 1
+            }
+            if(maxCount === count) {
+                if(fails.length > 0) {
+                    onReject(fails)
+                } else {
+                    onFulfill()
+                }
+            }
+        }
+        return {
+            fulfill: function() {
+                complete()
+            },
+            reject: function(fail) {
+                fails.push(fail)
+                complete()
+            }
+        }
+    }
+
+    function loadUrls(urls, promise) {
+        return urls.map(function (url) {
+            var ret = {url: url};
+            ajaxJson("GET", url, function (data) {
+                ret.json = data
+                promise.fulfill()
+            }, promise.reject)
+            return ret
+        });
+    }
+
+    // helper functions
+
+    function merge(from, dest) {
         Object.keys(from).forEach(function(key){
             dest[key]=from[key];
         })
-    }
-
-    exportDest.url = exportDest.urls().url
-
-    function parseService (key) {
-        return key.substring(0, key.indexOf("."))
     }
 
     function joinUrl() {
@@ -262,11 +414,11 @@
             if(!url) {
                 url = arg
             } else {
-                var endsWith = url.endsWith("/");
-                var startsWith = arg.startsWith("/");
-                if(endsWith && startsWith) {
+                var endsWithBool = endsWith(url, "/");
+                var startsWithBool = startsWith(url, "/");
+                if(endsWithBool && startsWithBool) {
                     url = url + arg.substring(1)
-                } else if(endsWith || startsWith) {
+                } else if(endsWithBool || startsWithBool) {
                     url = url + arg
                 } else {
                     url = url + "/" + arg
@@ -283,25 +435,34 @@
             return arr && arr.constructor === Array;
         }
     }
-})(typeof window === 'undefined' ? module.exports : window);
 
-// polyfills for IE
+    function flatten(item, dest) {
+        if (dest === undefined) {
+            dest = []
+        }
+        if (Array.isArray(item)) {
+            item.forEach(function (i) {
+                flatten(i, dest)
+            })
+        } else {
+            dest.push(item)
+        }
+        return dest
+    }
 
-if (!String.prototype.startsWith) {
-    String.prototype.startsWith = function(searchString, position){
+    function startsWith(txt, searchString, position){
         position = position || 0;
-        return this.substr(position, searchString.length) === searchString;
-    };
-}
+        return txt.substr(position, searchString.length) === searchString;
+    }
 
-if (!String.prototype.endsWith) {
-    String.prototype.endsWith = function(searchString, position) {
-        var subjectString = this.toString();
+    function endsWith(txt, searchString, position) {
+        var subjectString = txt.toString();
         if (typeof position !== 'number' || !isFinite(position) || Math.floor(position) !== position || position > subjectString.length) {
             position = subjectString.length;
         }
         position -= searchString.length;
         var lastIndex = subjectString.indexOf(searchString, position);
         return lastIndex !== -1 && lastIndex === position;
-    };
-}
+    }
+
+})();
