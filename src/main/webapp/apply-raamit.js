@@ -41,6 +41,11 @@
                     })
                 }
             })
+        },
+        setAcceptCookie: function () {
+            jQuery.cookie("oph-cookies-accepted", "true", {path: '/'});
+            $('div.cookieHeader').attr('style', 'display:none;');
+            return false;
         }
     }
 
@@ -138,7 +143,8 @@
                                     $('#top-link-eperusteet').hide();
                                 }
 
-                                loadFooterLinks(language)
+                                loadFooterLinks(language);
+                                checkAcceptCookie();
                             })
                         })
                     })
@@ -406,6 +412,10 @@
                                 title: "Oppilaitoshakemisto",
                                 url: window.url("oppija-raamit-web.index.fi")
                             }
+                        },
+                        coookie: {
+                            info: "Jotta sivuston käyttö olisi sinulle sujuvaa, käytämme evästeitä.",
+                            close: "Sulje"
                         }
 
                     }
@@ -469,6 +479,10 @@
                                 title: "Läroanstaltsregister",
                                 url: window.url("oppija-raamit-web.index.sv")
                             }
+                        },
+                        coookie: {
+                            info: "Vi använder oss av cookies för att underlätta användningen av webbplatsen.",
+                            close: "Stäng"
                         }
                     }
                 },
@@ -520,6 +534,10 @@
                                 title: "Educational institution index",
                                 url: window.url("oppija-raamit-web.index.en")
                             }
+                        },
+                        coookie: {
+                            info: "We use cookies on this site to enhance your user experience.",
+                            close: "Close"
                         }
                     }
                 }
@@ -601,6 +619,17 @@
     function readLanguageCookie() {
         var lang = jQuery.cookie(i18n.options.cookieName);
         return lang != null ? lang : "fi"
+    }
+
+    function checkAcceptCookie() {
+        if(!readAcceptCookie()){
+            $('div.cookieHeader').attr('style','display:block;');
+        }
+    }
+
+    function readAcceptCookie() {
+        var accept = jQuery.cookie("oph-cookies-accepted");
+        return accept != null ? true : false
     }
 
     function updateBasket() {
