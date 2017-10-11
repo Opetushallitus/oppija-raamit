@@ -362,3 +362,33 @@ nav#mobile-nav {
     padding: 5px;
   }
 }
+.cookieHeader {
+  margin: 0 auto;
+  text-align: center;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  font-family: 'Open Sans', sans-serif;
+  background-color: #f6f4f0;
+  color: #333;
+  font-size: 14px;
+  display: none;
+}
+.cookieHeader .btn-cookies {
+  margin-left: 5px;
+  margin-bottom: 4px;
+  height: 32px;
+  color: #FFFFFF;
+  background-color: #159ecb;
+  padding: 2px 12px 2px;
+  cursor: pointer;
+  border: 1px solid transparent;
+  border-radius: 4px;
+}
+.cookieHeader .btn-cookies:hover {
+  background: #00b5ef;
+  color: #ffffff;
+}
+.cookieHeader .cookieText {
+  height: 20px;
+  margin-bottom: 3px;
+}
