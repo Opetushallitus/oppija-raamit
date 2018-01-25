@@ -223,6 +223,8 @@
         $body.prepend($header);
         $body.append($footer);
 
+        $body.append('<script src="//rum-static.pingdom.net/pa-5a6a40cd0b34680007000109.js" async></script>');
+
         var cssFiles = ["oppija-raamit.css", "fontello.css"];
         for (var i in cssFiles) {
             var css = cssFiles[i];
