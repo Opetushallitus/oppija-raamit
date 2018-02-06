@@ -578,13 +578,13 @@
             host = document.location.host;
         var x = host.split('.');
         if (x.length < 2) return null;
-        switch (x[x.length - 2]) {
-            case 'opintopolku':
-                return 'fi';
-            case 'studieinfo':
-                return 'sv';
-            case 'studyinfo':
-                return 'en'
+        var domain = x[x.length - 2];
+        if (domain.indexOf('opintopolku') > -1) {
+            return 'fi';
+        } else if (domain.indexOf('studieinfo') > -1) {
+            return 'sv';
+        } else if (domain.indexOf('studyinfo') > -1) {
+            return 'en'
         }
         return null
     }
@@ -595,11 +595,16 @@
             'sv': 'studieinfo',
             'en': 'studyinfo'
         };
+        var modifiedHost = document.location.host;
+
+        var targetDomain = langs[lang] || langs['fi'];
+        modifiedHost = modifiedHost.replace('opintopolku', targetDomain);
+        modifiedHost = modifiedHost.replace('studieinfo', targetDomain);
+        modifiedHost = modifiedHost.replace('studyinfo', targetDomain);
+
         var parser = document.createElement('a');
         parser.href = url;
-        var x = parser.host.split('.');
-        x[x.length - 2] = langs[lang] || langs['fi'];
-        parser.host = x.join('.');
+        parser.host = modifiedHost;
         return parser.href
     }
 
