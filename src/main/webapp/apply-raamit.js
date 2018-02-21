@@ -269,6 +269,7 @@
         var $mobileActiveItem = null;
         var level1MenuIndex = 0;
         var mobNaviElems = [];
+        naviData.sort(function (a, b) {return a.id - b.id});
         naviData.forEach(function (naviItem) {
             level1MenuIndex = level1MenuIndex + 1;
             var subMenuId = "level-1-menu-id-" + level1MenuIndex;
