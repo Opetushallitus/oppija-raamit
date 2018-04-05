@@ -1,0 +1,77 @@
+{
+  "common": {
+    "links": {
+      "home": {
+        "title": "Go to frontpage",
+        "image": "/oppija-raamit/oppija-raamit/img/opintopolku_large-en.png"
+      }
+    }
+  },
+  "header": {
+    "ariaLabel": "Navigation",
+    "languages": {
+      "ariaLabel": "Choose language",
+      "fi": "Suomeksi",
+      "sv": "På svenska",
+      "en": "In English"
+    },
+    "shortlist": "My shortlist",
+    "links": {
+      "login": "Log in",
+      "logout": "Log out",
+      "eperusteet": {
+        "title": "ePerusteet",
+        "url": "https://eperusteet.opintopolku.fi/"
+      },
+      "wordpress": {
+        "url": "/wp2/en"
+      },
+      "opintopolku": "Opintopolku",
+      "omatsivut": "My Studyinfo"
+    },
+    "cookie": {
+      "info": "We use cookies on this site to enhance your user experience.",
+      "close": "Close"
+    }
+  },
+  "footer": {
+    "ariaLabel": "Service information",
+    "note": "The education providers and higher education institutions maintain their study programme information on Studyinfo. You can check the validity of the information directly from the educational institution or the higher education institution.",
+    "copyright": "Copyright @ 2014 Finnish National Board of Education",
+    "links": {
+      "mystudyinfo": {
+        "title": "My Studyinfo -service",
+        "url": "/wp2/en/my-studyinfo-service/"
+      },
+      "description": {
+        "title": "What is Studyinfo?",
+        "url": "/wp/fi/opintopolku/tietoa-palvelusta/"
+      },
+      "feedback": {
+        "title": "Give feedback – ask for advice",
+        "url": "/wp/fi/opintopolku/anna-palautetta-kysy-neuvoa/"
+      },
+      "registerDescription": {
+        "title": "Register description",
+        "url": "/wp2/en/register"
+      },
+      "index": {
+        "title": "Educational institution index",
+        "url": "/oppija-raamit/en/hakemisto/oppilaitokset/"
+      },
+      "opetushallitus": {
+        "title": "Finnish National Board of Education",
+        "image": "/oppija-raamit/oppija-raamit/img/OPH_logo-en.svg",
+        "link": "http://www.oph.fi/english"
+      },
+      "opetusministerio": {
+        "title": "Ministry of Education and Culture",
+        "image": "/oppija-raamit/oppija-raamit/img/OKM_logo-en.png",
+        "link": "http://www.minedu.fi/OPM/?lang=en"
+      }
+    }
+  },
+  "demo": {
+    "warning": "This is a demo site for learning purposes. Please note that you cannot apply here for real study programmes."
+  }
+}

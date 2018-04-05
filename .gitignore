@@ -83,6 +83,7 @@ node_modules
 # generated js and css files
 src/main/webapp/bundle.js
 src/main/webapp/css/
+dist/
 
 # active mq
 activemq-data

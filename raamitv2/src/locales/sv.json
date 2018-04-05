@@ -1,0 +1,77 @@
+{
+  "common": {
+    "links": {
+      "home": {
+        "title": "Gå till framsida",
+        "image": "/oppija-raamit/oppija-raamit/img/opintopolku_large-sv.png"
+      }
+    }
+  },
+  "header": {
+    "ariaLabel": "Navigation",
+    "languages": {
+      "ariaLabel": "Välja språk",
+      "fi": "Suomeksi",
+      "sv": "På svenska",
+      "en": "In English"
+    },
+    "shortlist": "Minneslista",
+    "links": {
+      "login": "Logga in",
+      "logout": "Logga ut",
+      "eperusteet": {
+        "title": "eGrunder",
+        "url": "https://egrunder.studieinfo.fi/"
+      },
+      "wordpress": {
+        "url": "/wp"
+      },
+      "opintopolku": "Studieinfo",
+      "omatsivut": "Min Studieinfo"
+    },
+    "cookie": {
+      "info": "Vi använder oss av cookies för att underlätta användningen av webbplatsen.",
+      "close": "Stäng"
+    }
+  },
+  "footer": {
+    "ariaLabel": "Serviceinformation",
+    "note": "Utbildningsanordnarna och högskolorna uppdaterar själva uppgifterna om sina utbildningar i Studieinfo. Du kan kontrollera att uppgifterna är riktiga av läroanstalten eller högskolan.",
+    "copyright": "Copyright © 2014 Utbildningsstyrelsen",
+    "links": {
+      "mystudyinfo": {
+        "title": "Min Studieinfo-tjänsten",
+        "url": "/wp/sv/min-studieinfo-tjansten/"
+      },
+      "description": {
+        "title": "Vad är Studieinfo?",
+        "url": "/wp/sv/studieinfo-2/vad-ar-studieinfo/"
+      },
+      "feedback": {
+        "title": "Ge feedback – fråga råd",
+        "url": "/wp/sv/studieinfo-2/tes5/"
+      },
+      "registerDescription": {
+        "title": "Registerbeskrivning",
+        "url": "/wp/sv/registerbeskrivning/"
+      },
+      "index": {
+        "title": "Läroanstaltsregister",
+        "url": "/oppija-raamit/sv/hakemisto/oppilaitokset/A"
+      },
+      "opetushallitus": {
+        "title": "Utbildningsstyrelsen",
+        "image": "/oppija-raamit/oppija-raamit/img/OPH_logo-sv.svg",
+        "link": "http://www.oph.fi/startsidan"
+      },
+      "opetusministerio": {
+        "title": "Undervisnings- och kulturministeriet",
+        "image": "/oppija-raamit/oppija-raamit/img/OKM_logo-sv.png",
+        "link": "http://www.minedu.fi/OPM/?lang=sv"
+      }
+    }
+  },
+  "demo": {
+    "warning": "Du kan inte söka till utbildningar i demomiljön."
+  }
+}
