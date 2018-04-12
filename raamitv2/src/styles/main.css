@@ -1,0 +1,302 @@
+@import 'constants.css';
+@import 'header.css';
+@import 'cookie.css';
+@import 'top-links.css';
+@import 'footer.css';
+@import 'mobile.css';
+
+/* Ensures that header and footer start and end in edges. */
+body {
+  margin: 0;
+}
+
+/*
+#siteheader {
+  background: var(--headerColor);
+  color: white;
+  line-height: 16px;
+
+  a, a:visited {
+    color: white;
+    text-decoration: none;
+  }
+
+  .header-content {
+    padding: 20px 0px;
+    font-weight: bold;
+    overflow: auto;
+    position: relative;
+    clear: both;
+
+    .header-banner {
+      display: inline-block;
+      float: left;
+    }
+
+    @padding: 20px;
+    @shortlist-width: 120px;
+    @language-width: 125px;
+
+    .header-login-section {
+      line-height: 25px;
+      position: absolute;
+      bottom: 15px;
+      right: (@language-width + @shortlist-width + @padding*2);
+      border-right: 1px solid rgba(255,255,255, 0.4);
+      padding-right: @padding;
+
+      &:before {
+         content: "";
+         background: url(../login-icon.png) no-repeat center center;
+         background-size: 100% 100%;
+         width: 18px;
+         height: 23px;
+         display: inline-block;
+         position: relative;
+         left: -7px;
+         top: 2px;
+      }
+    }
+
+  .header-logout-link {
+    background: rgba(255,255,255,0.1);
+    font-weight: normal;
+    outline: 4px solid rgba(255,255,255,0.1);
+    margin-left: 10px;
+    padding: 0px 2px;
+    opacity: 0.8;
+  }
+
+  .header-shortlist {
+    position: absolute;
+    line-height: 25px;
+    right: (@language-width + @padding);
+    bottom: 15px;
+    width: @shortlist-width;
+  }
+
+  ul.header-language {
+    position: absolute;
+    right: 0px;
+    bottom: 20px;
+    width: @language-width;
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .header-system-name {
+    position: absolute;
+    color: #ae0011;
+    font-size: 2em;
+    left: 250px;
+    top: 36px;
+  }
+}
+
+  nav {
+    clear: both;
+    background: #06526b;
+    border: 1px solid #043a4c;
+    min-height: 40px;
+    float: left;
+    width: 100%;
+    font-size: 16px;
+    line-height: 20px;
+    z-index: @navbar-z-index;
+    position: relative;
+
+    ul {
+      padding: 0;
+      margin: 0;
+      list-style: none;
+      position: relative;
+      -webkit-box-shadow: 0px 1px 1px 0 rgba(0, 0, 0, 0.5);
+      box-shadow: 0px 1px 1px 0 rgba(0, 0, 0, 0.5);
+    }
+
+    ul.level-1-menu > li {
+      float: left;
+      overflow: auto;
+      font-family: @menu-font;
+      font-size: 1.2em;
+
+      &.active {
+         background: #ffffff;
+        a {
+          color: #333;
+        }
+      }
+
+      a {
+        display: inline-block;
+        padding: 10px;
+        text-decoration: none;
+      }
+
+      a.action-link {
+        font-size: 13px;
+        text-decoration: underline;
+      }
+
+      &.menu-focus {
+         background: #ffffff;
+        a {
+          color: #333;
+        }
+
+        & > ul {
+          display: block;
+        }
+      }
+    }
+
+    ul.level-2-menu {
+      background: #ffffff;
+      position: absolute;
+      display: none;
+      min-width: 200px;
+      li {
+        display: block;
+        position: relative;
+        font-family: @sub-menu-font;
+        a {
+          color: #333;
+          font-size: 13px;
+          width: 100%;
+          box-sizing: border-box;
+
+          &:hover, &:focus {
+            background: #feedbd;
+          }
+        }
+      }
+    }
+
+    .mobile-version {
+      float: right;
+      font-size: 13px;
+      text-decoration: underline;
+      line-height: 40px;
+    }
+  }
+}
+
+nav#mobile-nav {
+  display: none
+}
+
+.mobile-header-content {
+  display: none
+}
+
+@media screen and (max-width: 768px) {
+  #siteheader {
+  .mobile-header-content {
+    padding: 0;
+    font-weight: bold;
+    overflow: auto;
+    position: relative;
+    display: block;
+
+  .header-banner {
+    padding: 8px;
+    padding-bottom: 0;
+    display: inline-block;
+    float: left;
+  }
+}
+
+.header-content {
+  display: none
+}
+
+.header-column {
+  min-width: 0px;
+  width: 100%;
+  margin: 0px auto;
+}
+
+
+.mobile-menu-button {
+  display: inline-block;
+  float: right;
+  font-size: 300%;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  padding-right: 10px;
+  padding-left: 10px;
+  margin: 0;
+  border: 0;
+  height: 100%;
+}
+
+.mobile-menu-button-menu-open {
+  background: #06526b;
+}
+
+nav#full-nav {
+  display:none
+}
+
+nav#mobile-nav {
+  display: block;
+  border: 0;
+  min-height: 0px;
+  padding-top: 5px;
+}
+
+.mobile-menu-header-links {
+  background: @header-background;
+}
+
+
+
+ul.mobile-menu > li {
+  float: right;
+  overflow: auto;
+  clear: both;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  text-align: right;
+  font-weight: bold;
+  font-family: @menu-font;
+
+  &.active {
+     background: #ffffff;
+    a {
+      color: #333;
+    }
+  }
+
+  a {
+    display: inline-block;
+    padding: 10px;
+    padding-right: 20px;
+    padding-left: 0px;
+    text-decoration: none;
+    font-size: 18px;
+  }
+
+  a.action-link {
+    font-size: 18px;
+    text-decoration: underline;
+  }
+
+  &.menu-focus {
+     background: #ffffff;
+    a {
+      color: #333;
+    }
+
+    & > ul {
+      display: block;
+    }
+  }
+}
+}
+
+*/

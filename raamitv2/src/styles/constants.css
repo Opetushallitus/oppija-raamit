@@ -1,0 +1,9 @@
+:root {
+  --header-hover-color: #00B5EF;
+  --header-active-color: #159ECB;
+  --header-background-color: #149ecb;
+  --header-menu-font: 'PT Sans Narrow';
+  --header-sub-menu-font: 'Arial';
+  --top-links-background-color: #06526b;
+  --header-z-index: 1001;
+}

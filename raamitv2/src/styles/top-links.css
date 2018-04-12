@@ -1,0 +1,25 @@
+#top-links-bar {
+  background-color: var(--top-links-background-color);
+  width: 100%;
+
+  & .top-links {
+    font-family: var(--header-menu-font);
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 20px;
+    width: 100%;
+    position: relative;
+    overflow: auto;
+
+    & .top-link {
+      float: left;
+      padding: 5px 20px 5px 20px;
+    }
+
+    & .top-link-active {
+      background-color: var(--header-active-color);
+    }
+  }
+}
+
+
