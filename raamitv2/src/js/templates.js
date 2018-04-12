@@ -1,11 +1,11 @@
 import urls from './urls';
 
-export function getHeader() {
-  return fetchAsync(urls.header)
+export function getHeader(lang) {
+  return fetchAsync(urls.header(lang))
 }
 
-export function getFooter() {
-  return fetchAsync(urls.footer)
+export function getFooter(lang) {
+  return fetchAsync(urls.footer(lang))
 }
 
 async function fetchAsync(url) {

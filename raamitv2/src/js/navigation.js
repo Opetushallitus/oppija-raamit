@@ -197,4 +197,69 @@
     return true;
 
   } // end handleDocumentClick()
+
+
+  // Build navigation
+  function hideMobileNavi() {
+    $(".mobile-menu").hide();
+    $(".mobile-menu-button").click(function () {
+      $(".mobile-menu").slideToggle(250);
+      var mb = $(".mobile-menu-button-menu-open");
+      if (mb.length) {
+        mb.removeClass("mobile-menu-button-menu-open")
+      } else {
+        $(".mobile-menu-button").addClass("mobile-menu-button-menu-open")
+      }
+    });
+  }
+
+  function buildNavi(naviData) {
+    var naviSelector = "#siteheader nav#full-nav ul";
+    var mobileNaviSelector = "#siteheader nav#mobile-nav ul.mobile-menu";
+    var $root = $(naviSelector);
+    var $mobileRoot = $(mobileNaviSelector);
+    var $activeItem = null;
+    var $mobileActiveItem = null;
+    var level1MenuIndex = 0;
+    var mobNaviElems = [];
+    naviData.forEach(function (naviItem) {
+      level1MenuIndex = level1MenuIndex + 1;
+      var subMenuId = "level-1-menu-id-" + level1MenuIndex;
+      var $naviItem = $("<li>").addClass("menu-parent").attr("role", "presentation");
+      var $naviLink = $("<a>").text(naviItem.title).attr("href", naviItem.link).attr("role", "menuitem").attr("id", subMenuId).attr("aria-haspopup", "true");
+      if (document.location.href.indexOf(naviItem.link) > -1) {
+        $activeItem = $naviItem
+      }
+      $naviItem.append($naviLink);
+      if (naviItem.subnav) {
+        var $subMenu = $("<ul>").addClass("level-2-menu").attr("role", "menu").attr("aria-labelledby", subMenuId).attr("aria-expanded", "false");
+        naviItem.subnav.forEach(function (subItem) {
+          var $subItem = $("<li>").addClass("menu-item").attr("role", "presentation");
+          var $subItemLink = $("<a>").text(subItem.title).attr("href", subItem.link).attr("role", "menuitem");
+          $subItem.append($subItemLink);
+          $subMenu.append($subItem)
+        });
+        $naviItem.append($subMenu)
+      }
+      $root.append($naviItem);
+      var $mobileNaviItem = $("<li>").addClass("menu-parent").attr("role", "presentation");
+      var $mobileNaviLink = $("<a>").text(naviItem.title).attr("href", naviItem.link).attr("role", "menuitem").attr("id", subMenuId).attr("aria-haspopup", "true");
+      if (document.location.href.indexOf(naviItem.link) > -1) {
+        $mobileActiveItem = $mobileNaviItem
+      }
+      $mobileNaviItem.append($mobileNaviLink);
+      mobNaviElems.push($mobileNaviItem)
+    });
+    if ($activeItem != null) {
+      $activeItem.addClass("active")
+    }
+    if ($mobileActiveItem != null) {
+      $mobileActiveItem.addClass("active")
+    }
+    $mobileRoot.prepend(mobNaviElems);
+    window.navigationMenubar(naviSelector);
+    hideMobileNavi()
+  }
+
+
 })(window))
