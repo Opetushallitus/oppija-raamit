@@ -84,6 +84,8 @@ node_modules
 src/main/webapp/bundle.js
 src/main/webapp/css/
 dist/
+*/static/html/
+temp
 
 # active mq
 activemq-data

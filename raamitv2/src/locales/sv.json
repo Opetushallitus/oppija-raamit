@@ -3,7 +3,7 @@
     "links": {
       "home": {
         "title": "Gå till framsida",
-        "image": "/oppija-raamit/oppija-raamit/img/opintopolku_large-sv.png"
+        "image": "/static/img/opintopolku_large-sv.png"
       }
     }
   },
@@ -26,7 +26,7 @@
       "wordpress": {
         "url": "/wp"
       },
-      "opintopolku": "Studieinfo",
+      "opintopolku": "Studieinfo.fi",
       "omatsivut": "Min Studieinfo"
     },
     "cookie": {
@@ -51,7 +51,7 @@
         "title": "Ge feedback – fråga råd",
         "url": "/wp/sv/studieinfo-2/tes5/"
       },
-      "registerDescription": {
+      "register": {
         "title": "Registerbeskrivning",
         "url": "/wp/sv/registerbeskrivning/"
       },
@@ -61,12 +61,12 @@
       },
       "opetushallitus": {
         "title": "Utbildningsstyrelsen",
-        "image": "/oppija-raamit/oppija-raamit/img/OPH_logo-sv.svg",
+        "image": "/static/img/OPH_logo-sv.svg",
         "link": "http://www.oph.fi/startsidan"
       },
       "opetusministerio": {
         "title": "Undervisnings- och kulturministeriet",
-        "image": "/oppija-raamit/oppija-raamit/img/OKM_logo-sv.png",
+        "image": "/static/img/OKM_logo-sv.png",
         "link": "http://www.minedu.fi/OPM/?lang=sv"
       }
     }

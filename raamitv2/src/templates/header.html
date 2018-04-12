@@ -1,0 +1,112 @@
+<header data-attr-t aria-label-t="header.ariaLabel" role="banner" id="header">
+  <!-- Cookie Notification -->
+  <div id="cookie-notification">
+    <span class="cookie-text" data-t="header.cookie.info">Jotta sivuston käyttö olisi sinulle sujuvaa, käytämme evästeitä.</span>
+    <button class="cookie-btn" data-t="header.cookie.close" onclick="setAcceptCookie()">Sulje</button>
+  </div>
+
+  <!-- Top Navigation Links -->
+  <div id="top-links-bar">
+    <div role="presentation" class="top-links header-column">
+      <div id="top-link-opintopolku" class="top-link">
+        <a href="/" data-t="header.links.opintopolku"></a>
+      </div>
+      <div id="top-link-omatsivut" class="top-link">
+        <a href="/omatsivut" data-t="header.links.omatsivut"></a>
+      </div>
+      <div id="top-link-eperusteet" class="top-link">
+        <a data-attr-t href-t="header.links.eperusteet.url" data-t="header.links.eperusteet.title"></a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Presentation menu -->
+  <div role="presentation" id="header-content" class="header-column">
+    <!-- Banner and view name-->
+    <div id="header-content-left-side">
+      <a id="header-banner" class="header-item" data-attr-t href-t="header.links.wordpress.url">
+        <img data-attr-t alt-t="common.links.home.title" src-t="common.links.home.image"/>
+      </a>
+      <div id="header-active-view-name" class="header-item"></div>
+    </div>
+
+    <div id="header-content-right-side">
+      <div id="header-languages" class="header-item">
+        <ul data-attr-t aria-label-t="header.languages.ariaLabel">
+          <li id="lang-fi">
+            <a data-attr-t title-t="header.languages.fi" data-t="header.languages.fi"
+               href="changeLanguage('fi')"></a>
+          </li>
+          <li id="lang-sv">
+            <a data-attr-t title-t="header.languages.sv" data-t="header.languages.sv"
+               href="changeLanguage('sv')"></a>
+          </li>
+          <li id="lang-en">
+            <a data-attr-t title-t="header.languages.en" data-t="header.languages.en"
+               href="changeLanguage('en')"></a>
+          </li>
+        </ul>
+      </div>
+
+      <a class="header-item" href="/omatsivut" data-t="Hakemukseni"></a>
+      <a class="header-item" href="/koski" data-t="Opintoni"></a>
+
+      <!-- User, logging in and logging out -->
+      <div id="header-login-section" class="header-item">
+        <a class="header-omatsivut-link" href="/omatsivut/login" data-t="header.links.omatsivut">Oma opintopolku</a>
+        <a class="header-logout-link" href="/omatsivut/login" data-t="header.links.login">Kirjaudu sisään</a>
+      </div>
+
+      <div id="header-login-section" class="header-item">
+        <a class="header-omatsivut-link" href="/omatsivut/" data-t="header.links.omatsivut">Oma opintopolku</a>
+        <a class="header-logout-link" href="/omatsivut/logout" data-t="header.links.logout">Kirjaudu ulos</a>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Mobile menu -->
+  <!--
+  <div role="presentation" class="mobile-header-content header-column">
+    <a class="header-banner" data-attr-t href-t="header.links.wordpress.url">
+      <img data-attr-t alt-t="common.links.home.title" src-t="common.links.home.image"/>
+    </a>
+    <div class="mobile-menu-button">
+      <i class="icon-menu"></i>
+    </div>
+  </div>
+  -->
+  <!--
+  <nav id="full-nav">
+    <div class="header-column" role="presentation">
+      <ul class="level-1-menu" role="menubar"></ul>
+    </div>
+  </nav>
+  -->
+  <!--
+  <nav id="mobile-nav">
+    <div class="header-column" role="presentation">
+      <ul class="mobile-menu header-language" role="menubar">
+        <li class="header-logged-out header-login-section mobile-menu-header-links" style="display: none">
+          <a class="header-omatsivut-link" href="/omatsivut/login" data-t="header.links.omatsivut">Oma opintopolku</a>
+          <a class="header-logout-link" href="/omatsivut/login" data-t="header.links.login">Kirjaudu sisään</a>
+        </li>
+        <li class="header-logged-in header-login-section mobile-menu-header-links" style="display: none">
+          <a class="header-omatsivut-link" href="/omatsivut/" data-t="header.links.omatsivut">Oma opintopolku</a>
+          <a class="header-logout-link" href="/omatsivut/logout" data-t="header.links.logout">Kirjaudu ulos</a>
+        </li>
+
+        <li class="mobile-menu-header-links" id="lang-fi">
+          <a data-attr-t title-t="header.languages.fi" data-t="header.languages.fi" href="javascript:OppijaRaamit.changeLanguage('fi')"></a>
+        </li>
+        <li class="mobile-menu-header-links" id="lang-sv">
+          <a data-attr-t title-t="header.languages.sv" data-t="header.languages.sv" href="javascript:OppijaRaamit.changeLanguage('sv')"></a>
+        </li>
+        <li class="mobile-menu-header-links" id="lang-en">
+          <a data-attr-t title-t="header.languages.en" data-t="header.languages.en" href="javascript:OppijaRaamit.changeLanguage('en')"></a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+  -->
+</header>

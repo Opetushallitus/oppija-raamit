@@ -5,7 +5,7 @@
     "links": {
       "home": {
         "title": "Siirry etusivulle",
-        "image": "/oppija-raamit/oppija-raamit/img/opintopolku_large-fi.png"
+        "image": "/static/img/opintopolku_large-fi.png"
       }
     }
   },
@@ -28,7 +28,7 @@
       "wordpress": {
         "url": "/wp"
       },
-      "opintopolku": "Opintopolku",
+      "opintopolku": "Opintopolku.fi",
       "omatsivut": "Oma Opintopolku"
     },
     "cookie": {
@@ -53,7 +53,7 @@
         "title": "Anna palautetta – kysy neuvoa",
         "url": "/wp/fi/opintopolku/anna-palautetta-kysy-neuvoa/"
       },
-      "registerDescription": {
+      "register": {
         "title": "Rekisteriseloste",
         "url": "/wp/fi/rekisteriseloste/"
       },
@@ -63,12 +63,12 @@
       },
       "opetushallitus": {
         "title": "Opetushallitus",
-        "image": "/oppija-raamit/oppija-raamit/img/OPH_logo-fi.svg",
+        "image": "/static/img/OPH_logo-fi.svg",
         "link": "http://www.oph.fi/etusivu"
       },
       "opetusministerio": {
         "title": "Opetusministeriö",
-        "image": "/oppija-raamit/oppija-raamit/img/OKM_logo-fi.png",
+        "image": "/static/img/OKM_logo-fi.png",
         "link": "http://www.minedu.fi/OPM/"
       }
     }
