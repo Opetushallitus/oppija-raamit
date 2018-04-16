@@ -6,13 +6,13 @@
   "homepage": "https://github.com/Opetushallitus/oppija-raamit",
   "private": true,
   "scripts": {
-    "dev": "webpack-dev-server --inline --progress --config build/webpack.dev.conf.js --color",
+    "dev": "webpack-dev-server --inline --progress --config src/main/build/webpack.dev.conf.js --color",
     "start": "npm run dev",
-    "unit": "jest --config test/unit/jest.conf.js --coverage",
-    "e2e": "node test/e2e/runner.js",
+    "unit": "jest --config src/main/test/unit/jest.conf.js --coverage",
+    "e2e": "node src/main/test/e2e/runner.js",
     "test": "npm run unit && npm run e2e",
-    "build": "npm run templates && node build/build.js",
-    "templates": "rm -rf static/html/ && ./node_modules/static-i18n/bin/static-i18n.js -l fi -i fi -i sv -i en --outputDir static/html/ --outputDefault __lng__/__file__ --localesPath src/locales/ src/templates/"
+    "build": "npm run templates && node src/main/build/build.js",
+    "templates": "rm -rf src/main/static/html/ && ./node_modules/static-i18n/bin/static-i18n.js -l fi -i fi -i sv -i en --outputDir src/main/static/html/ --outputDefault __lng__/__file__ --localesPath src/main/src/locales/ src/main/src/templates/"
   },
   "devDependencies": {
     "autoprefixer": "^7.1.2",
