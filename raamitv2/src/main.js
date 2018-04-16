@@ -1,6 +1,6 @@
 import {getHeader, getFooter} from './js/templates';
 import {parseHtml} from './js/utils';
-import {hideElement, addClass, getElement} from './js/dom';
+import {hideElement, getElement} from './js/dom';
 import {checkAcceptCookie} from './js/cookie';
 import {getLanguage, updateActiveLanguage} from './js/language';
 import {updateLoginSection} from './js/login';

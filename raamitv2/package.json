@@ -11,8 +11,8 @@
     "unit": "jest --config test/unit/jest.conf.js --coverage",
     "e2e": "node test/e2e/runner.js",
     "test": "npm run unit && npm run e2e",
-    "build": "node build/build.js",
-    "templates": "./node_modules/static-i18n/bin/static-i18n.js -l fi -i fi -i sv -i en --outputDir static/html/ --outputDefault __lng__/__file__ --localesPath src/locales/ src/templates/"
+    "build": "npm run templates && node build/build.js",
+    "templates": "rm -rf static/html/ && ./node_modules/static-i18n/bin/static-i18n.js -l fi -i fi -i sv -i en --outputDir static/html/ --outputDefault __lng__/__file__ --localesPath src/locales/ src/templates/"
   },
   "devDependencies": {
     "autoprefixer": "^7.1.2",
