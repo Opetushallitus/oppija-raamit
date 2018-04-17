@@ -9,6 +9,7 @@ const CopyWebpackPlugin = require('copy-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const FriendlyErrorsPlugin = require('friendly-errors-webpack-plugin');
 const portfinder = require('portfinder');
+const StaticI18nHtmlPlugin = require('webpack-static-i18n-html');
 
 const HOST = process.env.HOST;
 const PORT = process.env.PORT && Number(process.env.PORT);
@@ -44,6 +45,15 @@ const devWebpackConfig = merge(baseWebpackConfig, {
   plugins: [
     new webpack.DefinePlugin({
       'process.env': require('../config/dev.env')
+    }),
+    new StaticI18nHtmlPlugin({
+      locale: 'fi',
+      locales: ['fi', 'sv', 'en'],
+      baseDir: __dirname,
+      outputDir: path.posix.join(__dirname, 'html/'),
+      outputDefault: '__lng__/__file__',
+      localesPath: path.posix.join(__dirname, 'locales/'),
+      files: 'templates/*.html'
     }),
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NamedModulesPlugin(), // HMR shows correct file names in console on update.

@@ -6,32 +6,22 @@ Oppija-raamit otetaan käyttöön yhdellä script-tägillä:
 
     <script id="apply-raamit" type="text/javascript" src="https://opintopolku.fi/oppija-raamit/apply-raamit.js"></script>
 
-Tiedostossa `src/main/webapp/index.html` on esimerkkiapplikaatio, joka käyttää oppija-raameja.
-
 Käynnistä esimerkkiapplikaatio näin:
 
-    ./run.sh
-
-    open http://localhost:8099/oppija-raamit/
-
+    npm install
+    npm start
+    open http://localhost:8080
 
 ### Kehitysohjeet
 
-CSS-tiedosto generoidaan less-fileistä käyttäen gulpia. Asenna lokaalit NPM-paketit:
+Projekti käyttää raamien paketointiin webpack nimistä rakennustyökalua.
+Kirjoitushetkellä OPH:lla ei ole mitään järkevää paikkaa tarjoilla staattisia tiedostoja.
+Sen vuoksi projekti käyttää Spring Boottia ja tiedostopolut voivat olla vähän rumia.
 
-    npm install
+Javascript ja CSS tiedostot on tehty käyttäen uusia ES ja CSS ominaisuuksia ja ne käännetään babelilla yhteensopivaan muotoon.
+Html-pohjat ajetaan i18n prosessorin lävitse ja niistä muodostetaan omat kieliversionsa. Ne siis käännetään jo valmiiksi.
 
-Käännä LESS-tiedostot CSS:ksi:
-
-    node_modules/gulp/bin/gulp.js compile
-
-Tai laita watch käyntiin:
-
-    node_modules/gulp/bin/gulp.js
-
-CSS-tiedosto menee myös versionhallintaan, ainakin toistaiseksi.
-
-### TODO
-
-- suorituskyky (wordpressin hitauden taklaus cachella, mahdollisesti oppija-raamit-materiaalin konkatenointi yhdeksi javascript-tiedostoksi)
-- navigation.js on ruma klöntti, joka ripattu koulutusinformaatiosta, johon se on puolestaan ripattu internetistä. Toisaalta, se toimii.
+    src/main/src/js <-- Javascript
+    src/main/locales <-- Lokalisaatiot
+    src/main/templates <-- Lokalisaatioavaimet sisältävät html-pohjat
+    src/main/styles <-- Tyylitiedostot
