@@ -8,7 +8,7 @@ export function showElement(id) {
 
 export function setElementVisibility(id, visible) {
   let element = document.getElementById(id);
-  visible ? element.style.display = 'block' : element.style.display = 'none';
+  visible ? element.style.display = 'inline-block' : element.style.display = 'none';
 }
 
 export function addClass(id, className) {

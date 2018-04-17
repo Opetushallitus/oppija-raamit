@@ -1,10 +1,10 @@
 #cookie-notification {
   margin: 0 auto;
   text-align: center;
-  padding-top: 15px;
-  padding-bottom: 15px;
+  padding-top: 10px;
+  padding-bottom: 10px;
   font-family: 'Open Sans', sans-serif;
-  background-color: rgb(246, 244, 240);
+  background-color: #f6f4f0;
   color: #333;
   font-size: 14px;
   display: none;
@@ -16,7 +16,7 @@
   & .cookie-btn {
     margin-left: 5px;
     margin-bottom: 4px;
-    height: 32px;
+    height: 24px;
     color: #FFFFFF;
     background-color: var(--header-active-color);
     padding: 2px 12px 2px;

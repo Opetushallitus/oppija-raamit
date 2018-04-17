@@ -1,8 +1,12 @@
 :root {
+  /* Fonts */
+  --raamit-default-font: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  --raamit-header-nav-font: 'PT Sans Narrow', Helvetica, sans-serif;
+  --raamit-presentation-font: 'Source Sans Pro', sans-serif;
+
   --header-hover-color: #00B5EF;
   --header-active-color: #159ECB;
   --header-background-color: #149ecb;
-  --header-menu-font: 'PT Sans Narrow';
   --header-sub-menu-font: 'Arial';
   --top-links-background-color: #06526b;
   --header-z-index: 1001;

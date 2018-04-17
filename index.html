@@ -6,6 +6,7 @@
     <meta name="author" content="Opetushallitus"/>
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <title>Oppija-raamit demo</title>
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro" rel="stylesheet">
   </head>
   <body>
     <!-- oppija-raamit header will be put here -->
@@ -24,5 +25,18 @@
         seitan occupy everyday carry.</p>
     </div>
     <!-- oppija-raamit footer will be put here -->
+    <script>
+      Raamit = {
+        getUser: function() {
+          return 'Clara Nieminen';
+        },
+        login: function() {
+          console.log('Clicked login button');
+        },
+        logout: function() {
+          console.log('Clicked logout button');
+        }
+      }
+    </script>
   </body>
 </html>

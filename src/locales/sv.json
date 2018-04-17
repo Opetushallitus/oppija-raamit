@@ -27,7 +27,9 @@
         "url": "/wp"
       },
       "opintopolku": "Studieinfo.fi",
-      "omatsivut": "Min Studieinfo"
+      "omatsivut": "Min Studieinfo",
+      "applications": "Min ansökan",
+      "koski": "Mina studier"
     },
     "cookie": {
       "info": "Vi använder oss av cookies för att underlätta användningen av webbplatsen.",
@@ -37,7 +39,7 @@
   "footer": {
     "ariaLabel": "Serviceinformation",
     "note": "Utbildningsanordnarna och högskolorna uppdaterar själva uppgifterna om sina utbildningar i Studieinfo. Du kan kontrollera att uppgifterna är riktiga av läroanstalten eller högskolan.",
-    "copyright": "Copyright © 2014 Utbildningsstyrelsen",
+    "copyright": "Copyright © 2018 Utbildningsstyrelsen",
     "links": {
       "mystudyinfo": {
         "title": "Min Studieinfo-tjänsten",

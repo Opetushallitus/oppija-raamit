@@ -29,7 +29,9 @@
         "url": "/wp"
       },
       "opintopolku": "Opintopolku.fi",
-      "omatsivut": "Oma Opintopolku"
+      "omatsivut": "Oma Opintopolku",
+      "applications": "Hakemukseni",
+      "koski": "Opintoni"
     },
     "cookie": {
       "info": "Jotta sivuston käyttö olisi sinulle sujuvaa, käytämme evästeitä.",
@@ -39,7 +41,7 @@
   "footer": {
     "ariaLabel": "Tietoa palvelusta",
     "note": "Koulutuksen järjestäjät ja korkeakoulut ylläpitävät tietoja koulutuksistaan Opintopolussa. Tietojen oikeellisuuden voit tarkistaa kyseisestä oppilaitoksesta tai korkeakoulusta.",
-    "copyright": "Copyright © 2014 Opetushallitus",
+    "copyright": "Copyright © 2018 Opetushallitus",
     "links": {
       "mystudyinfo": {
         "title": "Oma Opintopolku-palvelu",

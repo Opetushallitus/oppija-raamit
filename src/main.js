@@ -2,7 +2,7 @@ import {getHeader, getFooter} from './js/templates';
 import {parseHtml} from './js/utils';
 import {hideElement, getElement} from './js/dom';
 import {checkAcceptCookie} from './js/cookie';
-import {getLanguage, updateActiveLanguage} from './js/language';
+import {getLanguage, updateActiveLanguage, changeLanguage} from './js/language';
 import {updateLoginSection} from './js/login';
 
 //import '../static/css/fontello.css';
@@ -38,6 +38,8 @@ import './styles/main.css';
   });
 
 })();
+
+window.changeLanguage = changeLanguage;
 
 function updateTopNav(lang) {
   if (['fi', 'sv'].includes(lang)) {

@@ -27,7 +27,9 @@
         "url": "/wp2/en"
       },
       "opintopolku": "Opintopolku.fi",
-      "omatsivut": "My Studyinfo"
+      "omatsivut": "My Studyinfo",
+      "applications": "My applications",
+      "koski": "My studies"
     },
     "cookie": {
       "info": "We use cookies on this site to enhance your user experience.",
@@ -37,7 +39,7 @@
   "footer": {
     "ariaLabel": "Service information",
     "note": "The education providers and higher education institutions maintain their study programme information on Studyinfo. You can check the validity of the information directly from the educational institution or the higher education institution.",
-    "copyright": "Copyright @ 2014 Finnish National Board of Education",
+    "copyright": "Copyright @ 2018 Finnish National Board of Education",
     "links": {
       "mystudyinfo": {
         "title": "My Studyinfo -service",
