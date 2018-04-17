@@ -29,4 +29,4 @@ node/
 
 # generated js and css files
 src/main/resources
-src/main/static/html
+static/html

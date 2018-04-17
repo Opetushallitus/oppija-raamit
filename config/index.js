@@ -32,7 +32,7 @@ module.exports = {
 
   build: {
     // Paths
-    assetsRoot: path.resolve(__dirname, '../resources/public'),
+    assetsRoot: path.resolve(__dirname, '../src/main/resources/public'),
     assetsSubDirectory: '',
     assetsPublicPath: '/',
 

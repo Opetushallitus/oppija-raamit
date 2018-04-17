@@ -2,7 +2,7 @@
 const path = require('path');
 const utils = require('./utils');
 const webpack = require('webpack');
-const config = require('../config');
+const config = require('../config/index');
 const merge = require('webpack-merge');
 const baseWebpackConfig = require('./webpack.base.conf');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
@@ -25,6 +25,7 @@ const webpackConfig = merge(baseWebpackConfig, {
       'process.env': env
     }),
     // compile i18n versions from templates
+    /*
     new StaticI18nHtmlPlugin({
       locale: 'fi',
       locales: ['fi', 'sv', 'en'],
@@ -34,6 +35,7 @@ const webpackConfig = merge(baseWebpackConfig, {
       localesPath: path.posix.join(__dirname, 'locales/'),
       files: 'templates/*.html'
     }),
+    */
     new UglifyJsPlugin({
       uglifyOptions: {
         compress: {

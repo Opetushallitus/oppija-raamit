@@ -1,7 +1,7 @@
 'use strict';
 const utils = require('./utils');
 const webpack = require('webpack');
-const config = require('../config');
+const config = require('../config/index');
 const merge = require('webpack-merge');
 const path = require('path');
 const baseWebpackConfig = require('./webpack.base.conf');
@@ -15,6 +15,7 @@ const HOST = process.env.HOST;
 const PORT = process.env.PORT && Number(process.env.PORT);
 
 const devWebpackConfig = merge(baseWebpackConfig, {
+  mode: 'development',
   // cheap-module-eval-source-map is faster for development
   devtool: config.dev.devtool,
 
@@ -43,20 +44,18 @@ const devWebpackConfig = merge(baseWebpackConfig, {
     }
   },
   plugins: [
-    new webpack.DefinePlugin({
-      'process.env': require('../config/dev.env')
-    }),
+    /*
     new StaticI18nHtmlPlugin({
       locale: 'fi',
       locales: ['fi', 'sv', 'en'],
-      baseDir: __dirname,
-      outputDir: path.posix.join(__dirname, 'html/'),
+      baseDir: path.posix.join( __dirname, '..'),
+      outputDir: 'static/html',
       outputDefault: '__lng__/__file__',
-      localesPath: path.posix.join(__dirname, 'locales/'),
-      files: 'templates/*.html'
+      localesPath: 'src/locales',
+      files: 'src/templates/*.html'
     }),
+    */
     new webpack.HotModuleReplacementPlugin(),
-    new webpack.NamedModulesPlugin(), // HMR shows correct file names in console on update.
     new webpack.NoEmitOnErrorsPlugin(),
     // https://github.com/ampedandwired/html-webpack-plugin
     new HtmlWebpackPlugin({
