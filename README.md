@@ -6,7 +6,7 @@ Oppija-raamit otetaan käyttöön lisäämällä script-tägi
 
     <script id="apply-raamit" type="text/javascript" src="https://opintopolku.fi/oppija-raamit/apply-raamit.js"></script>
     
-Lisäksi raamit vaativat niitä käyttävää palvelua toteuttamaan seuraavat functiot.
+Lisäksi raamit vaativat niitä käyttävää palvelua toteuttamaan seuraavat funktiot.
 
     Raamit.login()
     Raamit.logout()
