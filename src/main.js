@@ -5,7 +5,6 @@ import {checkAcceptCookie} from './js/cookie';
 import {getLanguage, updateActiveLanguage, changeLanguage} from './js/language';
 import {updateLoginSection} from './js/login';
 
-//import '../static/css/fontello.css';
 import './styles/main.css';
 
 (function applyRaamit() {

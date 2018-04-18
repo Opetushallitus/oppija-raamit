@@ -44,12 +44,6 @@
                         </goals>
                         <configuration>
                             <nodeVersion>v9.11.1</nodeVersion>
-
-                            <!-- optional: with node version greater than 4.0.0 will use npm provided by node distribution -->
-                            <!-- <npmVersion>x.xx.x</npmVersion> -->
-
-                            <!-- optional: download locations (default - https://nodejs.org/dist/) -->
-                            <!-- <downloadRoot>http://myproxy.example.org/nodejs/</downloadRoot> -->
                         </configuration>
                     </execution>
                     <execution>

@@ -3,7 +3,7 @@
     "links": {
       "home": {
         "title": "Go to frontpage",
-        "image": "/static/img/opintopolku_large-en.png"
+        "image": "/oppija-raamit/img/opintopolku_large-en.png"
       }
     }
   },
@@ -63,12 +63,12 @@
       },
       "opetushallitus": {
         "title": "Finnish National Board of Education",
-        "image": "/static/img/OPH_logo-en.svg",
+        "image": "/oppija-raamit/img/OPH_logo-en.svg",
         "link": "http://www.oph.fi/english"
       },
       "opetusministerio": {
         "title": "Ministry of Education and Culture",
-        "image": "/static/img/OKM_logo-en.png",
+        "image": "/oppija-raamit/img/OKM_logo-en.png",
         "link": "http://www.minedu.fi/OPM/?lang=en"
       }
     }

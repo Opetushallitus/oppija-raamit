@@ -30,3 +30,4 @@ node/
 # generated js and css files
 src/main/resources
 static/html
+target

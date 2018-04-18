@@ -5,7 +5,7 @@
     "links": {
       "home": {
         "title": "Siirry etusivulle",
-        "image": "/static/img/opintopolku_large-fi.png"
+        "image": "/oppija-raamit/img/opintopolku_large-fi.png"
       }
     }
   },
@@ -65,12 +65,12 @@
       },
       "opetushallitus": {
         "title": "Opetushallitus",
-        "image": "/static/img/OPH_logo-fi.svg",
+        "image": "/oppija-raamit/img/OPH_logo-fi.svg",
         "link": "http://www.oph.fi/etusivu"
       },
       "opetusministerio": {
         "title": "Opetusministeriö",
-        "image": "/static/img/OKM_logo-fi.png",
+        "image": "/oppija-raamit/img/OKM_logo-fi.png",
         "link": "http://www.minedu.fi/OPM/"
       }
     }

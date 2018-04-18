@@ -3,7 +3,7 @@
     "links": {
       "home": {
         "title": "Gå till framsida",
-        "image": "/static/img/opintopolku_large-sv.png"
+        "image": "/oppija-raamit/img/opintopolku_large-sv.png"
       }
     }
   },
@@ -63,12 +63,12 @@
       },
       "opetushallitus": {
         "title": "Utbildningsstyrelsen",
-        "image": "/static/img/OPH_logo-sv.svg",
+        "image": "/oppija-raamit/img/OPH_logo-sv.svg",
         "link": "http://www.oph.fi/startsidan"
       },
       "opetusministerio": {
         "title": "Undervisnings- och kulturministeriet",
-        "image": "/static/img/OKM_logo-sv.png",
+        "image": "/oppija-raamit/img/OKM_logo-sv.png",
         "link": "http://www.minedu.fi/OPM/?lang=sv"
       }
     }
