@@ -10,7 +10,8 @@ Lisäksi raamit vaativat niitä käyttävää palvelua toteuttamaan seuraavat fu
 
     Raamit.login()
     Raamit.logout()
-    Raamit.getUser()
+    
+Raamien kielinapit asettavat localStorageen avaimen `language`. Arvoina fi, sv ja en.
 
 Käynnistä esimerkkiapplikaatio näin:
 

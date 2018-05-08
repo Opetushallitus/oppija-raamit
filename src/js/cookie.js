@@ -1,8 +1,6 @@
-import {showElement, hideElement} from './dom';
-
 export function checkAcceptCookie() {
   if(!readAcceptCookie()) {
-    showElement('cookie-notification');
+    document.getElementById('cookie-notification').style.display('block');
   }
 }
 
@@ -13,7 +11,7 @@ function readAcceptCookie() {
 
 function setAcceptCookie() {
   localStorage.setItem('oph-cookies-accepted', 'true');
-  hideElement('cookie-notification');
+  document.getElementById('cookie-notification').style.display('none');
 }
 
 window.setAcceptCookie = setAcceptCookie;

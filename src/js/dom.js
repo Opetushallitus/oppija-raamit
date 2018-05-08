@@ -6,11 +6,6 @@ export function showElement(id) {
   document.getElementById(id).style.display = 'inline-block';
 }
 
-export function setElementVisibility(id, visible) {
-  let element = document.getElementById(id);
-  visible ? element.style.display = 'inline-block' : element.style.display = 'none';
-}
-
 export function getElement(id) {
   return document.getElementById(id);
 }
