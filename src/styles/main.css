@@ -6,7 +6,25 @@
 @import 'mobile.css';
 @import 'demo.css';
 
+@import '../../static/fontello/css/fontello.css';
+
 /* Ensures that header and footer start and end in edges. */
 body {
   margin: 0;
+}
+
+/* Remove default styling from buttons */
+.raamit-button {
+  background: Transparent no-repeat;
+  border: none;
+  cursor: pointer;
+  overflow: hidden;
+  outline: none;
+  padding: 0;
+  text-align: unset;
+
+  /* Add some common properties for oppija-raamit */
+  color: white;
+  font-family: var(--raamit-presentation-font);
+  font-size: 16px;
 }

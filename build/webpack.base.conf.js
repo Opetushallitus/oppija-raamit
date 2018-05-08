@@ -17,7 +17,7 @@ module.exports = {
     filename: '[name].js',
     publicPath: process.env.NODE_ENV === 'production'
       ? config.build.assetsPublicPath
-      : config.dev.assetsPublicPath
+      : 'static'
   },
   resolve: {
     extensions: ['.js', '.json'],

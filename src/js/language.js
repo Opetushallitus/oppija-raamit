@@ -1,6 +1,8 @@
 export function updateActiveLanguage(lang) {
-  const element = document.getElementById(`lang-${lang}`);
-  element.classList.add('active-language');
+  const elements = document.getElementsByClassName(`header-language-${lang}`);
+  for(let element of elements) {
+    element.classList.add('header-language-button-active');
+  }
 }
 
 export function changeLanguage(language) {

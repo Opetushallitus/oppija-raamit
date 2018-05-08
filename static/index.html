@@ -41,15 +41,15 @@
     </div>
     <!-- oppija-raamit footer will be put here -->
     <script>
-      Raamit = {
-        getUser: function() {
-          return 'Clara Nieminen';
-        },
+      Service = {
         login: function() {
-          console.log('Clicked login button');
+          return {
+            "name": "Clara Nieminen",
+            "oid": "1.2.246.562.24.37194490780"
+          }
         },
         logout: function() {
-          console.log('Clicked logout button');
+          console.log('cleared user session');
         }
       }
     </script>

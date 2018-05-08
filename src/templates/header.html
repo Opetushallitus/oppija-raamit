@@ -24,20 +24,20 @@
   <div role="presentation" id="header-content" class="header-column">
     <!-- Banner and view name-->
     <div id="header-content-left-side">
-      <a id="header-banner" class="header-item" data-attr-t href-t="header.links.wordpress.url">
-        <img data-attr-t alt-t="common.links.home.title" src-t="common.links.home.image"/>
-      </a>
-      <div id="header-active-view-name" class="header-item" style="display:none;"></div>
+      <button id="header-mobile-menu-button" onclick="Raamit.toggleMenu()">
+        <i class="raamit-icon-menu"></i>
+      </button>
+      <a id="header-banner" data-attr-t href-t="header.links.wordpress.url" alt-t="common.links.home.title"></a>
+      <span id="header-title" data-t="header.links.omatsivut"></span>
     </div>
-
     <div id="header-content-right-side">
       <div id="header-languages" class="header-item" data-attr-t aria-label-t="header.languages.ariaLabel">
-        <button id="lang-fi" class="header-language-button" data-attr-t title-t="header.languages.fi"
-                onclick="changeLanguage('fi')">FI</button>
-        <button id="lang-sv" class="header-language-button" data-attr-t title-t="header.languages.sv"
-                onclick="changeLanguage('sv')">SV</button>
-        <button id="lang-en" class="header-language-button" data-attr-t title-t="header.languages.en"
-               onclick="changeLanguage('en')">EN</button>
+        <button class="header-language-button header-language-fi" data-attr-t title-t="header.languages.fi"
+                onclick="Raamit.changeLanguage('fi')">FI</button>
+        <button class="header-language-button header-language-sv" data-attr-t title-t="header.languages.sv"
+                onclick="Raamit.changeLanguage('sv')">SV</button>
+        <button class="header-language-button header-language-en" data-attr-t title-t="header.languages.en"
+               onclick="Raamit.changeLanguage('en')">EN</button>
       </div>
 
       <a class="header-item border" href="/omatsivut/login" data-t="header.links.applications"></a>
@@ -45,59 +45,48 @@
 
       <div id="header-login-section" class="header-item">
         <div id="header-logged-in" class="header-login-section-item" style="display:none;">
-          <p id="header-person-name"></p>
-          <a id="header-logout-link" href="/omatsivut/logout" data-t="header.links.logout"></a>
+          <p class="header-identity header-logged-in-name"></p>
+          <button id="header-logout-button" class="raamit-button" onclick="Raamit.logout()"
+                  data-t="header.links.logout"></button>
         </div>
         <div id="header-logged-out" class="header-login-section-item">
-          <a id="header-login-link" href="/omatsivut/login" data-t="header.links.login"></a>
+          <button id="header-login-button" class="raamit-button" onclick="Raamit.login()"
+                  data-t="header.links.login"></button>
         </div>
       </div>
     </div>
-
   </div>
 
   <!-- Mobile menu -->
-  <!--
-  <div role="presentation" class="mobile-header-content header-column">
-    <a class="header-banner" data-attr-t href-t="header.links.wordpress.url">
-      <img data-attr-t alt-t="common.links.home.title" src-t="common.links.home.image"/>
-    </a>
-    <div class="mobile-menu-button">
-      <i class="icon-menu"></i>
+  <div id="header-mobile-menu-content">
+    <div id="header-mobile-menu-languages">
+      <button class="header-language-button header-language-fi" data-t="header.languages.fi"
+                  onclick="Raamit.changeLanguage('fi')"></button>
+      <button class="header-language-button header-language-sv" data-t="header.languages.sv"
+                  onclick="Raamit.changeLanguage('sv')"></button>
+      <button class="header-language-button header-language-en" data-t="header.languages.en"
+                  onclick="Raamit.changeLanguage('en')"></button>
     </div>
+    <div id="header-mobile-menu-current-page">
+      <span>Opintopolku</span>
+      <span>-</span>
+      <span>etusivu</span>
+    </div>
+    <div id="header-mobile-menu-login-section">
+      <div id="header-mobile-menu-logged-in">
+        <p id="header-mobile-menu-name" class="header-identity"></p>
+      </div>
+      <div id="header-mobile-menu-logged-out">
+        <button id="header-mobile-menu-login" class="raamit-button" onclick="Raamit.login()"
+                data-t="header.links.login"></button>
+      </div>
+    </div>
+    <div id="header-mobile-menu-links">
+      <a href="/" data-t="header.links.home"></a>
+      <a href="/koski" data-t="header.links.koski"></a>
+      <a href="/omatsivut" data-t="header.links.applications"></a>
+    </div>
+    <button id="header-mobile-menu-logout-button" class="raamit-button" onclick="Raamit.logout()"
+            data-t="header.links.logout"></button>
   </div>
-  -->
-  <!--
-  <nav id="full-nav">
-    <div class="header-column" role="presentation">
-      <ul class="level-1-menu" role="menubar"></ul>
-    </div>
-  </nav>
-  -->
-  <!--
-  <nav id="mobile-nav">
-    <div class="header-column" role="presentation">
-      <ul class="mobile-menu header-language" role="menubar">
-        <li class="header-logged-out header-login-section mobile-menu-header-links" style="display: none">
-          <a class="header-omatsivut-link" href="/omatsivut/login" data-t="header.links.omatsivut">Oma opintopolku</a>
-          <a class="header-logout-link" href="/omatsivut/login" data-t="header.links.login">Kirjaudu sisään</a>
-        </li>
-        <li class="header-logged-in header-login-section mobile-menu-header-links" style="display: none">
-          <a class="header-omatsivut-link" href="/omatsivut/" data-t="header.links.omatsivut">Oma opintopolku</a>
-          <a class="header-logout-link" href="/omatsivut/logout" data-t="header.links.logout">Kirjaudu ulos</a>
-        </li>
-
-        <li class="mobile-menu-header-links" id="lang-fi">
-          <a data-attr-t title-t="header.languages.fi" data-t="header.languages.fi" href="javascript:OppijaRaamit.changeLanguage('fi')"></a>
-        </li>
-        <li class="mobile-menu-header-links" id="lang-sv">
-          <a data-attr-t title-t="header.languages.sv" data-t="header.languages.sv" href="javascript:OppijaRaamit.changeLanguage('sv')"></a>
-        </li>
-        <li class="mobile-menu-header-links" id="lang-en">
-          <a data-attr-t title-t="header.languages.en" data-t="header.languages.en" href="javascript:OppijaRaamit.changeLanguage('en')"></a>
-        </li>
-      </ul>
-    </div>
-  </nav>
-  -->
 </header>

@@ -1,3 +1,77 @@
-.mobile-header-content {
+/* Small screen */
+@media screen and (max-width: 900px) {
+  #top-links-bar {
+    display: none;
+  }
+
+  #header-banner {
+    display: none;
+  }
+
+  #header-content-right-side {
+    display: none;
+  }
+
+  #header-mobile-menu-button {
+    display: block;
+  }
+
+  #header-mobile-menu-content.header-menu-open {
+    display: flex !important;
+  }
+}
+
+#header-mobile-menu-content {
   display: none;
+  flex-direction: column;
+  position: absolute;
+  background-color: var(--header-background-color);
+  padding: 15px;
+  font-family: var(--raamit-presentation-font);
+  height: 100%;
+}
+
+#header-mobile-menu-current-page {
+  margin: 15px 0;
+}
+
+#header-mobile-menu-login-section {
+  margin-bottom: 8px;
+
+  &:after {
+    content: "";
+    background: url(../../static/img/login-icon.png) no-repeat center center;
+    background-size: 100% 100%;
+    width: 18px;
+    height: 23px;
+    display: inline-block;
+    position: relative;
+    left: 5px;
+    top: 3px;
+  }
+}
+
+#header-mobile-menu-name {
+  font-weight: bold;
+  margin: 0;
+}
+
+#header-mobile-menu-login {
+  font-weight: bold;
+}
+
+#header-mobile-menu-logout-button {
+  margin-top: 5px;
+  font-weight: bold;
+}
+
+#header-mobile-menu-links {
+  display: flex;
+  flex-direction: column;
+  padding: 0 0 10px 15px;
+  border-left: 1px solid white;
+
+  & a {
+    margin-top: 10px;
+  }
 }

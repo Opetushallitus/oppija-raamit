@@ -1,9 +1,9 @@
 import {getHeader, getFooter} from './js/templates';
 import {parseHtml} from './js/utils';
-import {hideElement, getElement} from './js/dom';
+import {hideElement, getElement, toggleMenu} from './js/dom';
 import {checkAcceptCookie} from './js/cookie';
 import {getLanguage, updateActiveLanguage, changeLanguage} from './js/language';
-import {updateLoginSection} from './js/login';
+import {login, logout, updateLoginSection} from './js/login';
 
 import './styles/main.css';
 
@@ -22,23 +22,18 @@ import './styles/main.css';
     updateTopNav(lang);
     updateActiveLanguage(lang);
     checkAcceptCookie();
-
-    updateEnvironmentName();
-    // All the environment specific things
-    // TODO: They should be already added in compile phase, not runtime
-    // TODO: Set test system name already in compile phase
-    /*
-    if (isDemoEnv()) {
-      addDemoWarning();
-    }
-    */
-
     updateNavigation();
   });
 
 })();
 
-window.changeLanguage = changeLanguage;
+// Global functions
+window.Raamit = {
+  changeLanguage: changeLanguage,
+  login: login,
+  logout: logout,
+  toggleMenu: toggleMenu
+};
 
 function updateTopNav(lang) {
   if (['fi', 'sv'].includes(lang)) {
@@ -62,11 +57,6 @@ function updateActiveTopNavItem() {
   }
 
   element.classList.add(className);
-  document.getElementById('header-active-view-name').innerText = element.innerText;
-}
-
-function updateEnvironmentName() {
-  document.getElementById("header-system-name").value = "ENVIRONMENT X";
 }
 
 function updateNavigation() {

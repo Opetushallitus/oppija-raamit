@@ -1,7 +1,9 @@
 #header {
   background: var(--header-background-color);
+  font-family: var(--raamit-presentation-font);
   color: white;
   line-height: 16px;
+  min-width: 500px;
 }
 
 #header :any-link {
@@ -19,7 +21,7 @@
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
-  padding: 15px 0 10px 0;
+  padding: 15px 0 15px 0;
   font-weight: bold;
 }
 
@@ -34,6 +36,64 @@
   margin-left: auto;
 }
 
+/* Title section */
+
+#header-mobile-menu-button {
+  margin: 0 10px 0 0;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  //font-family: inherit;
+  cursor: pointer;
+  color: white;
+  font-size: 44px;
+  display: none;
+}
+
+#header-banner {
+  display: block;
+  background: url(../../static/img/oma-opintopolku_ikoni.svg);
+  background-size: contain;
+  width: 44px;
+  height: 44px;
+  margin: 0 10px;
+}
+
+#header-title {
+  margin: auto;
+  font-size: 24px;
+  font-weight: bold;
+}
+
+/* Language section */
+
+#header-languages {
+  margin-left: auto;
+  border-right: 1px solid white;
+}
+
+.header-language-button {
+  background: Transparent no-repeat;
+  border: none;
+  cursor: pointer;
+  overflow: hidden;
+  outline:none;
+  margin-right: 5px;
+  color: white;
+  font-family: inherit;
+  font-weight: 300;
+  font-size: 16px;
+  padding: 0;
+  opacity: 0.8;
+}
+
+.header-language-button-active {
+  font-weight: 900;
+  opacity: 1;
+}
+
+/* Link section */
+
 .header-item {
   margin: auto 0 auto 0;
   padding: 0 20px 0 20px;
@@ -43,6 +103,8 @@
 .header-item.border {
   border-right: 1px solid rgba(256, 256, 256, 0.5);
 }
+
+/* Login section */
 
 #header-login-section {
   line-height: 25px;
@@ -70,63 +132,24 @@
   }
 }
 
-
-#header-banner {
-  display: inline-block;
+#header-login-button {
+  font-weight: bold;
 }
 
-#header-active-view-name {
-  font-size: 2rem;
-}
-
-.header-logout-link {
-  background: rgba(255, 255, 255, 0.1);
+#header-logout-button {
+  font-size: 12px;
+  position: relative;
+  top: 10px;
+  left: 37px;
+  text-decoration: underline;
   font-weight: normal;
-  outline: 4px solid rgba(255, 255, 255, 0.1);
-  margin-left: 10px;
-  padding: 0 2px;
-  opacity: 0.8;
+  float: left;
 }
 
-.header-shortlist {
-  position: absolute;
-  line-height: 25px;
-  right: 145px;
-  bottom: 15px;
-  width: 120px;
+.header-logged-in-name {
+  //font-family: var(--raamit-presentation-font);
+  margin: 0;
+  line-height: 0;
 }
 
-#header-languages {
-  margin-left: auto;
-  //padding-right: 20px;
-  border-right: 1px solid white;
-  //line-height: 30px;
 
-  & .header-language-button {
-    background: Transparent no-repeat;
-    border: none;
-    cursor:pointer;
-    overflow: hidden;
-    outline:none;
-    margin-right: 5px;
-    color: white;
-    font-family: var(--raamit-presentation-font);
-    font-weight: 100;
-    font-size: 16px;
-    padding: 0;
-    opacity: 0.5;
-  }
-
-  & .active-language {
-    font-weight: 900;
-    opacity: 1;
-  }
-}
-
-.header-system-name {
-  position: absolute;
-  color: #ae0011;
-  font-size: 2em;
-  left: 250px;
-  top: 36px;
-}
