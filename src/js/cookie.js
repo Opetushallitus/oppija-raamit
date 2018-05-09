@@ -1,6 +1,6 @@
 export function checkAcceptCookie() {
   if(!readAcceptCookie()) {
-    document.getElementById('cookie-notification').style.display('block');
+    document.getElementById('cookie-notification').style.display = 'block';
   }
 }
 
@@ -11,7 +11,7 @@ function readAcceptCookie() {
 
 function setAcceptCookie() {
   localStorage.setItem('oph-cookies-accepted', 'true');
-  document.getElementById('cookie-notification').style.display('none');
+  document.getElementById('cookie-notification').style.display = 'none';
 }
 
 window.setAcceptCookie = setAcceptCookie;
