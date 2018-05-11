@@ -1,31 +1,40 @@
 import {setStateLoggedIn, setStateLoggedOut} from './dom';
 
-// run on initial load
-export function updateLoginSection() {
-  const shibbolethUrl = '/oppija-raamit/shibbolethcheck';
-
-  fetch(shibbolethUrl)
-    .then(() => {
-      // TODO: check if the user has a valid session
-      let loggedIn = localStorage.getItem('shibboleth_loggedIn') === 'true';
-      setStateLoggedOut();
-    });
-}
-
 export function login() {
-
-  // Call service login
-  const user = Service.login();
-  // Update dom (if we still can)
-  setStateLoggedIn(user);
-
+  if (Service.login === 'function') {
+    const promise = Service.login();
+    promise.then(user => {
+      setStateLoggedIn(user);
+    }).catch(error => {
+      // Show error message to user?
+    })
+  } else {
+    throw new Error('Service is missing a login function.');
+  }
 }
 
 export function logout() {
+  if (Service.logout === 'function') {
+    const promise = Service.logout();
+    promise.then(() => {
+      setStateLoggedOut();
+    }).catch(error => {
+      // Show error message to user?
+    });
+  } else {
+    throw new Error('Service is missing a logout function.');
+  }
+}
 
-  // Call service logout
-  Service.logout();
-  // Update dom (if we still can)
-  setStateLoggedOut();
-
+export function getUser() {
+  if (Service.getUser === 'function') {
+    const promise = Service.getUser();
+    promise.then(user => {
+      setStateLoggedIn(user);
+    }).catch(() => {
+      setStateLoggedOut();
+    });
+  } else {
+    throw new Error('Service is missing a getUser function.');
+  }
 }

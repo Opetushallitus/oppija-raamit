@@ -1,3 +1,5 @@
+import Cookies from 'js-cookie';
+
 export function checkAcceptCookie() {
   if(!readAcceptCookie()) {
     document.getElementById('cookie-notification').style.display = 'block';
@@ -5,13 +7,11 @@ export function checkAcceptCookie() {
 }
 
 function readAcceptCookie() {
-  let accept = localStorage.getItem('oph-cookies-accepted');
+  let accept = Cookies.get('oph-cookies-accepted');
   return !!accept;
 }
 
-function setAcceptCookie() {
-  localStorage.setItem('oph-cookies-accepted', 'true');
+export function setAcceptCookie() {
+  Cookies.set('oph-cookies-accepted', 'true', { expires: 1800, path: '' });
   document.getElementById('cookie-notification').style.display = 'none';
 }
-
-window.setAcceptCookie = setAcceptCookie;

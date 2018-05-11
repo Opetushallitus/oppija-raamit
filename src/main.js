@@ -1,9 +1,9 @@
 import {getHeader, getFooter} from './js/templates';
 import {parseHtml} from './js/utils';
-import {hideElement, getElement, toggleMenu} from './js/dom';
-import {checkAcceptCookie} from './js/cookie';
+import {updateTopNav, toggleMenu} from './js/dom';
+import {checkAcceptCookie, setAcceptCookie} from './js/cookie';
 import {getLanguage, updateActiveLanguage, changeLanguage} from './js/language';
-import {login, logout, updateLoginSection} from './js/login';
+import {login, logout, getUser} from './js/login';
 
 import './styles/main.css';
 
@@ -18,11 +18,10 @@ import './styles/main.css';
     body.appendChild(parseHtml(values[1]));
     body.insertBefore(parseHtml(values[0]), body.firstChild);
 
-    updateLoginSection();
+    getUser();
     updateTopNav(lang);
     updateActiveLanguage(lang);
     checkAcceptCookie();
-    updateNavigation();
   });
 
 })();
@@ -32,33 +31,6 @@ window.Raamit = {
   changeLanguage: changeLanguage,
   login: login,
   logout: logout,
-  toggleMenu: toggleMenu
+  toggleMenu: toggleMenu,
+  setAcceptCookie: setAcceptCookie
 };
-
-function updateTopNav(lang) {
-  if (['fi', 'sv'].includes(lang)) {
-    updateActiveTopNavItem();
-  } else {
-    hideElement('top-links-bar');
-  }
-}
-
-function updateActiveTopNavItem() {
-  const className = 'top-link-active';
-  const host = window.location.host;
-
-  let element;
-  if (host.includes('eperusteet') || host.includes('egrunder')) {
-    element = getElement('top-link-eperusteet');
-  } else if (host.includes('omatsivut')) {
-    element = getElement('top-link-omatsivut');
-  } else {
-    element = getElement('top-link-opintopolku');
-  }
-
-  element.classList.add(className);
-}
-
-function updateNavigation() {
-  // TODO: not needed atm
-}

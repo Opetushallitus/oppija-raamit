@@ -50,3 +50,26 @@ export function toggleMenu() {
     element.classList.add('header-menu-open');
   }
 }
+
+export function updateTopNav(lang) {
+  if (['fi', 'sv'].includes(lang)) {
+    updateActiveTopNavItem();
+  } else {
+    hideElement('top-links-bar');
+  }
+}
+
+function updateActiveTopNavItem() {
+  const className = 'top-link-active';
+  const host = window.location.host;
+
+  let element;
+  if (host.includes('eperusteet') || host.includes('egrunder')) {
+    element = getElement('top-link-eperusteet');
+  } else if (host.includes('omatsivut')) {
+    element = getElement('top-link-omatsivut');
+  } else {
+    element = getElement('top-link-opintopolku');
+  }
+  element.classList.add(className);
+}

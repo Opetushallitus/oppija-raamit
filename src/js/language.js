@@ -1,3 +1,5 @@
+import Cookies from 'js-cookie';
+
 export function updateActiveLanguage(lang) {
   const elements = document.getElementsByClassName(`header-language-${lang}`);
   for(let element of elements) {
@@ -6,12 +8,19 @@ export function updateActiveLanguage(lang) {
 }
 
 export function changeLanguage(language) {
-  localStorage.setItem('language', language);
-  document.location.reload();
+  Cookies.set('lang', language, { expires: 1800, path: '' });
+  if (Service.changeLanguage === 'function') {
+    const promise = Service.changeLanguage(language);
+    promise.then(() => {
+      document.location.reload();
+    });
+  } else {
+    document.location.reload();
+  }
 }
 
 export function getLanguage() {
-  let lang = localStorage.getItem('language');
+  let lang = Cookies.get('language');
   if (lang) {
     return lang;
   }

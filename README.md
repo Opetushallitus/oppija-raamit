@@ -4,14 +4,21 @@
 
 Oppija-raamit otetaan käyttöön lisäämällä script-tägi
 
-    <script id="apply-raamit" type="text/javascript" src="https://opintopolku.fi/oppija-raamit/apply-raamit.js"></script>
+    <script id="apply-raamit" type="text/javascript" src="/oppija-raamit/js/apply-raamit.js"></script>
     
 Lisäksi raamit vaativat niitä käyttävää palvelua toteuttamaan seuraavat funktiot.
 
-    Raamit.login()
-    Raamit.logout()
+    Service.login()  -- Kutsutaan kun raamien "kirjaudu sisään" nappia painetaan.
+    Service.logout() -- Kutsutaan kun raamien "kirjaudu ulos" nappia painetaan.
+    Service.getUser() -- Kutsutaan raamien latauksen yhteydessä.
     
-Raamien kielinapit asettavat localStorageen avaimen `language`. Arvoina fi, sv ja en.
+Näiden lisäksi löytyy myös seuraavat vapaavalintaiset hookit.
+    
+    Service.changeLanguage(language) -- Kutsutaan kun raamien kielinappeja painetaan.
+    
+Raamien kielinapit asettavat `lang`-cookien arvoilla `fi`, `sv` ja `en`.
+Raamit ilmoittavat käyttäjälle kekseistä ja hyväksyntä tallennetaan cookieen `oph-cookies-accepted`.
+
 
 Käynnistä esimerkkiapplikaatio näin:
 
