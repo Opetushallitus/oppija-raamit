@@ -8,7 +8,7 @@ export function updateActiveLanguage(lang) {
 }
 
 export function changeLanguage(language) {
-  Cookies.set('lang', language, { expires: 1800, path: '' });
+  Cookies.set('lang', language, { expires: 1800, path: '/' });
   if (typeof Service.changeLanguage === 'function') {
     const promise = Service.changeLanguage(language);
     promise.then(() => {
