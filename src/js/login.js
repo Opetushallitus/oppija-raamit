@@ -2,10 +2,8 @@ import {setStateLoggedIn, setStateLoggedOut} from './dom';
 
 export function login() {
   if (typeof Service.login === 'function') {
-    const promise = Service.login();
-    promise.then(user => {
-      setStateLoggedIn(user);
-    })
+    const user = Service.login();
+    setStateLoggedIn(user);
   } else {
     throw new Error('Service is missing a login function.');
   }
@@ -13,10 +11,8 @@ export function login() {
 
 export function logout() {
   if (typeof Service.logout === 'function') {
-    const promise = Service.logout();
-    promise.then(() => {
-      setStateLoggedOut();
-    })
+    Service.logout();
+    setStateLoggedOut();
   } else {
     throw new Error('Service is missing a logout function.');
   }

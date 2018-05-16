@@ -32,5 +32,6 @@ window.Raamit = {
   login: login,
   logout: logout,
   toggleMenu: toggleMenu,
-  setAcceptCookie: setAcceptCookie
+  setAcceptCookie: setAcceptCookie,
+  getLanguage: getLanguage
 };

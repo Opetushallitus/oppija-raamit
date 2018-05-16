@@ -20,7 +20,7 @@ export function changeLanguage(language) {
 }
 
 export function getLanguage() {
-  let lang = Cookies.get('language');
+  let lang = Cookies.get('lang');
   if (lang) {
     return lang;
   }
