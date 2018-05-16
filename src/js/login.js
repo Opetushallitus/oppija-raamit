@@ -3,7 +3,9 @@ import {setStateLoggedIn, setStateLoggedOut} from './dom';
 export function login() {
   if (typeof Service.login === 'function') {
     const user = Service.login();
-    setStateLoggedIn(user);
+    setTimeout(() => {
+      setStateLoggedIn(user);
+    }, 1000);
   } else {
     throw new Error('Service is missing a login function.');
   }
@@ -12,7 +14,9 @@ export function login() {
 export function logout() {
   if (typeof Service.logout === 'function') {
     Service.logout();
-    setStateLoggedOut();
+    setTimeout(() => {
+      setStateLoggedOut();
+    }, 1000);
   } else {
     throw new Error('Service is missing a logout function.');
   }
