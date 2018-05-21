@@ -27,7 +27,8 @@ export function getUser() {
     const promise = Service.getUser();
     promise.then(user => {
       setStateLoggedIn(user);
-    }).catch(() => {
+    }).catch(err => {
+      console.error(err);
       setStateLoggedOut();
     });
   } else {
