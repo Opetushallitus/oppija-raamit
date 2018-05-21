@@ -12,14 +12,23 @@ import java.util.Collections;
 import java.util.List;
 
 @RestController
-@RequestMapping(value = "/shibbolethcheck")
 public class SessionController {
     @GetMapping
+    @RequestMapping(value = "/shibbolethcheck")
     public void checkShibbolethSession(HttpServletRequest req, HttpServletResponse resp) {
         Cookie loggedInCookie = new Cookie("shibboleth_loggedIn", String.valueOf(hasShibbolethSession(req)));
         loggedInCookie.setMaxAge(60);
         loggedInCookie.setPath("/");
         resp.addCookie(loggedInCookie);
+    }
+
+    @GetMapping
+    @RequestMapping(value = "/changelanguage")
+    public void changeLanguage(HttpServletRequest req, HttpServletResponse resp) {
+        Cookie langCookie = new Cookie("i18next", req.getParameter("lang"));
+        langCookie.setMaxAge(1800);
+        langCookie.setPath("/");
+        resp.addCookie(langCookie);
     }
 
     private boolean hasShibbolethSession(HttpServletRequest req) {
