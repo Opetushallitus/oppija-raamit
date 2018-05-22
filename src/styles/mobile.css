@@ -30,6 +30,11 @@
   #footer-opintopolku-info-container {
     flex-direction: column;
   }
+
+  .footer-item {
+    width: 220px;
+    margin: 0 auto;
+  }
 }
 
 #header-mobile-menu-content {
