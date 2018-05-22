@@ -26,6 +26,12 @@
   font-size: var(--raamit-font-size);
 }
 
+@media screen and (max-width: 600px) {
+  #footer-opintopolku-info-container {
+    flex-direction: column;
+  }
+}
+
 #header-mobile-menu-content {
   display: none;
   flex-direction: column;
