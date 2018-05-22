@@ -26,5 +26,5 @@ body {
   /* Add some common properties for oppija-raamit */
   color: white;
   font-family: var(--raamit-presentation-font);
-  font-size: 16px;
+  font-size: var(--raamit-font-size);
 }

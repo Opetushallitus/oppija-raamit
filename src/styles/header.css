@@ -3,7 +3,7 @@
   font-family: var(--raamit-presentation-font);
   color: white;
   line-height: 16px;
-  min-width: 500px;
+  //min-width: 500px;
 }
 
 #header :any-link {
@@ -12,7 +12,7 @@
 }
 
 .header-column {
-  min-width: 500px;
+  //min-width: 500px;
   max-width: 1160px;
   margin: 0 auto;
 }
@@ -140,7 +140,7 @@
   font-size: 12px;
   position: relative;
   top: 10px;
-  left: 37px;
+  left: 1px;
   text-decoration: underline;
   font-weight: normal;
   float: left;

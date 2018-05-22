@@ -4,7 +4,7 @@
   width: 100%;
   border: 1px solid #dddddd;
   max-width: 1160px;
-  min-width: 500px;
+  //min-width: 500px;
   margin: 0 auto;
   color: color(#999999);
 }

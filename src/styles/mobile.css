@@ -21,6 +21,11 @@
   }
 }
 
+/* prevent any global styles from changing font size */
+@media screen and (max-width: 767px) {
+  font-size: var(--raamit-font-size);
+}
+
 #header-mobile-menu-content {
   display: none;
   flex-direction: column;
@@ -29,6 +34,7 @@
   padding: 15px;
   font-family: var(--raamit-presentation-font);
   height: 100%;
+  z-index: var(--header-z-index);
 }
 
 #header-mobile-menu-current-page {
