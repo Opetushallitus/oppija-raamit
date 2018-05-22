@@ -1,7 +1,8 @@
 'use strict';
 const path = require('path');
 const utils = require('./utils');
-const config = require('../config/index');
+const CleanWebpackPlugin = require('clean-webpack-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 function resolve (dir) {
   return path.join(__dirname, '..', dir)
@@ -12,12 +13,22 @@ module.exports = {
   entry: {
     'apply-raamit': './src/main.js'
   },
+  plugins: [
+    new CleanWebpackPlugin(['public'], {
+      root: resolve('src/main/resources')
+    }),
+    new CopyWebpackPlugin([
+      {
+        from: path.resolve(__dirname, '../static'),
+        to: resolve('src/main/resources/public'),
+        ignore: ['.*']
+      }
+    ])
+  ],
   output: {
-    path: config.build.assetsRoot,
+    path: resolve('src/main/resources/public'),
     filename: '[name].js',
-    publicPath: process.env.NODE_ENV === 'production'
-      ? config.build.assetsPublicPath
-      : 'static'
+    publicPath: '/oppija-raamit/',
   },
   resolve: {
     extensions: ['.js', '.json'],

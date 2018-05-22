@@ -2,6 +2,7 @@
 const utils = require('./utils');
 const webpack = require('webpack');
 const merge = require('webpack-merge');
+const config = require('../config');
 const path = require('path');
 const baseWebpackConfig = require('./webpack.base.conf');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
@@ -14,8 +15,6 @@ const PORT = process.env.PORT && Number(process.env.PORT);
 
 const devWebpackConfig = merge(baseWebpackConfig, {
   mode: 'development',
-  // cheap-module-eval-source-map is faster for development
-  // https://webpack.js.org/configuration/devtool/#development
   devtool: 'cheap-module-eval-source-map',
   devServer: {
     clientLogLevel: 'warning',
@@ -30,7 +29,7 @@ const devWebpackConfig = merge(baseWebpackConfig, {
     port: PORT || '8080',
     open: false, // auto open browser
     overlay: { warnings: false, errors: true },
-    contentBase: 'static',
+    contentBase: config.common.contentBase,
     publicPath: '/oppija-raamit/',
     proxy: {},
     quiet: true, // necessary for FriendlyErrorsPlugin
@@ -55,7 +54,6 @@ const devWebpackConfig = merge(baseWebpackConfig, {
     // https://github.com/ampedandwired/html-webpack-plugin
     new HtmlWebpackPlugin({
       title: "Oppija-raamit",
-      filename: 'index.html',
       template: 'index.html',
       inject: true
     })

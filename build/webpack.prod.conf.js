@@ -9,21 +9,15 @@ const CopyWebpackPlugin = require('copy-webpack-plugin');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 const StaticI18nHtmlPlugin = require('webpack-static-i18n-html');
 
-const env = process.env.NODE_ENV === 'testing'
-  ? require('../config/test.env')
-  : require('../config/prod.env');
-
 const webpackConfig = merge(baseWebpackConfig, {
-  devtool: config.build.productionSourceMap ? config.build.devtool : false,
+  mode: 'production',
+  devtool: '#source-map',
   output: {
     path: config.build.assetsRoot,
     filename: utils.assetsPath('js/[name].js'),
     chunkFilename: utils.assetsPath('js/[id].js')
   },
   plugins: [
-    new webpack.DefinePlugin({
-      'process.env': env
-    }),
     // compile i18n versions from templates
     /*
     new StaticI18nHtmlPlugin({
@@ -42,13 +36,10 @@ const webpackConfig = merge(baseWebpackConfig, {
           warnings: false
         }
       },
-      sourceMap: config.build.productionSourceMap,
-      parallel: true
+      sourceMap: true
     }),
     // keep module.id stable when vendor modules does not change
     new webpack.HashedModuleIdsPlugin(),
-    // enable scope hoisting
-    new webpack.optimize.ModuleConcatenationPlugin(),
     // copy custom static assets
     new CopyWebpackPlugin([
       {

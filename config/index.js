@@ -3,11 +3,14 @@
 const path = require('path');
 
 module.exports = {
+  common: {
+    contentBase: path.resolve(__dirname, '../src/main/resources/public')
+  },
   build: {
     // Paths
     assetsRoot: path.resolve(__dirname, '../src/main/resources/public'),
     assetsSubDirectory: '',
-    assetsPublicPath: '/',
+    assetsPublicPath: '/oppija-raamit',
 
     /**
      * Source Maps
