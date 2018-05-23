@@ -52,8 +52,6 @@
 
 #header-banner {
   display: block;
-  background: url(../../static/img/oma-opintopolku_ikoni.svg);
-  background-size: contain;
   width: 44px;
   height: 44px;
   margin: 0 10px;
@@ -95,6 +93,7 @@
 /* Link section */
 
 .header-item {
+  position: relative;
   margin: auto 0 auto 0;
   padding: 0 20px 0 20px;
   line-height: 30px;
@@ -102,6 +101,19 @@
 
 .header-item.border {
   border-right: 1px solid rgba(256, 256, 256, 0.5);
+}
+
+.header-arrow-down {
+  position: absolute;
+  top: 52px;
+  left: 45px;
+
+  width: 0;
+  height: 0;
+  border-left: 20px solid transparent;
+  border-right: 20px solid transparent;
+  border-top: 20px solid #149ecb;
+  z-index:9998;
 }
 
 /* Login section */

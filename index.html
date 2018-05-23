@@ -35,14 +35,12 @@
     <script>
       Service = {
         login: function() {
-          return {
-            "name": "Clara Nieminen",
-            "oid": "1.2.246.562.24.37194490780"
-          }
+          console.log('Logged user in');
         },
         logout: function() {
           console.log('cleared user session');
-        }
+        },
+        getUser: () => Promise.resolve({name: "Clara Nieminen"}),
       }
     </script>
   </body>

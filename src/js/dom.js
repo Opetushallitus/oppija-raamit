@@ -54,6 +54,7 @@ export function toggleMenu() {
 export function updateTopNav(lang) {
   if (['fi', 'sv'].includes(lang)) {
     updateActiveTopNavItem();
+    updateActiveHeaderItem();
   } else {
     hideElement('top-links-bar');
   }
@@ -66,10 +67,22 @@ function updateActiveTopNavItem() {
   let element;
   if (host.includes('eperusteet') || host.includes('egrunder')) {
     element = getElement('top-link-eperusteet');
-  } else if (host.includes('omatsivut')) {
-    element = getElement('top-link-omatsivut');
+  } else if (['oma-opintopolku', 'koski', 'omatsivut'].some(el => host.includes(el))) {
+    element = getElement('top-link-oma-opintopolku');
   } else {
     element = getElement('top-link-opintopolku');
   }
   element.classList.add(className);
+}
+
+function updateActiveHeaderItem() {
+  const host = window.location.host;
+  const arrowElement = document.createElement('div');
+  arrowElement.classList.add('header-arrow-down');
+
+  if (host.includes('omatsivut')) {
+    getElement('header-omatsivut-link').appendChild(arrowElement);
+  } else if (host.includes('koski')) {
+    getElement('header-koski-link').appendChild(arrowElement);
+  }
 }
