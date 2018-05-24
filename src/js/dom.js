@@ -62,7 +62,7 @@ export function updateTopNav(lang) {
 
 function updateActiveTopNavItem() {
   const className = 'top-link-active';
-  const host = window.location.host;
+  const host = window.location.href;
 
   let element;
   if (host.includes('eperusteet') || host.includes('egrunder')) {
