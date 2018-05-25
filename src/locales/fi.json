@@ -57,12 +57,8 @@
         "url": "/wp/fi/opintopolku/anna-palautetta-kysy-neuvoa/"
       },
       "register": {
-        "title": "Rekisteriseloste",
-        "url": "/wp/fi/rekisteriseloste/"
-      },
-      "index": {
-        "title": "Oppilaitoshakemisto",
-        "url": "/oppija-raamit/fi/hakemisto/oppilaitokset/A"
+        "title": "Tietosuojaseloste",
+        "url": "/wp/fi/tietosuojaseloste/"
       },
       "opetushallitus": {
         "title": "Opetushallitus",
