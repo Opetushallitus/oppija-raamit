@@ -102,8 +102,8 @@
 
 .header-arrow-down {
   position: absolute;
-  top: 52px;
-  left: 45px;
+  top: 50px;
+  left: calc(50% - 19px);
 
   width: 0;
   height: 0;
