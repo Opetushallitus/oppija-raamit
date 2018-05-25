@@ -76,7 +76,7 @@ function updateActiveTopNavItem() {
 }
 
 function updateActiveHeaderItem() {
-  const host = window.location.host;
+  const host = window.location.href;
   const arrowElement = document.createElement('div');
   arrowElement.classList.add('header-arrow-down');
 
