@@ -12,6 +12,6 @@ function readAcceptCookie() {
 }
 
 export function setAcceptCookie() {
-  Cookies.set('oph-cookies-accepted', 'true', { expires: 1800, path: '' });
+  Cookies.set('oph-cookies-accepted', 'true', { expires: 1800, path: '/' });
   document.getElementById('cookie-notification').style.display = 'none';
 }
