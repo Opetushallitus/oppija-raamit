@@ -1,3 +1,5 @@
+import {createDomain} from './utils';
+
 export function hideElement(id) {
   document.getElementById(id).style.display = 'none';
 }
@@ -51,13 +53,16 @@ export function toggleMenu() {
   }
 }
 
-export function updateTopNav(lang) {
+export function updateDom(lang) {
   if (['fi', 'sv'].includes(lang)) {
     updateActiveTopNavItem();
     updateActiveHeaderItem();
   } else {
     hideElement('top-links-bar');
   }
+
+  appendDomainToFooterLinks(lang);
+  updateActiveLanguage(lang);
 }
 
 function updateActiveTopNavItem() {
@@ -84,5 +89,22 @@ function updateActiveHeaderItem() {
     getElement('header-omatsivut-link').appendChild(arrowElement);
   } else if (host.includes('koski')) {
     getElement('header-koski-link').appendChild(arrowElement);
+  }
+}
+
+function appendDomainToFooterLinks(lang) {
+  const ul = document.getElementById('footer-links');
+  const items = ul.querySelectorAll('li a');
+
+  for (let i = 0; i < items.length; ++i) {
+    const a = items[i];
+    a.href = createDomain(lang) + a.pathname;
+  }
+}
+
+function updateActiveLanguage(lang) {
+  const elements = document.getElementsByClassName(`header-language-${lang}`);
+  for(let element of elements) {
+    element.classList.add('header-language-button-active');
   }
 }

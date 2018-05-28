@@ -1,8 +1,8 @@
 import {getHeader, getFooter} from './js/templates';
 import {parseHtml} from './js/utils';
-import {updateTopNav, toggleMenu} from './js/dom';
+import {updateDom, toggleMenu} from './js/dom';
 import {checkAcceptCookie, setAcceptCookie} from './js/cookie';
-import {getLanguage, updateActiveLanguage, changeLanguage} from './js/language';
+import {getLanguage, changeLanguage} from './js/language';
 import {login, logout, getUser} from './js/login';
 
 import './styles/main.css';
@@ -19,8 +19,8 @@ import './styles/main.css';
     body.insertBefore(parseHtml(values[0]), body.firstChild);
 
     getUser();
-    updateTopNav(lang);
-    updateActiveLanguage(lang);
+    updateDom(lang);
+
     checkAcceptCookie();
   });
 

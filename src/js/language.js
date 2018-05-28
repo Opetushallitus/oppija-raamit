@@ -1,12 +1,5 @@
 import Cookies from 'js-cookie';
 
-export function updateActiveLanguage(lang) {
-  const elements = document.getElementsByClassName(`header-language-${lang}`);
-  for(let element of elements) {
-    element.classList.add('header-language-button-active');
-  }
-}
-
 export function changeLanguage(language) {
   Cookies.set('lang', language, { expires: 1800, path: '/' });
   if (typeof Service.changeLanguage === 'function') {

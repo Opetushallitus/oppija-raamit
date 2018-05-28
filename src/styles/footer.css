@@ -3,7 +3,6 @@
   font-family: var(--raamit-default-font);
   width: 100%;
   max-width: 1160px;
-  //min-width: 500px;
   margin: 0 auto;
   color: color(#999999);
 }
@@ -39,6 +38,7 @@
   list-style-type: none;
   line-height: 20px;
   max-width: 440px;
+  box-sizing: content-box;
 
   & li {
     width: 220px;
