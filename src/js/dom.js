@@ -63,6 +63,10 @@ export function updateDom(lang) {
 
   appendDomainToFooterLinks(lang);
   updateActiveLanguage(lang);
+
+  if (lang === 'en') {
+    hideElement('footer-link-feedback');
+  }
 }
 
 function updateActiveTopNavItem() {
