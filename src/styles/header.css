@@ -92,7 +92,7 @@
 .header-item {
   position: relative;
   margin: auto 0 auto 0;
-  padding: 0 20px 0 20px;
+  padding: 0 30px;
   line-height: 30px;
 }
 
@@ -117,19 +117,19 @@
 
 #header-login-section {
   line-height: 25px;
-  padding-right: 20px;
+  padding-left: 35px;
   border-left: 1px solid white;
 
   &:before {
     content: "";
-    background: url(../../static/img/login-icon.png) no-repeat center center;
+    background: url(../../static/img/profiili_ikoni.svg) no-repeat center center;
     background-size: 100% 100%;
     width: 18px;
     height: 23px;
     display: inline-block;
     position: relative;
-    left: -7px;
-    top: 2px;
+    left: -15px;
+    top: 5px;
   }
 
   & #header-logged-out {

@@ -44,7 +44,7 @@ export function setStateLoggedIn(user) {
 }
 
 export function toggleMenu() {
-  let element = getElement('header-mobile-menu-content');
+  let element = getElement('header-mobile-menu-container');
 
   if (element.classList.contains('header-menu-open')) {
     element.classList.remove('header-menu-open');
@@ -89,11 +89,18 @@ function updateActiveHeaderItem() {
   const arrowElement = document.createElement('div');
   arrowElement.classList.add('header-arrow-down');
 
+  let element;
   if (host.includes('omatsivut')) {
     getElement('header-omatsivut-link').appendChild(arrowElement);
+    element = getElement('header-mobile-menu-links-omatsivut');
   } else if (host.includes('koski')) {
     getElement('header-koski-link').appendChild(arrowElement);
+    element = getElement('header-mobile-menu-links-koski');
+  } else {
+    element = getElement('header-mobile-menu-links-home');
   }
+
+  element.classList.add('header-link-active');
 }
 
 function appendDomainToFooterLinks(lang) {

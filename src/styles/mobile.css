@@ -16,7 +16,7 @@
     display: block;
   }
 
-  #header-mobile-menu-content.header-menu-open {
+  #header-mobile-menu-container.header-menu-open {
     display: flex !important;
   }
 }
@@ -37,58 +37,78 @@
   }
 }
 
-#header-mobile-menu-content {
+/* Common */
+
+#header-mobile-menu-container {
+  min-width: 250px;
   display: none;
   flex-direction: column;
   position: absolute;
-  background-color: var(--header-background-color);
-  padding: 15px;
   font-family: var(--raamit-presentation-font);
   height: 100%;
   z-index: var(--header-z-index);
 }
 
-#header-mobile-menu-current-page {
-  margin: 15px 0;
+#header-mobile-menu-content-container {
+  padding: 15px;
+  background-color: var(--header-background-color);
 }
 
-#header-mobile-menu-login-section {
-  margin-bottom: 8px;
-
-  &:after {
-    content: "";
-    background: url(../../static/img/login-icon.png) no-repeat center center;
-    background-size: 100% 100%;
-    width: 18px;
-    height: 23px;
-    display: inline-block;
-    position: relative;
-    left: 5px;
-    top: 3px;
+#header-mobile-menu-languages {
+  & button {
+    margin-right: 30px;
+    font-size: 18px;
   }
 }
 
-#header-mobile-menu-name {
+.header-link-active {
   font-weight: bold;
-  margin: 0;
+  text-decoration: underline !important;
+  text-underline-position: under;
+}
+
+#header-mobile-menu-title {
+  font-weight: 300;
+  opacity: 0.8;
+}
+
+#header-mobile-menu-name {
+  margin-bottom: 0;
 }
 
 #header-mobile-menu-login {
   font-weight: bold;
+  text-decoration: underline;
+  border-left: 1px solid white;
+  padding-left: 15px;
 }
 
 #header-mobile-menu-logout-button {
   margin-top: 5px;
-  font-weight: bold;
+  font-size: 0.8rem;
 }
 
 #header-mobile-menu-links {
   display: flex;
   flex-direction: column;
-  padding: 0 0 10px 15px;
+  padding-left: 15px;
   border-left: 1px solid white;
 
   & a {
-    margin-top: 10px;
+    margin: 15px 0;
+  }
+}
+
+#header-mobile-menu-top-links-container {
+  height: 100%;
+  background-color: var(--top-links-background-color);
+}
+
+#header-mobile-menu-top-links {
+  display: flex;
+  flex-direction: column;
+
+  & a {
+    padding: 15px;
   }
 }

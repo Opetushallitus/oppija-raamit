@@ -63,35 +63,36 @@
   </div>
 
   <!-- Mobile menu -->
-  <div id="header-mobile-menu-content">
-    <div id="header-mobile-menu-languages">
-      <button class="header-language-button header-language-fi" data-t="header.languages.fi"
-                  onclick="Raamit.changeLanguage('fi')"></button>
-      <button class="header-language-button header-language-sv" data-t="header.languages.sv"
-                  onclick="Raamit.changeLanguage('sv')"></button>
-      <button class="header-language-button header-language-en" data-t="header.languages.en"
-                  onclick="Raamit.changeLanguage('en')"></button>
-    </div>
-    <div id="header-mobile-menu-current-page">
-      <span>Opintopolku</span>
-      <span>-</span>
-      <span>etusivu</span>
-    </div>
-    <div id="header-mobile-menu-login-section">
-      <div id="header-mobile-menu-logged-in">
-        <p id="header-mobile-menu-name" class="header-identity"></p>
+  <div id="header-mobile-menu-container">
+    <div id="header-mobile-menu-content-container">
+      <div id="header-mobile-menu-languages">
+        <button class="header-language-button header-language-fi" onclick="Raamit.changeLanguage('fi')">FI</button>
+        <button class="header-language-button header-language-sv" onclick="Raamit.changeLanguage('sv')">SV</button>
+        <button class="header-language-button header-language-en" onclick="Raamit.changeLanguage('en')">EN</button>
       </div>
-      <div id="header-mobile-menu-logged-out">
-        <button id="header-mobile-menu-login" class="raamit-button" onclick="Raamit.login()"
-                data-t="header.links.login"></button>
+      <p id="header-mobile-menu-title" data-t="header.links.oma-opintopolku"></p>
+      <div id="header-mobile-menu-login-section">
+        <div id="header-mobile-menu-logged-in">
+          <div id="header-mobile-menu-links">
+            <a id="header-mobile-menu-links-home" href="/" data-t="header.links.home"></a>
+            <a id="header-mobile-menu-links-koski" href="/koski/omattiedot" data-t="header.links.koski"></a>
+            <a id="header-mobile-menu-links-omatsivut" href="/omatsivut" data-t="header.links.applications"></a>
+          </div>
+          <p id="header-mobile-menu-name" class="header-identity"></p>
+          <button id="header-mobile-menu-logout-button" class="raamit-button" onclick="Raamit.logout()"
+                  data-t="header.links.logout"></button>
+        </div>
+        <div id="header-mobile-menu-logged-out">
+          <button id="header-mobile-menu-login" class="raamit-button" onclick="Raamit.login()"
+                  data-t="header.links.login"></button>
+        </div>
       </div>
     </div>
-    <div id="header-mobile-menu-links">
-      <a href="/" data-t="header.links.home"></a>
-      <a href="/koski/omattiedot" data-t="header.links.koski"></a>
-      <a href="/omatsivut" data-t="header.links.applications"></a>
+    <div id="header-mobile-menu-top-links-container">
+      <div id="header-mobile-menu-top-links">
+        <a href="/" data-attr-t alt-t="common.links.home.title" data-t="header.links.opintopolku"></a>
+        <a data-attr-t href-t="header.links.eperusteet.url" data-t="header.links.eperusteet.title"></a>
+      </div>
     </div>
-    <button id="header-mobile-menu-logout-button" class="raamit-button" onclick="Raamit.logout()"
-            data-t="header.links.logout"></button>
   </div>
 </header>
