@@ -1,7 +1,13 @@
 import Cookies from 'js-cookie';
 
+function setLangCookies(language) {
+  ['lang', 'i18next'].forEach(function (name) {
+    Cookies.set(name, language, {expires: 1800, path: '/'});
+  });
+}
+
 export function changeLanguage(language) {
-  Cookies.set('lang', language, { expires: 1800, path: '/' });
+  setLangCookies(language);
   if (typeof Service.changeLanguage === 'function') {
     const promise = Service.changeLanguage(language);
     promise.then(() => {
