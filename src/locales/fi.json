@@ -1,0 +1,78 @@
+{
+  "testEnvWordpressRoot": "TODO: window.url('wp.test.base.fi')",
+  "demoEnvWordpressRoot": "TODO: window.url('oppija-raamit-web.demo.wordpress.base')",
+  "common": {
+    "links": {
+      "home": {
+        "title": "Siirry etusivulle",
+        "image": "/oppija-raamit/img/opintopolku_large-fi.png"
+      }
+    }
+  },
+  "header": {
+    "ariaLabel": "Navigaatio",
+    "languages": {
+      "ariaLabel": "Valitse kieli",
+      "fi": "Suomeksi",
+      "sv": "På svenska",
+      "en": "In English"
+    },
+    "shortlist": "Muistilista",
+    "links": {
+      "login": "Kirjaudu sisään",
+      "logout": "Kirjaudu ulos",
+      "eperusteet": {
+        "title": "ePerusteet",
+        "url": "https://eperusteet.opintopolku.fi/"
+      },
+      "wordpress": {
+        "url": "/wp"
+      },
+      "opintopolku": "Opintopolku.fi",
+      "home": "Etusivu",
+      "oma-opintopolku": "Oma Opintopolku",
+      "applications": "Hakemukseni",
+      "koski": "Opintoni"
+    },
+    "cookie": {
+      "info": "Jotta sivuston käyttö olisi sinulle sujuvaa, käytämme evästeitä.",
+      "close": "Sulje"
+    }
+  },
+  "footer": {
+    "ariaLabel": "Tietoa palvelusta",
+    "note": "Koulutuksen järjestäjät ja korkeakoulut ylläpitävät tietoja koulutuksistaan Opintopolussa. Tietojen oikeellisuuden voit tarkistaa kyseisestä oppilaitoksesta tai korkeakoulusta.",
+    "copyright": "Copyright © 2018 Opetushallitus",
+    "links": {
+      "mystudyinfo": {
+        "title": "Oma Opintopolku-palvelu",
+        "url": "/wp/fi/oma-opintopolku-palvelu/"
+      },
+      "description": {
+        "title": "Mikä on Opintopolku?",
+        "url": "/wp/fi/opintopolku/tietoa-palvelusta/"
+      },
+      "feedback": {
+        "title": "Anna palautetta – kysy neuvoa",
+        "url": "/wp/fi/opintopolku/anna-palautetta-kysy-neuvoa/"
+      },
+      "register": {
+        "title": "Tietosuojaseloste",
+        "url": "/wp/fi/tietosuojaseloste/"
+      },
+      "opetushallitus": {
+        "title": "Opetushallitus",
+        "image": "/oppija-raamit/img/OPH_logo-fi.svg",
+        "link": "http://www.oph.fi/etusivu"
+      },
+      "opetusministerio": {
+        "title": "Opetusministeriö",
+        "image": "/oppija-raamit/img/OKM_logo-fi.png",
+        "link": "http://www.minedu.fi/OPM/"
+      }
+    }
+  },
+  "demo": {
+    "warning": "Tämä on demoympäristö, jonka kautta ei pysty hakemaan koulutuksiin."
+  }
+}

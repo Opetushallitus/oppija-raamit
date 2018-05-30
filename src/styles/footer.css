@@ -1,0 +1,51 @@
+#footer {
+  font-size: 13px;
+  font-family: var(--raamit-default-font);
+  width: 100%;
+  max-width: 1160px;
+  margin: 0 auto;
+  color: color(#999999);
+}
+
+#footer :any-link {
+  color: #333333;
+  text-decoration: none;
+}
+
+#footer-logos {
+  overflow: auto;
+  padding: 9px 0;
+
+  & a {
+    display: inline-block;
+    width: 50%;
+    text-align: center;
+    float: left;
+  }
+}
+
+#footer-opintopolku-info-container {
+  border-top: 2px solid var(--header-background-color);
+  display: flex;
+  justify-content: center;
+}
+
+.footer-item {
+  padding: 20px;
+}
+
+#footer-links {
+  list-style-type: none;
+  line-height: 20px;
+  max-width: 440px;
+  box-sizing: content-box;
+
+  & li {
+    width: 220px;
+    float: left;
+
+    & a:hover {
+      text-decoration: underline;
+    }
+  }
+}

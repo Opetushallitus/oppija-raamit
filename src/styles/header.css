@@ -1,0 +1,163 @@
+#header {
+  background: var(--header-background-color);
+  font-family: var(--raamit-presentation-font);
+  color: white;
+  line-height: 16px;
+}
+
+#header :any-link {
+  color: white;
+  text-decoration: none;
+}
+
+.header-column {
+  max-width: 1160px;
+  margin: 0 auto;
+}
+
+#header-content {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  padding: 15px 0 15px 0;
+  font-weight: bold;
+}
+
+#header-content-left-side {
+  display: flex;
+  flex-direction: row;
+}
+
+#header-content-right-side {
+  display: flex;
+  flex-direction: row;
+  margin-left: auto;
+}
+
+/* Title section */
+
+#header-mobile-menu-button {
+  margin: 0 10px 0 0;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+  color: white;
+  font-size: 44px;
+  display: none;
+}
+
+#header-banner {
+  display: block;
+  width: 44px;
+  height: 44px;
+  margin: 0 10px;
+}
+
+#header-title {
+  margin: auto;
+  font-size: 24px;
+  font-weight: bold;
+}
+
+/* Language section */
+
+#header-languages {
+  margin-left: auto;
+  border-right: 1px solid white;
+}
+
+.header-language-button {
+  background: Transparent no-repeat;
+  border: none;
+  cursor: pointer;
+  overflow: hidden;
+  outline:none;
+  margin-right: 5px;
+  color: white;
+  font-family: inherit;
+  font-weight: 300;
+  font-size: 16px;
+  padding: 0;
+  opacity: 0.8;
+}
+
+.header-language-button-active {
+  font-weight: 900;
+  opacity: 1;
+}
+
+/* Link section */
+
+.header-item {
+  position: relative;
+  margin: auto 0 auto 0;
+  padding: 0 30px;
+  line-height: 30px;
+}
+
+.header-item.border {
+  border-right: 1px solid rgba(256, 256, 256, 0.5);
+}
+
+.header-arrow-down {
+  position: absolute;
+  top: 50px;
+  left: calc(50% - 19px);
+
+  width: 0;
+  height: 0;
+  border-left: 20px solid transparent;
+  border-right: 20px solid transparent;
+  border-top: 20px solid #149ecb;
+  z-index:9998;
+}
+
+/* Login section */
+
+#header-login-section {
+  line-height: 25px;
+  padding-left: 35px;
+  border-left: 1px solid white;
+
+  &:before {
+    content: "";
+    background: url(../../static/img/profiili_ikoni.svg) no-repeat center center;
+    background-size: 100% 100%;
+    width: 18px;
+    height: 18px;
+    display: inline-block;
+    position: relative;
+    left: -15px;
+    top: 4px;
+  }
+
+  & #header-logged-out {
+    display: inline-block;
+  }
+
+  & #header-logged-in {
+    display: none;
+  }
+}
+
+#header-login-button {
+  font-weight: bold;
+}
+
+#header-logout-button {
+  font-size: 12px;
+  position: relative;
+  top: 10px;
+  left: 1px;
+  text-decoration: underline;
+  font-weight: normal;
+  float: left;
+}
+
+.header-logged-in-name {
+  margin: 0;
+  line-height: 0;
+}
+
+

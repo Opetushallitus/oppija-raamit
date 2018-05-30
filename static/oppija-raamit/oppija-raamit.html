@@ -1,0 +1,99 @@
+<div>
+  <header data-i18n="[aria-label]raamit:headerAriaLabel" role="banner" id="siteheader">
+    <div><div class="cookieHeader"><span class="cookieText" data-i18n="raamit:cookie.info">Jotta sivuston käyttö olisi sinulle sujuvaa, käytämme evästeitä.</span><a class="btn-cookies" data-i18n="raamit:cookie.close" href="#" onclick="javascript:OppijaRaamit.setAcceptCookie();return false;">Sulje</a></div></div>
+    <div class="top-links-bar">
+      <div role="presentation" class="top-links header-column">
+        <div id="top-link-opintopolku" class="top-link">
+            <a href="/" data-i18n="raamit:opintopolkuLink"></a>
+        </div>
+        <div id="top-link-oma-opintopolku" class="top-link">
+          <a href="/oma-opintopolku" data-i18n="raamit:omaOpintopolkuLink"></a>
+        </div>
+        <div id="top-link-eperusteet" class="top-link">
+            <a data-i18n="raamit:eperusteetLink;[href]raamit:eperusteetUrl"></a>
+        </div>
+      </div>
+    </div>
+    <div role="presentation" class="header-content header-column">
+      <a class="header-banner" data-i18n="[href]raamit:wordpressRoot">
+        <img data-i18n="[alt]raamit:homeLink.title;[src]raamit:homeLink.image"/>
+      </a>
+      <div class="header-system-name"></div>
+      <div class="header-logged-out header-login-section" style="display: none">
+        <a class="header-omatsivut-link" href="/oma-opintopolku" data-i18n="raamit:omatsivutRedirectLink">Oma opintopolku</a>
+      </div>
+      <div class="header-logged-in header-login-section" style="display: none">
+        <a class="header-omatsivut-link" href="/oma-opintopolku" data-i18n="raamit:omatsivutLink">Oma opintopolku</a>
+        <a class="header-logout-link" href="/omatsivut/logout" data-i18n="raamit:logoutLink">Kirjaudu ulos</a>
+      </div>
+      <a id="appbasket-link" href="/app/#!/muistilista" class="header-shortlist">
+        <i class="icon-check"></i>
+        <span data-i18n="raamit:shortlist.title"></span> <span class="count"></span>
+      </a>
+      <ul data-i18n="[aria-label]raamit:languages.ariaLabel" class="header-language">
+        <li id="lang-fi"><a data-i18n="[title]raamit:languages.fi;raamit:languages.fi" href="javascript:OppijaRaamit.changeLanguage('fi')"></a></li>
+        <li id="lang-sv"><a data-i18n="[title]raamit:languages.sv;raamit:languages.sv" href="javascript:OppijaRaamit.changeLanguage('sv')"></a></li>
+        <li id="lang-en"><a data-i18n="[title]raamit:languages.en;raamit:languages.en" href="javascript:OppijaRaamit.changeLanguage('en')"></a></li>
+      </ul>
+    </div>
+
+    <div role="presentation" class="mobile-header-content header-column">
+      <a class="header-banner" data-i18n="[href]raamit:wordpressRoot">
+        <img data-i18n="[alt]raamit:homeLink.title;[src]raamit:homeLink.image"/>
+      </a>
+      <div class="mobile-menu-button">
+          <i class="icon-menu"></i>
+      </div>
+    </div>
+
+    <nav id="full-nav">
+      <div class="header-column" role="presentation">
+        <ul class="level-1-menu" role="menubar"></ul>
+      </div>
+    </nav>
+    <nav id="mobile-nav">
+      <div class="header-column" role="presentation">
+          <ul class="mobile-menu header-language" role="menubar">
+            <li class="header-logged-out header-login-section mobile-menu-header-links" style="display: none">
+              <a class="header-omatsivut-link" href="/oma-opintopolku" data-i18n="raamit:omatsivutRedirectLink">Oma opintopolku</a>
+            </li>
+            <li class="header-logged-in header-login-section mobile-menu-header-links" style="display: none">
+              <a class="header-omatsivut-link" href="/oma-opintopolku/" data-i18n="raamit:omatsivutLink">Oma opintopolku</a>
+              <a class="header-logout-link" href="/omatsivut/logout" data-i18n="raamit:logoutLink">Kirjaudu ulos</a>
+            </li>
+            <li class="mobile-menu-header-links">
+              <a id="appbasket-link" href="/app/#!/muistilista" class="header-shortlist">
+                <i class="icon-check"></i>
+                <span data-i18n="raamit:shortlist.title"></span> <span class="count"></span>
+              </a>
+            </li>
+            <li class="mobile-menu-header-links" id="lang-fi"><a data-i18n="[title]raamit:languages.fi;raamit:languages.fi" href="javascript:OppijaRaamit.changeLanguage('fi')"></a></li>
+            <li class="mobile-menu-header-links" id="lang-sv"><a data-i18n="[title]raamit:languages.sv;raamit:languages.sv" href="javascript:OppijaRaamit.changeLanguage('sv')"></a></li>
+            <li class="mobile-menu-header-links" id="lang-en"><a data-i18n="[title]raamit:languages.en;raamit:languages.en" href="javascript:OppijaRaamit.changeLanguage('en')"></a></li>
+          </ul>
+        </div>
+    </nav>
+  </header>
+
+  <footer data-i18n="[aria-label]raamit:footerAriaLabel" role="contentinfo" id="sitefooter">
+    <div class="footer-info-container">
+      <div class="footer-opintopolku-info">
+        <a href="/" class="footer-homelink">
+          <img data-i18n="[alt]raamit:homeLink.title;[src]raamit:homeLink.image"/>
+        </a>
+        <ul id="footer-links">
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-note" data-i18n="raamit:footerNote">
+    </div>
+
+    <div class="footer-logos">
+      <a data-i18n="[href]raamit:opetushallitus.link;[title]raamit:opetushallitus.title"><img style="width: 154px" data-i18n="[alt]raamit:opetushallitus.title;[src]raamit:opetushallitus.image" class="center-block"></a>
+      <a data-i18n="[href]raamit:opetusministerio.link;[title]raamit:opetusministerio.title"><img data-i18n="[alt]raamit:opetusministerio.title;[src]raamit:opetusministerio.image" class="center-block"></a>
+    </div>
+    <div class="copyright footer-note" data-i18n="copyright">
+    </div>
+  </footer>
+</div>

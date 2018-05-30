@@ -2,36 +2,43 @@
 
 ### Käyttö
 
-Oppija-raamit otetaan käyttöön yhdellä script-tägillä:
+Oppija-raamit otetaan käyttöön lisäämällä script-tägi
 
-    <script id="apply-raamit" type="text/javascript" src="https://opintopolku.fi/oppija-raamit/apply-raamit.js"></script>
+    <script id="apply-raamit" type="text/javascript" src="/oppija-raamit/js/apply-raamit.js"></script>
+    
+Lisäksi raamit vaativat niitä käyttävää palvelua toteuttamaan seuraavat funktiot.
 
-Tiedostossa `src/main/webapp/index.html` on esimerkkiapplikaatio, joka käyttää oppija-raameja.
+    Service.login()  -- Kutsutaan kun raamien "kirjaudu sisään" nappia painetaan.
+    Service.logout() -- Kutsutaan kun raamien "kirjaudu ulos" nappia painetaan.
+    Service.getUser() -- Kutsutaan raamien latauksen yhteydessä.
+    
+Näiden lisäksi löytyy myös seuraavat vapaavalintaiset hookit.
+    
+    Service.changeLanguage(language) -- Kutsutaan kun raamien kielinappeja painetaan.
+    
+Raamien kielinapit asettavat `lang`-cookien arvoilla `fi`, `sv` ja `en`.
+Raamit ilmoittavat käyttäjälle kekseistä ja hyväksyntä tallennetaan cookieen `oph-cookies-accepted`.
+
 
 Käynnistä esimerkkiapplikaatio näin:
 
-    ./run.sh
-
-    open http://localhost:8099/oppija-raamit/
-
+    npm install
+    npm start
+    open http://localhost:8080
 
 ### Kehitysohjeet
 
-CSS-tiedosto generoidaan less-fileistä käyttäen gulpia. Asenna lokaalit NPM-paketit:
+Projekti käyttää raamien paketointiin webpack nimistä rakennustyökalua.
+Kirjoitushetkellä OPH:lla ei ole mitään järkevää paikkaa tarjoilla staattisia tiedostoja.
+Sen vuoksi projekti käyttää Spring Boottia ja tiedostopolut voivat olla vähän rumia.
 
-    npm install
+Javascript ja CSS tiedostot on tehty käyttäen uusia ES ja CSS ominaisuuksia ja ne käännetään babelilla yhteensopivaan muotoon.
+Html-pohjat ajetaan i18n prosessorin lävitse ja niistä muodostetaan omat kieliversionsa. Ne siis käännetään jo valmiiksi.
 
-Käännä LESS-tiedostot CSS:ksi:
+    src/js <-- Javascript
+    src/locales <-- Lokalisaatiot
+    src/templates <-- Lokalisaatioavaimet sisältävät html-pohjat
+    src/styles <-- Tyylitiedostot
+    src/main/java <-- Spring Boot applikaatio
+    src/main/resources/public <-- Tuotannossa jaettavat staattiset tiedostot (generoidaan)
 
-    node_modules/gulp/bin/gulp.js compile
-
-Tai laita watch käyntiin:
-
-    node_modules/gulp/bin/gulp.js
-
-CSS-tiedosto menee myös versionhallintaan, ainakin toistaiseksi.
-
-### TODO
-
-- suorituskyky (wordpressin hitauden taklaus cachella, mahdollisesti oppija-raamit-materiaalin konkatenointi yhdeksi javascript-tiedostoksi)
-- navigation.js on ruma klöntti, joka ripattu koulutusinformaatiosta, johon se on puolestaan ripattu internetistä. Toisaalta, se toimii.
