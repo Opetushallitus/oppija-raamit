@@ -54,17 +54,14 @@ export function toggleMenu() {
 }
 
 export function updateDom(lang) {
-  if (['fi', 'sv'].includes(lang)) {
-    updateActiveTopNavItem();
-    updateActiveHeaderItem();
-  } else {
-    hideElement('top-links-bar');
-  }
-
+  updateActiveTopNavItem();
+  updateActiveHeaderItem();
   appendDomainToDynamicLinks(lang);
   updateActiveLanguage(lang);
 
   if (lang === 'en') {
+    hideElement('top-link-eperusteet');
+    hideElement('top-link-mobile-eperusteet');
     hideElement('footer-link-feedback');
   }
 }
