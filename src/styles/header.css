@@ -125,11 +125,11 @@
     background: url(../../static/img/profiili_ikoni.svg) no-repeat center center;
     background-size: 100% 100%;
     width: 18px;
-    height: 23px;
+    height: 18px;
     display: inline-block;
     position: relative;
     left: -15px;
-    top: 5px;
+    top: 4px;
   }
 
   & #header-logged-out {
