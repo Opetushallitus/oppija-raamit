@@ -61,7 +61,7 @@ export function updateDom(lang) {
     hideElement('top-links-bar');
   }
 
-  appendDomainToFooterLinks(lang);
+  appendDomainToDynamicLinks(lang);
   updateActiveLanguage(lang);
 
   if (lang === 'en') {
@@ -103,10 +103,8 @@ function updateActiveHeaderItem() {
   element.classList.add('header-link-active');
 }
 
-function appendDomainToFooterLinks(lang) {
-  const ul = document.getElementById('footer-links');
-  const items = ul.querySelectorAll('li a');
-
+function appendDomainToDynamicLinks(lang) {
+  const items = document.getElementsByClassName('raamit-dynamic-link');
   for (let i = 0; i < items.length; ++i) {
     const a = items[i];
     a.href = createDomain(lang) + a.pathname;
