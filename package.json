@@ -16,7 +16,10 @@
     "templates": "rm -rf static/html/ && ./node_modules/static-i18n/bin/static-i18n.js -l fi -i fi -i sv -i en --outputDir static/html/ --outputDefault __lng__/__file__ --localesPath src/locales/ src/templates/"
   },
   "dependencies": {
-    "js-cookie": "^2.2.0"
+    "js-cookie": "^2.2.0",
+    "whatwg-fetch": "^2.0.4",
+    "core-js": "^2.5.7",
+    "es6-promise": "^4.2.4"
   },
   "devDependencies": {
     "autoprefixer": "^7.1.2",
