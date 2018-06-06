@@ -1,3 +1,4 @@
+import '@webcomponents/template'
 import {getHeader, getFooter} from './js/templates';
 import {parseHtml} from './js/utils';
 import {updateDom, toggleMenu} from './js/dom';
