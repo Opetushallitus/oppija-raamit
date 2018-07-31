@@ -23,7 +23,7 @@ Raamit ilmoittavat käyttäjälle kekseistä ja hyväksyntä tallennetaan cookie
 Käynnistä esimerkkiapplikaatio näin:
 
     npm install
-    npm start
+    npm run templates && npm start
     open http://localhost:8080
 
 ### Kehitysohjeet
