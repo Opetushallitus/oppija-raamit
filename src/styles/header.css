@@ -1,6 +1,5 @@
 #header {
   background: var(--header-background-color);
-  font-family: var(--raamit-presentation-font);
   color: white;
   line-height: 16px;
 }

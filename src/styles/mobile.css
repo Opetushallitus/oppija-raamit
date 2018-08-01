@@ -39,7 +39,6 @@
   display: none;
   flex-direction: column;
   position: absolute;
-  font-family: var(--raamit-presentation-font);
   height: 100%;
   z-index: var(--header-z-index);
 }

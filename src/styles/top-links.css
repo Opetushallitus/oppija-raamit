@@ -3,7 +3,6 @@
   width: 100%;
 
   & .top-links {
-    font-family: var(--raamit-header-nav-font);
     font-weight: 900;
     font-size: var(--raamit-font-size);
     line-height: 20px;
