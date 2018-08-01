@@ -13,6 +13,11 @@ body {
   margin: 0;
 }
 
+/* prevent any global styles from changing font size */
+#header, #footer {
+  font-size: var(--raamit-font-size);
+}
+
 /* Remove default styling from buttons */
 .raamit-button {
   background: Transparent no-repeat;

@@ -21,11 +21,6 @@
   }
 }
 
-/* prevent any global styles from changing font size */
-@media screen and (max-width: 767px) {
-  font-size: var(--raamit-font-size);
-}
-
 @media screen and (max-width: 600px) {
   #footer-opintopolku-info-container {
     flex-direction: column;
