@@ -46,9 +46,10 @@
     "ariaLabel": "Tietoa palvelusta",
     "note": "Koulutuksen järjestäjät ja korkeakoulut ylläpitävät tietoja koulutuksistaan Opintopolussa. Tietojen oikeellisuuden voit tarkistaa kyseisestä oppilaitoksesta tai korkeakoulusta.",
     "copyright": "Copyright © 2018 Opetushallitus",
+    "linksHeading": "Muualla Opintopolussa",
     "links": {
       "mystudyinfo": {
-        "title": "Oma Opintopolku-palvelu",
+        "title": "Mikä on Oma Opintopolku -palvelu?",
         "url": "/wp/fi/oma-opintopolku-palvelu/"
       },
       "description": {

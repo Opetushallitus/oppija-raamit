@@ -21,17 +21,6 @@
   }
 }
 
-@media screen and (max-width: 600px) {
-  #footer-opintopolku-info-container {
-    flex-direction: column;
-  }
-
-  .footer-item {
-    width: 220px;
-    margin: 0 auto;
-  }
-}
-
 /* Common */
 
 #header-mobile-menu-container {
