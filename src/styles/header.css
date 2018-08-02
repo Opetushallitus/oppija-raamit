@@ -88,7 +88,7 @@
 }
 
 .header-item.border {
-  border-right: 1px solid rgba(256, 256, 256, 0.5);
+  border-right: 1px solid white;
 }
 
 .header-arrow-down {
@@ -128,6 +128,7 @@
   }
 
   & #header-logged-in {
+    position: relative;
     display: none;
   }
 }
@@ -136,9 +137,9 @@
 }
 
 #header-logout-button {
-  position: relative;
-  top: 10px;
-  left: 1px;
+  position: absolute;
+  top: 6px;
+  left: 0;
   font-size: var(--raamit-font-size-small);
   text-decoration: underline;
   font-weight: bold;
