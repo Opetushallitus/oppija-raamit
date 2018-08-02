@@ -52,6 +52,8 @@ export function toggleMenu() {
       element.classList.add('header-menu-open');
     }
   }
+  const menuButton = getElement('header-mobile-menu-button');
+  menuButton.setAttribute('aria-expanded', String(menuButton.classList.contains('header-menu-open')));
 }
 
 export function updateDom(lang) {

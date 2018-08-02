@@ -37,6 +37,9 @@
     "cookie": {
       "info": "Jotta sivuston käyttö olisi sinulle sujuvaa, käytämme evästeitä.",
       "close": "Sulje"
+    },
+    "mobileMenuButton": {
+      "ariaLabel": "Valikko"
     }
   },
   "footer": {

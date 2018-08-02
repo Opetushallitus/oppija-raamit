@@ -35,6 +35,9 @@
     "cookie": {
       "info": "Vi använder oss av cookies för att underlätta användningen av webbplatsen.",
       "close": "Stäng"
+    },
+    "mobileMenuButton": {
+      "ariaLabel": "Meny"
     }
   },
   "footer": {

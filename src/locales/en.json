@@ -35,6 +35,9 @@
     "cookie": {
       "info": "We use cookies on this site to enhance your user experience.",
       "close": "Close"
+    },
+    "mobileMenuButton": {
+      "ariaLabel": "Menu"
     }
   },
   "footer": {
