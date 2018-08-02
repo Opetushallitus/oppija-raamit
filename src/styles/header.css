@@ -9,6 +9,10 @@
   text-decoration: none;
 }
 
+#header :any-link:focus, #header button:focus {
+  outline-color: white;
+}
+
 .header-column {
   max-width: 1160px;
   margin: 0 auto;
@@ -64,7 +68,6 @@
   border: none;
   cursor: pointer;
   overflow: hidden;
-  outline:none;
   margin-right: 5px;
   color: white;
   font-size: var(--raamit-font-size);
