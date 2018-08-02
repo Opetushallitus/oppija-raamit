@@ -32,5 +32,4 @@ body {
 
   /* Add some common properties for oppija-raamit */
   color: white;
-  font-size: var(--raamit-font-size);
 }

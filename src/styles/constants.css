@@ -1,7 +1,9 @@
 :root {
   /* Fonts */
   --raamit-font: 'Source Sans Pro', sans-serif;
-  --raamit-font-size: 16px;
+  --raamit-font-size: 18px;
+  --raamit-font-size-small: 14px;
+  --raamit-font-size-top-links: 16px;
 
   --header-hover-color: #00B5EF;
   --header-active-color: #159ECB;

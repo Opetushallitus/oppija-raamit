@@ -19,7 +19,6 @@
   flex-direction: row;
   flex-wrap: nowrap;
   padding: 15px 0 15px 0;
-  font-weight: bold;
 }
 
 #header-content-left-side {
@@ -31,6 +30,7 @@
   display: flex;
   flex-direction: row;
   margin-left: auto;
+  font-weight: 600;
 }
 
 /* Title section */
@@ -74,16 +74,15 @@
   outline:none;
   margin-right: 5px;
   color: white;
+  font-size: var(--raamit-font-size);
   font-family: inherit;
-  font-weight: 300;
-  font-size: 16px;
+  font-weight: normal;
   padding: 0;
-  opacity: 0.8;
 }
 
 .header-language-button-active {
-  font-weight: 900;
-  opacity: 1;
+  font-weight: bold;
+  text-decoration: underline;
 }
 
 /* Link section */
@@ -141,16 +140,15 @@
 }
 
 #header-login-button {
-  font-weight: bold;
 }
 
 #header-logout-button {
-  font-size: 12px;
   position: relative;
   top: 10px;
   left: 1px;
+  font-size: var(--raamit-font-size-small);
   text-decoration: underline;
-  font-weight: normal;
+  font-weight: bold;
   float: left;
 }
 
