@@ -6,8 +6,6 @@
 @import 'mobile.css';
 @import 'demo.css';
 
-@import '../../static/fontello/css/fontello.css';
-
 /* Ensures that header and footer start and end in edges. */
 body {
   margin: 0;

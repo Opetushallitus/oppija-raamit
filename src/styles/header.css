@@ -36,13 +36,6 @@
 /* Title section */
 
 #header-mobile-menu-button {
-  margin: 0 10px 0 0;
-  padding: 0;
-  border: 0;
-  background: transparent;
-  cursor: pointer;
-  color: white;
-  font-size: 44px;
   display: none;
 }
 

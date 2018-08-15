@@ -101,3 +101,24 @@
     padding: 15px;
   }
 }
+
+#header-mobile-menu-button {
+  margin: 0 20px 0 10px;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+}
+
+.header-mobile-menu-bar1, .header-mobile-menu-bar2, .header-mobile-menu-bar3 {
+  width: 35px;
+  height: 4px;
+  background-color: white;
+  margin: 7px 0;
+  transition: 0.4s;
+}
+
+#header-mobile-menu-button.header-menu-open .header-mobile-menu-bar1 { transform: rotate(-45deg) translate(-8px, 7px); }
+#header-mobile-menu-button.header-menu-open .header-mobile-menu-bar2 { opacity: 0; }
+#header-mobile-menu-button.header-menu-open .header-mobile-menu-bar3 { transform: rotate(45deg) translate(-8px, -8px); }
+
