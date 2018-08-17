@@ -9,8 +9,11 @@
   text-decoration: none;
 }
 
-#header :any-link:focus, #header button:focus {
-  outline-color: white;
+/* target Chrome (and Safari, but changing only outline color in Safari has no effect) */
+@media (-webkit-min-device-pixel-ratio:0) {
+  #header :any-link:focus, #header button:focus {
+    outline-color: white;
+  }
 }
 
 .header-column {
