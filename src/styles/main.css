@@ -15,6 +15,7 @@ body {
 #header, #footer {
   font-family: var(--raamit-font);
   font-size: var(--raamit-font-size);
+  font-weight: var(--raamit-font-weight);
 }
 
 /* Remove default styling from buttons */
