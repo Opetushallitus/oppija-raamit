@@ -58,11 +58,13 @@
   border-left: 1px solid white;
   padding-left: 15px;
   overflow: visible;
+  padding-bottom: 3px;
 }
 
 #header-mobile-menu-logout-button {
   margin-top: 10px;
   overflow: visible;
+  padding-bottom: 3px;
   text-decoration: underline;
 }
 
