@@ -33,7 +33,7 @@
 }
 
 #header-mobile-menu-content-container {
-  padding: 15px;
+  padding: 15px 15px 45px 15px;
   background-color: var(--header-background-color);
 }
 
@@ -54,16 +54,16 @@
 }
 
 #header-mobile-menu-login {
-  font-weight: bold;
   text-decoration: underline;
   border-left: 1px solid white;
   padding-left: 15px;
+  overflow: visible;
 }
 
 #header-mobile-menu-logout-button {
-  margin-top: 5px;
-  font-size: var(--raamit-font-size-small);
-  font-weight: bold;
+  margin-top: 10px;
+  overflow: visible;
+  text-decoration: underline;
 }
 
 #header-mobile-menu-links {
@@ -79,6 +79,7 @@
 
 #header-mobile-menu-top-links-container {
   height: 100%;
+  padding-top: 15px;
   background-color: var(--top-links-background-color);
 }
 
