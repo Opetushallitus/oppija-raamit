@@ -71,13 +71,12 @@
   margin-right: 5px;
   color: white;
   font-size: var(--raamit-font-size);
+  font-weight: var(--raamit-font-weight);
   font-family: inherit;
-  font-weight: normal;
   padding: 0;
 }
 
 .header-language-button-active {
-  font-weight: bold;
   text-decoration: underline;
 }
 
