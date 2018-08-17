@@ -134,6 +134,7 @@
   & #header-logged-in {
     position: relative;
     display: none;
+    vertical-align: top;
   }
 }
 
@@ -142,11 +143,9 @@
 
 #header-logout-button {
   position: absolute;
-  top: 6px;
+  top: 14px;
   left: 0;
-  font-size: var(--raamit-font-size-small);
   text-decoration: underline;
-  font-weight: bold;
   float: left;
 }
 
