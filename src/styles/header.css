@@ -127,7 +127,7 @@
     display: inline-block;
     position: relative;
     left: -15px;
-    top: 4px;
+    top: 2px;
   }
 
   & #header-logged-out {
@@ -145,8 +145,8 @@
 }
 
 #header-logout-button {
-  position: absolute;
-  top: 14px;
+  position: relative;
+  line-height: 1;
   left: 0;
   text-decoration: underline;
   float: left;
@@ -154,7 +154,6 @@
 
 .header-logged-in-name {
   margin: 0;
-  line-height: 0;
 }
 
 
