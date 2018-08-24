@@ -44,13 +44,16 @@ export function setStateLoggedIn(user) {
 }
 
 export function toggleMenu() {
-  let element = getElement('header-mobile-menu-container');
-
-  if (element.classList.contains('header-menu-open')) {
-    element.classList.remove('header-menu-open');
-  } else {
-    element.classList.add('header-menu-open');
+  for (let elementName of ['header-mobile-menu-container', 'header-mobile-menu-button']) {
+    let element = getElement(elementName);
+    if (element.classList.contains('header-menu-open')) {
+      element.classList.remove('header-menu-open');
+    } else {
+      element.classList.add('header-menu-open');
+    }
   }
+  const menuButton = getElement('header-mobile-menu-button');
+  menuButton.setAttribute('aria-expanded', String(menuButton.classList.contains('header-menu-open')));
 }
 
 export function updateDom(lang) {

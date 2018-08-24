@@ -35,15 +35,19 @@
     "cookie": {
       "info": "Vi använder oss av cookies för att underlätta användningen av webbplatsen.",
       "close": "Stäng"
+    },
+    "mobileMenuButton": {
+      "ariaLabel": "Meny"
     }
   },
   "footer": {
     "ariaLabel": "Serviceinformation",
     "note": "Utbildningsanordnarna och högskolorna uppdaterar själva uppgifterna om sina utbildningar i Studieinfo. Du kan kontrollera att uppgifterna är riktiga av läroanstalten eller högskolan.",
     "copyright": "Copyright © 2018 Utbildningsstyrelsen",
+    "linksHeading": "Annanstans i Studieinfo",
     "links": {
       "mystudyinfo": {
-        "title": "Min Studieinfo-tjänsten",
+        "title": "Vad är Min Studieinfo -tjänsten?",
         "url": "/wp/sv/min-studieinfo-tjansten/"
       },
       "description": {

@@ -15,9 +15,11 @@ import './styles/main.css';
   const footer = getFooter(lang);
 
   Promise.all([header, footer]).then(function(values) {
-    let body = document.body;
-    body.appendChild(parseHtml(values[1]));
-    body.insertBefore(parseHtml(values[0]), body.firstChild);
+    const body = document.body;
+    const footerLocation = document.getElementById('oppija-raamit-footer-here') || body;
+    footerLocation.appendChild(parseHtml(values[1]));
+    const headerLocation = document.getElementById('oppija-raamit-header-here') || body;
+    headerLocation.insertBefore(parseHtml(values[0]), headerLocation.firstChild);
 
     getUser();
     updateDom(lang);

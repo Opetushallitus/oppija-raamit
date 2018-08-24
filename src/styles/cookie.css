@@ -3,10 +3,9 @@
   text-align: center;
   padding-top: 10px;
   padding-bottom: 10px;
-  font-family: 'Open Sans', sans-serif;
   background-color: #f6f4f0;
-  color: #333;
-  font-size: 14px;
+  color: black;
+  font-size: var(--raamit-font-size-small);
   display: none;
 
   & button {
@@ -23,6 +22,8 @@
     cursor: pointer;
     border: 1px solid transparent;
     border-radius: 4px;
+    font: inherit;
+    font-weight: 600;
     &:hover{
       background: var(--header-hover-color);
       color: #ffffff;

@@ -1,6 +1,5 @@
 #header {
   background: var(--header-background-color);
-  font-family: var(--raamit-presentation-font);
   color: white;
   line-height: 16px;
 }
@@ -8,6 +7,13 @@
 #header :any-link {
   color: white;
   text-decoration: none;
+}
+
+/* target Chrome (and Safari, but changing only outline color in Safari has no effect) */
+@media (-webkit-min-device-pixel-ratio:0) {
+  #header :any-link:focus, #header button:focus {
+    outline-color: white;
+  }
 }
 
 .header-column {
@@ -20,30 +26,25 @@
   flex-direction: row;
   flex-wrap: nowrap;
   padding: 15px 0 15px 0;
-  font-weight: bold;
 }
 
 #header-content-left-side {
   display: flex;
   flex-direction: row;
+  align-items: center;
 }
 
 #header-content-right-side {
   display: flex;
   flex-direction: row;
+  align-items: center;
   margin-left: auto;
+  font-weight: 600;
 }
 
 /* Title section */
 
 #header-mobile-menu-button {
-  margin: 0 10px 0 0;
-  padding: 0;
-  border: 0;
-  background: transparent;
-  cursor: pointer;
-  color: white;
-  font-size: 44px;
   display: none;
 }
 
@@ -72,19 +73,16 @@
   border: none;
   cursor: pointer;
   overflow: hidden;
-  outline:none;
   margin-right: 5px;
   color: white;
+  font-size: var(--raamit-font-size);
+  font-weight: var(--raamit-font-weight);
   font-family: inherit;
-  font-weight: 300;
-  font-size: 16px;
   padding: 0;
-  opacity: 0.8;
 }
 
 .header-language-button-active {
-  font-weight: 900;
-  opacity: 1;
+  text-decoration: underline;
 }
 
 /* Link section */
@@ -97,7 +95,7 @@
 }
 
 .header-item.border {
-  border-right: 1px solid rgba(256, 256, 256, 0.5);
+  border-right: 1px solid white;
 }
 
 .header-arrow-down {
@@ -129,7 +127,7 @@
     display: inline-block;
     position: relative;
     left: -15px;
-    top: 4px;
+    top: 2px;
   }
 
   & #header-logged-out {
@@ -137,27 +135,25 @@
   }
 
   & #header-logged-in {
+    position: relative;
     display: none;
+    vertical-align: top;
   }
 }
 
 #header-login-button {
-  font-weight: bold;
 }
 
 #header-logout-button {
-  font-size: 12px;
   position: relative;
-  top: 10px;
-  left: 1px;
+  line-height: 1;
+  left: 0;
   text-decoration: underline;
-  font-weight: normal;
   float: left;
 }
 
 .header-logged-in-name {
   margin: 0;
-  line-height: 0;
 }
 
 

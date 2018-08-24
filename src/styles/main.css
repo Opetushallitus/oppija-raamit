@@ -6,11 +6,16 @@
 @import 'mobile.css';
 @import 'demo.css';
 
-@import '../../static/fontello/css/fontello.css';
-
 /* Ensures that header and footer start and end in edges. */
 body {
   margin: 0;
+}
+
+/* prevent any global styles from changing font size */
+#header, #footer {
+  font-family: var(--raamit-font);
+  font-size: var(--raamit-font-size);
+  font-weight: var(--raamit-font-weight);
 }
 
 /* Remove default styling from buttons */
@@ -19,12 +24,10 @@ body {
   border: none;
   cursor: pointer;
   overflow: hidden;
-  outline: none;
   padding: 0;
   text-align: unset;
+  font: inherit;
 
   /* Add some common properties for oppija-raamit */
   color: white;
-  font-family: var(--raamit-presentation-font);
-  font-size: var(--raamit-font-size);
 }

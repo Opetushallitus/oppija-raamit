@@ -24,11 +24,15 @@
   <div role="presentation" id="header-content" class="header-column">
     <!-- Banner and view name-->
     <div id="header-content-left-side">
-      <button id="header-mobile-menu-button" onclick="Raamit.toggleMenu()">
-        <i class="raamit-icon-menu"></i>
+      <button id="header-mobile-menu-button" onclick="Raamit.toggleMenu()" aria-expanded="false" aria-haspopup="true" aria-controls="header-mobile-menu-container" data-attr-t aria-label-t="header.mobileMenuButton.ariaLabel">
+        <div class="header-mobile-menu-bar1"></div>
+        <div class="header-mobile-menu-bar2"></div>
+        <div class="header-mobile-menu-bar3"></div>
       </button>
-      <img src="/oppija-raamit/img/oma-opintopolku_ikoni.svg" id="header-banner" />
-      <span id="header-title" data-t="header.links.oma-opintopolku"></span>
+      <img src="/oppija-raamit/img/oma-opintopolku_ikoni.svg" id="header-banner"/>
+      <a href="/oma-opintopolku" id="header-title">
+        <span noid="header-title" data-t="header.links.oma-opintopolku"></span>
+      </a>
     </div>
     <div id="header-content-right-side">
       <div id="header-languages" class="header-item" data-attr-t aria-label-t="header.languages.ariaLabel">
@@ -65,7 +69,7 @@
   <!-- Mobile menu -->
   <div id="header-mobile-menu-container">
     <div id="header-mobile-menu-content-container">
-      <div id="header-mobile-menu-languages">
+      <div id="header-mobile-menu-languages" data-attr-t aria-label-t="header.languages.ariaLabel">
         <button class="header-language-button header-language-fi" onclick="Raamit.changeLanguage('fi')">FI</button>
         <button class="header-language-button header-language-sv" onclick="Raamit.changeLanguage('sv')">SV</button>
         <button class="header-language-button header-language-en" onclick="Raamit.changeLanguage('en')">EN</button>

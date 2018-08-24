@@ -1,11 +1,10 @@
 #top-links-bar {
   background-color: var(--top-links-background-color);
   width: 100%;
+  font-weight: bold;
+  font-size: var(--raamit-font-size-top-links);
 
   & .top-links {
-    font-family: var(--raamit-header-nav-font);
-    font-weight: 900;
-    font-size: var(--raamit-font-size);
     line-height: 20px;
     width: 100%;
     position: relative;

@@ -35,15 +35,19 @@
     "cookie": {
       "info": "We use cookies on this site to enhance your user experience.",
       "close": "Close"
+    },
+    "mobileMenuButton": {
+      "ariaLabel": "Menu"
     }
   },
   "footer": {
     "ariaLabel": "Service information",
     "note": "The education providers and higher education institutions maintain their study programme information on Studyinfo. You can check the validity of the information directly from the educational institution or the higher education institution.",
     "copyright": "Copyright @ 2018 Finnish National Board of Education",
+    "linksHeading": "Elsewhere in Studyinfo",
     "links": {
       "mystudyinfo": {
-        "title": "My Studyinfo -service",
+        "title": "What is My Studyinfo -service?",
         "url": "/wp2/en/my-studyinfo-service/"
       },
       "description": {
