@@ -19,6 +19,12 @@ Näiden lisäksi löytyy myös seuraavat vapaavalintaiset hookit.
 Raamien kielinapit asettavat `lang`-cookien arvoilla `fi`, `sv` ja `en`.
 Raamit ilmoittavat käyttäjälle kekseistä ja hyväksyntä tallennetaan cookieen `oph-cookies-accepted`.
 
+Raamit käyttävät Source Sans Pro -fonttia, jos se löytyy (jos ei löydy, fallback on "sans-serif").
+Jos halutaan Source Sans Pro -fontti, raameja käyttävän sivuston pitää itse ladata se (painot regular 400, semibold 600 ja bold 700).
+
+Normaalisti raamit lisätään body-elementin alkuun ja loppuun. Tarvittaessa raameja käyttävä sivusto voi
+määritellä muun paikan DOM-puussa käyttämällä id="oppija-raamit-header-here" ja/tai id="oppija-raamit-footer-here".
+
 
 Käynnistä esimerkkiapplikaatio näin:
 
