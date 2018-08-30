@@ -73,7 +73,7 @@
     }
 
     function isDemoEnv() {
-        return ["demo.opintopolku.fi", "demo.studieinfo.fi", "demo.studyinfo.fi"].indexOf(window.location.hostname) !== -1;
+        return ["demo-opintopolku.fi", "demo-studieinfo.fi", "demo-studyinfo.fi"].indexOf(window.location.hostname) !== -1;
     }
 
     function isProductionEnv() {
