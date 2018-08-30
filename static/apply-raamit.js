@@ -140,7 +140,7 @@
                                 $(".header-system-name").text(getTestSystemName());
 
                                 if (isDemoEnv()) {
-                                    $('#top-link-eperusteet').hide();
+                                    hideTopLinks()
                                 }
 
                                 loadFooterLinks(language);
