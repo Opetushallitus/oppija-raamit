@@ -1,0 +1,35 @@
+sudo: required
+language: java
+jdk:
+- oraclejdk8
+services:
+- docker
+cache:
+  directories:
+  - $HOME/.m2
+env:
+  global:
+  # AWS_ACCESS_KEY_ID
+  - secure: "V5CTciQzOHwegcRlmAFGRsh13+C8IMbr7gEO2KB075ymmkguqRcvEFuHx1GBb8eY+tGNrW8o76I6PNZY4Z5nc6Xc/StCR7IDeNrhR8g1g/YtDSvtPYxB7lPkuffem6fbXnbsZYwS/BcpdYnV4W/GAN2zTjtas7mxMebymozQmrA="
+  # AWS_SECRET_ACCESS_KEY
+  - secure: "deMh1yJlMclb2DoSVQj2h/+Wd6B7aGDG8HDdee6/0j8paVox4gMEGlGwWhZB07FPdATkHFxjsDbKXzZsTTtsLfaUP8blpPPTdhA6dxQWhEh7iWbW//LXQJ5tEw9RG+WePRFo7uVhnNt7+m88Ub21d/xApjXRsCnnCQNfvtkCk3w="
+
+install:
+- git clone https://github.com/Opetushallitus/ci-tools.git
+- source ci-tools/common/setup-tools.sh
+- export ARTIFACT_NAME="oppija-raamit"
+
+script:
+- mvn clean install -B -Dbranch=${TRAVIS_BRANCH} -Drevision=${TRAVIS_COMMIT} -DbuildNumber=${TRAVIS_BUILD_NUMBER}
+
+- mv -v target/oppija-raamit-*.jar $DOCKER_BUILD_DIR/artifact/oppija-raamit.jar
+
+- export BASE_IMAGE="base-legacy:0.1"
+- ./ci-tools/common/pull-image.sh
+- ./ci-tools/build/build-fatjar.sh $ARTIFACT_NAME
+
+deploy:
+  provider: script
+  script: ./ci-tools/build/upload-image.sh $ARTIFACT_NAME
+  on:
+    all_branches: true
