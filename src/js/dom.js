@@ -59,7 +59,7 @@ function toggleOpenState(elementPrefix) {
   menuButton.setAttribute('aria-expanded', String(menuButton.classList.contains(openClassName)));
 }
 
-export function toggleMenu() {
+export function toggleMobileMenu() {
   toggleOpenState('header-mobile-menu')
 }
 

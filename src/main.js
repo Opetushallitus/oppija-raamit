@@ -1,7 +1,7 @@
 import './polyfills';
 import {getHeader, getFooter} from './js/templates';
 import {parseHtml} from './js/utils';
-import {updateDom, toggleMenu} from './js/dom';
+import {updateDom, toggleMobileMenu} from './js/dom';
 import {checkAcceptCookie, setAcceptCookie} from './js/cookie';
 import {getLanguage, changeLanguage} from './js/language';
 import {login, logout, getUser} from './js/login';
@@ -34,7 +34,7 @@ window.Raamit = {
   changeLanguage: changeLanguage,
   login: login,
   logout: logout,
-  toggleMenu: toggleMenu,
+  toggleMobileMenu: toggleMobileMenu,
   setAcceptCookie: setAcceptCookie,
   getLanguage: getLanguage
 };
