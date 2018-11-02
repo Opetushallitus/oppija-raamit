@@ -43,17 +43,24 @@ export function setStateLoggedIn(user) {
   updateUsername(user.name);
 }
 
-export function toggleMenu() {
-  for (let elementName of ['header-mobile-menu-container', 'header-mobile-menu-button']) {
+function toggleOpenState(elementPrefix) {
+  const openClassName = 'header-menu-open'
+
+  for (let elementName of [`${elementPrefix}-container`, `${elementPrefix}-button`]) {
     let element = getElement(elementName);
-    if (element.classList.contains('header-menu-open')) {
-      element.classList.remove('header-menu-open');
+    if (element.classList.contains(openClassName)) {
+      element.classList.remove(openClassName);
     } else {
-      element.classList.add('header-menu-open');
+      element.classList.add(openClassName);
     }
   }
-  const menuButton = getElement('header-mobile-menu-button');
-  menuButton.setAttribute('aria-expanded', String(menuButton.classList.contains('header-menu-open')));
+
+  const menuButton = getElement(`${elementPrefix}-button`);
+  menuButton.setAttribute('aria-expanded', String(menuButton.classList.contains(openClassName)));
+}
+
+export function toggleMenu() {
+  toggleOpenState('header-mobile-menu')
 }
 
 export function updateDom(lang) {
