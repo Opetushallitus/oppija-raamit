@@ -23,6 +23,7 @@ export function setStateLoggedOut() {
   // Default nav
   hideElement('header-logged-in');
   showElement('header-logged-out');
+  toggleOverflowMenu();
 
   // Mobile nav
   hideElement('header-mobile-menu-logged-in');
@@ -61,6 +62,10 @@ function toggleOpenState(elementPrefix) {
 
 export function toggleMobileMenu() {
   toggleOpenState('header-mobile-menu')
+}
+
+export function toggleOverflowMenu() {
+  toggleOpenState('header-overflow-menu')
 }
 
 export function updateDom(lang) {
