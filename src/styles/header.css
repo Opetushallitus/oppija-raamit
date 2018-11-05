@@ -114,7 +114,6 @@
 /* Login section */
 
 #header-login-section {
-  line-height: 25px;
   padding-left: 35px;
 
   & #header-overflow-menu-button {

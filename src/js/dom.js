@@ -110,9 +110,12 @@ function updateActiveHeaderItem() {
   if (host.includes('omatsivut')) {
     getElement('header-omatsivut-link').appendChild(arrowElement);
     element = getElement('header-mobile-menu-links-omatsivut');
-  } else if (host.includes('koski')) {
+  } else if (host.includes('koski') && !host.includes('omadata')) {
     getElement('header-koski-link').appendChild(arrowElement);
     element = getElement('header-mobile-menu-links-koski');
+  } else if (host.includes('omadata') || host.includes('oma-opintopolku-loki')) {
+    getElement('header-login-section').appendChild(arrowElement);
+    element = getElement('header-mobile-menu-links-tietojeni-kaytto');
   } else {
     element = getElement('header-mobile-menu-links-home');
   }
