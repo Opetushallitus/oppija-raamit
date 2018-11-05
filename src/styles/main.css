@@ -25,7 +25,7 @@ body {
   cursor: pointer;
   overflow: hidden;
   padding: 0;
-  text-align: unset;
+  text-align: left;
   font: inherit;
 
   /* Add some common properties for oppija-raamit */
