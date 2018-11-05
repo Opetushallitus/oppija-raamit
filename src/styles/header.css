@@ -176,8 +176,10 @@
   line-height: 1.4;
 }
 
-#header-overflow-menu-container.header-menu-open {
-  display: flex !important;
+@media screen and (min-width: 901px) {
+  #header-overflow-menu-container.header-menu-open {
+    display: flex !important;
+  }
 }
 
 #header-overflow-menu-logged-in {
