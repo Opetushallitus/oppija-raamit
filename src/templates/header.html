@@ -54,14 +54,26 @@
 
       <div id="header-login-section" class="header-item">
         <div id="header-logged-in" class="header-login-section-item" style="display:none;">
-          <p class="header-identity header-logged-in-name"></p>
-          <button id="header-logout-button" class="raamit-button" onclick="Raamit.logout()"
-                  data-t="header.links.logout"></button>
+          <button id="header-overflow-menu-button" class="raamit-button" onclick="Raamit.toggleOverflowMenu()" aria-expanded="false" aria-haspopup="true" aria-controls="header-overflow-menu-container" data-attr-t aria-label-t="header.mobileMenuButton.ariaLabel">
+            <span class="header-identity header-logged-in-name"></span>
+          </button>
         </div>
         <div id="header-logged-out" class="header-login-section-item">
           <button id="header-login-button" class="raamit-button" onclick="Raamit.login()"
                   data-t="header.links.login"></button>
         </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Overflow menu -->
+  <div id="header-overflow-menu-container">
+    <div id="header-overflow-menu-content-container">
+      <div id="header-overflow-menu-logged-in">
+        <div id="header-overflow-menu-links">
+          <a id="header-overflow-menu-links-tietojeni-kaytto" href="/koski/omadata/kayttooikeudet" data-t="header.links.tietojeni-kaytto"></a>
+        </div>
+        <button id="header-overflow-menu-logout-button" class="raamit-button" onclick="Raamit.logout()" data-t="header.links.logout"></button>
       </div>
     </div>
   </div>

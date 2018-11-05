@@ -23,6 +23,7 @@ export function setStateLoggedOut() {
   // Default nav
   hideElement('header-logged-in');
   showElement('header-logged-out');
+  closeOverflowMenu()
 
   // Mobile nav
   hideElement('header-mobile-menu-logged-in');
@@ -43,6 +44,11 @@ export function setStateLoggedIn(user) {
   updateUsername(user.name);
 }
 
+function closeOverflowMenu() {
+  getElement('header-overflow-menu-container').classList.remove('header-menu-open');
+  getElement('header-overflow-menu-button').classList.remove('header-menu-open');
+}
+
 function toggleOpenState(elementPrefix) {
   const openClassName = 'header-menu-open'
 
@@ -61,6 +67,10 @@ function toggleOpenState(elementPrefix) {
 
 export function toggleMobileMenu() {
   toggleOpenState('header-mobile-menu')
+}
+
+export function toggleOverflowMenu() {
+  toggleOpenState('header-overflow-menu')
 }
 
 export function updateDom(lang) {

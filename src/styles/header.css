@@ -116,18 +116,22 @@
 #header-login-section {
   line-height: 25px;
   padding-left: 35px;
-  border-left: 1px solid white;
 
-  &:before {
-    content: "";
-    background: url(../../static/img/profiili_ikoni.svg) no-repeat center center;
-    background-size: 100% 100%;
-    width: 18px;
-    height: 18px;
-    display: inline-block;
-    position: relative;
-    left: -15px;
-    top: 2px;
+  & #header-overflow-menu-button {
+    overflow: visible;
+    padding-left: 15px;
+
+    &:before {
+      content: "";
+      background: url(../../static/img/profiili_ikoni.svg) no-repeat center center;
+      background-size: 100% 100%;
+      width: 18px;
+      height: 18px;
+      display: inline-block;
+      position: relative;
+      left: -15px;
+      top: 2px;
+    }
   }
 
   & #header-logged-out {
@@ -156,4 +160,43 @@
   margin: 0;
 }
 
+/* Overflow menu */
 
+#header-overflow-menu-container {
+  display: none;
+  position: absolute;
+  right: 0;
+  width: 200px;
+  background-color: #149ecb;
+}
+
+#header-overflow-menu-content-container {
+  width: 100%;
+  padding: 0 0.5rem;
+  line-height: 1.4;
+}
+
+#header-overflow-menu-container.header-menu-open {
+  display: flex !important;
+}
+
+#header-overflow-menu-logged-in {
+  & #header-overflow-menu-links {
+    border-bottom: solid 1px #ffffff;
+
+    & > a {
+      display: inline-block;
+      box-sizing: border-box;
+      width: 100%;
+      margin: 0.75rem 0;
+      padding: 0 0.5rem;
+    }
+  }
+
+  & #header-overflow-menu-logout-button {
+    box-sizing: border-box;
+    width: 100%;
+    margin: 0.75rem 0;
+    padding: 0 0.5rem;
+  }
+}
