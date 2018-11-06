@@ -54,6 +54,7 @@
   display: block;
   width: 44px;
   height: 44px;
+  min-width: 44px;
   margin: 0 10px;
 }
 
@@ -120,7 +121,7 @@
 
 #header-login-section {
   min-width: 0;
-  -ms-flex: 1; /* IE11 has trouble truncating text within flex container; force flex:1 for IE */
+  -ms-flex: 4; /* IE11 has trouble truncating text within flex container; force flex properties for IE */
   padding: 0 5px 0 0;
 
   & #header-overflow-menu-button {
