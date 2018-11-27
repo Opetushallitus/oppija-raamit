@@ -23,6 +23,7 @@ export function setStateLoggedOut() {
   // Default nav
   hideElement('header-logged-in');
   showElement('header-logged-out');
+  closeOverflowMenu()
 
   // Mobile nav
   hideElement('header-mobile-menu-logged-in');
@@ -43,17 +44,33 @@ export function setStateLoggedIn(user) {
   updateUsername(user.name);
 }
 
-export function toggleMenu() {
-  for (let elementName of ['header-mobile-menu-container', 'header-mobile-menu-button']) {
+function closeOverflowMenu() {
+  getElement('header-overflow-menu-container').classList.remove('header-menu-open');
+  getElement('header-overflow-menu-button').classList.remove('header-menu-open');
+}
+
+function toggleOpenState(elementPrefix) {
+  const openClassName = 'header-menu-open'
+
+  for (let elementName of [`${elementPrefix}-container`, `${elementPrefix}-button`]) {
     let element = getElement(elementName);
-    if (element.classList.contains('header-menu-open')) {
-      element.classList.remove('header-menu-open');
+    if (element.classList.contains(openClassName)) {
+      element.classList.remove(openClassName);
     } else {
-      element.classList.add('header-menu-open');
+      element.classList.add(openClassName);
     }
   }
-  const menuButton = getElement('header-mobile-menu-button');
-  menuButton.setAttribute('aria-expanded', String(menuButton.classList.contains('header-menu-open')));
+
+  const menuButton = getElement(`${elementPrefix}-button`);
+  menuButton.setAttribute('aria-expanded', String(menuButton.classList.contains(openClassName)));
+}
+
+export function toggleMobileMenu() {
+  toggleOpenState('header-mobile-menu')
+}
+
+export function toggleOverflowMenu() {
+  toggleOpenState('header-overflow-menu')
 }
 
 export function updateDom(lang) {
@@ -93,9 +110,12 @@ function updateActiveHeaderItem() {
   if (host.includes('omatsivut')) {
     getElement('header-omatsivut-link').appendChild(arrowElement);
     element = getElement('header-mobile-menu-links-omatsivut');
-  } else if (host.includes('koski')) {
+  } else if (host.includes('koski') && !host.includes('omadata')) {
     getElement('header-koski-link').appendChild(arrowElement);
     element = getElement('header-mobile-menu-links-koski');
+  } else if (host.includes('omadata') || host.includes('oma-opintopolku-loki')) {
+    getElement('header-login-section').appendChild(arrowElement);
+    element = getElement('header-mobile-menu-links-tietojeni-kaytto');
   } else {
     element = getElement('header-mobile-menu-links-home');
   }

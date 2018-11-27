@@ -24,7 +24,7 @@
   <div role="presentation" id="header-content" class="header-column">
     <!-- Banner and view name-->
     <div id="header-content-left-side">
-      <button id="header-mobile-menu-button" onclick="Raamit.toggleMenu()" aria-expanded="false" aria-haspopup="true" aria-controls="header-mobile-menu-container" data-attr-t aria-label-t="header.mobileMenuButton.ariaLabel">
+      <button id="header-mobile-menu-button" onclick="Raamit.toggleMobileMenu()" aria-expanded="false" aria-haspopup="true" aria-controls="header-mobile-menu-container" data-attr-t aria-label-t="header.mobileMenuButton.ariaLabel">
         <div class="header-mobile-menu-bar1"></div>
         <div class="header-mobile-menu-bar2"></div>
         <div class="header-mobile-menu-bar3"></div>
@@ -54,17 +54,33 @@
 
       <div id="header-login-section" class="header-item">
         <div id="header-logged-in" class="header-login-section-item" style="display:none;">
-          <p class="header-identity header-logged-in-name"></p>
-          <button id="header-logout-button" class="raamit-button" onclick="Raamit.logout()"
-                  data-t="header.links.logout"></button>
+          <button id="header-overflow-menu-button" class="raamit-button" onclick="Raamit.toggleOverflowMenu()" aria-expanded="false" aria-haspopup="true" aria-controls="header-overflow-menu-container" data-attr-t aria-label-t="header.mobileMenuButton.ariaLabel">
+            <div id="header-profile-icon"></div>
+            <span class="header-identity header-logged-in-name"></span>
+            <div id="header-overflow-icon"></div>
+          </button>
         </div>
+
         <div id="header-logged-out" class="header-login-section-item">
           <button id="header-login-button" class="raamit-button" onclick="Raamit.login()"
                   data-t="header.links.login"></button>
         </div>
+
+        <!-- Overflow menu -->
+        <div id="header-overflow-menu-container">
+          <div id="header-overflow-menu-content-container">
+            <div id="header-overflow-menu-logged-in">
+              <div id="header-overflow-menu-links">
+                <a id="header-overflow-menu-links-tietojeni-kaytto" href="/koski/omadata/kayttooikeudet" data-t="header.links.tietojeni-kaytto"></a>
+              </div>
+              <button id="header-overflow-menu-logout-button" class="raamit-button" onclick="Raamit.logout()" data-t="header.links.logout"></button>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
+
 
   <!-- Mobile menu -->
   <div id="header-mobile-menu-container">
@@ -81,6 +97,7 @@
             <a id="header-mobile-menu-links-home" href="/oma-opintopolku" data-t="header.links.home"></a>
             <a id="header-mobile-menu-links-koski" href="/koski/omattiedot" data-t="header.links.koski"></a>
             <a id="header-mobile-menu-links-omatsivut" href="/omatsivut" data-t="header.links.applications"></a>
+            <a id="header-mobile-menu-links-tietojeni-kaytto" href="/koski/omadata/kayttooikeudet" data-t="header.links.tietojeni-kaytto"></a>
           </div>
           <p id="header-mobile-menu-name" class="header-identity"></p>
           <button id="header-mobile-menu-logout-button" class="raamit-button" onclick="Raamit.logout()"
