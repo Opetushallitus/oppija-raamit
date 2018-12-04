@@ -17,10 +17,11 @@
   },
   "dependencies": {
     "@webcomponents/template": "^1.2.4",
-    "js-cookie": "^2.2.0",
-    "whatwg-fetch": "^2.0.4",
+    "browser-update": "^3.2.2",
     "core-js": "^2.5.7",
-    "es6-promise": "^4.2.4"
+    "es6-promise": "^4.2.4",
+    "js-cookie": "^2.2.0",
+    "whatwg-fetch": "^2.0.4"
   },
   "devDependencies": {
     "autoprefixer": "^7.1.2",
