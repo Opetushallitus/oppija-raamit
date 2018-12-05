@@ -43,6 +43,8 @@ import './styles/main.css';
         s:-1,
         c:-3
       },
+      test:true,
+      newwindow:true,
       insecure:true,
       unsupported:true,
       text:updateText,
