@@ -24,7 +24,7 @@ script:
 
 - mv -v target/oppija-raamit-*.jar $DOCKER_BUILD_DIR/artifact/oppija-raamit.jar
 
-- export BASE_IMAGE="base-legacy:0.1"
+- export BASE_IMAGE="baseimage-fatjar:master"
 - ./ci-tools/common/pull-image.sh
 - ./ci-tools/build/build-fatjar.sh $ARTIFACT_NAME
 
