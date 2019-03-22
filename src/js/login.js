@@ -23,6 +23,19 @@ export function logout() {
 }
 
 export function getUser() {
+  getCasUser()
+    .then(setStateLoggedIn)
+    .catch(setShibbolethUser);
+}
+
+function getCasUser() {
+  const service = `${window.location.protocol}//${window.location.hostname}/oppija-raamit`;
+  return fetch(`/cas-oppija/user/current/attributes?service=${service}`, { credentials: 'same-origin' })
+    .then(okResponseToJson)
+    .then(attributesToUser);
+}
+
+function setShibbolethUser() {
   if (typeof Service.getUser === 'function') {
     const promise = Service.getUser();
     promise.then(user => {
@@ -34,4 +47,17 @@ export function getUser() {
   } else {
     throw new Error('Service is missing a getUser function.');
   }
+}
+
+function okResponseToJson(response) {
+  if (!response.ok) {
+    throw new Error(response);
+  }
+  return response.json();
+}
+
+function attributesToUser(attributes) {
+  return {
+    name: attributes.personName
+  };
 }
