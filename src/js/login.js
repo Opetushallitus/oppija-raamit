@@ -58,6 +58,7 @@ function okResponseToJson(response) {
 
 function attributesToUser(attributes) {
   return {
+    impersonator: attributes.impersonatorPersonName,
     name: attributes.personName
   };
 }

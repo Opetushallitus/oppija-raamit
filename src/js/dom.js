@@ -12,10 +12,16 @@ export function getElement(id) {
   return document.getElementById(id);
 }
 
-export function updateUsername(name) {
+export function updateUsername(name, impersonator) {
   let elements = document.getElementsByClassName('header-identity');
   for (let element of elements) {
     element.innerHTML = name;
+  }
+  if (impersonator) {
+    const element = document.getElementById('header-overflow-menu-links-impersonator');
+    if (element) {
+      element.innerHTML = impersonator
+    }
   }
 }
 
@@ -41,7 +47,7 @@ export function setStateLoggedIn(user) {
   showElement('header-mobile-menu-logout-button');
   hideElement('header-mobile-menu-logged-out');
 
-  updateUsername(user.name);
+  updateUsername(user.name, user.impersonator);
 }
 
 function closeOverflowMenu() {
