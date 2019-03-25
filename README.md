@@ -4,9 +4,16 @@
 
 Oppija-raamit otetaan käyttöön lisäämällä script-tägi
 
+**Shibboleth**
+
     <script id="apply-raamit" type="text/javascript" src="/oppija-raamit/js/apply-raamit.js"></script>
     
+**CAS**
+
+    <script id="apply-raamit" type="text/javascript" src="/oppija-raamit/js/apply-raamit-cas.js"></script>
+
 Lisäksi raamit vaativat niitä käyttävää palvelua toteuttamaan seuraavat funktiot.
+(vain Shibboleth).
 
     Service.login()  -- Kutsutaan kun raamien "kirjaudu sisään" nappia painetaan.
     Service.logout() -- Kutsutaan kun raamien "kirjaudu ulos" nappia painetaan.
