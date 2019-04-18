@@ -1,7 +1,8 @@
 import {setStateLoggedIn} from './dom';
+import {getLanguage} from './language';
 
 export function login() {
-  window.location.replace('/cas-oppija/login');
+  window.location.replace(`/cas-oppija/login?locale=${getLanguage()}`);
 }
 
 export function logout() {
