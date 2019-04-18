@@ -18,10 +18,14 @@ export function updateUsername(name, impersonator) {
     element.innerHTML = name;
   }
   if (impersonator) {
-    const element = document.getElementById('header-overflow-menu-links-impersonator');
-    if (element) {
-      element.innerHTML = impersonator
-    }
+    updateImpersonator(impersonator);
+  }
+}
+
+function updateImpersonator(impersonator) {
+  let elements = document.getElementsByClassName('header-overflow-menu-links-impersonator');
+  for (let element of elements) {
+    element.innerHTML = impersonator;
   }
 }
 

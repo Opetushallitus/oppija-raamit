@@ -1,7 +1,7 @@
 import urls from './urls';
 
-export function getHeader(lang) {
-  return fetchAsync(urls.header(lang))
+export function getHeader(lang, suffix) {
+  return fetchAsync(urls.header(lang, suffix || ''))
 }
 
 export function getFooter(lang) {

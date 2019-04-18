@@ -12,7 +12,7 @@ import './styles/main.css';
 (function applyRaamit() {
   const lang = getLanguage();
 
-  const header = getHeader(lang);
+  const header = getHeader(lang, '-cas');
   const footer = getFooter(lang);
 
   Promise.all([header, footer]).then(function(values) {

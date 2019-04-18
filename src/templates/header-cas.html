@@ -44,13 +44,6 @@
                onclick="Raamit.changeLanguage('en')">EN</button>
       </div>
 
-      <div id="header-omatsivut-link" class="header-item border">
-        <a href="/omatsivut" data-t="header.links.applications"></a>
-      </div>
-      <div id="header-koski-link" class="header-item">
-        <a href="/koski/omattiedot" data-t="header.links.koski"></a>
-      </div>
-
 
       <div id="header-login-section" class="header-item">
         <div id="header-logged-in" class="header-login-section-item" style="display:none;">
@@ -71,7 +64,7 @@
           <div id="header-overflow-menu-content-container">
             <div id="header-overflow-menu-logged-in">
               <div id="header-overflow-menu-links">
-                <a id="header-overflow-menu-links-tietojeni-kaytto" href="/koski/omadata/kayttooikeudet" data-t="header.links.tietojeni-kaytto"></a>
+                <span class="header-overflow-menu-links-impersonator"></span>
               </div>
               <button id="header-overflow-menu-logout-button" class="raamit-button" onclick="Raamit.logout()" data-t="header.links.logout"></button>
             </div>
@@ -95,11 +88,9 @@
         <div id="header-mobile-menu-logged-in">
           <div id="header-mobile-menu-links">
             <a id="header-mobile-menu-links-home" href="/oma-opintopolku" data-t="header.links.home"></a>
-            <a id="header-mobile-menu-links-koski" href="/koski/omattiedot" data-t="header.links.koski"></a>
-            <a id="header-mobile-menu-links-omatsivut" href="/omatsivut" data-t="header.links.applications"></a>
-            <a id="header-mobile-menu-links-tietojeni-kaytto" href="/koski/omadata/kayttooikeudet" data-t="header.links.tietojeni-kaytto"></a>
           </div>
           <p id="header-mobile-menu-name" class="header-identity"></p>
+          <span class="header-overflow-menu-links-impersonator"></span>
           <button id="header-mobile-menu-logout-button" class="raamit-button" onclick="Raamit.logout()"
                   data-t="header.links.logout"></button>
         </div>
