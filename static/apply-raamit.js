@@ -1,6 +1,5 @@
-import browserUpdate from "browser-update";
 ;((function () {
-
+    //var browserUpdate = require('browser-update');
     var raamit = window.OppijaRaamit = {
         changeLanguage: function (language) {
             setLangCookie(language, function () {
@@ -147,6 +146,7 @@ import browserUpdate from "browser-update";
 
                                 loadFooterLinks(language);
                                 checkAcceptCookie();
+                                showBrowserUpdate();
                             })
                         })
                     })
@@ -234,10 +234,9 @@ import browserUpdate from "browser-update";
         if (isDemoEnv()) {
             addDemoWarning();
         }
-        addBrowserUpdate()
     }
 
-  function addBrowserUpdate() {
+  function showBrowserUpdate() {
     var updateText;
     if (raamit.lang == 'fi') {
     updateText = 'Selaimesi {brow_name} on vanhentunut. Päivitä selaimesi turvallisempaan, nopeampaan ja helppokäyttöisempään. <a{up_but}>Päivitä selain</a><a{ignore_but}>Hylkää</a>'
