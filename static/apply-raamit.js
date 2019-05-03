@@ -1,4 +1,6 @@
+import browserUpdate from "browser-update";
 ;((function () {
+
     var raamit = window.OppijaRaamit = {
         changeLanguage: function (language) {
             setLangCookie(language, function () {
@@ -232,7 +234,38 @@
         if (isDemoEnv()) {
             addDemoWarning();
         }
+        addBrowserUpdate()
     }
+
+  function addBrowserUpdate() {
+    var updateText;
+    if (raamit.lang == 'fi') {
+    updateText = 'Selaimesi {brow_name} on vanhentunut. Päivitä selaimesi turvallisempaan, nopeampaan ja helppokäyttöisempään. <a{up_but}>Päivitä selain</a><a{ignore_but}>Hylkää</a>'
+    } else if (raamit.lang == 'sv') {
+      updateText = 'Din webbläsare {brow_name} är föråldrad. Uppdatera din webbläsare för mer säkerhet, snabbhet och den bästa upplevelsen. <a{up_but}>Uppdatera webbläsaren</a><a{ignore_but}>Ignorera</a>'
+    } else {
+      updateText = 'Your web browser {brow_name}, is out of date. Update your browser for more security, speed and the best experience. <a{up_but}>Update browser</a><a{ignore_but}>Ignore</a>'
+    }
+    browserUpdate({
+      required:{
+        //e:0, // MS Edge
+        i:12 // Below IE 12
+        //f:0, // Firefox
+        //o:0, // Opera
+        //s:0, // Safari
+        //c:0 // Chrome
+      },
+      test:true, //Uncomment to show update bar always
+      reminder:0,
+      reminderClosed:0,
+      newwindow:true,
+      insecure:true,
+      unsupported:true,
+      text:updateText,
+      no_permanent_hide:true,
+      api:2018.12
+    });
+  }
 
     function addDemoWarning() {
         var warningCssUrl = window.url("oppija-raamit-web.demo.warning.css");
