@@ -176,7 +176,7 @@
         //s:0, // Safari
         //c:0 // Chrome
       },
-      //test:true, //Uncomment to show update bar always
+      test:true, //Uncomment to show update bar always
       reminder:0,
       reminderClosed:0,
       newwindow:true,
@@ -410,7 +410,7 @@
     }
 
   function initRequireJS(callback) {
-    loadScript(window.jQuery, window.url("oppija-raamit-web.js.requireJs"), callback)
+    loadScript(window.jQuery, window.url("oppija-raamit-web.js.requireJS"), callback)
   }
 
     function initJQueryCookie(callback) {
