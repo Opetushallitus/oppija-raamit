@@ -1,5 +1,5 @@
 ;((function () {
-    //var browserUpdate = require('browser-update');
+
     var raamit = window.OppijaRaamit = {
         changeLanguage: function (language) {
             setLangCookie(language, function () {
@@ -146,7 +146,6 @@
 
                                 loadFooterLinks(language);
                                 checkAcceptCookie();
-                                showBrowserUpdate();
                             })
                         })
                     })
@@ -234,17 +233,19 @@
         if (isDemoEnv()) {
             addDemoWarning();
         }
+        showBrowserUpdate();
     }
 
   function showBrowserUpdate() {
-    var updateText;
-    if (raamit.lang == 'fi') {
-    updateText = 'Selaimesi {brow_name} on vanhentunut. Päivitä selaimesi turvallisempaan, nopeampaan ja helppokäyttöisempään. <a{up_but}>Päivitä selain</a><a{ignore_but}>Hylkää</a>'
-    } else if (raamit.lang == 'sv') {
-      updateText = 'Din webbläsare {brow_name} är föråldrad. Uppdatera din webbläsare för mer säkerhet, snabbhet och den bästa upplevelsen. <a{up_but}>Uppdatera webbläsaren</a><a{ignore_but}>Ignorera</a>'
-    } else {
-      updateText = 'Your web browser {brow_name}, is out of date. Update your browser for more security, speed and the best experience. <a{up_but}>Update browser</a><a{ignore_but}>Ignore</a>'
-    }
+    //var updateText;
+    //if (raamit.lang == 'fi') {
+    //updateText = 'Selaimesi {brow_name} on vanhentunut. Päivitä selaimesi turvallisempaan, nopeampaan ja helppokäyttöisempään. <a{up_but}>Päivitä selain</a><a{ignore_but}>Hylkää</a>'
+    //} else if (raamit.lang == 'sv') {
+    //  updateText = 'Din webbläsare {brow_name} är föråldrad. Uppdatera din webbläsare för mer säkerhet, snabbhet och den bästa upplevelsen. <a{up_but}>Uppdatera webbläsaren</a><a{ignore_but}>Ignorera</a>'
+    //} else {
+    //  updateText = 'Your web browser {brow_name}, is out of date. Update your browser for more security, speed and the best experience. <a{up_but}>Update browser</a><a{ignore_but}>Ignore</a>'
+    //}
+    var browserUpdate = require('browser-update');
     browserUpdate({
       required:{
         //e:0, // MS Edge
@@ -260,7 +261,8 @@
       newwindow:true,
       insecure:true,
       unsupported:true,
-      text:updateText,
+      //text:updateText,
+      text:"Selaimesi {brow_name} on vanhentunut. Päivitä selaimesi turvallisempaan, nopeampaan ja helppokäyttöisempään. <a{up_but}>Päivitä selain</a><a{ignore_but}>Hylkää</a>",
       no_permanent_hide:true,
       api:2018.12
     });
