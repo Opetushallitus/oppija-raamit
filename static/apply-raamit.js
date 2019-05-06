@@ -117,38 +117,36 @@
     setTimeout(function () {
         initOphUrls(function () {
             initJQuery(function () {
-                initRequireJS(function () {
-                    initJQueryCookie(function () {
-                        initI18n(function () {
-                            loadScript(window.navigationMenubar, window.url("oppija-raamit-web.navigation"), function () {
-                                $.ajax(window.url("oppija-raamit-web.raamit")).done(function (template) {
-                                    var language = getInitLang()
-                                    jQuery.cookie(i18n.options.cookieName, language, {expires: 1800, path: '/'});
-                                    if (!isDemoEnv()) {
-                                        $.ajax(getNaviPath(language))
-                                            .done(function (navidata) {
-                                                buildNavi(navidata.nav)
-                                            })
-                                    }
-                                    applyRaamit(template);
-                                    hideActiveLanguage(language);
-                                    if (['fi', 'sv'].indexOf(language) > -1) {
-                                        updateActiveTopLink()
-                                    } else {
-                                        hideTopLinks()
-                                    }
-                                    updateBasket();
-                                    updateLoginSection();
-                                    $(".header-system-name").text(getTestSystemName());
+                initJQueryCookie(function () {
+                    initI18n(function () {
+                        loadScript(window.navigationMenubar, window.url("oppija-raamit-web.navigation"), function () {
+                            $.ajax(window.url("oppija-raamit-web.raamit")).done(function (template) {
+                                var language = getInitLang()
+                                jQuery.cookie(i18n.options.cookieName, language, {expires: 1800, path: '/'});
+                                if (!isDemoEnv()) {
+                                    $.ajax(getNaviPath(language))
+                                        .done(function (navidata) {
+                                            buildNavi(navidata.nav)
+                                        })
+                                }
+                                applyRaamit(template);
+                                hideActiveLanguage(language);
+                                if (['fi', 'sv'].indexOf(language) > -1) {
+                                    updateActiveTopLink()
+                                } else {
+                                    hideTopLinks()
+                                }
+                                updateBasket();
+                                updateLoginSection();
+                                $(".header-system-name").text(getTestSystemName());
 
-                                    if (isDemoEnv()) {
-                                        hideTopLinks()
-                                    }
+                                if (isDemoEnv()) {
+                                    hideTopLinks()
+                                }
 
-                                    loadFooterLinks(language);
-                                    checkAcceptCookie();
-                                    showBrowserUpdate(language);
-                                })
+                                loadFooterLinks(language);
+                                checkAcceptCookie();
+                                showBrowserUpdate(language);
                             })
                         })
                     })
@@ -156,11 +154,6 @@
             })
         })
     }, 0)
-
-  function initRequireJS(callback) {
-    loadScript(window.requirejs.require(), window.url("oppija-raamit-web.js.requireJS"), callback)
-  }
-
 
   function showBrowserUpdate(language) {
     var browserUpdate = require('browser-update');
