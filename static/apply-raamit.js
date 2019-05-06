@@ -233,9 +233,9 @@
         if (isDemoEnv()) {
             addDemoWarning();
         }
-        showBrowserUpdate();
+        //showBrowserUpdate();
     }
-
+/*
   function showBrowserUpdate() {
     //var updateText;
     //if (raamit.lang == 'fi') {
@@ -266,7 +266,7 @@
       no_permanent_hide:true,
       api:2018.12
     });
-  }
+  }*/
 
     function addDemoWarning() {
         var warningCssUrl = window.url("oppija-raamit-web.demo.warning.css");
