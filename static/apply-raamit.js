@@ -156,7 +156,9 @@
     }, 0)
 
   function showBrowserUpdate(language) {
-    var browserUpdate = require('browser-update');
+    //var browserUpdate = require('browser-update');
+
+    import browserUpdate from 'browser-update';
 
     var updateText;
     //if (language === 'fi') {
