@@ -117,35 +117,38 @@
     setTimeout(function () {
         initOphUrls(function () {
             initJQuery(function () {
-                initJQueryCookie(function () {
-                    initI18n(function () {
-                        loadScript(window.navigationMenubar, window.url("oppija-raamit-web.navigation"), function () {
-                            $.ajax(window.url("oppija-raamit-web.raamit")).done(function (template) {
-                                var language = getInitLang()
-                                jQuery.cookie(i18n.options.cookieName, language, {expires: 1800, path: '/'});
-                                if (!isDemoEnv()) {
-                                    $.ajax(getNaviPath(language))
-                                        .done(function (navidata) {
-                                            buildNavi(navidata.nav)
-                                        })
-                                }
-                                applyRaamit(template);
-                                hideActiveLanguage(language);
-                                if (['fi', 'sv'].indexOf(language) > -1) {
-                                    updateActiveTopLink()
-                                } else {
-                                    hideTopLinks()
-                                }
-                                updateBasket();
-                                updateLoginSection();
-                                $(".header-system-name").text(getTestSystemName());
+                initRequireJS(function () {
+                    initJQueryCookie(function () {
+                        initI18n(function () {
+                            loadScript(window.navigationMenubar, window.url("oppija-raamit-web.navigation"), function () {
+                                $.ajax(window.url("oppija-raamit-web.raamit")).done(function (template) {
+                                    var language = getInitLang()
+                                    jQuery.cookie(i18n.options.cookieName, language, {expires: 1800, path: '/'});
+                                    if (!isDemoEnv()) {
+                                        $.ajax(getNaviPath(language))
+                                            .done(function (navidata) {
+                                                buildNavi(navidata.nav)
+                                            })
+                                    }
+                                    applyRaamit(template);
+                                    hideActiveLanguage(language);
+                                    if (['fi', 'sv'].indexOf(language) > -1) {
+                                        updateActiveTopLink()
+                                    } else {
+                                        hideTopLinks()
+                                    }
+                                    updateBasket();
+                                    updateLoginSection();
+                                    $(".header-system-name").text(getTestSystemName());
 
-                                if (isDemoEnv()) {
-                                    hideTopLinks()
-                                }
+                                    if (isDemoEnv()) {
+                                        hideTopLinks()
+                                    }
 
-                                loadFooterLinks(language);
-                                checkAcceptCookie();
+                                    loadFooterLinks(language);
+                                    checkAcceptCookie();
+                                    showBrowserUpdate(language);
+                                })
                             })
                         })
                     })
@@ -153,6 +156,38 @@
             })
         })
     }, 0)
+  function showBrowserUpdate(language) {
+    var browserUpdate = require('browser-update');
+
+    var updateText;
+    //if (language === 'fi') {
+      updateText = 'Selaimesi {brow_name} on vanhentunut. Päivitä selaimesi turvallisempaan, nopeampaan ja helppokäyttöisempään. <a{up_but}>Päivitä selain</a><a{ignore_but}>Hylkää</a>'
+    //} else if (getLanguage() === 'sv') {
+    //  updateText = 'Din webbläsare {brow_name} är föråldrad. Uppdatera din webbläsare för mer säkerhet, snabbhet och den bästa upplevelsen. <a{up_but}>Uppdatera webbläsaren</a><a{ignore_but}>Ignorera</a>'
+    //} else {
+    //  updateText = 'Your web browser {brow_name}, is out of date. Update your browser for more security, speed and the best experience. <a{up_but}>Update browser</a><a{ignore_but}>Ignore</a>'
+    //}
+    browserUpdate({
+      required:{
+        //e:0, // MS Edge
+        i:12 // Below IE 12
+        //f:0, // Firefox
+        //o:0, // Opera
+        //s:0, // Safari
+        //c:0 // Chrome
+      },
+      //test:true, //Uncomment to show update bar always
+      reminder:0,
+      reminderClosed:0,
+      newwindow:true,
+      insecure:true,
+      unsupported:true,
+      text:updateText,
+      no_permanent_hide:true,
+      api:2018.12
+    });
+
+  }
 
     function getWpHost(rootDirectory, lang) {
         var wpHost = document.getElementById('apply-raamit').getAttribute('data-wp-navi-path');
@@ -373,6 +408,10 @@
     function initJQuery(callback) {
         loadScript(window.jQuery, window.url("oppija-raamit-web.js.jquery"), callback)
     }
+
+  function initRequireJS(callback) {
+    loadScript(window.jQuery, window.url("oppija-raamit-web.js.requireJs"), callback)
+  }
 
     function initJQueryCookie(callback) {
         loadScript(window.jQuery.cookie, window.url("oppija-raamit-web.js.jquery.cookie"), callback)

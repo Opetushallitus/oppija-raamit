@@ -6,6 +6,7 @@ window.urls.addProperties({
     "oppija-raamit-web.index.sv": "/oppija-raamit/sv/hakemisto/oppilaitokset/A",
     "oppija-raamit-web.index.en": "/oppija-raamit/en/hakemisto/oppilaitokset/",
     "oppija-raamit-web.js.jquery": "/oppija-raamit/js/lib/jquery-1.9.1.min.js",
+    "oppija-raamit-web.js.requireJS": "/oppija-raamit/js/lib/require.js",
     "oppija-raamit-web.js.jquery.cookie": "/oppija-raamit/js/lib/jquery.cookie.js",
     "oppija-raamit-web.js.i18next": "/oppija-raamit/js/lib/i18next-1.7.3.js",
     "oppija-raamit-web.navigation": "/oppija-raamit/js/navigation.js",
