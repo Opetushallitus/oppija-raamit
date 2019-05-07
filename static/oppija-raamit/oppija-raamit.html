@@ -97,6 +97,7 @@
     </div>
     <script src="https://browser-update.org/update.min.js"></script>
     <script>
+      var text = '<span class="cookieText" data-i18n="raamit:browserUpdateText">'
       var $buoop = {
         required:{
           //e:0, // MS Edge
@@ -112,10 +113,10 @@
         newwindow:true,
         insecure:true,
         unsupported:true,
-        //text:updateText,
-        text:"Selaimesi {brow_name} on vanhentunut. Päivitä selaimesi turvallisempaan, nopeampaan ja helppokäyttöisempään. <a{up_but}>Päivitä selain</a><a{ignore_but}>Hylkää</a>",
-        text_sv:"Din webbläsare {brow_name} är föråldrad. Uppdatera din webbläsare för mer säkerhet, snabbhet och den bästa upplevelsen. <a{up_but}>Uppdatera webbläsaren</a><a{ignore_but}>Ignorera</a>",
-        text_en:"Your web browser {brow_name}, is out of date. Update your browser for more security, speed and the best experience. <a{up_but}>Update browser</a><a{ignore_but}>Ignore</a>",
+        text:text,
+        //text:"Selaimesi {brow_name} on vanhentunut. Päivitä selaimesi turvallisempaan, nopeampaan ja helppokäyttöisempään. <a{up_but}>Päivitä selain</a><a{ignore_but}>Hylkää</a>",
+        //text_sv:"Din webbläsare {brow_name} är föråldrad. Uppdatera din webbläsare för mer säkerhet, snabbhet och den bästa upplevelsen. <a{up_but}>Uppdatera webbläsaren</a><a{ignore_but}>Ignorera</a>",
+        //text_en:"Your web browser {brow_name}, is out of date. Update your browser for more security, speed and the best experience. <a{up_but}>Update browser</a><a{ignore_but}>Ignore</a>",
         no_permanent_hide:true,
         api:2019.05
       };
