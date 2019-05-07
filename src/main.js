@@ -52,7 +52,7 @@ import './styles/main.css';
       unsupported:true,
       text:updateText,
       no_permanent_hide:true,
-      api:2018.12
+      api:2019.05
     });
 
     });
