@@ -394,4 +394,10 @@ nav#mobile-nav {
 }
 body .buorg {
   position:relative;
+  background-color: #f6f4f0;
+  color: #333;
+  font: 14px 'Open Sans', sans-serif;
+}
+body #buorgig, #buorgul, #buorgpermanent {
+  background: #159ecb;
 }
