@@ -145,7 +145,7 @@
 
                                 loadFooterLinks(language);
                                 checkAcceptCookie();
-                                showBrowserUpdate(language);
+                                //showBrowserUpdate(language);
                             })
                         })
                     })
@@ -153,7 +153,7 @@
             })
         })
     }, 0)
-
+/*
   function showBrowserUpdate(language) {
     //var browserUpdate = require('browser-update');
 
@@ -188,6 +188,7 @@
     });
 
   }
+  */
 
     function getWpHost(rootDirectory, lang) {
         var wpHost = document.getElementById('apply-raamit').getAttribute('data-wp-navi-path');
