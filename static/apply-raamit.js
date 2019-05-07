@@ -1,5 +1,4 @@
 ;((function () {
-
     var raamit = window.OppijaRaamit = {
         changeLanguage: function (language) {
             setLangCookie(language, function () {
