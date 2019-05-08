@@ -419,7 +419,7 @@
                             info: "Jotta sivuston käyttö olisi sinulle sujuvaa, käytämme evästeitä.",
                             close: "Sulje"
                         },
-                      browserUpdateText:"Selaimesi {brow_name} on vanhentunut. Päivitä selaimesi turvallisempaan, nopeampaan ja helppokäyttöisempään. <a{up_but}>Päivitä selain</a><a{ignore_but}>Hylkää</a>"
+                      browserUpdateText:"Selaimesi {brow_name} on vanhentunut ja Opintopolun toiminnallisuudet eivät toimi. Päivitä selaimesi turvallisempaan, nopeampaan ja helppokäyttöisempään <a{up_but}>Päivitä selain</a><a{ignore_but}>Hylkää</a>"
 
                     }
                 },
@@ -489,7 +489,7 @@
                             info: "Vi använder oss av cookies för att underlätta användningen av webbplatsen.",
                             close: "Stäng"
                         },
-                        browserUpdateText:"Din webbläsare {brow_name} är föråldrad. Uppdatera din webbläsare för mer säkerhet, snabbhet och den bästa upplevelsen. <a{up_but}>Uppdatera webbläsaren</a><a{ignore_but}>Ignorera</a>"
+                        browserUpdateText:"Din webbläsare {brow_name} är föråldrad och Studieinfos funktionerna fungerar inte. Uppdatera din webbläsare för mer säkerhet, snabbhet och den bästa upplevelsen. <a{up_but}>Uppdatera webbläsaren</a><a{ignore_but}>Ignorera</a>"
                     }
                 },
                 en: {
@@ -547,7 +547,7 @@
                             info: "We use cookies on this site to enhance your user experience.",
                             close: "Close"
                         },
-                        browserUpdateText:"Your web browser {brow_name}, is out of date. Update your browser for more security, speed and the best experience. <a{up_but}>Update browser</a><a{ignore_but}>Ignore</a>"
+                        browserUpdateText:"Your web browser {brow_name}, is out of date and Studyinfo’s functions won’t work. Update your browser for more security, speed and the best experience. <a{up_but}>Update browser</a><a{ignore_but}>Ignore</a>"
                     }
                 }
             };
