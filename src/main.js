@@ -31,7 +31,7 @@ import './styles/main.css';
     if (getLanguage() === 'fi') {
       updateText = 'Selaimesi {brow_name} on vanhentunut ja Opintopolun toiminnallisuudet eivät toimi. Päivitä selaimesi turvallisempaan, nopeampaan ja helppokäyttöisempään. <a{up_but}>Päivitä selain</a><a{ignore_but}>Hylkää</a>'
     } else if (getLanguage() === 'sv') {
-      updateText = 'Din webbläsare {brow_name} är föråldrad och Studieinfos funktionerna fungerar inte. Uppdatera din webbläsare för mer säkerhet, snabbhet och den bästa upplevelsen. <a{up_but}>Uppdatera webbläsaren</a><a{ignore_but}>Ignorera</a>'
+      updateText = 'Din webbläsare {brow_name} är föråldrad och vissa funktioner i Studieinfo fungerar inte. Uppdatera din webbläsare och gör den säkrare, snabbare och tillgängligare. <a{up_but}>Uppdatera webbläsaren</a><a{ignore_but}>Ignorera</a>'
     } else {
       updateText = 'Your web browser {brow_name}, is out of date and Studyinfo’s functions won’t work. Update your browser for more security, speed and the best experience. <a{up_but}>Update browser</a><a{ignore_but}>Ignore</a>'
     }

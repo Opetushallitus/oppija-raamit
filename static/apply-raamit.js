@@ -489,7 +489,7 @@
                             info: "Vi använder oss av cookies för att underlätta användningen av webbplatsen.",
                             close: "Stäng"
                         },
-                        browserUpdateText:"Din webbläsare {brow_name} är föråldrad och Studieinfos funktionerna fungerar inte. Uppdatera din webbläsare för mer säkerhet, snabbhet och den bästa upplevelsen. <a{up_but}>Uppdatera webbläsaren</a><a{ignore_but}>Ignorera</a>"
+                        browserUpdateText:"Din webbläsare {brow_name} är föråldrad och vissa funktioner i Studieinfo fungerar inte. Uppdatera din webbläsare och gör den säkrare, snabbare och tillgängligare. <a{up_but}>Uppdatera webbläsaren</a><a{ignore_but}>Ignorera</a>"
                     }
                 },
                 en: {
