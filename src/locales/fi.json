@@ -48,6 +48,7 @@
     "note": "Koulutuksen järjestäjät ja korkeakoulut ylläpitävät tietoja koulutuksistaan Opintopolussa. Tietojen oikeellisuuden voit tarkistaa kyseisestä oppilaitoksesta tai korkeakoulusta.",
     "copyright": "Copyright © 2018 Opetushallitus",
     "linksHeading": "Muualla Opintopolussa",
+    "browserUpdateText": "Selaimesi {brow_name} on vanhentunut ja Opintopolun toiminnallisuudet eivät toimi. Päivitä selaimesi turvallisempaan, nopeampaan ja helppokäyttöisempään <a{up_but}>Päivitä selain</a><a{ignore_but}>Hylkää</a>",
     "links": {
       "mystudyinfo": {
         "title": "Mikä on Oma Opintopolku -palvelu?",

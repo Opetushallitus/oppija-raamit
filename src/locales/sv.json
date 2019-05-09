@@ -46,6 +46,7 @@
     "note": "Utbildningsanordnarna och högskolorna uppdaterar själva uppgifterna om sina utbildningar i Studieinfo. Du kan kontrollera att uppgifterna är riktiga av läroanstalten eller högskolan.",
     "copyright": "Copyright © 2018 Utbildningsstyrelsen",
     "linksHeading": "Annanstans i Studieinfo",
+    "browserUpdateText": "Din webbläsare {brow_name} är föråldrad och vissa funktioner i Studieinfo fungerar inte. Uppdatera din webbläsare och gör den säkrare, snabbare och tillgängligare. <a{up_but}>Uppdatera webbläsaren</a><a{ignore_but}>Ignorera</a>",
     "links": {
       "mystudyinfo": {
         "title": "Vad är Min Studieinfo -tjänsten?",

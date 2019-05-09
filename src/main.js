@@ -26,7 +26,7 @@ import './styles/main.css';
     updateDom(lang);
 
     checkAcceptCookie();
-
+/*
     var updateText;
     if (getLanguage() === 'fi') {
       updateText = 'Selaimesi {brow_name} on vanhentunut ja Opintopolun toiminnallisuudet eivät toimi. Päivitä selaimesi turvallisempaan, nopeampaan ja helppokäyttöisempään. <a{up_but}>Päivitä selain</a><a{ignore_but}>Hylkää</a>'
@@ -53,7 +53,7 @@ import './styles/main.css';
       text:updateText,
       no_permanent_hide:true,
       api:2019.05
-    });
+    });*/
 
     });
 
