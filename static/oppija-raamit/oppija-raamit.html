@@ -95,5 +95,27 @@
     </div>
     <div class="copyright footer-note" data-i18n="copyright">
     </div>
+    <script src="https://browser-update.org/update.min.js"></script>
+    <script>
+      var $buoop = {
+        required:{
+          //e:0, // MS Edge
+          i:12 // Below IE 12
+          //f:0, // Firefox
+          //o:0, // Opera
+          //s:0, // Safari
+          //c:0 // Chrome
+        },
+        //test:true, //Uncomment to show update bar always
+        reminder:0,
+        reminderClosed:0,
+        newwindow:true,
+        insecure:true,
+        unsupported:true,
+        text:i18n.t("raamit:browserUpdateText"),
+        no_permanent_hide:true,
+        api:2019.05
+      };
+    </script>
   </footer>
 </div>
