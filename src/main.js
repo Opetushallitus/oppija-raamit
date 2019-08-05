@@ -23,11 +23,11 @@ import './styles/main.css';
   browserUpdate({
     required:{
       //e:0, // MS Edge
-      i:12 // Below IE 12
-      //f:0, // Firefox
+      i:12, // Below IE 12
+      f:55, // Below Firefox 55
       //o:0, // Opera
-      //s:0, // Safari
-      //c:0 // Chrome
+      s:10, // Below Safari 10
+      c:52 // Below Chrome 52
     },
     //test:true, //Uncomment to show update bar always
     reminder:0,
