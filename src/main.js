@@ -37,7 +37,7 @@ import './styles/main.css';
     unsupported:true,
     text:updateText,
     no_permanent_hide:true,
-    api:2019.05
+    api:2019.08
   });
 
   const header = getHeader(lang);
