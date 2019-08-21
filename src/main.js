@@ -24,7 +24,7 @@ import './styles/main.css';
     required:{
       //e:0, // MS Edge
       i:12, // Below IE 12
-      f:56, // Below Firefox 56
+      f:55, // Below Firefox 55
       //o:0, // Opera
       s:10, // Below Safari 10
       c:52 // Below Chrome 52
