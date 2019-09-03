@@ -23,11 +23,11 @@ import './styles/main.css';
   browserUpdate({
     required:{
       //e:0, // MS Edge
-      i:12 // Below IE 12
-      //f:0, // Firefox
+      i:12, // Below IE 12
+      f:55, // Below Firefox 55
       //o:0, // Opera
-      //s:0, // Safari
-      //c:0 // Chrome
+      s:10, // Below Safari 10
+      c:52 // Below Chrome 52
     },
     //test:true, //Uncomment to show update bar always
     reminder:0,
@@ -37,7 +37,7 @@ import './styles/main.css';
     unsupported:true,
     text:updateText,
     no_permanent_hide:true,
-    api:2019.05
+    api:2019.08
   });
 
   const header = getHeader(lang);
