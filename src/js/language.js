@@ -8,7 +8,7 @@ function setLangCookies(language) {
 
 export function changeLanguage(language) {
   setLangCookies(language);
-  if (typeof Service.changeLanguage === 'function') {
+  if (typeof Service !== 'undefined' && typeof Service.changeLanguage === 'function') {
     const promise = Service.changeLanguage(language);
     promise.then(() => {
       document.location.reload();
