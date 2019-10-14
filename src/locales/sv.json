@@ -23,6 +23,10 @@
         "title": "eGrunder",
         "url": "https://egrunder.studieinfo.fi/"
       },
+      "ehoks": {
+        "title": "ePUK",
+        "url": "https://studieinfo.fi/ehoks"
+      },
       "wordpress": {
         "url": "/wp"
       },

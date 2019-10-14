@@ -81,6 +81,7 @@ export function updateDom(lang) {
 
   if (lang === 'en') {
     hideElement('top-link-eperusteet');
+    hideElement('top-link-ehoks');
     hideElement('top-link-mobile-eperusteet');
     hideElement('footer-link-feedback');
   }
