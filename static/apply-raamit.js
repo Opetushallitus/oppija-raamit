@@ -106,11 +106,17 @@
     }
 
     function updateActiveTopLink() {
-        if (window.location.host.indexOf('eperusteet') !== -1 && window.location.host.indexOf('egrunder') !== -1) {
-            $('#top-link-eperusteet').addClass('top-link-active');
-        } else {
-            $('#top-link-opintopolku').addClass('top-link-active');
-        }
+      if (window.location.host.indexOf('eperusteet') !== -1 && window.location.host.indexOf('egrunder') !== -1) {
+        $('#top-link-eperusteet').addClass('top-link-active');
+        return;
+      }
+
+      if (window.location.host.indexOf('ehoks') !== -1 && window.location.host.indexOf('epuk') !== -1) {
+        $('#top-link-ehoks').addClass('top-link-active');
+        return;
+      }
+
+      $('#top-link-opintopolku').addClass('top-link-active');
     }
 
     setTimeout(function () {
