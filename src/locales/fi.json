@@ -25,6 +25,10 @@
         "title": "ePerusteet",
         "url": "https://eperusteet.opintopolku.fi/"
       },
+      "ehoks": {
+        "title": "eHOKS",
+        "url": "https://opintopolku.fi/ehoks"
+      },
       "wordpress": {
         "url": "/wp"
       },

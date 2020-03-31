@@ -106,11 +106,17 @@
     }
 
     function updateActiveTopLink() {
-        if (window.location.host.indexOf('eperusteet') !== -1 && window.location.host.indexOf('egrunder') !== -1) {
-            $('#top-link-eperusteet').addClass('top-link-active');
-        } else {
-            $('#top-link-opintopolku').addClass('top-link-active');
-        }
+      if (window.location.host.indexOf('eperusteet') !== -1 && window.location.host.indexOf('egrunder') !== -1) {
+        $('#top-link-eperusteet').addClass('top-link-active');
+        return;
+      }
+
+      if (window.location.host.indexOf('ehoks') !== -1 && window.location.host.indexOf('epuk') !== -1) {
+        $('#top-link-ehoks').addClass('top-link-active');
+        return;
+      }
+
+      $('#top-link-opintopolku').addClass('top-link-active');
     }
 
     setTimeout(function () {
@@ -362,6 +368,8 @@
                         omaOpintopolkuLink: "Oma Opintopolku",
                         eperusteetLink: "ePerusteet",
                         eperusteetUrl: "https://eperusteet.opintopolku.fi/",
+                        ehoksLink: "eHOKS",
+                        ehoksUrl: "https://opintopolku.fi/ehoks",
                         omatsivutLink: "Oma Opintopolku",
                         omatsivutRedirectLink: "Siirry Oma Opintopolkuun",
                         wordpressRoot: window.url("wp.base"),
@@ -434,6 +442,8 @@
                         omatsivutRedirectLink: "Gå till Min Studieinfo",
                         eperusteetLink: "eGrunder",
                         eperusteetUrl: "https://egrunder.studieinfo.fi/",
+                        ehoksLink: "ePUK",
+                        ehoksUrl: "https://studieinfo.fi/ehoks",
                         wordpressRoot: window.url("wp.base"),
                         testEnvWordpressRoot: window.url("wp.test.base.sv"),
                         demoEnvWordpressRoot: window.url("oppija-raamit-web.demo.wordpress.base"),
