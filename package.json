@@ -17,7 +17,7 @@
   },
   "dependencies": {
     "@webcomponents/template": "^1.2.4",
-    "browser-update": "^3.2.2",
+    "browser-update": "^3.3.16",
     "core-js": "^2.5.7",
     "es6-promise": "^4.2.4",
     "js-cookie": "^2.2.0",
