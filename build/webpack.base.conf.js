@@ -11,6 +11,7 @@ function resolve (dir) {
 module.exports = {
   context: path.resolve(__dirname, '../'),
   entry: {
+    'apply-raamit-cas': './src/main-cas.js',
     'apply-raamit': './src/main.js'
   },
   plugins: [

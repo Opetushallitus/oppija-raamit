@@ -237,7 +237,7 @@
   & #header-overflow-menu-links {
     border-bottom: solid 1px #ffffff;
 
-    & > a {
+    & > a, & > span {
       display: inline-block;
       box-sizing: border-box;
       width: 100%;
