@@ -191,6 +191,8 @@
 }
 
 #header-login-button {
+  border: 2px solid white;
+  padding: 6px;
 }
 
 #header-logout-button {
