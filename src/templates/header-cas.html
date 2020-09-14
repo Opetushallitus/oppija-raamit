@@ -1,4 +1,4 @@
-<header data-attr-t aria-label-t="header.ariaLabel" role="banner" id="header">
+<header role="banner" id="header">
   <!-- Cookie Notification -->
   <div id="cookie-notification">
     <span class="cookie-text" data-t="header.cookie.info"></span>
@@ -6,48 +6,55 @@
   </div>
 
   <!-- Top Navigation Links -->
-  <div id="top-links-bar">
+  <div data-attr-t id="top-links-bar" aria-label-t="header.ariaLabel">
     <div role="presentation" class="top-links header-column">
-      <div id="top-link-opintopolku" class="top-link">
+      <div id="top-link-opintopolku" class="top-link" aria-labelledby="top-links-bar>
         <a class="raamit-dynamic-link" href="/" data-attr-t data-t="header.links.opintopolku"></a>
       </div>
-      <div id="top-link-oma-opintopolku" class="top-link">
+      <div id="top-link-oma-opintopolku" class="top-link" aria-labelledby="top-links-bar>
         <a href="/oma-opintopolku" data-t="header.links.oma-opintopolku"></a>
       </div>
-      <div id="top-link-eperusteet" class="top-link">
+      <div id="top-link-eperusteet" class="top-link" aria-labelledby="top-links-bar>
         <a data-attr-t href-t="header.links.eperusteet.url" data-t="header.links.eperusteet.title"></a>
       </div>
     </div>
   </div>
 
   <!-- Presentation menu -->
-  <div role="presentation" id="header-content" class="header-column">
+  <div data-attr-t role="presentation" id="header-content" class="header-column" aria-label-t="header.ariaLabelOmaOpintopolku">
     <!-- Banner and view name-->
     <div id="header-content-left-side">
-      <button id="header-mobile-menu-button" onclick="Raamit.toggleMobileMenu()" aria-expanded="false" aria-haspopup="true" aria-controls="header-mobile-menu-container" data-attr-t aria-label-t="header.mobileMenuButton.ariaLabel">
+      <button id="header-mobile-menu-button" onclick="Raamit.toggleMobileMenu()" aria-expanded="false"
+              aria-haspopup="true" aria-controls="header-mobile-menu-container" data-attr-t
+              aria-label-t="header.mobileMenuButton.ariaLabel">
         <div class="header-mobile-menu-bar1"></div>
         <div class="header-mobile-menu-bar2"></div>
         <div class="header-mobile-menu-bar3"></div>
       </button>
       <img src="/oppija-raamit/img/oma-opintopolku_ikoni.svg" id="header-banner"/>
       <a href="/oma-opintopolku" id="header-title">
-        <span noid="header-title" data-t="header.links.oma-opintopolku"></span>
+        <span noid="header-title" data-t="header.links.oma-opintopolku" aria-labelledby="header-content"></span>
       </a>
     </div>
     <div id="header-content-right-side">
       <div id="header-languages" class="header-item" data-attr-t aria-label-t="header.languages.ariaLabel">
         <button class="header-language-button header-language-fi" data-attr-t title-t="header.languages.fi"
-                onclick="Raamit.changeLanguage('fi')" data-t="header.languages.fi_alt"></button>
+                onclick="Raamit.changeLanguage('fi')" data-t="header.languages.fi_alt"
+                aria-labelledby="header-content"></button>
         <button class="header-language-button header-language-sv" data-attr-t title-t="header.languages.sv"
-                onclick="Raamit.changeLanguage('sv')" data-t="header.languages.sv_alt"></button>
+                onclick="Raamit.changeLanguage('sv')" data-t="header.languages.sv_alt"
+                aria-labelledby="header-content"></button>
         <button class="header-language-button header-language-en" data-attr-t title-t="header.languages.en"
-               onclick="Raamit.changeLanguage('en')" data-t="header.languages.en_alt"></button>
+               onclick="Raamit.changeLanguage('en')" data-t="header.languages.en_alt"
+                aria-labelledby="header-content"></button>
       </div>
 
 
       <div id="header-login-section" class="header-item">
         <div id="header-logged-in" class="header-login-section-item" style="display:none;">
-          <button id="header-overflow-menu-button" class="raamit-button" onclick="Raamit.toggleOverflowMenu()" aria-expanded="false" aria-haspopup="true" aria-controls="header-overflow-menu-container" data-attr-t aria-label-t="header.mobileMenuButton.ariaLabel">
+          <button id="header-overflow-menu-button" class="raamit-button" onclick="Raamit.toggleOverflowMenu()"
+                  aria-expanded="false" aria-haspopup="true" aria-controls="header-overflow-menu-container"
+                  data-attr-t aria-label-t="header.mobileMenuButton.ariaLabel" aria-labelledby="header-logged-in-name">
             <div id="header-profile-icon"></div>
             <span class="header-identity header-logged-in-name"></span>
             <div id="header-overflow-icon"></div>

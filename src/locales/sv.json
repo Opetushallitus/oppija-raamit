@@ -8,7 +8,8 @@
     }
   },
   "header": {
-    "ariaLabel": "Navigation",
+    "ariaLabel": "Top navigation",
+    "ariaLabelOmaOpintopolku": "Min Studieinfo navigation",
     "languages": {
       "ariaLabel": "Välja språk",
       "fi": "Suomeksi",

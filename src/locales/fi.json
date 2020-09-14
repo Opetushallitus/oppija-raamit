@@ -10,7 +10,8 @@
     }
   },
   "header": {
-    "ariaLabel": "Navigaatio",
+    "ariaLabel": "Päänavigaatio",
+    "ariaLabelOmaOpintopolku": "Oma Opintopolku navigaatio",
     "languages": {
       "ariaLabel": "Valitse kieli",
       "fi": "Suomeksi",
