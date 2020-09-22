@@ -10,12 +10,16 @@
     }
   },
   "header": {
-    "ariaLabel": "Navigaatio",
+    "ariaLabel": "Päänavigaatio",
+    "ariaLabelOmaOpintopolku": "Oma Opintopolku navigaatio",
     "languages": {
       "ariaLabel": "Valitse kieli",
       "fi": "Suomeksi",
       "sv": "På svenska",
-      "en": "In English"
+      "en": "In English",
+      "fi_alt": "Suomi",
+      "sv_alt": "Svenska",
+      "en_alt": "English"
     },
     "shortlist": "Muistilista",
     "links": {

@@ -8,12 +8,16 @@
     }
   },
   "header": {
-    "ariaLabel": "Navigation",
+    "ariaLabel": "Top navigation",
+    "ariaLabelOmaOpintopolku": "Min Studieinfo navigation",
     "languages": {
       "ariaLabel": "Välja språk",
       "fi": "Suomeksi",
       "sv": "På svenska",
-      "en": "In English"
+      "en": "In English",
+      "fi_alt": "Suomi",
+      "sv_alt": "Svenska",
+      "en_alt": "English"
     },
     "shortlist": "Minneslista",
     "links": {

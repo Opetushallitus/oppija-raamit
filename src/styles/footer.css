@@ -52,14 +52,6 @@
     & a:hover {
       text-decoration: underline;
     }
-    & a:before {
-      content: '';
-      display: inline-block;
-      width: 1em;
-      height: 1.5em;
-      vertical-align: bottom;
-      padding-right: 6px;
-      background: url(../../static/img/external-link-icon.svg) no-repeat center center;
-    }
   }
 }
+
