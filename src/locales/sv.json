@@ -28,8 +28,7 @@
         "url": "https://egrunder.studieinfo.fi/"
       },
       "ehoks": {
-        "title": "ePUK",
-        "url": "https://studieinfo.fi/ehoks"
+        "title": "ePUK"
       },
       "wordpress": {
         "url": "/wp"
