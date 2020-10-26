@@ -107,7 +107,7 @@ function updateActiveTopNavItem() {
     element = getElement('top-link-eperusteet');
   } else if (host.includes('ehoks') || host.includes('epuk')) {
     element = getElement('top-link-ehoks');
-  } else if (['oma-opintopolku', 'koski', 'omatsivut'].some(el => host.includes(el))) {
+  } else if (['oma-opintopolku', 'koski', 'omatsivut', 'varda'].some(el => host.includes(el))) {
     element = getElement('top-link-oma-opintopolku');
   } else {
     element = getElement('top-link-opintopolku');
