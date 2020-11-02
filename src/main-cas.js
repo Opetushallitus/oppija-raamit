@@ -57,12 +57,10 @@ import './styles/main.css';
 
 })();
 
-  const valtuudet = false;
-
 // Global functions
 window.Raamit = {
   changeLanguage: changeLanguage,
-  login: login(valtuudet),
+  login: login,
   logout: logout,
   toggleMobileMenu: toggleMobileMenu,
   toggleOverflowMenu: toggleOverflowMenu,
