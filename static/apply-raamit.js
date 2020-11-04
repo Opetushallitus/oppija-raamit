@@ -691,17 +691,22 @@
     }
 
     function updateLoginSection() {
-        var shibbolethcheckUrl = window.url("oppija-raamit.shibboleth.check");
-        $.ajax(shibbolethcheckUrl).done(function () {
-            var loggedIn = jQuery.cookie("shibboleth_loggedIn") === "true";
-            $(".header-logged-in").toggle(loggedIn);
-            $(".header-logged-out").toggle(!loggedIn);
+      const casAttributeUrl = getHostForLang(document.location.origin,'fi') + 'cas-oppija/user/current/attributes';
+      const service = `${window.location.protocol}//${window.location.hostname}/oppija-raamit`;
+      let loggedIn = false;
+      fetch(casAttributeUrl + `?service=${service}`, {
+        headers: new Headers({'Caller-Id': '1.2.246.562.10.00000000001.oppija-raamit'}),
+        credentials: 'same-origin' }).then(response => {
+          if (response.status === 200) {
+            loggedIn = true;
 
-            if (isDemoEnv()) {
-                $('.header-login-section').hide();
-            }
-
-        })
+          }
+        $(".header-logged-in").toggle(loggedIn);
+        $(".header-logged-out").toggle(!loggedIn);
+        if (isDemoEnv()) {
+          $('.header-login-section').hide();
+        }
+      })
     }
 
     function updateBasketSize($elem) {
