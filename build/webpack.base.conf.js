@@ -12,7 +12,8 @@ module.exports = {
   context: path.resolve(__dirname, '../'),
   entry: {
     'apply-raamit-cas': './src/main-cas.js',
-    'apply-raamit': './src/main.js'
+    'apply-raamit': './src/main.js',
+    'apply-modal': './src/main-cookie-modal'
   },
   plugins: [
     new CleanWebpackPlugin(['public'], {

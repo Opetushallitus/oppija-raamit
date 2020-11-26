@@ -1,6 +1,81 @@
 <div>
   <header data-i18n="[aria-label]raamit:headerAriaLabel" role="banner" id="siteheader">
-    <div><div class="cookieHeader"><span class="cookieText" data-i18n="raamit:cookie.info">Jotta sivuston käyttö olisi sinulle sujuvaa, käytämme evästeitä.</span><a class="btn-cookies" data-i18n="raamit:cookie.close" href="#" onclick="javascript:OppijaRaamit.setAcceptCookie();return false;">Sulje</a></div></div>
+    <!-- Cookie modal start-->
+    <div id="cookie-modal-backdrop">
+      <div id="cookie-modal-content">
+        <div>
+          <h2 class="cookie-modal-header"
+              data-i18n="raamit:cookieModal.header">
+          </h2>
+        </div>
+        <div class="cookie-modal-text"
+             data-i18n="raamit:cookieModal.info">
+        </div>
+        <div>
+          <a id="cookie-text-expand-link"
+             onclick="javascript:OppijaRaamit.showCookieText();return false;"
+             href="javascript:void(0);"
+             data-i18n="raamit:cookieModal.expandCookieText">
+          </a>
+        </div>
+        <div id="cookie-modal-fulltext" data-i18n="raamit:cookieModal.fullCookieText" class="cookie-modal-text" style="display: none">
+        </div>
+        <div id="cookie-modal-settings" style="display: none">
+          <div class="cookie-modal-text"
+               data-i18n="raamit:cookieModal.agreement">
+          </div>
+          <input type="checkbox"
+                 id="mandatoryCookies"
+                 class="cookie-modal-checkbox"
+                 name="mandatoryCookies"
+                 value="mandatoryCookies"
+                 style="top: 0px"
+                 checked="true"
+                 disabled="true">
+          <label for="mandatoryCookies"
+                 data-i18n="raamit:cookieModal.mandatoryCookies"
+                 style="margin-bottom: 0px; font-weight: normal;">
+          </label>
+          <br>
+          <input type="checkbox"
+                 id="statisticCookies"
+                 class="cookie-modal-checkbox"
+                 name="statisticCookies"
+                 value="statisticCookies"
+                 style="top: 0px"
+                 checked="true">
+          <label for="statisticCookies"
+                 data-i18n="raamit:cookieModal.statisticCookies"
+                 style="margin-bottom: 0px; font-weight: normal;">
+          </label>
+          <br>
+          <input type="checkbox"
+                 id="marketingCookies"
+                 class="cookie-modal-checkbox"
+                 name="marketingCookies"
+                 value="marketingCookies"
+                 style="top: 0px"
+                 checked="true">
+          <label for="marketingCookies"
+                 data-i18n="raamit:cookieModal.marketingCookies"
+                 style="margin-bottom: 0px; font-weight: normal;">
+          </label>
+        </div>
+        <div>
+          <button class="cookie-modal-btn"
+                  data-i18n="raamit:cookieModal.accept"
+                  onclick="javascript:OppijaRaamit.setAcceptedCookies();return false;">
+          </button>
+          <button id="cookie-modal-settings-btn"
+                  class="cookie-modal-btn"
+                  data-i18n="raamit:cookieModal.settings"
+                  onclick="javascript:OppijaRaamit.showModalCookieSettings();return false;">
+          </button>
+        </div>
+      </div>
+    </div>
+    <!-- Cookie modal end-->
+
     <div class="top-links-bar">
       <div role="presentation" class="top-links header-column">
         <div id="top-link-opintopolku" class="top-link">

@@ -42,10 +42,31 @@
                 }
             })
         },
-        setAcceptCookie: function () {
-            jQuery.cookie("oph-cookies-accepted", "true", {path: '/'});
-            $('div.cookieHeader').attr('style', 'display:none;');
-            return false;
+        showModalCookieSettings: function () {
+          if ($('#cookie-modal-settings').css('display') ==='none') {
+            $('#cookie-modal-settings').css('display', 'block');
+          } else {
+            $('#cookie-modal-settings').css('display', 'none');
+          }
+        },
+        setAcceptedCookies: function () {
+          if ($('input[name="mandatoryCookies"]:checked')) {
+            jQuery.cookie('oph-mandatory-cookies-accepted', 'true', { expires: 1800, path: '/' });
+          }
+          if ($('input[name="mandatoryCookies"]:checked')) {
+            jQuery.cookie('oph-statistic-cookies-accepted', 'true', { expires: 1800, path: '/' });
+          }
+          if ($('input[name="marketingCookies"]:checked')) {
+            jQuery.cookie('oph-marketing-cookies-accepted', 'true', { expires: 1800, path: '/' });
+          }
+          $('#cookie-modal-backdrop').css('display', 'none');
+        },
+        showCookieText() {
+          if ($('#cookie-modal-fulltext').css('display') ==='none') {
+            $('#cookie-modal-fulltext').css('display', 'block');
+          } else {
+            $('#cookie-modal-fulltext').css('display', 'none');
+          }
         }
     }
 
@@ -151,6 +172,7 @@
 
                                 loadFooterLinks(language);
                                 checkAcceptCookie();
+                                checkAcceptedCookies();
                             })
                         })
                     })
@@ -443,8 +465,19 @@
                             info: "Jotta sivuston käyttö olisi sinulle sujuvaa, käytämme evästeitä.",
                             close: "Sulje"
                         },
-                      browserUpdateText:"Selaimesi {brow_name} on vanhentunut ja Opintopolun toiminnallisuudet eivät toimi. Päivitä selaimesi turvallisempaan, nopeampaan ja helppokäyttöisempään <a{up_but}>Päivitä selain</a><a{ignore_but}>Hylkää</a>"
-
+                        cookieModal: {
+                          header: "Evästeiden käyttö opintopolussa",
+                          info: "Opintopolussa käytetään valtaosin ensimmäisen osapuolen evästeitä. Ulkopuoliset tahot eivät saa niitä käyttöönsä.\n\nEvästeiden avulla seurataan käyttäjän käyttökokemusta verkkosivustolla. Käyttäjätiedot ovat anonyymeja – kerätystä tiedosta ei voi tunnistaa käyttäjää henkilökohtaisesti. Näitä tietoja ei myöskään jaeta minkään ulkopuolisen osapuolen kanssa eikä niitä käytetä muihin tarkoituksiin.",
+                          settings: "Asetukset",
+                          agreement: "Sallin seuraavat evästeet:",
+                          mandatoryCookies: "Välttämättömät evästeet",
+                          statisticCookies: "Tilastointiin liittyvät evästeet",
+                          marketingCookies: "Markkinointievästeet",
+                          accept: "Hyväksy evästeet",
+                          expandCookieText:  "Lue lisää evästeistä",
+                          fullCookieText: "Evästeet\n\nMitä evästeet ovat?\nEvästeet ovat pieniä tekstitiedostoja, joita sivusto tallentaa tietokoneellesi tai mobiililaitteellesi. Se sisältää yksilöllisen, nimettömän tunnisteen, jonka avulla verkkopalvelu tunnistaa sivustolla vierailevat eri selaimet. Evästeillä kerättävillä tiedoilla ei voida tunnistaa yksittäisiä käyttäjiä. Opetushallitus edellyttää, että hyväksyt evästeiden käytön voidaksesi käyttää Opintopolku -verkkopalveluamme.\n\nEvästeitä ovat:\n- Ensimmäisen osapuolen evästeet tulevat suoraan verkkosivustolta, jolla käyt. Vain tämä sivusto voi lukea ne.\n- Lisäksi verkkosivusto saattaa käyttää ulkopuolisia palveluja, jotka lähettävät omia evästeitään. Näitä kutsutaan kolmannen osapuolen evästeiksi. \n- Pysyvät evästeet ovat tietokoneellesi tallennettavia evästeitä, joita ei poisteta automaattisesti, kun suljet selaimen. Istuntokohtaiset evästeet sen sijaan poistetaan istunnon päättyessä.\n\nEvästeiden tarkoituksena on, että sivusto säilyttää tietyt valintasi (Opintopolussa esim. muistilista ja kieli) tietyn ajan.\n\nNäin sinun ei tarvitse tehdä samoja valintoja uudelleen, kun siirryt sivustolla sivulta toiselle saman istunnon aikana.\n\nEvästeiden avulla voidaan myös kerätä anonymisoituja tietoja siitä, miten käyttäjät sivustolla toimivat. Näiden tietojen perusteella ei voida tunnistaa yksittäistä käyttäjää.\n\nMihin evästeitä käytetään Opintopolussa?\nOpintopolussa käytetään valtaosin ensimmäisen osapuolen evästeitä. Ulkopuoliset tahot eivät saa niitä käyttöönsä.\n\nOpintopolussa on käytössä seuraavia ensimmäisen osapuolen evästeitä. Niiden tarkoitus on mahdollistaa sivuston käytön (esim. todentamisevästeet ja tekniset evästeet)\n\nOpetushallitus edellyttää, että hyväksyt evästeiden käytön evästebannerissa, voidaksesi käyttää Opintopolku -verkkopalveluamme.\ntodentamisevästeet tallennetaan laitteellesi, kun kirjaudut Oma Opintopolkuun käyttäen Suomi.fi -tunnistautumista.\nkerätä analytiikkadataa käyttäjän sivulatauksista Opintopolussa.\nanalytiikan evästeitä käytetään ainoastaan kehittämistarkoituksiin pyrkimyksenä parantaa sivuston kaikille käyttäjille tarjottavaa palvelua. Opintopolun analytiikan seurannassa käytetään Matomoa.\nEvästeiden avulla seurataan käyttäjän käyttökokemusta verkkosivustolla. Käyttäjätiedot ovat anonyymeja – kerätystä tiedosta ei voi tunnistaa käyttäjää henkilökohtaisesti.\n\nNäitä tietoja ei myöskään jaeta minkään ulkopuolisen osapuolen kanssaeikä niitä käytetä muihin tarkoituksiin.\n\nOpintopolun kolmannen osapuolen evästeet\nOpintopolussa on käytössä YouTube ja Instagram, jotka keräävät kolmannen osapuolen evästeitä. Youtubea käytetään Opintopolun ohje- ja opiskelu/uravideoissa.\n\nVoidaksesi nähdä tällaisen kolmannen osapuolen sisällön sinun on ensin hyväksyttävä kyseisen palvelun omat käyttöehdot. Tämä koskee myös niiden evästekäytäntöjä, joita Opintopolku ei voi valvoa.\n\nJos et käytä ulkopuolisten palveluntarjoajien sisältöä, mitään kolmannen osapuolen evästeitä ei asenneta laitteellesi.\n\nEvästeiden käytön hallinta\nEvästeitä voi vapaasti hallita ja/tai poistaa. Ohjeita löytyy esimerkiksi osoitteesta aboutcookies.org.\n\nEvästeiden poistaminen käyttäjän laitteelta\nVoit poistaa kaikki laitteellasi olevat evästeet tyhjentämällä selaimesi selaushistorian. Tämä toiminto poistaa kaikkien käyttämiesi sivustojen asettamat evästeet. Huomaa kuitenkin, että tällöin saatat menettää myös joitakin tallentamiasi tietoja.\n\nSivustokohtaisten evästeiden hallinta\nSivustokohtaisia evästeitä voi hallita selaimen yksityisyys- ja evästeasetuksista.\n\nEvästeiden estäminen\nUseimmissa uusissa selaimissa voi estää evästeiden asettamisen laitteelle kokonaan, mutta tällöin voit joutua mukauttamaan joitakin asetuksia aina, kun käyt jollakin sivustolla/sivulla. Jotkin palvelut ja toiminnot eivät välttämättä toimi kunnolla (esim. sisäänkirjautuminen)."
+                        },
+                        browserUpdateText:"Selaimesi {brow_name} on vanhentunut ja Opintopolun toiminnallisuudet eivät toimi. Päivitä selaimesi turvallisempaan, nopeampaan ja helppokäyttöisempään <a{up_but}>Päivitä selain</a><a{ignore_but}>Hylkää</a>"
                     }
                 },
                 sv: {
@@ -520,6 +553,18 @@
                             info: "Vi använder oss av cookies för att underlätta användningen av webbplatsen.",
                             close: "Stäng"
                         },
+                        cookieModal: {
+                          header: "Evästeiden käyttö opintopolussa sv",
+                          info: "Opintopolussa käytetään valtaosin ensimmäisen osapuolen evästeitä. Ulkopuoliset tahot eivät saa niitä käyttöönsä.\n\nEvästeiden avulla seurataan käyttäjän käyttökokemusta verkkosivustolla. Käyttäjätiedot ovat anonyymeja – kerätystä tiedosta ei voi tunnistaa käyttäjää henkilökohtaisesti. Näitä tietoja ei myöskään jaeta minkään ulkopuolisen osapuolen kanssa eikä niitä käytetä muihin tarkoituksiin.",
+                          settings: "Asetukset",
+                          agreement: "Sallin seuraavat evästeet:",
+                          mandatoryCookies: "Välttämättömät evästeet",
+                          statisticCookies: "Tilastointiin liittyvät evästeet",
+                          marketingCookies: "Markkinointievästeet",
+                          accept: "Hyväksy evästeet",
+                          expandCookieText: "Lue lisää evästeistä",
+                          fullCookieText: "Evästeet\n\nMitä evästeet ovat?\nEvästeet ovat pieniä tekstitiedostoja, joita sivusto tallentaa tietokoneellesi tai mobiililaitteellesi. Se sisältää yksilöllisen, nimettömän tunnisteen, jonka avulla verkkopalvelu tunnistaa sivustolla vierailevat eri selaimet. Evästeillä kerättävillä tiedoilla ei voida tunnistaa yksittäisiä käyttäjiä. Opetushallitus edellyttää, että hyväksyt evästeiden käytön voidaksesi käyttää Opintopolku -verkkopalveluamme.\n\nEvästeitä ovat:\n- Ensimmäisen osapuolen evästeet tulevat suoraan verkkosivustolta, jolla käyt. Vain tämä sivusto voi lukea ne.\n- Lisäksi verkkosivusto saattaa käyttää ulkopuolisia palveluja, jotka lähettävät omia evästeitään. Näitä kutsutaan kolmannen osapuolen evästeiksi. \n- Pysyvät evästeet ovat tietokoneellesi tallennettavia evästeitä, joita ei poisteta automaattisesti, kun suljet selaimen. Istuntokohtaiset evästeet sen sijaan poistetaan istunnon päättyessä.\n\nEvästeiden tarkoituksena on, että sivusto säilyttää tietyt valintasi (Opintopolussa esim. muistilista ja kieli) tietyn ajan.\n\nNäin sinun ei tarvitse tehdä samoja valintoja uudelleen, kun siirryt sivustolla sivulta toiselle saman istunnon aikana.\n\nEvästeiden avulla voidaan myös kerätä anonymisoituja tietoja siitä, miten käyttäjät sivustolla toimivat. Näiden tietojen perusteella ei voida tunnistaa yksittäistä käyttäjää.\n\nMihin evästeitä käytetään Opintopolussa?\nOpintopolussa käytetään valtaosin ensimmäisen osapuolen evästeitä. Ulkopuoliset tahot eivät saa niitä käyttöönsä.\n\nOpintopolussa on käytössä seuraavia ensimmäisen osapuolen evästeitä. Niiden tarkoitus on mahdollistaa sivuston käytön (esim. todentamisevästeet ja tekniset evästeet)\n\nOpetushallitus edellyttää, että hyväksyt evästeiden käytön evästebannerissa, voidaksesi käyttää Opintopolku -verkkopalveluamme.\ntodentamisevästeet tallennetaan laitteellesi, kun kirjaudut Oma Opintopolkuun käyttäen Suomi.fi -tunnistautumista.\nkerätä analytiikkadataa käyttäjän sivulatauksista Opintopolussa.\nanalytiikan evästeitä käytetään ainoastaan kehittämistarkoituksiin pyrkimyksenä parantaa sivuston kaikille käyttäjille tarjottavaa palvelua. Opintopolun analytiikan seurannassa käytetään Matomoa.\nEvästeiden avulla seurataan käyttäjän käyttökokemusta verkkosivustolla. Käyttäjätiedot ovat anonyymeja – kerätystä tiedosta ei voi tunnistaa käyttäjää henkilökohtaisesti.\n\nNäitä tietoja ei myöskään jaeta minkään ulkopuolisen osapuolen kanssaeikä niitä käytetä muihin tarkoituksiin.\n\nOpintopolun kolmannen osapuolen evästeet\nOpintopolussa on käytössä YouTube ja Instagram, jotka keräävät kolmannen osapuolen evästeitä. Youtubea käytetään Opintopolun ohje- ja opiskelu/uravideoissa.\n\nVoidaksesi nähdä tällaisen kolmannen osapuolen sisällön sinun on ensin hyväksyttävä kyseisen palvelun omat käyttöehdot. Tämä koskee myös niiden evästekäytäntöjä, joita Opintopolku ei voi valvoa.\n\nJos et käytä ulkopuolisten palveluntarjoajien sisältöä, mitään kolmannen osapuolen evästeitä ei asenneta laitteellesi.\n\nEvästeiden käytön hallinta\nEvästeitä voi vapaasti hallita ja/tai poistaa. Ohjeita löytyy esimerkiksi osoitteesta aboutcookies.org.\n\nEvästeiden poistaminen käyttäjän laitteelta\nVoit poistaa kaikki laitteellasi olevat evästeet tyhjentämällä selaimesi selaushistorian. Tämä toiminto poistaa kaikkien käyttämiesi sivustojen asettamat evästeet. Huomaa kuitenkin, että tällöin saatat menettää myös joitakin tallentamiasi tietoja.\n\nSivustokohtaisten evästeiden hallinta\nSivustokohtaisia evästeitä voi hallita selaimen yksityisyys- ja evästeasetuksista.\n\nEvästeiden estäminen\nUseimmissa uusissa selaimissa voi estää evästeiden asettamisen laitteelle kokonaan, mutta tällöin voit joutua mukauttamaan joitakin asetuksia aina, kun käyt jollakin sivustolla/sivulla. Jotkin palvelut ja toiminnot eivät välttämättä toimi kunnolla (esim. sisäänkirjautuminen)."
+                        },
                         browserUpdateText:"Din webbläsare {brow_name} är föråldrad och vissa funktioner i Studieinfo fungerar inte. Uppdatera din webbläsare och gör den säkrare, snabbare och tillgängligare. <a{up_but}>Uppdatera webbläsaren</a><a{ignore_but}>Ignorera</a>"
                     }
                 },
@@ -583,6 +628,18 @@
                             info: "We use cookies on this site to enhance your user experience.",
                             close: "Close"
                         },
+                      cookieModal: {
+                        header: "Evästeiden käyttö opintopolussa en",
+                        info: "Opintopolussa käytetään valtaosin ensimmäisen osapuolen evästeitä. Ulkopuoliset tahot eivät saa niitä käyttöönsä.\n\nEvästeiden avulla seurataan käyttäjän käyttökokemusta verkkosivustolla. Käyttäjätiedot ovat anonyymeja – kerätystä tiedosta ei voi tunnistaa käyttäjää henkilökohtaisesti. Näitä tietoja ei myöskään jaeta minkään ulkopuolisen osapuolen kanssa eikä niitä käytetä muihin tarkoituksiin.",
+                        settings: "Asetukset",
+                        agreement: "Sallin seuraavat evästeet:",
+                        mandatoryCookies: "Välttämättömät evästeet",
+                        statisticCookies: "Tilastointiin liittyvät evästeet",
+                        marketingCookies: "Markkinointievästeet",
+                        accept: "Hyväksy evästeet",
+                        expandCookieText:  "Lue lisää evästeistä",
+                        fullCookieText: "Evästeet\n\nMitä evästeet ovat?\nEvästeet ovat pieniä tekstitiedostoja, joita sivusto tallentaa tietokoneellesi tai mobiililaitteellesi. Se sisältää yksilöllisen, nimettömän tunnisteen, jonka avulla verkkopalvelu tunnistaa sivustolla vierailevat eri selaimet. Evästeillä kerättävillä tiedoilla ei voida tunnistaa yksittäisiä käyttäjiä. Opetushallitus edellyttää, että hyväksyt evästeiden käytön voidaksesi käyttää Opintopolku -verkkopalveluamme.\n\nEvästeitä ovat:\n- Ensimmäisen osapuolen evästeet tulevat suoraan verkkosivustolta, jolla käyt. Vain tämä sivusto voi lukea ne.\n- Lisäksi verkkosivusto saattaa käyttää ulkopuolisia palveluja, jotka lähettävät omia evästeitään. Näitä kutsutaan kolmannen osapuolen evästeiksi. \n- Pysyvät evästeet ovat tietokoneellesi tallennettavia evästeitä, joita ei poisteta automaattisesti, kun suljet selaimen. Istuntokohtaiset evästeet sen sijaan poistetaan istunnon päättyessä.\n\nEvästeiden tarkoituksena on, että sivusto säilyttää tietyt valintasi (Opintopolussa esim. muistilista ja kieli) tietyn ajan.\n\nNäin sinun ei tarvitse tehdä samoja valintoja uudelleen, kun siirryt sivustolla sivulta toiselle saman istunnon aikana.\n\nEvästeiden avulla voidaan myös kerätä anonymisoituja tietoja siitä, miten käyttäjät sivustolla toimivat. Näiden tietojen perusteella ei voida tunnistaa yksittäistä käyttäjää.\n\nMihin evästeitä käytetään Opintopolussa?\nOpintopolussa käytetään valtaosin ensimmäisen osapuolen evästeitä. Ulkopuoliset tahot eivät saa niitä käyttöönsä.\n\nOpintopolussa on käytössä seuraavia ensimmäisen osapuolen evästeitä. Niiden tarkoitus on mahdollistaa sivuston käytön (esim. todentamisevästeet ja tekniset evästeet)\n\nOpetushallitus edellyttää, että hyväksyt evästeiden käytön evästebannerissa, voidaksesi käyttää Opintopolku -verkkopalveluamme.\ntodentamisevästeet tallennetaan laitteellesi, kun kirjaudut Oma Opintopolkuun käyttäen Suomi.fi -tunnistautumista.\nkerätä analytiikkadataa käyttäjän sivulatauksista Opintopolussa.\nanalytiikan evästeitä käytetään ainoastaan kehittämistarkoituksiin pyrkimyksenä parantaa sivuston kaikille käyttäjille tarjottavaa palvelua. Opintopolun analytiikan seurannassa käytetään Matomoa.\nEvästeiden avulla seurataan käyttäjän käyttökokemusta verkkosivustolla. Käyttäjätiedot ovat anonyymeja – kerätystä tiedosta ei voi tunnistaa käyttäjää henkilökohtaisesti.\n\nNäitä tietoja ei myöskään jaeta minkään ulkopuolisen osapuolen kanssaeikä niitä käytetä muihin tarkoituksiin.\n\nOpintopolun kolmannen osapuolen evästeet\nOpintopolussa on käytössä YouTube ja Instagram, jotka keräävät kolmannen osapuolen evästeitä. Youtubea käytetään Opintopolun ohje- ja opiskelu/uravideoissa.\n\nVoidaksesi nähdä tällaisen kolmannen osapuolen sisällön sinun on ensin hyväksyttävä kyseisen palvelun omat käyttöehdot. Tämä koskee myös niiden evästekäytäntöjä, joita Opintopolku ei voi valvoa.\n\nJos et käytä ulkopuolisten palveluntarjoajien sisältöä, mitään kolmannen osapuolen evästeitä ei asenneta laitteellesi.\n\nEvästeiden käytön hallinta\nEvästeitä voi vapaasti hallita ja/tai poistaa. Ohjeita löytyy esimerkiksi osoitteesta aboutcookies.org.\n\nEvästeiden poistaminen käyttäjän laitteelta\nVoit poistaa kaikki laitteellasi olevat evästeet tyhjentämällä selaimesi selaushistorian. Tämä toiminto poistaa kaikkien käyttämiesi sivustojen asettamat evästeet. Huomaa kuitenkin, että tällöin saatat menettää myös joitakin tallentamiasi tietoja.\n\nSivustokohtaisten evästeiden hallinta\nSivustokohtaisia evästeitä voi hallita selaimen yksityisyys- ja evästeasetuksista.\n\nEvästeiden estäminen\nUseimmissa uusissa selaimissa voi estää evästeiden asettamisen laitteelle kokonaan, mutta tällöin voit joutua mukauttamaan joitakin asetuksia aina, kun käyt jollakin sivustolla/sivulla. Jotkin palvelut ja toiminnot eivät välttämättä toimi kunnolla (esim. sisäänkirjautuminen)."
+                      },
                         browserUpdateText:"Your web browser {brow_name}, is out of date and Studyinfo’s functions won’t work. Update your browser for more security, speed and the best experience. <a{up_but}>Update browser</a><a{ignore_but}>Ignore</a>"
                     }
                 }
@@ -677,10 +734,21 @@
         }
     }
 
+  function checkAcceptedCookies() {
+    if(!readAcceptedMandatoryCookie()){
+      $('#cookie-modal-backdrop').css('display', 'block');
+    }
+  }
+
     function readAcceptCookie() {
         var accept = jQuery.cookie("oph-cookies-accepted");
         return accept != null ? true : false
     }
+
+  function readAcceptedMandatoryCookie() {
+    var accept = jQuery.cookie("oph-mandatory-cookies-accepted");
+    return accept != null ? true : false
+  }
 
     function updateBasket() {
         var $count = $(".count");

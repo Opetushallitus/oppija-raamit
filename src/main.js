@@ -2,7 +2,6 @@ import './polyfills';
 import {getHeader, getFooter} from './js/templates';
 import {parseHtml} from './js/utils';
 import {updateDom, toggleMobileMenu, toggleOverflowMenu} from './js/dom';
-import {checkAcceptCookie, setAcceptCookie} from './js/cookie';
 import {getLanguage, changeLanguage} from './js/language';
 import {login, logout, getUser} from './js/login';
 import browserUpdate from 'browser-update';
@@ -52,7 +51,6 @@ import './styles/main.css';
 
     getUser();
     updateDom(lang);
-    checkAcceptCookie();
     });
 
 })();
@@ -64,6 +62,5 @@ window.Raamit = {
   logout: logout,
   toggleMobileMenu: toggleMobileMenu,
   toggleOverflowMenu: toggleOverflowMenu,
-  setAcceptCookie: setAcceptCookie,
   getLanguage: getLanguage
 };

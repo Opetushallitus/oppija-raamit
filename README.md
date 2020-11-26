@@ -7,7 +7,7 @@ Oppija-raamit otetaan käyttöön lisäämällä script-tägi
 **Shibboleth**
 
     <script id="apply-raamit" type="text/javascript" src="/oppija-raamit/js/apply-raamit.js"></script>
-    
+
 **CAS**
 
     <script id="apply-raamit" type="text/javascript" src="/oppija-raamit/js/apply-raamit-cas.js"></script>
@@ -18,11 +18,11 @@ Lisäksi raamit vaativat niitä käyttävää palvelua toteuttamaan seuraavat fu
     Service.login()  -- Kutsutaan kun raamien "kirjaudu sisään" nappia painetaan.
     Service.logout() -- Kutsutaan kun raamien "kirjaudu ulos" nappia painetaan.
     Service.getUser() -- Kutsutaan raamien latauksen yhteydessä.
-    
+
 Näiden lisäksi löytyy myös seuraavat vapaavalintaiset hookit.
-    
+
     Service.changeLanguage(language) -- Kutsutaan kun raamien kielinappeja painetaan.
-    
+
 Raamien kielinapit asettavat `lang`-cookien arvoilla `fi`, `sv` ja `en`.
 Raamit ilmoittavat käyttäjälle kekseistä ja hyväksyntä tallennetaan cookieen `oph-cookies-accepted`.
 
@@ -32,6 +32,7 @@ Jos halutaan Source Sans Pro -fontti, raameja käyttävän sivuston pitää itse
 Normaalisti raamit lisätään body-elementin alkuun ja loppuun. Tarvittaessa raameja käyttävä sivusto voi
 määritellä muun paikan DOM-puussa käyttämällä id="oppija-raamit-header-here" ja/tai id="oppija-raamit-footer-here".
 
+Evästemodaali lisätään normaalisti heti headerin jälkeen, mutta tarvittaessa voidaan määritellä muu paikka sivulla käyttämällä id="oppija-raamit-modal-here".
 
 Käynnistä esimerkkiapplikaatio näin:
 
