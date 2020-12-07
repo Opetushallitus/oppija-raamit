@@ -29,6 +29,7 @@ function okResponseToJson(response) {
 }
 
 function attributesToUser(attributes) {
+  console.log("Setting user attributes ", attributes)
   return {
     impersonator: attributes.impersonatorPersonName,
     name: attributes.personName

@@ -12,13 +12,14 @@ export function getElement(id) {
   return document.getElementById(id);
 }
 
-export function updateUsername(name, impersonator) {
+export function updateUsername(name, usingValtuudet) {
   let elements = document.getElementsByClassName('header-identity');
   for (let element of elements) {
-    element.innerHTML = name;
-  }
-  if (impersonator) {
-    updateImpersonator(impersonator);
+    if (usingValtuudet) {
+      element.innerHTML = "(Valtuudet) " + name
+    } else {
+      element.innerHTML = name;
+    }
   }
 }
 
@@ -51,7 +52,12 @@ export function setStateLoggedIn(user) {
   showElement('header-mobile-menu-logout-button');
   hideElement('header-mobile-menu-logged-out');
 
-  updateUsername(user.name, user.impersonator);
+  console.log("Setting states", user)
+  if (user.usingValtuudet) {
+    getElement("header-omatsivut-link").innerHTML = "<span>Hakemukseni</span>";
+    getElement("header-koski-link").innerHTML = "<span>Opintoni<span>";
+  }
+  updateUsername(user.name, user.usingValtuudet);
 }
 
 function closeOverflowMenu() {
