@@ -5,6 +5,9 @@ window.urls.addProperties({
     "oppija-raamit-web.index.fi": "/oppija-raamit/fi/hakemisto/oppilaitokset/A",
     "oppija-raamit-web.index.sv": "/oppija-raamit/sv/hakemisto/oppilaitokset/A",
     "oppija-raamit-web.index.en": "/oppija-raamit/en/hakemisto/oppilaitokset/",
+    "oppija-raamit-web.raamit.youreurope.palaute.fi": "https://foq.youreurope.europa.eu/info-service-noft?lang=fi",
+    "oppija-raamit-web.raamit.youreurope.palaute.sv": "https://foq.youreurope.europa.eu/info-service-noft?lang=sv",
+    "oppija-raamit-web.raamit.youreurope.palaute.en": "https://foq.youreurope.europa.eu/info-service-noft?lang=en",
     "oppija-raamit-web.js.jquery": "/oppija-raamit/js/lib/jquery-1.9.1.min.js",
     "oppija-raamit-web.js.jquery.cookie": "/oppija-raamit/js/lib/jquery.cookie.js",
     "oppija-raamit-web.js.i18next": "/oppija-raamit/js/lib/i18next-1.7.3.js",
@@ -14,6 +17,8 @@ window.urls.addProperties({
     "oppija-raamit-web.raamit.img.opintopolku.large.fi": "/oppija-raamit/oppija-raamit/img/opintopolku_large-fi.png",
     "oppija-raamit-web.raamit.img.opintopolku.large.sv": "/oppija-raamit/oppija-raamit/img/opintopolku_large-sv.png",
     "oppija-raamit-web.raamit.img.opintopolku.large.en": "/oppija-raamit/oppija-raamit/img/opintopolku_large-en.png",
+    "oppija-raamit-web.raamit.img.youreurope": "/oppija-raamit/img/youreurope_monochrome.svg",
+
     "oppija-raamit-web.raamit.img.ophLogo.fi": "/oppija-raamit/oppija-raamit/img/OPH_logo-fi.svg",
     "oppija-raamit-web.raamit.img.ophLogo.sv": "/oppija-raamit/oppija-raamit/img/OPH_logo-sv.svg",
     "oppija-raamit-web.raamit.img.ophLogo.en": "/oppija-raamit/oppija-raamit/img/OPH_logo-en.svg",

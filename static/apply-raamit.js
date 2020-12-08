@@ -91,14 +91,14 @@
 
     function loadFooterLinks(lang) {
         if (!isDemoEnv()) {
-            $.ajax(getFooterLinksPath(lang)).done(function (footerLinks) {
-                buildFooterLinks(footerLinks.nav)
-            }).error(function (err) {
-                buildFooterLinks(i18n.t("raamit:footerlinks", {
-                    returnObjectTrees: true
-                }))
+          $.ajax(getFooterLinksPath(lang)).done(function (footerLinks) {
+              buildFooterLinks(footerLinks.nav)})
+            .error(function (err) {
+              buildFooterLinks(i18n.t("raamit:footerlinks", {
+                returnObjectTrees: true
+              }))
             }).always(function () {
-                $("html").trigger("oppija-raamit-loaded")
+              $("html").trigger("oppija-raamit-loaded")
             })
         } else {
             $("html").trigger("oppija-raamit-loaded")
@@ -314,6 +314,17 @@
         hideMobileNavi()
     }
 
+    function getYourEuropeLink() {
+      var data = i18n.t("raamit:yourEuropeLink", {
+        returnObjectTrees: true
+      })
+      console.log("Building europe link, data: ", data)
+      var $item = $("<li>");
+      var $link = $("<a>").text(data.title).attr({href: data.url, target: "_blank"});
+
+      return $item.append($link);
+    }
+
     function buildFooterLinks(footerlinks) {
         var $footerlinkselement = $("#footer-links");
         for (var item in footerlinks) {
@@ -321,6 +332,7 @@
             var $link = $("<a>").text(footerlinks[item].title).attr({href: footerlinks[item].url});
             $footerlinkselement.append($item.append($link))
         }
+        $footerlinkselement.append(getYourEuropeLink());
     }
 
     function getScriptDirectory() {
@@ -378,6 +390,11 @@
                         homeLink: {
                             title: "Siirry etusivulle",
                             image: window.url("oppija-raamit-web.raamit.img.opintopolku.large.fi")
+                        },
+                        yourEuropeLink: {
+                          title: "Tämä verkkosivu on osa Euroopan komission Your Europe -portaalia. Löysitkö etsimäsi? Anna palautetta!",
+                          image: window.url("oppija-raamit-web.raamit.img.youreurope"),
+                          url: window.url("oppija-raamit-web.raamit.youreurope.palaute.fi")
                         },
                         shortlist: {
                             title: "Muistilista"
@@ -451,6 +468,11 @@
                             title: "Gå till framsida",
                             image: window.url("oppija-raamit-web.raamit.img.opintopolku.large.sv")
                         },
+                        yourEuropeLink: {
+                          title: "Denna webbplats är en del av Europeiska kommissionens portal Your Europe. Hittade du det du sökte? Ge respons!",
+                          image: window.url("oppija-raamit-web.raamit.img.youreurope"),
+                          url: window.url("oppija-raamit-web.raamit.youreurope.palaute.sv")
+                        },
                         shortlist: {
                             title: "Minneslista"
                         },
@@ -516,6 +538,11 @@
                         homeLink: {
                             title: "Go to frontpage",
                             image: window.url("oppija-raamit-web.raamit.img.opintopolku.large.en")
+                        },
+                        yourEuropeLink: {
+                          title: "This website is part of the European Commission's Your Europe portal. Did you find what you were looking for? Give feedback!",
+                          image: window.url("oppija-raamit-web.raamit.img.youreurope"),
+                          url: window.url("oppija-raamit-web.raamit.youreurope.palaute.en")
                         },
                         shortlist: {
                             title: "My shortlist"

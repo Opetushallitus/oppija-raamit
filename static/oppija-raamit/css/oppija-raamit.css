@@ -188,7 +188,16 @@
 #sitefooter .footer-opintopolku-info .footer-homelink {
   float: left;
   margin-right: 40px;
+  padding-left: 20px;
 }
+
+#sitefooter .footer-opintopolku-info .footer-youreuropelink img {
+  width: 225px;
+  height: 100px;
+  margin-right: 40px;
+  padding-left: 20px;
+}
+
 #sitefooter .footer-opintopolku-info ul {
   float: left;
   list-style-type: none;
