@@ -191,11 +191,21 @@
   padding-left: 20px;
 }
 
-#sitefooter .footer-opintopolku-info .footer-youreuropelink img {
+#sitefooter .footer-opintopolku-info .footer-youreurope-container {
+  width: 250px;
+  display: inline-block;
+  text-align: center;
+}
+
+#sitefooter .footer-opintopolku-info .footer-youreurope-container .footer-youreuropelink img {
   width: 225px;
   height: 100px;
   margin-right: 40px;
   padding-left: 20px;
+}
+
+#sitefooter .footer-opintopolku-info .footer-youreurope-container .footer-youreuropelink-undertext {
+ display: block;
 }
 
 #sitefooter .footer-opintopolku-info ul {
