@@ -318,7 +318,6 @@
       var data = i18n.t("raamit:yourEuropeLink", {
         returnObjectTrees: true
       })
-      console.log("Building europe link, data: ", data)
       var $item = $("<li>");
       var $link = $("<a>").text(data.title).attr({href: data.url, target: "_blank"});
 

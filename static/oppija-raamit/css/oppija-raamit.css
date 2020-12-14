@@ -187,7 +187,7 @@
 }
 #sitefooter .footer-opintopolku-info .footer-homelink {
   float: left;
-  margin-right: 40px;
+  margin-right: 60px;
   padding-left: 20px;
 }
 
@@ -360,6 +360,7 @@ nav#mobile-nav {
   }
   #sitefooter #footer-links {
     width: 100%;
+    margin-right:40px;
   }
   #sitefooter .footer-opintopolku-info {
     padding: 5px;
