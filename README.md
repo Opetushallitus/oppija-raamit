@@ -32,11 +32,23 @@ Jos halutaan Source Sans Pro -fontti, raameja käyttävän sivuston pitää itse
 Normaalisti raamit lisätään body-elementin alkuun ja loppuun. Tarvittaessa raameja käyttävä sivusto voi
 määritellä muun paikan DOM-puussa käyttämällä id="oppija-raamit-header-here" ja/tai id="oppija-raamit-footer-here".
 
-Evästemodaali otetaan käyttöön lisäämällå script-tagi:
+**Evästemodaali**
+
+Evästemodaali otetaan käyttöön lisäämällä script-tagi:
 
     <script id="apply-modal" type="text/javascript" src="/oppija-raamit/js/apply-modal.js"></script>
 
-oletuksena evästemodaali lisätään headerin jälkeen, mutta tarvittaessa voidaan määritellä muu paikka sivulla käyttämällä id="oppija-raamit-modal-here".
+Oletuksena modaali päättelee kielen domainista (opintopolku/studyinfo/studieinfo), mutta sille voidaan tarvittaessa määrittää kieli lang-parametrilla:
+
+    <script id="apply-modal" type="text/javascript" lang="sv" src="/oppija-raamit/js/apply-modal.js"></script>
+
+Evästemodaalista on kaksi eri versiota: EU-komission SDG (Single Digital Gateway) -asetuksen mukaisilla infoteksteillä varustettu versio, sekä suppeampi, joka on tarkoitettu sivustoille, joissa SDG-analytiikkadataa ei kerätä.
+
+Oletuksena näytetään SDG-tekstit. Suppeamman version saa käyttöön määrittelemällä sdg-parametrin arvoksi "false":
+
+    <script id="apply-modal" type="text/javascript" sdg="false" src="/oppija-raamit/js/apply-modal.js"></script>
+
+Normaalisti evästemodaali lisätään headerin jälkeen, mutta tarvittaessa voidaan määritellä muu paikka sivulla käyttämällä id="oppija-raamit-modal-here".
 
 Käynnistä esimerkkiapplikaatio näin:
 

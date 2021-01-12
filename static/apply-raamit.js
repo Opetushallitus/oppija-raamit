@@ -467,7 +467,7 @@
                         },
                         cookieModal: {
                             header: "Evästeet",
-                            info: "<p>Evästeet ovat pieniä tekstitiedostoja, joita sivusto tallentaa tietokoneellesi tai mobiililaitteellesi. Se sisältää yksilöllisen, nimettömän tunnisteen, jonka avulla verkkopalvelu tunnistaa sivustolla vierailevat eri selaimet. Evästeillä kerättävillä tiedoilla ei voida tunnistaa yksittäisiä käyttäjiä. Opetushallitus edellyttää, että hyväksyt evästeiden käytön voidaksesi käyttää Opintopolku -verkkopalveluamme. <strong>Huom! Asetuksen digitaalisesta palveluväylästä mukaan Sinun Eurooppasi -sivustolta sekä verkkosivuilta, joihin em. sivustosta on linkit, kerätään käyttäjien anonymiteetti taaten käyttäjätilastoja sekä laatupalautetta, jotta voidaan parantaa palveluväylän toimintaa. Komissio hyväksyy täytäntöönpanosäädöksiä (implementing acts), joissa säädetään tarkemmin käyttäjätilastojen keräämis- ja vaihtomenetelmästä ja joissa annetaan käyttäjäpalautteen keräämistä ja jakamista koskevat säännöt.</strong></p>",
+                            info: "<p>Evästeet ovat pieniä tekstitiedostoja, joita sivusto tallentaa tietokoneellesi tai mobiililaitteellesi. Se sisältää yksilöllisen, nimettömän tunnisteen, jonka avulla verkkopalvelu tunnistaa sivustolla vierailevat eri selaimet. Evästeillä kerättävillä tiedoilla ei voida tunnistaa yksittäisiä käyttäjiä. Opetushallitus edellyttää, että hyväksyt evästeiden käytön voidaksesi käyttää Opintopolku -verkkopalveluamme.</p>",
                             settings: "Asetukset",
                             agreement: "Sallin seuraavat evästeet:",
                             mandatoryCookies: "Välttämättömät evästeet",

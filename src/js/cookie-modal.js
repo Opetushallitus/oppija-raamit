@@ -1,25 +1,42 @@
 import Cookies from 'js-cookie';
 
-export function checkAcceptedCookies() {
-  if(!readAcceptedMandatoryCookie()) {
+export function checkAcceptedCookies(sdg) {
+  if (!readAcceptedMandatoryCookie(sdg)) {
     document.getElementById('cookie-modal-backdrop').style.display = 'block';
   }
 }
 
-function readAcceptedMandatoryCookie() {
-  let accept = Cookies.get('oph-mandatory-cookies-accepted');
-  return !!accept;
+function readAcceptedMandatoryCookie(sdg) {
+  let accept;
+
+  if (sdg) {
+    accept = Cookies.get('oph-mandatory-cookies-accepted');
+    return !!accept;
+  } else {
+    let accept = Cookies.get('oph-mandatory-cookies-accepted') || Cookies.get('oph-mandatory-cookies-no-sdg-accepted');
+    return !!accept;
+  }
 }
 
-export function setAcceptedCookies() {
-    Cookies.set('oph-mandatory-cookies-accepted', 'true', { expires: 1800, path: '/' });
-    document.getElementById('cookie-modal-backdrop').style.display = 'none';
-  if (document.getElementById("statisticCookies").checked) {
-    Cookies.set('oph-statistic-cookies-accepted', 'true', { expires: 1800, path: '/' });
+export function setAcceptedCookies(sdg) {
+  if (sdg) {
+    Cookies.set('oph-mandatory-cookies-accepted', 'true', {expires: 1800, path: '/'});
+    if (document.getElementById("statisticCookies").checked) {
+      Cookies.set('oph-statistic-cookies-accepted', 'true', {expires: 1800, path: '/'});
+    }
+    if (document.getElementById("marketingCookies").checked) {
+      Cookies.set('oph-marketing-cookies-accepted', 'true', {expires: 1800, path: '/'});
+    }
+  } else {
+    Cookies.set('oph-mandatory-cookies-no-sdg-accepted', 'true', {expires: 1800, path: '/'});
+    if (document.getElementById("statisticCookies").checked) {
+      Cookies.set('oph-statistic-cookies-no-sdg-accepted', 'true', {expires: 1800, path: '/'});
+    }
+    if (document.getElementById("marketingCookies").checked) {
+      Cookies.set('oph-marketing-cookies-no-sdg-accepted', 'true', {expires: 1800, path: '/'});
+    }
   }
-  if (document.getElementById("marketingCookies").checked) {
-    Cookies.set('oph-marketing-cookies-accepted', 'true', { expires: 1800, path: '/' });
-  }
+  document.getElementById('cookie-modal-backdrop').style.display = 'none';
 }
 
 export function showModalCookieSettings() {

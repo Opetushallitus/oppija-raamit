@@ -6,6 +6,9 @@ export function getHeader(lang, suffix) {
 export function getModal(lang) {
   return fetchAsync(urls.cookieModal(lang))
 }
+export function getModalNoSdg(lang) {
+  return fetchAsync(urls.cookieModalNoSdg(lang))
+}
 export function getFooter(lang) {
   return fetchAsync(urls.footer(lang))
 }
