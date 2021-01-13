@@ -42,7 +42,10 @@ Oletuksena modaali päättelee kielen domainista (opintopolku/studyinfo/studiein
 
     <script id="apply-modal" type="text/javascript" lang="sv" src="/oppija-raamit/js/apply-modal.js"></script>
 
-Evästemodaalista on kaksi eri versiota: EU-komission SDG (Single Digital Gateway) -asetuksen mukaisilla infoteksteillä varustettu versio, sekä suppeampi, joka on tarkoitettu sivustoille, joissa SDG-analytiikkadataa ei kerätä.
+Evästemodaalista on kaksi eri versiota:
+
+- EU-komission SDG (Single Digital Gateway) -asetuksen mukaisilla infoteksteillä varustettu versio
+- Ei-SDG -versio sivustoille, jossa analytiikkadataa ei kerätä
 
 Oletuksena näytetään SDG-tekstit. Suppeamman version saa käyttöön määrittelemällä sdg-parametrin arvoksi "false":
 
