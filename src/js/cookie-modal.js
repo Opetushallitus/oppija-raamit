@@ -10,10 +10,10 @@ function readAcceptedMandatoryCookie(sdg) {
   let accept;
 
   if (sdg) {
-    accept = Cookies.get('oph-mandatory-cookies-accepted');
+    accept = Cookies.get('oph-mandatory-cookies-no-sdg-accepted')  || Cookies.get('oph-mandatory-cookies-accepted');
     return !!accept;
   } else {
-    let accept = Cookies.get('oph-mandatory-cookies-accepted') || Cookies.get('oph-mandatory-cookies-no-sdg-accepted');
+    let accept = Cookies.get('oph-mandatory-cookies-accepted');
     return !!accept;
   }
 }
