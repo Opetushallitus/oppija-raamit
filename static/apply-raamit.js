@@ -50,13 +50,13 @@
           }
         },
         setAcceptedCookies: function () {
-          if ($('input[name="mandatoryCookies"]:checked')) {
+          if (document.getElementById('mandatoryCookies').checked) {
             jQuery.cookie('oph-mandatory-cookies-accepted', 'true', { expires: 1800, path: '/' });
           }
-          if ($('input[name="mandatoryCookies"]:checked')) {
+          if (document.getElementById('statisticCookies').checked) {
             jQuery.cookie('oph-statistic-cookies-accepted', 'true', { expires: 1800, path: '/' });
           }
-          if ($('input[name="marketingCookies"]:checked')) {
+          if (document.getElementById('marketingCookies').checked) {
             jQuery.cookie('oph-marketing-cookies-accepted', 'true', { expires: 1800, path: '/' });
           }
           $('#cookie-modal-backdrop').css('display', 'none');
@@ -171,7 +171,6 @@
                                 }
 
                                 loadFooterLinks(language);
-                                checkAcceptCookie();
                                 checkAcceptedCookies();
                             })
                         })
@@ -724,22 +723,11 @@
         return lang != null ? lang : "fi"
     }
 
-    function checkAcceptCookie() {
-        if(!readAcceptCookie()){
-            $('div.cookieHeader').attr('style','display:block;');
-        }
-    }
-
   function checkAcceptedCookies() {
     if(!readAcceptedMandatoryCookie()){
       $('#cookie-modal-backdrop').css('display', 'block');
     }
   }
-
-    function readAcceptCookie() {
-        var accept = jQuery.cookie("oph-cookies-accepted");
-        return accept != null ? true : false
-    }
 
   function readAcceptedMandatoryCookie() {
     var accept = jQuery.cookie("oph-mandatory-cookies-accepted");
