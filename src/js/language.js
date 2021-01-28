@@ -4,6 +4,7 @@ function setLangCookies(language) {
   ['lang', 'i18next'].forEach(function (name) {
     Cookies.set(name, language, {expires: 1800, path: '/'});
   });
+  console.log("cookies ", document.cookie);
 }
 
 export function changeLanguage(language) {
@@ -14,7 +15,18 @@ export function changeLanguage(language) {
       document.location.reload();
     });
   } else {
-    document.location.reload();
+    //Quick and dirty, use only on Pallero :)
+    console.log("Hardcoded domain lang change");
+    if (language === 'fi') {
+      document.location.href = 'https://testiopintopolku.fi/oma-opintopolku/'
+    } else if (language === 'sv') {
+      document.location.href = 'https://testistudieinfo.fi/oma-opintopolku/'
+    } else if (language === 'en') {
+      document.location.href = 'https://testistudyinfo.fi/oma-opintopolku/'
+    } else {
+      console.log("invalid lang: " + language);
+    }
+    //document.location.reload();
   }
 }
 
