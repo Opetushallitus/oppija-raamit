@@ -27,7 +27,6 @@ window.urls.addProperties({
     "oppija-raamit-web.raamit.img.okmLogo.en": "/oppija-raamit/oppija-raamit/img/OKM_logo-en.png",
     "oppija-raamit.lang.change.suffix": "changelanguage?lang=$1",
     "oppija-raamit.lang.change.full": "/oppija-raamit/changelanguage?lang=$1",
-    "oppija-raamit.shibboleth.check": "/oppija-raamit/shibbolethcheck",
     "wp.api.translate": "/wp/api/translate/translate_page/",
     "wp.api.translate.path": "/wp/api/translate/translate_page?path=$1",
     "wp.api.nav": "/wp/api/nav/json_nav",
