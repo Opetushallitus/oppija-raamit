@@ -42,10 +42,31 @@
                 }
             })
         },
-        setAcceptCookie: function () {
-            jQuery.cookie("oph-cookies-accepted", "true", {path: '/'});
-            $('div.cookieHeader').attr('style', 'display:none;');
-            return false;
+        showModalCookieSettings: function () {
+          if ($('#cookie-modal-settings').css('display') ==='none') {
+            $('#cookie-modal-settings').css('display', 'block');
+          } else {
+            $('#cookie-modal-settings').css('display', 'none');
+          }
+        },
+        setAcceptedCookies: function () {
+          if (document.getElementById('mandatoryCookies').checked) {
+            jQuery.cookie('oph-mandatory-cookies-accepted', 'true', { expires: 1800, path: '/' });
+          }
+          if (document.getElementById('statisticCookies').checked) {
+            jQuery.cookie('oph-statistic-cookies-accepted', 'true', { expires: 1800, path: '/' });
+          }
+          if (document.getElementById('marketingCookies').checked) {
+            jQuery.cookie('oph-marketing-cookies-accepted', 'true', { expires: 1800, path: '/' });
+          }
+          $('#cookie-modal-backdrop').css('display', 'none');
+        },
+        showCookieText() {
+          if ($('#cookie-modal-fulltext').css('display') ==='none') {
+            $('#cookie-modal-fulltext').css('display', 'block');
+          } else {
+            $('#cookie-modal-fulltext').css('display', 'none');
+          }
         }
     }
 
@@ -150,7 +171,7 @@
                                 }
 
                                 loadFooterLinks(language);
-                                checkAcceptCookie();
+                                checkAcceptedCookies();
                             })
                         })
                     })
@@ -442,8 +463,19 @@
                             info: "Jotta sivuston käyttö olisi sinulle sujuvaa, käytämme evästeitä.",
                             close: "Sulje"
                         },
-                      browserUpdateText:"Selaimesi {brow_name} on vanhentunut ja Opintopolun toiminnallisuudet eivät toimi. Päivitä selaimesi turvallisempaan, nopeampaan ja helppokäyttöisempään <a{up_but}>Päivitä selain</a><a{ignore_but}>Hylkää</a>"
-
+                        cookieModal: {
+                            header: "Evästeet",
+                            info: "<p>Evästeet ovat pieniä tekstitiedostoja, joita sivusto tallentaa tietokoneellesi tai mobiililaitteellesi. Se sisältää yksilöllisen, nimettömän tunnisteen, jonka avulla verkkopalvelu tunnistaa sivustolla vierailevat eri selaimet. Evästeillä kerättävillä tiedoilla ei voida tunnistaa yksittäisiä käyttäjiä. Opetushallitus edellyttää, että hyväksyt evästeiden käytön voidaksesi käyttää Opintopolku -verkkopalveluamme.</p>",
+                            settings: "Asetukset",
+                            agreement: "Sallin seuraavat evästeet:",
+                            mandatoryCookies: "Välttämättömät evästeet",
+                            statisticCookies: "Tilastointiin liittyvät evästeet",
+                            marketingCookies: "Markkinointievästeet",
+                            accept: "Hyväksy evästeet",
+                            expandCookieText:  "Lue lisää evästeistä",
+                            fullCookieText: "<p>Evästeitä ovat:</p><ul><li><strong>Ensimmäisen osapuolen evästeet</strong> tulevat suoraan verkkosivustolta, jolla käyt. Vain tämä sivusto voi lukea ne.</li><li>Lisäksi verkkosivusto saattaa käyttää ulkopuolisia palveluja, jotka lähettävät omia evästeitään. Näitä kutsutaan <strong>kolmannen osapuolen evästeiksi</strong>.</li><li>Pysyvät evästeet ovat tietokoneellesi tallennettavia evästeitä, joita ei poisteta automaattisesti, kun suljet selaimen. Istuntokohtaiset evästeet sen sijaan poistetaan istunnon päättyessä.</li></ul><p>Evästeiden tarkoituksena on, että sivusto säilyttää tietyt valintasi (Opintopolussa esim. muistilista ja kieli) tietyn ajan.</p><p>Näin sinun ei tarvitse tehdä samoja valintoja uudelleen, kun siirryt sivustolla sivulta toiselle saman istunnon aikana.</p><p>Evästeiden avulla voidaan myös kerätä anonymisoituja tietoja siitä, miten käyttäjät sivustolla toimivat. Näiden tietojen perusteella ei voida tunnistaa yksittäistä käyttäjää.</p><p><strong>Mihin evästeitä käytetään Opintopolussa?</strong></p><p>Opintopolussa käytetään valtaosin ensimmäisen osapuolen evästeitä. Ulkopuoliset tahot eivät saa niitä käyttöönsä. Huom! Asetuksen digitaalisesta palveluväylästä mukaan Sinun Eurooppasi -sivustolta sekä verkkosivuilta, joihin em. sivustosta on linkit, kerätään käyttäjien anonymiteetti taaten käyttäjätilastoja sekä laatupalautetta, jotta voidaan parantaa palveluväylän toimintaa. Komissio hyväksyy täytääntöönpanosäädöksiä (implementing acts), joissa säädetään tarkemmin käyttäjätilastojen keräämis- ja vaihtomenetelmästä ja joissa annetaan käyttäjäpalautteen keräämistä ja jakamista koskevat säännöt.</p><p> </p><p>Opintopolussa on käytössä <strong>seuraavia ensimmäisen osapuolen evästeitä</strong>. Niiden tarkoitus on</p><ul><li>mahdollistaa sivuston käytön (esim. todentamisevästeet ja tekniset evästeet)<ul><li>Opetushallitus edellyttää, että hyväksyt evästeiden käytön evästebannerissa, voidaksesi käyttää Opintopolku -verkkopalveluamme.</li><li>todentamisevästeet tallennetaan laitteellesi, kun kirjaudut Oma Opintopolkuun käyttäen Suomi.fi -tunnistautumista.</li></ul></li><li>kerätä analytiikkadataa käyttäjän sivulatauksista Opintopolussa.</li><li>analytiikan evästeitä käytetään ainoastaan kehittämistarkoituksiin pyrkimyksenä parantaa sivuston kaikille käyttäjille tarjottavaa palvelua. Opintopolun analytiikan seurannassa käytetään Matomoa.</li></ul><p>Evästeiden avulla seurataan käyttäjän käyttökokemusta verkkosivustolla. Käyttäjätiedot ovat anonyymeja – <strong>kerätystä tiedosta ei voi tunnistaa käyttäjää henkilökohtaisesti</strong>.</p><p>Näitä tietoja <strong>ei myöskään jaeta minkään ulkopuolisen osapuolen kanssa</strong> eikä niitä käytetä muihin tarkoituksiin.</p><p><strong> </strong></p><p><strong>Opintopolun kolmannen osapuolen evästeet</strong></p><p>Opintopolussa on käytössä YouTube ja Instagram, jotka keräävät kolmannen osapuolen evästeitä. Youtubea käytetään Opintopolun ohje- ja opiskelu/uravideoissa.</p><p>Voidaksesi nähdä tällaisen kolmannen osapuolen sisällön sinun on ensin hyväksyttävä kyseisen palvelun omat käyttöehdot. Tämä koskee myös niiden evästekäytäntöjä, joita Opintopolku ei voi valvoa.</p><p>Jos et käytä ulkopuolisten palveluntarjoajien sisältöä, mitään kolmannen osapuolen evästeitä ei asenneta laitteellesi.</p><p><strong>Evästeiden käytön hallinta</strong></p><p>Evästeitä voi vapaasti <strong>hallita ja/tai poistaa</strong>. Ohjeita löytyy esimerkiksi osoitteesta <a href=\"https://www.aboutcookies.org/\" target=\"_blank\">aboutcookies.org</a>.</p><p><strong> </strong></p><p><strong>Evästeiden poistaminen käyttäjän laitteelta</strong></p><p>Voit poistaa kaikki laitteellasi olevat evästeet tyhjentämällä selaimesi selaushistorian. Tämä toiminto poistaa kaikkien käyttämiesi sivustojen asettamat evästeet. Huomaa kuitenkin, että tällöin saatat menettää myös joitakin tallentamiasi tietoja.</p><p><strong>Sivustokohtaisten evästeiden hallinta</strong></p><p>Sivustokohtaisia evästeitä voi hallita selaimen yksityisyys- ja evästeasetuksista.</p><p><strong>Evästeiden estäminen</strong></p><p>Useimmissa uusissa selaimissa voi estää evästeiden asettamisen laitteelle kokonaan, mutta tällöin voit joutua mukauttamaan joitakin asetuksia aina, kun käyt jollakin sivustolla/sivulla. Jotkin palvelut ja toiminnot eivät välttämättä toimi kunnolla (esim. sisäänkirjautuminen).</p>"
+                        },
+                        browserUpdateText:"Selaimesi {brow_name} on vanhentunut ja Opintopolun toiminnallisuudet eivät toimi. Päivitä selaimesi turvallisempaan, nopeampaan ja helppokäyttöisempään <a{up_but}>Päivitä selain</a><a{ignore_but}>Hylkää</a>"
                     }
                 },
                 sv: {
@@ -518,6 +550,18 @@
                             info: "Vi använder oss av cookies för att underlätta användningen av webbplatsen.",
                             close: "Stäng"
                         },
+                        cookieModal: {
+                            header: "Studieinfos kakpolicy (cookies)",
+                            info: "<p>En kaka är en liten textfil som webbläsaren lagrar på din dator eller mobila enhet. Den innehåller en unik, anonym tagg med vilken webbtjänsten kan identifiera olika webbläsare som besöker webbplatsen. Med den information som samlas via kakor kan man inte identifiera enskilda användare.</p><p>Utbildningsstyrelsen förutsätter att du accepterar användningen av kakor då du använder vår Studieinfo webbplats.</p>",
+                            settings: "Inställningar",
+                            agreement: "Jag godkänner följande kakor:",
+                            mandatoryCookies: "Nödvändiga kakor",
+                            statisticCookies: "Kakor som anknyter till statistik",
+                            marketingCookies: "Kakor som anknyter till marknadsföring",
+                            accept: "Godkänn kakor",
+                            expandCookieText: "Läs mer om kakorna",
+                            fullCookieText: "<p><strong>Olika slags kakor</strong></p><p><strong>Förstapartskakor</strong> samlas in på de webbplatser du besöker. Endast den ifrågavarande webbplatsen kan läsa dem. En webbplats kan dessutom använda sig av utomstående tjänster, som innehåller egna kakor. Dessa benämns <strong>trepartskakor</strong>.</p><p>Kakor som sparas permanent i din dator raderas inte automatiskt då du stänger webbläsaren. Kakor som sparas under en session, raderas däremot då sessionen avslutas.</p><p>Syftet med kakor är att spara de val du gjort på en webbplats (i Studieinfo exempelvis minneslistan och språket) för en viss tid. Du behöver då inte göra samma val på nytt då du bläddar mellan olika sidor under en och samma webbsession.</p><p>Genom kakor kan man också samla in anonyma uppgifter om hur användarna fungerar på en webbplats. Då är det inte möjligt att identifiera en enskild användare.</p><p><strong>Till vad används kakor i Studieinfo?</strong></p><p>I Studieinfo används främst förstapartskakor. Utomstående parter har inte tillgång till uppgifterna. I Studieinfo används följande förstapartskakor, vars uppgifter är att</p><ul><li>möjliggöra användningen av webbplatsen (t.ex. autentiseringskakor och tekniska kakor)<ul><li>Utbildningsstyrelsen förutsätter att du godkänner användningen av kakor för att kunna använda vår webbtjänst</li><li>autentiseringskakor sparas på din dator då du loggar in i Min Studieinfo med Suomi.fi-identifiering.</li></ul></li><li>samla analytisk data om nedladdning av sidor i Studieinfo</li></ul><p>Kakor för analysering används endast för att utveckla webbplatsen. Vid uppföljningen används Matomo.</p><p>Med hjälp av kakor utreds också användarerfarenheten av webbplatsen. Uppgifterna är anonyma och användarna kan inte identifieras. Uppgifterna delas inte till utomstående parter eller används för andra ändamål. OBS! Enligt förordningen om gemensam digital ingång för tillhandahållande av information, förfaranden samt hjälp- och problemlösningstjänster insamlas användarstatistik över och respons från användare med beaktande av användarnas anonymitet från webbplatsen Ditt Europa och från de webbplatser som det länkas till från denna webbplats. Avsikten är att förbättra den digitala ingångens funktion. EU-kommissionen godkänner stadgandena om verkställande, vilka närmare bestämmer om vilken metod som används vid insamlande och delning av användaruppgifter. Samtidigt bestäms om regler för insamlandet och delningen av användarresponsen.</p><p> </p><p><strong>Tredjepartskakor i Studieinfo</strong></p><p>I Studieinfo används YouTube och Instagram, vilka samlar uppgifter i form av tredjepartskakor. Youtube används för instruktionsvideor samt i studie-/karriärvideor.</p><p>För att du ska kunna se trepartsuppgifter bör du först godkänna användarvillkoren för ifrågavarande tjänst. Detta gäller också sådan kakpolicy som Studieinfo inte kan kontrollera. Om du inte använder utomstående tjänsteleverantörers innehåll installeras inte heller tredjepartskakor i din apparat.</p><p><strong>Att kontrollera användningen av kakor</strong></p><p>Du kan fritt kontrollera och eller radera kakor. Du hittar mera anvisningar till exempel på adressen <a href=\"https://www.aboutcookies.org/\" target=\"_blank\">aboutcookies.org</a>.</p><p><strong>Att radera kakor från apparater</strong></p><p>Du kan radera alla kakor på din apparat genom att tömma bläddringshistorian. Denna funktion raderar alla kakor på de webbplatser du har besökt. Observera ändå att då du raderar kakorna, kan du gå miste om vissa uppgifter som du har sparat i din apparat.</p><p><strong>Att kontrollera kakor på olika webbplatser</strong></p><p>Du kan kontrollera kakor på olika webbplatser via webbläsarens inställningar för integritet och kakor.</p><p><strong>Att förhindra användningen av kakor</strong></p><p>I de flesta nya webbläsare kan du förhindra att kakor sparas på din apparat helt och hållet. Då kan du ändå vara tvungen att anpassa vissa inställningar då du besöker olika webbplatser. Dessutom kan vissa tjänster och funktioner fungera bristfälligt (till exempel inloggning).</p>"
+                        },
                         browserUpdateText:"Din webbläsare {brow_name} är föråldrad och vissa funktioner i Studieinfo fungerar inte. Uppdatera din webbläsare och gör den säkrare, snabbare och tillgängligare. <a{up_but}>Uppdatera webbläsaren</a><a{ignore_but}>Ignorera</a>"
                     }
                 },
@@ -577,10 +621,18 @@
                                 url: window.url("oppija-raamit-web.index.en")
                             }
                         },
-                        cookie: {
-                            info: "We use cookies on this site to enhance your user experience.",
-                            close: "Close"
-                        },
+                      cookieModal: {
+                        header: "Cookies",
+                        info: "<p>A cookie is a small text file saved to the user’s terminal device by the browser. It contains an individual, anonymous identifier that the online service uses to identify the different browsers visiting the website. <strong>The information collected by the cookies cannot be used to identify individual users.</strong></p><p>The Finnish National Agency for Education requires that you accept the use of cookies to be able to use our online service.</p>",
+                        settings: "Settings",
+                        agreement: "Allow following cookies:",
+                        mandatoryCookies: "Mandatory cookies",
+                        statisticCookies: "Statistical cookies",
+                        marketingCookies: "Marketing cookies",
+                        accept: "Accept cookies",
+                        expandCookieText:  "Read more about cookies",
+                        fullCookieText: "<p>Most of the cookies that the National Agency for Education uses are so called <strong>first party cookies </strong>to improve user experience, these are analytics information (Matomo) and identification to My Studyinfo (available with Finnish banking identification or Finnish electronic ID card).</p><p>The <strong>third party cookies</strong> used in Studyinfo are YouTube and Instragram, these are available in the Finnish and Swedish sites.</p><p>Studyinfo uses session cookies that are removed when the browser is closed. Session cookies are used to remember the choices of language and font size during browsing and for web analytics (Matomo). The information used for web analytics is anonymous and the user cannot be identified. The National Agency for Education does not provide information on cookies to others. Please note! According to the Decree on Single Digital Gateway, Your Europe -portal  collects via linked websites, anonymous analytic information (Matomo) and feedback data in order to improve user experience. European Commission approves implementing acts that provide more information on how the data is collected and the rules relating to</p><p>You can disable cookies by changing the settings in your browser to not allow storage of cookies. Please note, however, that restricting the use of cookies may affect the functioning of the website.</p>"
+                      },
                         browserUpdateText:"Your web browser {brow_name}, is out of date and Studyinfo’s functions won’t work. Update your browser for more security, speed and the best experience. <a{up_but}>Update browser</a><a{ignore_but}>Ignore</a>"
                     }
                 }
@@ -669,16 +721,16 @@
         return lang != null ? lang : "fi"
     }
 
-    function checkAcceptCookie() {
-        if(!readAcceptCookie()){
-            $('div.cookieHeader').attr('style','display:block;');
-        }
+  function checkAcceptedCookies() {
+    if(!readAcceptedMandatoryCookie()){
+      $('#cookie-modal-backdrop').css('display', 'block');
     }
+  }
 
-    function readAcceptCookie() {
-        var accept = jQuery.cookie("oph-cookies-accepted");
-        return accept != null ? true : false
-    }
+  function readAcceptedMandatoryCookie() {
+    var accept = jQuery.cookie("oph-mandatory-cookies-accepted");
+    return accept != null ? true : false
+  }
 
     function updateBasket() {
         var $count = $(".count");

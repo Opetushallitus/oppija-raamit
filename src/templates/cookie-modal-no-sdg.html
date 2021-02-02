@@ -1,0 +1,60 @@
+<div id="cookie-modal-backdrop">
+  <div id="cookie-modal-content">
+    <h2 class="cookie-modal-header" data-t="header.cookieModal.header"></h2>
+    <div class="cookie-modal-text" data-t="header.cookieModal.info"></div>
+    <div>
+      <a id="cookie-text-expand-link"
+         onclick="Modal.showCookieText()"
+         href="javascript:void(0);"
+         data-t="header.cookieModal.expandCookieText">
+      </a>
+    </div>
+    <div id="cookie-modal-fulltext"
+         class="cookie-modal-text"
+         data-t="header.cookieModal.fullCookieTextNoSDG">
+    </div>
+    <div id="cookie-modal-settings">
+      <div class="cookie-modal-text"
+           data-t="header.cookieModal.agreement">
+      </div>
+      <input type="checkbox"
+             id="mandatoryCookies"
+             name="mandatoryCookies"
+             value="mandatoryCookies"
+             checked="true"
+             disabled="true">
+      <label for="mandatoryCookies"
+             data-t="header.cookieModal.mandatoryCookies">
+      </label>
+      <br>
+      <input type="checkbox"
+             id="statisticCookies"
+             name="statisticCookies"
+             value="statisticCookies"
+             checked="true">
+      <label for="statisticCookies"
+             data-t="header.cookieModal.statisticCookies">
+      </label>
+      <br>
+      <input type="checkbox"
+             id="marketingCookies"
+             name="marketingCookies"
+             value="marketingCookies"
+             checked="true">
+      <label for="marketingCookies"
+             data-t="header.cookieModal.marketingCookies">
+      </label>
+    </div>
+    <div>
+      <button class="cookie-modal-btn"
+              data-t="header.cookieModal.accept"
+              onclick="Modal.setAcceptedCookies(false)">
+      </button>
+      <button id="cookie-modal-settings-btn"
+              class="cookie-modal-btn"
+              data-t="header.cookieModal.settings"
+              onclick="Modal.showModalCookieSettings()">
+      </button>
+    </div>
+  </div>
+</div>

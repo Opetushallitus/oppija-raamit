@@ -5,21 +5,25 @@
   font-size: 13px;
   line-height: 16px;
 }
+
 #siteheader:after {
   content: "";
   display: table;
   clear: both;
 }
+
 #siteheader a,
 #siteheader a:visited {
   color: white;
   text-decoration: none;
 }
+
 #siteheader .header-column {
   min-width: 500px;
   max-width: 1160px;
   margin: 0px auto;
 }
+
 #siteheader .header-content {
   padding: 20px 0px;
   font-weight: bold;
@@ -27,10 +31,12 @@
   position: relative;
   clear: both;
 }
+
 #siteheader .header-content .header-banner {
   display: inline-block;
   float: left;
 }
+
 #siteheader .header-content .header-login-section {
   line-height: 25px;
   position: absolute;
@@ -39,6 +45,7 @@
   border-right: 1px solid rgba(255, 255, 255, 0.4);
   padding-right: 20px;
 }
+
 #siteheader .header-content .header-login-section:before {
   content: "";
   background: url(../img/login-icon.png) no-repeat center center;
@@ -50,6 +57,7 @@
   left: -7px;
   top: 2px;
 }
+
 #siteheader .header-content .header-logout-link {
   background: rgba(255, 255, 255, 0.1);
   font-weight: normal;
@@ -58,6 +66,7 @@
   padding: 0px 2px;
   opacity: 0.8;
 }
+
 #siteheader .header-content .header-shortlist {
   position: absolute;
   line-height: 25px;
@@ -65,6 +74,7 @@
   bottom: 15px;
   width: 120px;
 }
+
 #siteheader .header-content ul.header-language {
   position: absolute;
   right: 0px;
@@ -74,6 +84,7 @@
   padding: 0;
   margin: 0;
 }
+
 #siteheader .header-content .header-system-name {
   position: absolute;
   color: #ae0011;
@@ -81,6 +92,7 @@
   left: 250px;
   top: 36px;
 }
+
 #siteheader nav {
   clear: both;
   background: #06526b;
@@ -93,6 +105,7 @@
   z-index: 1001;
   position: relative;
 }
+
 #siteheader nav ul {
   padding: 0;
   margin: 0;
@@ -101,66 +114,81 @@
   -webkit-box-shadow: 0px 1px 1px 0 rgba(0, 0, 0, 0.5);
   box-shadow: 0px 1px 1px 0 rgba(0, 0, 0, 0.5);
 }
+
 #siteheader nav ul.level-1-menu > li {
   float: left;
   overflow: auto;
   font-family: 'PT Sans Narrow';
   font-size: 1.2em;
 }
+
 #siteheader nav ul.level-1-menu > li.active {
   background: #ffffff;
 }
+
 #siteheader nav ul.level-1-menu > li.active a {
   color: #333;
 }
+
 #siteheader nav ul.level-1-menu > li a {
   display: inline-block;
   padding: 10px;
   text-decoration: none;
 }
+
 #siteheader nav ul.level-1-menu > li a.action-link {
   font-size: 13px;
   text-decoration: underline;
 }
+
 #siteheader nav ul.level-1-menu > li.menu-focus {
   background: #ffffff;
 }
+
 #siteheader nav ul.level-1-menu > li.menu-focus a {
   color: #333;
 }
+
 #siteheader nav ul.level-1-menu > li.menu-focus > ul {
   display: block;
 }
+
 #siteheader nav ul.level-2-menu {
   background: #ffffff;
   position: absolute;
   display: none;
   min-width: 200px;
 }
+
 #siteheader nav ul.level-2-menu li {
   display: block;
   position: relative;
   font-family: 'Arial';
 }
+
 #siteheader nav ul.level-2-menu li a {
   color: #333;
   font-size: 13px;
   width: 100%;
   box-sizing: border-box;
 }
+
 #siteheader nav ul.level-2-menu li a:hover,
 #siteheader nav ul.level-2-menu li a:focus {
   background: #feedbd;
 }
+
 #siteheader nav .mobile-version {
   float: right;
   font-size: 13px;
   text-decoration: underline;
   line-height: 40px;
 }
+
 #siteheader.lang-en .mobile-version {
   display: none;
 }
+
 #sitefooter {
   max-width: 1160px;
   margin: 0px auto;
@@ -168,23 +196,28 @@
   color: #999999;
   font-size: 13px;
 }
+
 #sitefooter a {
   color: #333;
   text-decoration: none;
 }
+
 #sitefooter a:hover {
   text-decoration: underline;
 }
+
 #sitefooter .footer-info-container {
   border: 1px solid #dddddd;
   border-radius: 3px;
 }
+
 #sitefooter .footer-opintopolku-info {
   padding: 20px;
   overflow: auto;
   background: #dcdcdc;
   margin: 4px;
 }
+
 #sitefooter .footer-opintopolku-info .footer-homelink {
   float: left;
   margin-right: 60px;
@@ -206,36 +239,44 @@
   line-height: 20px;
   width: 500px;
 }
+
 #sitefooter .footer-opintopolku-info li {
   width: 220px;
   float: left;
 }
+
 #sitefooter .footer-note {
   margin-top: 20px;
   text-align: center;
   margin-bottom: 10px;
 }
+
 #sitefooter .footer-logos {
   border: 1px solid #dddddd;
   overflow: auto;
   padding: 9px 0px;
 }
+
 #sitefooter .footer-logos a {
   display: inline-block;
   width: 50%;
   text-align: center;
   float: left;
 }
+
 nav#mobile-nav {
   display: none;
 }
+
 .mobile-header-content {
   display: none;
 }
+
 .top-links-bar {
   background-color: #06526b;
   width: 100%;
 }
+
 .top-links {
   background-color: #06526b;
   font-family: 'PT Sans Narrow';
@@ -246,15 +287,18 @@ nav#mobile-nav {
   position: relative;
   overflow: auto;
 }
+
 .top-link {
   float: left;
   padding: 5px;
   padding-left: 20px;
   padding-right: 20px;
 }
+
 .top-link-active {
   background-color: #0a789c;
 }
+
 @media screen and (max-width: 768px) {
   #siteheader .mobile-header-content {
     padding: 0;
@@ -263,20 +307,24 @@ nav#mobile-nav {
     position: relative;
     display: block;
   }
+
   #siteheader .mobile-header-content .header-banner {
     padding: 8px;
     padding-bottom: 0;
     display: inline-block;
     float: left;
   }
+
   #siteheader .header-content {
     display: none;
   }
+
   #siteheader .header-column {
     min-width: 0px;
     width: 100%;
     margin: 0px auto;
   }
+
   #siteheader .mobile-menu-button {
     display: inline-block;
     float: right;
@@ -289,21 +337,26 @@ nav#mobile-nav {
     border: 0;
     height: 100%;
   }
+
   #siteheader .mobile-menu-button-menu-open {
     background: #06526b;
   }
+
   #siteheader nav#full-nav {
     display: none;
   }
+
   #siteheader nav#mobile-nav {
     display: block;
     border: 0;
     min-height: 0px;
     padding-top: 5px;
   }
+
   #siteheader .mobile-menu-header-links {
     background: #0a789c;
   }
+
   #siteheader .header-login-section:before {
     content: "";
     background: url(../img/login-icon.png) no-repeat center center;
@@ -315,6 +368,7 @@ nav#mobile-nav {
     left: -7px;
     top: 2px;
   }
+
   #siteheader ul.mobile-menu > li {
     float: right;
     overflow: auto;
@@ -328,12 +382,15 @@ nav#mobile-nav {
     font-weight: bold;
     font-family: 'PT Sans Narrow';
   }
+
   #siteheader ul.mobile-menu > li.active {
     background: #ffffff;
   }
+
   #siteheader ul.mobile-menu > li.active a {
     color: #333;
   }
+
   #siteheader ul.mobile-menu > li a {
     display: inline-block;
     padding: 10px;
@@ -342,50 +399,100 @@ nav#mobile-nav {
     text-decoration: none;
     font-size: 18px;
   }
+
   #siteheader ul.mobile-menu > li a.action-link {
     font-size: 18px;
     text-decoration: underline;
   }
+
   #siteheader ul.mobile-menu > li.menu-focus {
     background: #ffffff;
   }
+
   #siteheader ul.mobile-menu > li.menu-focus a {
     color: #333;
   }
+
   #siteheader ul.mobile-menu > li.menu-focus > ul {
     display: block;
   }
+
   #sitefooter {
     width: 100%;
   }
+
   #sitefooter #footer-links {
     width: 100%;
     margin-right:40px;
   }
+
   #sitefooter .footer-opintopolku-info {
     padding: 5px;
   }
+
   #sitefooter li {
     width: 220px;
     clear: both;
     font-size: 18px;
     padding: 5px;
   }
+
+  #cookie-modal-content {
+    position: absolute;
+    z-index: 500;
+    background-color: white;
+    width: 76% !important;
+    border: 1px solid #ccc;
+    box-shadow: 1px 1px 1px black;
+    padding: 16px;
+    left: 12% !important;
+    top: 5%;
+    box-sizing: border-box;
+    border-radius: 10px;
+  }
+
+  #cookie-modal-content a {
+    color: #0a789c !important;
+    margin-top: 5px;
+    margin-bottom: 15px;
+  }
+
+  .cookie-modal-btn {
+    margin-top: 15px;
+    margin-right: 5px;
+    height: 32px;
+    color: #FFFFFF;
+    background-color: #0a789c;
+    padding: 2px 12px 2px;
+    cursor: pointer;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    font: inherit;
+    font-weight: 600;
+    float: bottom;
+  }
 }
-.cookieHeader {
-  margin: 0 auto;
-  text-align: center;
-  padding-top: 15px;
-  padding-bottom: 15px;
-  font-family: 'Open Sans', sans-serif;
-  background-color: #f6f4f0;
-  color: #333;
-  font-size: 14px;
+
+#cookie-modal-backdrop {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  z-index: 1100;
+  left: 0;
+  top: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  color: #000000;
   display: none;
+  overflow-y: auto;
 }
-.cookieHeader .btn-cookies {
-  margin-left: 5px;
-  margin-bottom: 4px;
+
+.cookie-modal-header {
+  margin-top: 0px
+}
+
+.cookie-modal-btn {
+  margin-top: 15px;
+  margin-right: 5px;
   height: 32px;
   color: #FFFFFF;
   background-color: #0a789c;
@@ -393,17 +500,54 @@ nav#mobile-nav {
   cursor: pointer;
   border: 1px solid transparent;
   border-radius: 4px;
+  float: right;
 }
-.cookieHeader .btn-cookies:hover {
-  background: #00b5ef;
-  color: #ffffff;
+
+.cookie-modal-btn:hover {
+  background: #00B5EF;
 }
-.cookieHeader .cookieText {
-  height: 20px;
-  margin-bottom: 3px;
+
+#cookie-text-expand-link {
+  color: #0a789c !important;
+  margin-top: 5px;
 }
+
+#cookie-text-expand-link:hover {
+  color: #00B5EF !important;
+}
+
+.cookie-modal-text {
+  margin-top: 15px;
+  margin-bottom: 15px;
+  white-space: pre-wrap;
+}
+
+#cookie-modal-content {
+  position: absolute;
+  z-index: 500;
+  background-color: white;
+  width: 60%;
+  border: 1px solid #ccc;
+  box-shadow: 1px 1px 1px black;
+  padding: 16px;
+  left: 20%;
+  top: 5%;
+  box-sizing: border-box;
+  border-radius: 10px;
+}
+
+#cookie-modal-content a {
+  color: #0a789c !important;
+  margin-top: 5px;
+  margin-bottom: 15px;
+}
+
+#cookie-modal-content a:hover {
+  color: #00B5EF !important;
+}
+
 body .buorg {
-  position:relative;
+  position: relative;
   background-color: #f6f4f0;
   color: #333;
   font: 14px 'Open Sans', sans-serif;
