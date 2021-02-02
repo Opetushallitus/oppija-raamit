@@ -16,7 +16,7 @@
     "templates": "rm -rf static/html/ && ./node_modules/static-i18n/bin/static-i18n.js -l fi -i fi -i sv -i en --outputDir static/html/ --outputDefault __lng__/__file__ --localesPath src/locales/ src/templates/"
   },
   "dependencies": {
-    "@webcomponents/template": "^1.2.4",
+    "@webcomponents/template": "^1.4.2",
     "browser-update": "^3.2.2",
     "core-js": "^2.5.7",
     "es6-promise": "^4.2.4",
