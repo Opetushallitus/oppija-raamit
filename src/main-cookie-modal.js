@@ -10,6 +10,7 @@ import './styles/main.css';
   let lang;
   let cookieModal;
   let sdg;
+  let domain;
 
   try {
     lang = document.getElementById('apply-modal').getAttribute('lang');
@@ -21,15 +22,31 @@ import './styles/main.css';
   }
 
   try {
+    domain = getDomain();
     sdg = document.getElementById('apply-modal').getAttribute('sdg');
+
     if (sdg === "false") {
-      cookieModal = getModalNoSdg(lang);
+      cookieModal = getModalNoSdg(domain, lang);
     } else {
-      cookieModal = getModal(lang);
+      cookieModal = getModal(domain, lang);
     }
   } catch (e) {
-    cookieModal = getModal(lang);
+    cookieModal = getModal(domain, lang);
     sdg = true;
+  }
+
+  function getDomain() {
+    if (document.location.hostname === 'localhost') {
+      var url = window.location.href
+      var urlArray = url.split("/");
+      return urlArray[0] + "//" + urlArray[2]
+    }
+
+    if (document.location.hostname.split('.').length > 2) {
+      return document.location.protocol + '//' + document.location.hostname.split('.').slice(-2).join('.');
+    } else {
+      return document.location.protocol + '//' + document.location.hostname;
+    }
   }
 
   Promise.all([cookieModal]).then(function (values) {
