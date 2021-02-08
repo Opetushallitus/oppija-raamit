@@ -42,11 +42,7 @@ import './styles/main.css';
       return urlArray[0] + "//" + urlArray[2]
     }
 
-    if (document.location.hostname.split('.').length > 2) {
-      return document.location.protocol + '//' + document.location.hostname.split('.').slice(-2).join('.');
-    } else {
-      return document.location.protocol + '//' + document.location.hostname;
-    }
+    return document.location.protocol + '//' + document.location.hostname.split('.').slice(-2).join('.');
   }
 
   Promise.all([cookieModal]).then(function (values) {
