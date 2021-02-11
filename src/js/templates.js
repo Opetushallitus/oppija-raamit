@@ -3,11 +3,11 @@ import urls from './urls';
 export function getHeader(lang, suffix) {
   return fetchAsync(urls.header(lang, suffix || ''))
 }
-export function getModal(lang) {
-  return fetchAsync(urls.cookieModal(lang))
+export function getModal(domain, lang) {
+  return fetchAsync(domain + urls.cookieModal(lang))
 }
-export function getModalNoSdg(lang) {
-  return fetchAsync(urls.cookieModalNoSdg(lang))
+export function getModalNoSdg(domain, lang) {
+  return fetchAsync(domain + urls.cookieModalNoSdg(lang))
 }
 export function getFooter(lang) {
   return fetchAsync(urls.footer(lang))
