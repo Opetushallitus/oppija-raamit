@@ -20,7 +20,7 @@
   margin-right: 5px;
   height: 32px;
   color: #FFFFFF;
-  background-color: #0a789c;
+  background-color: #3A7A10;
   padding: 2px 12px 2px;
   cursor: pointer;
   border: 1px solid transparent;
@@ -41,7 +41,7 @@
 }
 
 #cookie-text-expand-link {
-  color: #0a789c !important;
+  color: #3A7A10 !important;
   margin-top: 5px;
   margin-bottom: 15px;
 }
@@ -70,7 +70,7 @@
 }
 
 #cookie-modal-content a {
-  color: #0a789c !important;
+  color: #3A7A10 !important;
   margin-top: 5px;
   margin-bottom: 15px;
   text-decoration:none;
@@ -100,7 +100,7 @@
     margin-right: 5px;
     height: 32px;
     color: #FFFFFF;
-    background-color: #0a789c;
+    background-color: #3A7A10;
     padding: 2px 12px 2px;
     cursor: pointer;
     border: 1px solid transparent;
@@ -111,7 +111,7 @@
   }
 
   #cookie-modal-content a {
-    color: #0a789c !important;
+    color: #3A7A10 !important;
     margin-top: 5px;
     margin-bottom: 15px;
     text-decoration:none;
