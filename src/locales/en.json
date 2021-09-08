@@ -28,7 +28,7 @@
         "url": "https://eperusteet.opintopolku.fi/"
       },
       "wordpress": {
-        "url": "/wp2/en"
+        "url": "/konfo"
       },
       "home": "Home",
       "opintopolku": "Studyinfo.fi",
@@ -62,11 +62,11 @@
     "links": {
       "mystudyinfo": {
         "title": "What is My Studyinfo -service?",
-        "url": "/wp2/en/my-studyinfo-service/"
+        "url": "/konfo/en/sivu/my-studyinfo"
       },
       "description": {
         "title": "What is Studyinfo?",
-        "url": "/wp2/en/what-is-studyinfo/"
+        "url": "/konfo/en/sivu/what-is-studyinfo"
       },
       "feedback": {
         "title": "Give feedback – ask for advice",
@@ -74,7 +74,7 @@
       },
       "register": {
         "title": "Register description",
-        "url": "/wp2/en/register/"
+        "url": "/konfo/en/sivu/register-description-and-cookies"
       },
       "opetushallitus": {
         "title": "Finnish National Board of Education",
