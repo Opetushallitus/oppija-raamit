@@ -10,9 +10,9 @@ cache:
 env:
   global:
   # AWS_ACCESS_KEY_ID
-  - secure: "V5CTciQzOHwegcRlmAFGRsh13+C8IMbr7gEO2KB075ymmkguqRcvEFuHx1GBb8eY+tGNrW8o76I6PNZY4Z5nc6Xc/StCR7IDeNrhR8g1g/YtDSvtPYxB7lPkuffem6fbXnbsZYwS/BcpdYnV4W/GAN2zTjtas7mxMebymozQmrA="
+  - secure: "YzQnc3E9+b/7MLMItI+f2IUPLR7ETtmMnKF6dbQUTLjhJTkoTUucIxiW47MCtUaWuybr16s74mFQhh/+f5qp2nYYU37Dlvl9gPVg8Qag+aHky507Chcnyzs09Zjci5KZ0sl4pLn+wd3OILfyjlCpsDU0oR452BGAg3BLM/uiKzY="
   # AWS_SECRET_ACCESS_KEY
-  - secure: "deMh1yJlMclb2DoSVQj2h/+Wd6B7aGDG8HDdee6/0j8paVox4gMEGlGwWhZB07FPdATkHFxjsDbKXzZsTTtsLfaUP8blpPPTdhA6dxQWhEh7iWbW//LXQJ5tEw9RG+WePRFo7uVhnNt7+m88Ub21d/xApjXRsCnnCQNfvtkCk3w="
+  - secure: "ovb3MIPfJNGZL/dVnwCDUJHtOO677orm8nRn1Gz6A4wipVMjJ/zIRYhwf5brvcEnyOZPI9iKLESrkfqtckJ5CSUXnUuqYAHD7l9un5n5FBcmMv9jbfWcY54a3aqqvHgDRScEKZE4XR7DhHuK++n5zRC9eEEzBBYEhw08+fk+iQI="
 
 install:
 - git clone https://github.com/Opetushallitus/ci-tools.git
