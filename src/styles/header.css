@@ -113,7 +113,7 @@
   height: 0;
   border-left: 20px solid transparent;
   border-right: 20px solid transparent;
-  border-top: 20px solid #0a789c;
+  border-top: 20px solid #3A7A10;
   z-index:9998;
 }
 
@@ -220,7 +220,7 @@
   top: 50px;
   width: 100%;
   white-space: initial;
-  background-color: #0a789c;
+  background-color: #3A7A10;
 }
 
 #header-overflow-menu-content-container {

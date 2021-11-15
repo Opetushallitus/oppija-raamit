@@ -6,9 +6,9 @@
   --raamit-font-size-top-links: 16px;
   --raamit-font-weight: 600;
 
-  --header-hover-color: #00B5EF;
-  --header-active-color: #0a789c;
-  --header-background-color: #0a789c;
-  --top-links-background-color: #06526b;
+  --header-hover-color: #3A7A10;
+  --header-active-color:#3A7A10;
+  --header-background-color: #3A7A10;
+  --top-links-background-color: #254905;
   --header-z-index: 1001;
 }

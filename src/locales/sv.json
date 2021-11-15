@@ -25,13 +25,13 @@
       "logout": "Logga ut",
       "eperusteet": {
         "title": "eGrunder",
-        "url": "https://egrunder.studieinfo.fi/"
+        "url": "https://eperusteet.opintopolku.fi/beta/#/sv/"
       },
       "ehoks": {
         "title": "ePUK"
       },
       "wordpress": {
-        "url": "/wp"
+        "url": "/konfo"
       },
       "home": "Hemsida",
       "opintopolku": "Studieinfo.fi",
@@ -65,19 +65,19 @@
     "links": {
       "mystudyinfo": {
         "title": "Vad är Min Studieinfo -tjänsten?",
-        "url": "/wp/sv/min-studieinfo-tjansten/"
+        "url": "/konfo/sv/sivu/min-studieinfo"
       },
       "description": {
         "title": "Vad är Studieinfo?",
-        "url": "/wp/sv/studieinfo-2/vad-ar-studieinfo/"
+        "url": "/konfo/sv/sivu/vad-aer-studieinfo"
       },
       "feedback": {
         "title": "Ge feedback – fråga råd",
-        "url": "/wp/sv/studieinfo-2/tes5/"
+        "url": "/konfo/sv/sivu/rådgivning-och-handledning"
       },
       "register": {
         "title": "Dataskyddsbeskrivning",
-        "url": "/wp/sv/dataskyddsbeskrivning/"
+        "url": "/konfo/sv/sivu/dataskyddsbeskrivningar-och-webbkakor"
       },
       "opetushallitus": {
         "title": "Utbildningsstyrelsen",

@@ -92,7 +92,6 @@ export function toggleOverflowMenu() {
 export function updateDom(lang) {
   updateActiveTopNavItem();
   updateActiveHeaderItem();
-  appendDomainToDynamicLinks(lang);
   updateActiveLanguage(lang);
 
   if (lang === 'en') {
@@ -141,14 +140,6 @@ function updateActiveHeaderItem() {
   }
 
   element.classList.add('header-link-active');
-}
-
-function appendDomainToDynamicLinks(lang) {
-  const items = document.getElementsByClassName('raamit-dynamic-link');
-  for (let i = 0; i < items.length; ++i) {
-    const a = items[i];
-    a.href = createDomain(lang) + a.pathname;
-  }
 }
 
 function updateActiveLanguage(lang) {

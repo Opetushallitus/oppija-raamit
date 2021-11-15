@@ -27,13 +27,13 @@
       "logout": "Kirjaudu ulos",
       "eperusteet": {
         "title": "ePerusteet",
-        "url": "https://eperusteet.opintopolku.fi/"
+        "url": "https://eperusteet.opintopolku.fi/beta/#/fi/"
       },
       "ehoks": {
         "title": "eHOKS"
       },
       "wordpress": {
-        "url": "/wp"
+        "url": "/konfo"
       },
       "opintopolku": "Opintopolku.fi",
       "home": "Etusivu",
@@ -67,19 +67,19 @@
     "links": {
       "mystudyinfo": {
         "title": "Mikä on Oma Opintopolku -palvelu?",
-        "url": "/wp/fi/oma-opintopolku-palvelu/"
+        "url": "/konfo/fi/sivu/oma-opintopolku"
       },
       "description": {
         "title": "Mikä on Opintopolku?",
-        "url": "/wp/fi/opintopolku/tietoa-palvelusta/"
+        "url": "/konfo/fi/sivu/mika-on-opintopolku"
       },
       "feedback": {
         "title": "Anna palautetta – kysy neuvoa",
-        "url": "/wp/fi/opintopolku/anna-palautetta-kysy-neuvoa/"
+        "url": "/konfo/fi/sivu/neuvonta-ja-ohjaus"
       },
       "register": {
         "title": "Tietosuojaseloste",
-        "url": "/wp/fi/tietosuojaseloste/"
+        "url": "/konfo/fi/sivu/tietosuojaselosteet-ja-evasteet"
       },
       "opetushallitus": {
         "title": "Opetushallitus",
