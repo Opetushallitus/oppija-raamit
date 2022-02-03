@@ -14,7 +14,7 @@ body {
 /* prevent any global styles from changing font size */
 #header, #footer {
   font-family: var(--raamit-font);
-  font-size: var(--raamit-font-size);
+  font-size: var(--raamit-font-size-tight);
   font-weight: var(--raamit-font-weight);
 }
 

@@ -35,6 +35,7 @@
       "oma-opintopolku": "My Studyinfo",
       "applications": "My applications",
       "koski": "My studies",
+      "valpas": "Compulsory education",
       "tietojeni-kaytto": "How is my data used?"
     },
     "cookieModal": {
@@ -46,7 +47,7 @@
       "statisticCookies": "Statistical cookies",
       "marketingCookies": "Marketing cookies",
       "accept": "Accept cookies",
-      "expandCookieText":  "Read more about cookies",
+      "expandCookieText": "Read more about cookies",
       "fullCookieText": "<p>Most of the cookies that the National Agency for Education uses are so called <strong>first party cookies </strong>to improve user experience, these are analytics information (Matomo) and identification to My Studyinfo (available with Finnish banking identification or Finnish electronic ID card).</p><p>The <strong>third party cookies</strong> used in Studyinfo are YouTube and Instragram, these are available in the Finnish and Swedish sites.</p><p>Studyinfo uses session cookies that are removed when the browser is closed. Session cookies are used to remember the choices of language and font size during browsing and for web analytics (Matomo). The information used for web analytics is anonymous and the user cannot be identified. The National Agency for Education does not provide information on cookies to others. Please note! According to the Decree on Single Digital Gateway, Your Europe -portal  collects via linked websites, anonymous analytic information (Matomo) and feedback data in order to improve user experience. European Commission approves implementing acts that provide more information on how the data is collected and the rules relating to.</p><p>You can disable cookies by changing the settings in your browser to not allow storage of cookies. Please note, however, that restricting the use of cookies may affect the functioning of the website.</p>",
       "fullCookieTextNoSDG": "<p>Most of the cookies that the National Agency for Education uses are so called <strong>first party cookies </strong>to improve user experience, these are analytics information (Matomo) and identification to My Studyinfo (available with Finnish banking identification or Finnish electronic ID card).</p><p>The <strong>third party cookies</strong> used in Studyinfo are YouTube and Instragram, these are available in the Finnish and Swedish sites.</p><p>Studyinfo uses session cookies that are removed when the browser is closed. Session cookies are used to remember the choices of language and font size during browsing and for web analytics (Matomo). The information used for web analytics is anonymous and the user cannot be identified. The National Agency for Education does not provide information on cookies to others. </p><p>You can disable cookies by changing the settings in your browser to not allow storage of cookies. Please note, however, that restricting the use of cookies may affect the functioning of the website.</p>"
     },

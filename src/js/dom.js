@@ -56,6 +56,7 @@ export function setStateLoggedIn(user) {
   if (user.usingValtuudet) {
     getElement("header-omatsivut-link").innerHTML = "<span>Hakemukseni</span>";
     getElement("header-koski-link").innerHTML = "<span>Opintoni<span>";
+    getElement("header-valpas-link").innerHTML = "<span>Oppivelvollisuus<span>";
   }
   updateUsername(user.name, user.usingValtuudet);
 }
@@ -131,6 +132,9 @@ function updateActiveHeaderItem() {
     element = getElement('header-mobile-menu-links-omatsivut');
   } else if (host.includes('koski') && !host.includes('omadata')) {
     getElement('header-koski-link').appendChild(arrowElement);
+    element = getElement('header-mobile-menu-links-koski');
+  } else if (host.includes('valpas') && !host.includes('omadata')) {
+    getElement('header-valpas-link').appendChild(arrowElement);
     element = getElement('header-mobile-menu-links-koski');
   } else if (host.includes('omadata') || host.includes('oma-opintopolku-loki')) {
     getElement('header-login-section').appendChild(arrowElement);
