@@ -1,3 +1,5 @@
+// eslint-disable-next-line no-undef
+__webpack_nonce__ = window.nonce
 import './polyfills';
 import {getHeader, getFooter} from './js/templates';
 import {parseHtml} from './js/utils';
@@ -6,7 +8,7 @@ import {getLanguage, changeLanguage} from './js/language';
 import {login, logout, getUser} from './js/login-cas';
 import browserUpdate from 'browser-update';
 
-import './styles/main.css';
+import('./styles/main.css');
 
 (function applyRaamit() {
   const lang = getLanguage();

@@ -2,7 +2,7 @@
 
 ### Käyttö
 
-Oppija-raamit otetaan käyttöön lisäämällä script-tägi
+Oppija-raamit otetaan käyttöön lisäämällä script-tägi:
 
 **Shibboleth**
 

@@ -1,10 +1,12 @@
+// eslint-disable-next-line no-undef
+__webpack_nonce__ = window.nonce
 import './polyfills';
 import {getModal, getModalNoSdg} from './js/templates';
 import {parseHtml} from './js/utils';
 import {checkAcceptedCookies, setAcceptedCookies, showCookieText, showModalCookieSettings} from './js/cookie-modal';
 import {changeLanguage, getLanguage} from './js/language';
 
-import './styles/main.css';
+import('./styles/main.css');
 
 (function applyModal() {
   let lang;

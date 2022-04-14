@@ -367,6 +367,9 @@
             script.async = true;
             script.onload = callback;
             script.src = src;
+            if (window.nonce !== undefined) {
+              script.nonce = window.nonce
+            }
             document.getElementsByTagName('head')[0].appendChild(script);
         } else {
             callback()
