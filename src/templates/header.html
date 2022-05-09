@@ -1,4 +1,4 @@
-<header role="banner" id="header">
+<header role="banner" id="header" data-raamit-component="header">
 
   <!-- Top Navigation Links -->
   <div data-attr-t id="top-links-bar" aria-label-t="header.ariaLabel">
@@ -22,7 +22,7 @@
   <div data-attr-t role="presentation" id="header-content" class="header-column" aria-label-t="header.ariaLabelOmaOpintopolku">
     <!-- Banner and view name-->
     <div id="header-content-left-side">
-      <button id="header-mobile-menu-button" onclick="Raamit.toggleMobileMenu()" aria-expanded="false"
+      <button id="header-mobile-menu-button" data-event-id="header-mobile-menu-button" aria-expanded="false"
               aria-haspopup="true" aria-controls="header-mobile-menu-container" data-attr-t
               aria-label-t="header.mobileMenuButton.ariaLabel">
         <div class="header-mobile-menu-bar1"></div>
@@ -37,14 +37,14 @@
     <div id="header-content-right-side">
       <div id="header-languages" class="header-item" data-attr-t aria-label-t="header.languages.ariaLabel"
            aria-labelledby="header-content">
-        <button class="header-language-button header-language-fi" data-attr-t title-t="header.languages.fi"
-                onclick="Raamit.changeLanguage('fi')" data-t="header.languages.fi_alt"
+        <button class="header-language-button header-language-fi" id="header-button-language-fi" data-event-id="header-button-language-fi" data-attr-t title-t="header.languages.fi"
+                data-t="header.languages.fi_alt"
                 aria-labelledby="header-content"></button>
-        <button class="header-language-button header-language-sv" data-attr-t title-t="header.languages.sv"
-                onclick="Raamit.changeLanguage('sv')" data-t="header.languages.sv_alt"
+        <button class="header-language-button header-language-sv" id="header-button-language-sv" data-event-id="header-button-language-sv" data-attr-t title-t="header.languages.sv"
+                data-t="header.languages.sv_alt"
                 aria-labelledby="header-content"></button>
-        <button class="header-language-button header-language-en" data-attr-t title-t="header.languages.en"
-                onclick="Raamit.changeLanguage('en')" data-t="header.languages.en_alt"
+        <button class="header-language-button header-language-en" id="header-button-language-en" data-event-id="header-button-language-en" data-attr-t title-t="header.languages.en"
+                data-t="header.languages.en_alt"
                 aria-labelledby="header-content"></button>
       </div>
 
@@ -60,8 +60,8 @@
 
 
       <div id="header-login-section" class="header-item">
-        <div id="header-logged-in" class="header-login-section-item" style="display:none;">
-          <button id="header-overflow-menu-button" class="raamit-button" onclick="Raamit.toggleOverflowMenu()"
+        <div id="header-logged-in" class="header-login-section-item" data-inline-style="display:none;">
+          <button id="header-overflow-menu-button" data-event-id="header-overflow-menu-button" class="raamit-button"
                   aria-expanded="false" aria-haspopup="true" aria-controls="header-overflow-menu-container">
             <div id="header-profile-icon"></div>
             <span class="header-identity header-logged-in-name"></span>
@@ -70,7 +70,7 @@
         </div>
 
         <div id="header-logged-out" class="header-login-section-item">
-          <button id="header-login-button" class="raamit-button" onclick="Raamit.login()"
+          <button id="header-login-button" data-event-id="header-login-button" class="raamit-button"
                   data-t="header.links.login"></button>
         </div>
 
@@ -81,7 +81,7 @@
               <div id="header-overflow-menu-links">
                 <a id="header-overflow-menu-links-tietojeni-kaytto" href="/koski/omadata/kayttooikeudet" data-t="header.links.tietojeni-kaytto"></a>
               </div>
-              <button id="header-overflow-menu-logout-button" class="raamit-button" onclick="Raamit.logout()" data-t="header.links.logout"></button>
+              <button id="header-overflow-menu-logout-button" class="raamit-button" data-event-id="header-overflow-menu-logout-button" data-t="header.links.logout"></button>
             </div>
           </div>
         </div>
@@ -94,9 +94,9 @@
   <div id="header-mobile-menu-container">
     <div id="header-mobile-menu-content-container">
       <div id="header-mobile-menu-languages" data-attr-t aria-label-t="header.languages.ariaLabel">
-        <button class="header-language-button header-language-fi" onclick="Raamit.changeLanguage('fi')">FI</button>
-        <button class="header-language-button header-language-sv" onclick="Raamit.changeLanguage('sv')">SV</button>
-        <button class="header-language-button header-language-en" onclick="Raamit.changeLanguage('en')">EN</button>
+        <button class="header-language-button header-language-fi" id="mobile-header-button-language-fi" data-event-id="mobile-header-button-language-fi">FI</button>
+        <button class="header-language-button header-language-sv" id="mobile-header-button-language-sv" data-event-id="mobile-header-button-language-sv">SV</button>
+        <button class="header-language-button header-language-en" id="mobile-header-button-language-en" data-event-id="mobile-header-button-language-en">EN</button>
       </div>
       <p id="header-mobile-menu-title" data-t="header.links.oma-opintopolku"></p>
       <div id="header-mobile-menu-login-section">
@@ -109,11 +109,11 @@
             <a id="header-mobile-menu-links-tietojeni-kaytto" href="/koski/omadata/kayttooikeudet" data-t="header.links.tietojeni-kaytto"></a>
           </div>
           <p id="header-mobile-menu-name" class="header-identity"></p>
-          <button id="header-mobile-menu-logout-button" class="raamit-button" onclick="Raamit.logout()"
+          <button id="header-mobile-menu-logout-button" data-event-id="header-mobile-menu-logout-button" class="raamit-button"
                   data-t="header.links.logout"></button>
         </div>
         <div id="header-mobile-menu-logged-out">
-          <button id="header-mobile-menu-login" class="raamit-button" onclick="Raamit.login()"
+          <button id="header-mobile-menu-login" data-event-id="header-mobile-menu-login" class="raamit-button"
                   data-t="header.links.login"></button>
         </div>
       </div>
