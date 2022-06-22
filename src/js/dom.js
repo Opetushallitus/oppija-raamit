@@ -1,5 +1,3 @@
-import {createDomain} from './utils';
-
 export function hideElement(id) {
   document.getElementById(id).style.display = 'none';
 }

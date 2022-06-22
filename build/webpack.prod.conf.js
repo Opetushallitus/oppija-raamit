@@ -15,7 +15,7 @@ const webpackConfig = merge(baseWebpackConfig, {
   output: {
     path: config.build.assetsRoot,
     filename: utils.assetsPath('js/[name].js'),
-    chunkFilename: utils.assetsPath('js/[id].js')
+    chunkFilename: utils.assetsPath('js/oppija-raamit-[id].js')
   },
   plugins: [
     // compile i18n versions from templates

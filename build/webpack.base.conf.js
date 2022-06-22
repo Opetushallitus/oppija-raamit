@@ -31,6 +31,8 @@ module.exports = {
     path: resolve('src/main/resources/public'),
     filename: '[name].js',
     publicPath: '/oppija-raamit/',
+    chunkFilename: 'oppija-raamit-[id].js',
+    jsonpFunction: 'webpackJsonpOppijaRaamit'
   },
   resolve: {
     extensions: ['.js', '.json'],

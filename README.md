@@ -2,7 +2,7 @@
 
 ### Käyttö
 
-Oppija-raamit otetaan käyttöön lisäämällä script-tägi
+Oppija-raamit otetaan käyttöön lisäämällä script-tägi:
 
 **Shibboleth**
 
@@ -75,3 +75,8 @@ Html-pohjat ajetaan i18n prosessorin lävitse ja niistä muodostetaan omat kieli
     src/main/java <-- Spring Boot applikaatio
     src/main/resources/public <-- Tuotannossa jaettavat staattiset tiedostot (generoidaan)
 
+### Lokaalin NGINX-serverin käynnistäminen
+
+Seuraavat ohjeet vaativat asennetun Dockerin ja npm:n.
+
+Oppijan raamit on mahdollista käynnistää lokaalisti porttiin 8079. Tämä on hyödyllistä, jos haluat esimerkiksi testata navigaatiovalikkoa lokaalisti Kosken kanssa. Tätä varten seuraa dokumentaatiota Kosken GitHub-repositoriossa: https://github.com/Opetushallitus/koski
