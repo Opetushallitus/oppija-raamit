@@ -62,7 +62,7 @@
     "url-loader": "^0.5.8",
     "webpack": "^4.46.0",
     "webpack-bundle-analyzer": "^2.9.0",
-    "webpack-cli": "^2.0.14",
+    "webpack-cli": "^5.0.1",
     "webpack-dev-server": "^3.11.0",
     "webpack-merge": "^4.1.0",
     "webpack-static-i18n-html": "git+https://git@github.com/Opetushallitus/webpack-static-i18n-html.git"
