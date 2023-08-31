@@ -86,6 +86,10 @@
         "title": "Ministry of Education and Culture",
         "image": "/oppija-raamit/img/OKM_logo-en.png",
         "link": "http://www.minedu.fi/OPM/?lang=en"
+      },
+      "eurahoitettu": {
+        "title": "Funded by the European Union - NextGenerationEU",
+        "image": "/oppija-raamit/img/eu_rahoitettu_en.png"
       }
     }
   },

@@ -89,6 +89,10 @@
         "title": "Undervisnings- och kulturministeriet",
         "image": "/oppija-raamit/img/OKM_logo-sv.png",
         "link": "http://www.minedu.fi/OPM/?lang=sv"
+      },
+      "eurahoitettu": {
+        "title": "Finansieras av Europeiska unionen - NextGenerationEU",
+        "image": "/oppija-raamit/img/eu_rahoitettu_sv.png"
       }
     }
   },
