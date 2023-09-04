@@ -91,6 +91,10 @@
         "title": "Opetusministeriö",
         "image": "/oppija-raamit/img/OKM_logo-fi.png",
         "link": "http://www.minedu.fi/OPM/"
+      },
+      "eurahoitettu": {
+        "title": "Euroopan unionin rahoittama - NextGenerationEU",
+        "image": "/oppija-raamit/img/eu_rahoittama_fi.png"
       }
     }
   },
