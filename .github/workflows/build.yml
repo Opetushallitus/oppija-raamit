@@ -56,7 +56,7 @@ jobs:
       application: oppija-raamit
       base-image: baseimage-fatjar-openjdk17:master
       configfolder: config
-      jarfile: oppija-raamit-*.jar
+      jarfile: oppija-raamit-*
       jarfolder: target
     secrets:
         AWS_UTILITY_ROLE_ARN: ${{ secrets.AWS_OPH_UTILITY_ROLE_ARN }}
