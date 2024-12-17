@@ -25,7 +25,7 @@
       "logout": "Log out",
       "eperusteet": {
         "title": "ePerusteet",
-        "url": "https://eperusteet.opintopolku.fi/beta/#/en/"
+        "url": "https://eperusteet.opintopolku.fi/#/en/"
       },
       "wordpress": {
         "url": "/konfo"
