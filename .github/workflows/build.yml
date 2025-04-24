@@ -33,7 +33,7 @@ jobs:
 
       - uses: actions/setup-node@v4
         with:
-          node-version: '9.11.1'
+          node-version: '22.14.0'
           cache: 'npm'
           cache-dependency-path: 'package-lock.json'
 
