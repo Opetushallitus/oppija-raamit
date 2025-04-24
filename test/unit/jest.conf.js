@@ -10,13 +10,11 @@ module.exports = {
     '^@/(.*)$': '<rootDir>/src/$1',
   },
   transform: {
-    '^.+\\.js$': '<rootDir>/node_modules/babel-jest',
+    '^.+\\.js$': 'babel-jest',
   },
   testPathIgnorePatterns: [
     '<rootDir>/test/e2e',
   ],
-  setupFiles: ['<rootDir>/test/unit/setup'],
-  mapCoverage: true,
   coverageDirectory: '<rootDir>/test/unit/coverage',
   collectCoverageFrom: [
     'src/**/*.js',
