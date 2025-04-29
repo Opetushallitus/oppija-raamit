@@ -76,7 +76,7 @@ Html-pohjat ajetaan i18n prosessorin lävitse ja niistä muodostetaan omat kieli
     src/main/resources/public <-- Tuotannossa jaettavat staattiset tiedostot (generoidaan)
 
 ### Testaus
-Viimeisimpien kirjastopäivitysten myötä alkuperäiset testit eivät enää ole ajantasalla. Testauksen osalta on riittävää varmistaa raaminen toiminta ajamalla esimerkkiaplikaatiota ja lokaalia
+Viimeisimpien kirjastopäivitysten myötä alkuperäiset testit eivät enää ole ajantasalla. Testauksen osalta on riittävää varmistaa raamien toiminta ajamalla esimerkkisovellusta ja lokaalia
 NGINX-serveriä. 
 
 ### Lokaalin NGINX-serverin käynnistäminen
