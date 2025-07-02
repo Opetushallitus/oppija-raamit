@@ -7,6 +7,7 @@ import { parseHtml } from './js/utils';
 import { updateDom, toggleMobileMenu, toggleOverflowMenu } from './js/dom';
 import { getLanguage, changeLanguage } from './js/language';
 import { login, logout, getUser } from './js/login-cas';
+import { applyInlineStyles } from './js/inline-styles';
 import browserUpdate from 'browser-update';
 
 import('./styles/main.css');

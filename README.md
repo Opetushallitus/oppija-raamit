@@ -75,8 +75,15 @@ Html-pohjat ajetaan i18n prosessorin lävitse ja niistä muodostetaan omat kieli
     src/main/java <-- Spring Boot applikaatio
     src/main/resources/public <-- Tuotannossa jaettavat staattiset tiedostot (generoidaan)
 
+### Testaus
+Viimeisimpien kirjastopäivitysten myötä alkuperäiset testit eivät enää ole ajantasalla. Testauksen osalta on riittävää varmistaa raamien toiminta ajamalla esimerkkisovellusta ja lokaalia
+NGINX-serveriä. 
+
 ### Lokaalin NGINX-serverin käynnistäminen
 
-Seuraavat ohjeet vaativat asennetun Dockerin ja npm:n.
+Serverin ajaminen lokaalisti vaatii asennetun Dockerin.
 
-Oppijan raamit on mahdollista käynnistää lokaalisti porttiin 8079. Tämä on hyödyllistä, jos haluat esimerkiksi testata navigaatiovalikkoa lokaalisti Kosken kanssa. Tätä varten seuraa dokumentaatiota Kosken GitHub-repositoriossa: https://github.com/Opetushallitus/koski
+Käynnistä serveri komennolla ./run-local-oppija-raamit.sh
+
+Tämä käynnistää raami-sovelluksen lokaalisti porttiin 8079, osoitteeseen http://localhost:8079/oppija-raamit/index.html. 
+Tämä on hyödyllistä, jos haluat esimerkiksi testata navigaatiovalikkoa lokaalisti Kosken kanssa. Tätä varten seuraa dokumentaatiota Kosken GitHub-repositoriossa: https://github.com/Opetushallitus/koski

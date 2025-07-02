@@ -1,53 +1,42 @@
 'use strict';
 const path = require('path');
-const utils = require('./utils');
-const webpack = require('webpack');
-const config = require('../config/index');
-const merge = require('webpack-merge');
-const baseWebpackConfig = require('./webpack.base.conf');
+const utils = require('./utils.cjs');
+const config = require('../config/index.cjs');
+const { merge } = require('webpack-merge');
+const baseWebpackConfig = require('./webpack.base.conf.cjs');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
-const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
-const StaticI18nHtmlPlugin = require('webpack-static-i18n-html');
+const TerserPlugin = require('terser-webpack-plugin');
 
 const webpackConfig = merge(baseWebpackConfig, {
   mode: 'production',
-  devtool: '#source-map',
+  devtool: 'source-map',
   output: {
     path: config.build.assetsRoot,
     filename: utils.assetsPath('js/[name].js'),
     chunkFilename: utils.assetsPath('js/oppija-raamit-[id].js')
   },
+  optimization: {
+    minimize: true,
+    minimizer: [
+      new TerserPlugin()
+    ],
+  },
   plugins: [
-    // compile i18n versions from templates
-    /*
-    new StaticI18nHtmlPlugin({
-      locale: 'fi',
-      locales: ['fi', 'sv', 'en'],
-      baseDir: __dirname,
-      outputDir: path.posix.join(__dirname, 'html/'),
-      outputDefault: '__lng__/__file__',
-      localesPath: path.posix.join(__dirname, 'locales/'),
-      files: 'templates/*.html'
-    }),
-    */
-    new UglifyJsPlugin({
-      uglifyOptions: {
-        compress: {
-          warnings: false
-        }
-      },
-      sourceMap: true
-    }),
-    // keep module.id stable when vendor modules does not change
-    new webpack.HashedModuleIdsPlugin(),
     // copy custom static assets
-    new CopyWebpackPlugin([
+    new CopyWebpackPlugin({patterns: [
       {
         from: path.resolve(__dirname, '../static'),
         to: config.build.assetsSubDirectory,
-        ignore: ['.*']
+        globOptions: {
+          ignore: ['.*']
+        }
+      },
+      {
+        from: path.resolve(__dirname, '../static/index-prod.html'),
+        to: path.posix.join(config.build.assetsSubDirectory, "index.html"),
       }
-    ])
+    ]})
+
   ]
 });
 

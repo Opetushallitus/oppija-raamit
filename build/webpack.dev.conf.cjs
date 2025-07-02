@@ -1,23 +1,37 @@
 'use strict';
-const utils = require('./utils');
+const utils = require('./utils.cjs');
 const webpack = require('webpack');
-const merge = require('webpack-merge');
-const config = require('../config');
+const { merge } = require('webpack-merge');
+const config = require('../config/index.cjs');
 const path = require('path');
-const baseWebpackConfig = require('./webpack.base.conf');
+const baseWebpackConfig = require('./webpack.base.conf.cjs');
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const FriendlyErrorsPlugin = require('friendly-errors-webpack-plugin');
+const FriendlyErrorsPlugin = require('@soda/friendly-errors-webpack-plugin');
 const portfinder = require('portfinder');
-const StaticI18nHtmlPlugin = require('webpack-static-i18n-html');
 
 const HOST = process.env.HOST;
 const PORT = process.env.PORT && Number(process.env.PORT);
 
 const devWebpackConfig = merge(baseWebpackConfig, {
   mode: 'development',
-  devtool: 'cheap-module-eval-source-map',
+  devtool: 'cheap-module-source-map',
+  optimization: {
+    emitOnErrors: false, // explicitly disable emitting
+  },
   devServer: {
-    clientLogLevel: 'warning',
+    client: {
+      logging: 'warn',
+      overlay: { 
+        warnings: false, 
+        errors: true 
+      },
+    },
+    static: {
+      publicPath: '/oppija-raamit/',
+      directory: config.common.contentBase,
+    },
     historyApiFallback: {
       rewrites: [
         { from: /.*/, to: path.posix.join('/oppija-raamit/', 'index.html') },
@@ -28,34 +42,32 @@ const devWebpackConfig = merge(baseWebpackConfig, {
     host: HOST || 'localhost',
     port: PORT || '8080',
     open: false, // auto open browser
-    overlay: { warnings: false, errors: true },
-    contentBase: config.common.contentBase,
-    publicPath: '/oppija-raamit/',
-    proxy: {},
-    quiet: true, // necessary for FriendlyErrorsPlugin
-    watchOptions: {
-      poll: false,
-    }
+    watchFiles: {
+      options: {
+        usePolling: false,
+      }
+    },
+    devMiddleware: {
+      writeToDisk: true
+    },
   },
   plugins: [
-    /*
-    new StaticI18nHtmlPlugin({
-      locale: 'fi',
-      locales: ['fi', 'sv', 'en'],
-      baseDir: path.posix.join( __dirname, '..'),
-      outputDir: 'static/html',
-      outputDefault: '__lng__/__file__',
-      localesPath: 'src/locales',
-      files: 'src/templates/*.html'
-    }),
-    */
     new webpack.HotModuleReplacementPlugin(),
-    new webpack.NoEmitOnErrorsPlugin(),
-    // https://github.com/ampedandwired/html-webpack-plugin
+    new CleanWebpackPlugin(),
+    new CopyWebpackPlugin({patterns: [
+      {
+        from: '**/*',
+        // kopioi output/path parametrin osoittamaan polkuun
+        context: 'static/',
+        globOptions: {
+          ignore: ['.*']
+        }
+      }
+    ]}),
     new HtmlWebpackPlugin({
       title: "Oppija-raamit",
       template: 'index.html',
-      inject: true
+      inject: 'head'
     })
   ]
 });
