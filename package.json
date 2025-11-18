@@ -17,7 +17,7 @@
   "dependencies": {
     "@webcomponents/template": "^1.5.1",
     "browser-update": "^3.3.55",
-    "core-js": "^3.41.0",
+    "core-js": "^3.43.0",
     "es6-promise": "^4.2.8",
     "js-cookie": "^3.0.5",
     "whatwg-fetch": "^3.6.20"
