@@ -55,8 +55,8 @@ Normaalisti evästemodaali lisätään headerin jälkeen, mutta tarvittaessa voi
 
 Käynnistä esimerkkiapplikaatio näin:
 
-    npm install
-    npm run templates && npm start
+    pnpm install
+    pnpm run templates && pnpm start
     open http://localhost:8080
 
 ### Kehitysohjeet
