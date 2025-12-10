@@ -6,6 +6,7 @@
   "homepage": "https://github.com/Opetushallitus/oppija-raamit",
   "private": true,
   "scripts": {
+    "preinstall": "only-allow pnpm",
     "dev": "pnpm exec webpack serve --progress --config build/webpack.dev.conf.cjs --color",
     "start": "pnpm run dev",
     "unit": "jest --config test/unit/jest.conf.js --coverage",
