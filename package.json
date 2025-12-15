@@ -16,7 +16,7 @@
     "templates": "rm -rf static/html/ && ./node_modules/static-i18n/bin/static-i18n.js -l fi -i fi -i sv -i en --outputDir static/html/ --outputDefault __lng__/__file__ --localesPath src/locales/ src/templates/"
   },
   "dependencies": {
-    "@babel/runtime": "^7.26.10",
+    "@babel/runtime": "^7.28.4",
     "@webcomponents/template": "^1.5.1",
     "browser-update": "^3.3.55",
     "core-js": "^3.41.0",
