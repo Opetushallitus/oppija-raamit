@@ -111,7 +111,7 @@ function updateActiveTopNavItem() {
     element = getElement('top-link-eperusteet');
   } else if (host.includes('ehoks') || host.includes('epuk')) {
     element = getElement('top-link-ehoks');
-  } else if (['oma-opintopolku', 'koski', 'omatsivut', 'varda'].some(el => host.includes(el))) {
+  } else if (['oma-opintopolku', 'koski', 'omatsivut', 'oma-opiskelijavalinta', 'varda'].some(el => host.includes(el))) {
     element = getElement('top-link-oma-opintopolku');
   } else {
     element = getElement('top-link-opintopolku');
@@ -126,6 +126,9 @@ function updateActiveHeaderItem() {
 
   let element;
   if (host.includes('omatsivut')) {
+    getElement('header-omatsivut-link').appendChild(arrowElement);
+    element = getElement('header-mobile-menu-links-omatsivut');
+  } else if (host.includes('oma-opiskelijavalinta')) {
     getElement('header-omatsivut-link').appendChild(arrowElement);
     element = getElement('header-mobile-menu-links-omatsivut');
   } else if (host.includes('koski') && !host.includes('omadata')) {
