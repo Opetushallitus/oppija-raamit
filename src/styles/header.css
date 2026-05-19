@@ -17,7 +17,7 @@
 }
 
 .header-column {
-  max-width: 1160px;
+  max-width: 1200px;
   margin: 0 auto;
 }
 
@@ -25,22 +25,26 @@
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
-  padding: 15px 0 15px 0;
+  padding: 15px 0 15px max(0px, calc((100% - 1200px) / 2));
+  margin: 0;
+  max-width: none;
+  justify-content: flex-start;
 }
 
 #header-content-left-side {
   display: flex;
   flex-direction: row;
   align-items: center;
+  flex: 0 0 auto;
 }
 
 #header-content-right-side {
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: flex-end;
+  justify-content: flex-start;
   min-width: 0;
-  width: 100%;
+  flex: 0 1 auto;
   font-weight: 600;
 }
 
@@ -119,18 +123,22 @@
 /* Login section */
 
 #header-login-section {
-  min-width: 0;
-  -ms-flex: 1; /* IE11 has trouble truncating text within flex container; force flex:1 for IE */
+  flex: 0 1 auto;
   padding: 0 5px 0 0;
+  min-width: 0;
 
   & #header-overflow-menu-button {
     padding-left: 15px;
+    padding-right: 5px;
     width: 100%;
     display: flex;
     justify-content: center;
+    min-width: 0;
+    overflow: hidden;
 
     & > #header-profile-icon {
       display: inline-block;
+      width: 13px;
 
       &:before {
         content: "";
@@ -145,16 +153,9 @@
       }
     }
 
-    & > #header-logged-in-name {
-      min-width: 0;
-      white-space: nowrap;
-      text-overflow: ellipsis;
-      overflow: hidden;
-    }
-
     & > #header-overflow-icon {
       display: inline-block;
-      margin-left: 10px;
+      margin-left: 9px;
 
       &:after {
         content: "";
@@ -184,8 +185,8 @@
     position: relative;
     display: none;
     vertical-align: top;
-    width: 100%;
-    min-width: 200px;
+    min-width: 0;
+    overflow: hidden;
   }
 }
 
@@ -204,10 +205,13 @@
 
 .header-logged-in-name {
   margin: 0;
+  min-width: 0;
+  white-space: nowrap;
   text-overflow: ellipsis;
   overflow: hidden;
-  display: inline-block;
+  display: inline;
   vertical-align: bottom;
+  max-width: 300px;
 }
 
 /* Overflow menu */
@@ -220,6 +224,8 @@
   width: 100%;
   white-space: initial;
   background-color: #3A7A10;
+  min-width: 150px;
+  z-index: 10;
 }
 
 #header-overflow-menu-content-container {
@@ -269,17 +275,13 @@
 
 /* Large screen */
 
-@media screen and (min-width: 1300px) {
+@media screen and (min-width: 1400px) {
   #header, #footer {
     font-size: var(--raamit-font-size);
   }
 
   #header-title {
     font-size: 24px;
-  }
-
-  #header-languages {
-    flex-grow: 1;
   }
 
   .header-item {
