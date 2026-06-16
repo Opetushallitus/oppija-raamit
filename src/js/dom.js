@@ -2,8 +2,8 @@ export function hideElement(id) {
   document.getElementById(id).style.display = 'none';
 }
 
-export function showElement(id) {
-  document.getElementById(id).style.display = 'inline-block';
+export function showElement(id, displayStyle = 'inline-block') {
+  document.getElementById(id).style.display = displayStyle;
 }
 
 export function getElement(id) {
@@ -43,7 +43,7 @@ export function setStateLoggedOut() {
 export function setStateLoggedIn(user) {
   // Default nav
   hideElement('header-logged-out');
-  showElement('header-logged-in');
+  showElement('header-logged-in', 'inline');
 
   // Mobile nav
   showElement('header-mobile-menu-logged-in');
